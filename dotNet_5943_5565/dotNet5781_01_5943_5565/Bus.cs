@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace dotNet5781_01_5943_5565
 {
+
     public class Bus
     {
         private int licenseNumber;
@@ -14,6 +14,8 @@ namespace dotNet5781_01_5943_5565
         private int fuelKM;
         Bus(int license_Number, DateTime start_Date, int random_Mileage, int starting_Fuel_KM) 
         {
+            if(license_Number < 99999999 )
+                throw new Exception();
             licenseNumber = license_Number;
             startDate = start_Date;
             mileage = random_Mileage;
@@ -28,9 +30,8 @@ namespace dotNet5781_01_5943_5565
             private set
             { 
                 if(value>99999999 || value< 1000000)
-                    Console.WriteLine("ERROR: license number is not valid");
-                else
-                    licenseNumber = value; 
+                    throw new Exception();
+                licenseNumber = value; 
             }
         }
     }
