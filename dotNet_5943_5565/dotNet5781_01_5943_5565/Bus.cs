@@ -13,7 +13,7 @@ namespace dotNet5781_01_5943_5565
         private DateTime startDate;
         private int mileage;
         private int fuelKM;
-        public Bus(int license_Number, DateTime start_Date, int _Mileage, int starting_Fuel_KM) 
+        public Bus(int license_Number=0, DateTime start_Date = DateTime.Today, int _Mileage=0, int starting_Fuel_KM=0) 
         {
             if(license_Number>99999999 || starting_Fuel_KM>1200)
                 throw new Exception();
@@ -71,10 +71,26 @@ namespace dotNet5781_01_5943_5565
         }
         public Bus AddBus()
         {
-
+            Bus toReturn = new Bus();
             Console.WriteLine("enter start date:");
-            this.startDate = EnterDate();
-            return this;
+            toReturn.startDate = EnterDate();
+            if(toReturn.startDate.Year<2018)
+            {
+                Console.WriteLine("Enter 7 digits of license number:");
+                int ln = Console.Read();
+                if(ln>=10000000)
+                    throw new Exception();
+                toReturn.licenseNumber = ln;
+            }
+            else
+            {
+                Console.WriteLine("Enter 8 digits of license number:");
+                int ln = Console.Read();
+                if(ln>=100000000)
+                    throw new Exception();
+                toReturn.licenseNumber = ln;
+            }
+            return toReturn;
         }
     }
 }
