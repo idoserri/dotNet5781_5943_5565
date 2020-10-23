@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
+
 
 
 namespace dotNet5781_01_5943_5565
@@ -13,7 +15,8 @@ namespace dotNet5781_01_5943_5565
 
         static void Main(string[] args)
         {
-
+            List<Bus> busDatabase = new List<Bus>();
+            string choice;
             bool menuLoop = true;            //since we want the menu to loop until the user chooses to exit
             while(menuLoop)
             {
@@ -24,20 +27,23 @@ namespace dotNet5781_01_5943_5565
 3 - Fuel or give treatment to the bus
 4 - Show the mileage of every single bus
 5 - Exit"); 
-                  //read the user's choice in the menu
-                switch(Console.Read())
+                choice = Console.ReadLine();//read the user's choice in the menu
+                switch(choice)
                 {
-                    case 1: //AddBus();
-                        Console.WriteLine("ddd");
+                    case "1": //AddBus();
+                        busDatabase.Add(AddBus());
                         break;
-                    case 2: //SelectBusToDrive();
+                    case "2": //SelectBusToDrive();
                         break;
-                    case 3: //FuelTreatment();
+                    case "3": //FuelTreatment();
                         break;
-                    case 4: //ShowMileage();
+                    case "4": //ShowMileage();
                         break;
-                    case 5:
+                    case "5":
                         menuLoop = false;
+                        break;
+                    default:
+                        Console.WriteLine("please enter a number between 1-5");
                         break;
                 }
             }
