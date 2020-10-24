@@ -61,15 +61,13 @@ namespace dotNet5781_01_5943_5565
         }
         public DateTime EnterDate() // function to enter a date by year/month/day
         {
-            Console.WriteLine("Enter year: ");
-            int year = Console.Read();
-            Console.WriteLine("Enter month: ");
-            int month = Console.Read();
-            Console.WriteLine("Enter day: ");
-            int day = Console.Read();
-            return new DateTime(year,month,day);
+            Console.WriteLine(@"Enter month/year/day");
+            string date = Console.ReadLine();
+            DateTime dateReturned = new DateTime();
+            DateTime.TryParse(date, out dateReturned);
+            return dateReturned;
         }
-        public Bus AddBus()
+        public Bus EnterBus()      //the function we use to enter the bus into our database;
         {
             Bus toReturn = new Bus(license_Number: 0, start_Date: DateTime.Now, _Mileage: 0, starting_Fuel_KM: 0);
             Console.WriteLine("enter start date:");

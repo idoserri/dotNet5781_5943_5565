@@ -30,9 +30,9 @@ namespace dotNet5781_01_5943_5565
                 choice = Console.ReadLine();//read the user's choice in the menu
                 switch(choice)
                 {
-                    case "1": //AddBus();
+                    case "1": //EnterBus();
                         Bus a = new Bus(license_Number: 0, start_Date: DateTime.Now, _Mileage: 0, starting_Fuel_KM: 0);
-                        a.AddBus();
+                        a.EnterBus();
                         busDatabase.Add(a);
                         break;
                     case "2": //SelectBusToDrive();
