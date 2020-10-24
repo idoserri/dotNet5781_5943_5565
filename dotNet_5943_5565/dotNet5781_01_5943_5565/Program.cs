@@ -31,7 +31,9 @@ namespace dotNet5781_01_5943_5565
                 switch(choice)
                 {
                     case "1": //AddBus();
-                        busDatabase.Add(AddBus());
+                        Bus a = new Bus(license_Number: 0, start_Date: DateTime.Now, _Mileage: 0, starting_Fuel_KM: 0);
+                        a.AddBus();
+                        busDatabase.Add(a);
                         break;
                     case "2": //SelectBusToDrive();
                         break;
@@ -48,6 +50,6 @@ namespace dotNet5781_01_5943_5565
                 }
             }
         }
+
     }
 }
-
