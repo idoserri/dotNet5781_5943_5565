@@ -59,26 +59,26 @@ namespace dotNet5781_01_5943_5565
                 licenseNumber = value; 
             }
         }
-        public DateTime EnterDate() // function to enter a date by year/month/day
+        public DateTime EnterDate() // function to enter a date by month/day/year
         {
-            Console.WriteLine(@"Enter month/year/day");
+            Console.WriteLine(@"Enter month/year/day:");    
             string date = Console.ReadLine();
-            DateTime dateReturned = new DateTime();
-            DateTime.TryParse(date, out dateReturned);
+            DateTime dateReturned = new DateTime();         //this is where the result of the parse enters
+            DateTime.TryParse(date, out dateReturned);      //checking if it's possible to parse the string and putting the result into our desired date tp return
             return dateReturned;
         }
         public Bus EnterBus()      //the function we use to enter the bus into our database;
         {
-            Bus toReturn = new Bus(license_Number: 0, start_Date: DateTime.Now, _Mileage: 0, starting_Fuel_KM: 0);
+            Bus result = new Bus(license_Number: 0, start_Date: DateTime.Now, _Mileage: 0, starting_Fuel_KM: 0); //a bus with default parameters
             Console.WriteLine("enter start date:");
-            toReturn.startDate = EnterDate();
-            if(toReturn.startDate.Year<2018)
+            result.startDate = EnterDate();
+            if(result.startDate.Year<2018)
             {
                 Console.WriteLine("Enter 7 digits of license number:");
                 int ln = Console.Read();
                 if(ln>=10000000)
                     throw new Exception();
-                toReturn.licenseNumber = ln;
+                result.licenseNumber = ln;
             }
             else
             {
@@ -86,9 +86,9 @@ namespace dotNet5781_01_5943_5565
                 int ln = Console.Read();
                 if(ln>=100000000)
                     throw new Exception();
-                toReturn.licenseNumber = ln;
+                result.licenseNumber = ln;
             }
-            return toReturn;
+            return result;
         }
 
     }

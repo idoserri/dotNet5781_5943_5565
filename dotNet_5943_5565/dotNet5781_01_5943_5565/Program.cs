@@ -15,8 +15,8 @@ namespace dotNet5781_01_5943_5565
 
         static void Main(string[] args)
         {
-            List<Bus> busDatabase = new List<Bus>();
-            string choice;
+            List<Bus> busDatabase = new List<Bus>();   //our list of busses in our database
+            string choice;                   
             bool menuLoop = true;            //since we want the menu to loop until the user chooses to exit
             while(menuLoop)
             {
@@ -31,9 +31,9 @@ namespace dotNet5781_01_5943_5565
                 switch(choice)
                 {
                     case "1": //EnterBus();
-                        Bus a = new Bus(license_Number: 0, start_Date: DateTime.Now, _Mileage: 0, starting_Fuel_KM: 0);
-                        a.EnterBus();
-                        busDatabase.Add(a);
+                        Bus a = new Bus(license_Number: 0, start_Date: DateTime.Now, _Mileage: 0, starting_Fuel_KM: 0);    //set a new bus with default parameters
+                        a.EnterBus();         //enter the start date and the license number of the new bus
+                        busDatabase.Add(a);   //add the new bus to our database
                         break;
                     case "2": //SelectBusToDrive();
                         break;
@@ -42,10 +42,10 @@ namespace dotNet5781_01_5943_5565
                     case "4": //ShowMileage();
                         break;
                     case "5":
-                        menuLoop = false;
+                        menuLoop = false;    //user chose exit that's why we're ending the loop
                         break;
                     default:
-                        Console.WriteLine("please enter a number between 1-5");
+                        Console.WriteLine("please enter a number between 1-5");   // the case where the user entered a choice that's invalid
                         break;
                 }
             }
