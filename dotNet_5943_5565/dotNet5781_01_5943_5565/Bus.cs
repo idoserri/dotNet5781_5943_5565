@@ -61,7 +61,7 @@ namespace dotNet5781_01_5943_5565
         }
         public DateTime EnterDate() // function to enter a date by month/day/year
         {
-            Console.WriteLine(@"Enter month/year/day:");    
+            Console.WriteLine("Enter month/year/day:");    
             string date = Console.ReadLine();
             DateTime dateReturned = new DateTime();         //this is where the result of the parse enters
             DateTime.TryParse(date, out dateReturned);      //checking if it's possible to parse the string and putting the result into our desired date tp return
