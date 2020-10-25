@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
+
 
 
 namespace dotNet5781_01_5943_5565
@@ -13,10 +15,8 @@ namespace dotNet5781_01_5943_5565
 
         static void Main(string[] args)
         {
-            List<Bus> busDatabase = new List<Bus>();
-            Bus a = new Bus();// 1223, DateTime.Now, 30, 200);
-          
-
+            List<Bus> busDatabase = new List<Bus>();   //our list of busses in our database
+            string choice;                   
             bool menuLoop = true;            //since we want the menu to loop until the user chooses to exit
             while(menuLoop)
             {
@@ -27,24 +27,29 @@ namespace dotNet5781_01_5943_5565
 3 - Fuel or give treatment to the bus
 4 - Show the mileage of every single bus
 5 - Exit"); 
-                  //read the user's choice in the menu
-                switch(Console.Read())
+                choice = Console.ReadLine();//read the user's choice in the menu
+                switch(choice)
                 {
-                    case 1: //AddBus();
-                        Console.WriteLine("ddd");
+                    case "1": //EnterBus();
+                        Bus a = new Bus(license_Number: 0, start_Date: DateTime.Now, _Mileage: 0, starting_Fuel_KM: 0);    //set a new bus with default parameters
+                        a.EnterBus();         //enter the start date and the license number of the new bus
+                        busDatabase.Add(a);   //add the new bus to our database
                         break;
-                    case 2: //SelectBusToDrive();
+                    case "2": //SelectBusToDrive();
                         break;
-                    case 3: //FuelTreatment();
+                    case "3": //FuelTreatment();
                         break;
-                    case 4: //ShowMileage();
+                    case "4": //ShowMileage();
                         break;
-                    case 5:
-                        menuLoop = false;
+                    case "5":
+                        menuLoop = false;    //user chose exit that's why we're ending the loop
+                        break;
+                    default:
+                        Console.WriteLine("please enter a number between 1-5");   // the case where the user entered a choice that's invalid
                         break;
                 }
             }
         }
+
     }
 }
-
