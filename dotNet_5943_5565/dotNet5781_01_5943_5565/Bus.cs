@@ -64,7 +64,7 @@ namespace dotNet5781_01_5943_5565
         }
         public DateTime EnterDate() // function to enter a date by month/day/year
         {
-            Console.WriteLine("Enter month/year/day:");    
+            Console.WriteLine("Enter month/day/year:");    
             string date = Console.ReadLine();
             DateTime dateReturned = new DateTime();         //this is where the result of the parse enters
             DateTime.TryParse(date, out dateReturned);      //checking if it's possible to parse the string and putting the result into our desired date tp return
@@ -75,7 +75,7 @@ namespace dotNet5781_01_5943_5565
             Bus result = new Bus(license_Number: 0, start_Date: DateTime.Now, _Mileage: 0, starting_Fuel_KM: 0); //a bus with default parameters
             Console.WriteLine("enter start date:");
             result.startDate = EnterDate();
-            result.lastTreatment = result.startDate;
+            result.lastTreatment = DateTime.Now;
             result.mileageSinceTreatment = 0;
             if (result.startDate.Year < 2018)
             {
@@ -130,12 +130,12 @@ namespace dotNet5781_01_5943_5565
             Console.WriteLine("Enter the bus license number you wish to take the drive");
             int candidateNumber = Int32.Parse(Console.ReadLine());
             Random r = new Random();
-            int KM_Ride = r.Next(1, 301);   // choosing random number between 1-300 KM 
+            int KM_Ride = r.Next(1, 1201);   // choosing random number between 1-1200 KM 
             bool flag = false;
             foreach (Bus p in busDatabase)
             {
                 // if license number found and there is enough fuel and the bus had treatment in time
-                if (p.licenseNumber == candidateNumber && p.fuelKM < KM_Ride &&
+                if (p.licenseNumber == candidateNumber && p.fuelKM >= KM_Ride &&
                     mileageSinceTreatment+KM_Ride<=20000 && 
                     (DateTime.Now - lastTreatment).TotalDays <= 365)
                 {
@@ -147,6 +147,13 @@ namespace dotNet5781_01_5943_5565
             }
             if (!flag)
                 Console.WriteLine("this bus is unable to take the drive");
+        }
+        public void ShowMileage(List<Bus> busDatabase)//NOT COMPLETE
+        {
+             foreach (Bus p in busDatabase)
+             {
+                Console.WriteLine(p.licenseNumber + "     " + p.mileageSinceTreatment);
+             }
         }
 
     }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
+
 /// <summary>
 /// assumptions :
 /// drive in one ride can be between 1-300 KM
@@ -33,13 +34,13 @@ namespace dotNet5781_01_5943_5565
                 {
                     case "1": //EnterBus();                                                 
                             Bus a = new Bus(license_Number: 0, start_Date: DateTime.Now,
-                                _Mileage: 0, starting_Fuel_KM: 0);    //set a new bus with default parameters
-                            a.EnterBus();         //enter the start date and the license number of the new bus
+                                _Mileage: 0, starting_Fuel_KM: 1200);    //set a new bus with default parameters
+                            a = a.EnterBus();         //enter the start date and the license number of the new bus
                             busDatabase.Add(a);   //add the new bus to our database                                           
                         break;
                     case "2": //SelectBusToDrive();
                         Bus b = new Bus(license_Number: 0, start_Date: DateTime.Now,
-                                _Mileage: 0, starting_Fuel_KM: 0); //set a new bus with default parameters to access function in class
+                                _Mileage: 0, starting_Fuel_KM: 1200); //set a new bus with default parameters to access function in class
                         b.SelectBusToDrive(busDatabase);
                         break;
                     case "3": //FuelTreatment();
@@ -49,6 +50,9 @@ namespace dotNet5781_01_5943_5565
 
                         break;
                     case "4": //ShowMileage();
+                        Bus c = new Bus(license_Number: 0, start_Date: DateTime.Now,
+                                _Mileage: 0, starting_Fuel_KM: 1200); 
+                        c.ShowMileage(busDatabase);
                         break;
                     case "5":
                         menuLoop = false;    //user chose exit that's why we're ending the loop
