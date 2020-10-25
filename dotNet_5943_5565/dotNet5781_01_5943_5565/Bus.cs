@@ -12,9 +12,10 @@ namespace dotNet5781_01_5943_5565
         private DateTime startDate;
         private int mileage;
         private int fuelKM;
-        public Bus(int license_Number, DateTime start_Date, int random_Mileage, int starting_Fuel_KM) 
+        
+        public Bus(int license_Number=0, DateTime start_Date , int random_Mileage=0, int starting_Fuel_KM=0) 
         {
-            if(license_Number < 99999999 )
+            if(license_Number > 99999999 )
                 throw new Exception();
             licenseNumber = license_Number;
             startDate = start_Date;

@@ -13,6 +13,9 @@ namespace dotNet5781_01_5943_5565
 
         static void Main(string[] args)
         {
+            List<Bus> busDatabase = new List<Bus>();
+            Bus a = new Bus();// 1223, DateTime.Now, 30, 200);
+          
 
             bool menuLoop = true;            //since we want the menu to loop until the user chooses to exit
             while(menuLoop)
