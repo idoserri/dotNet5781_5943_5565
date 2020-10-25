@@ -72,7 +72,7 @@ namespace dotNet5781_01_5943_5565
         }
         public Bus EnterBus()      //the function we use to enter the bus into our database;
         {
-            Bus result = new Bus(license_Number: 0, start_Date: DateTime.Now, _Mileage: 0, starting_Fuel_KM: 0); //a bus with default parameters
+            Bus result = new Bus(license_Number: 0, start_Date: DateTime.Now, _Mileage: 0, starting_Fuel_KM: 1200); //a bus with default parameters
             Console.WriteLine("enter start date:");
             result.startDate = EnterDate();
             result.lastTreatment = DateTime.Now;
@@ -103,23 +103,33 @@ namespace dotNet5781_01_5943_5565
             return result;
         }
 
-        public void FuelTreatment()
+        public void FuelTreatment(List<Bus> Database)
         {
+            Console.WriteLine("Enter the bus license number you wish to treat");
+            int candidateNumber = Int32.Parse(Console.ReadLine());
             Console.WriteLine(              //show the menu for the user
 @"Enter treatment kind: 
 1 - fuel treatment
 2 - regular treatment");
             int choice = Int32.Parse(Console.ReadLine());
-            switch (choice)
+            foreach (Bus p in Database)
             {
-                case 1: fuelKM = 1200;
-                    break;
-                case 2:
-                    lastTreatment = DateTime.Now; ;
-                    break;
-                default:
-                    Console.WriteLine("ERROR with treatment kind");
-                    break;
+                if (p.licenseNumber == candidateNumber)
+                {
+                    switch (choice)
+                    {
+                        case 1:
+                            p.fuelKM = 1200;
+                            break;
+                        case 2:
+                            p.lastTreatment = DateTime.Now;
+                            p.mileageSinceTreatment = 0;
+                            break;
+                        default:
+                            Console.WriteLine("ERROR with treatment kind");
+                            break;
+                    }
+                }
             }
 
 
@@ -137,7 +147,7 @@ namespace dotNet5781_01_5943_5565
                 // if license number found and there is enough fuel and the bus had treatment in time
                 if (p.licenseNumber == candidateNumber && p.fuelKM >= KM_Ride &&
                     mileageSinceTreatment+KM_Ride<=20000 && 
-                    (DateTime.Now - lastTreatment).TotalDays <= 365)
+                    (DateTime.Now - p.lastTreatment).TotalDays <= 365)
                 {
                     p.Mileage += KM_Ride;
                     p.mileageSinceTreatment += KM_Ride;
@@ -152,7 +162,9 @@ namespace dotNet5781_01_5943_5565
         {
              foreach (Bus p in busDatabase)
              {
-                Console.WriteLine(p.licenseNumber + "     " + p.mileageSinceTreatment);
+                if (p.StartDate.Year >= 2018)
+                    Console.WriteLine(p.licenseNumber / 100000 + "-" + (p.licenseNumber / 1000) % 100
+                        + "-" + p.licenseNumber % 1000 +"       " + p.mileageSinceTreatment);
              }
         }
 
