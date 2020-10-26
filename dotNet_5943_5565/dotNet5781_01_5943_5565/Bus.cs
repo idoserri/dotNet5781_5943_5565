@@ -105,13 +105,13 @@ namespace dotNet5781_01_5943_5565
         public void FuelTreatment(List<Bus> Database)
         {
             Console.WriteLine("Enter the bus license number you wish to treat"); 
-            int candidateNumber = Int32.Parse(Console.ReadLine()); //
+            int candidateNumber = Int32.Parse(Console.ReadLine()); // turning string read from user into int
 
             Console.WriteLine(               //show the menu for the user
 @"Enter treatment kind: 
 1 - fuel treatment
 2 - regular treatment");
-            int choice = Int32.Parse(Console.ReadLine());
+            int choice = Int32.Parse(Console.ReadLine()); // turning string read from user into int
 
             bool exist = false;             // variable to check if bus exists
             foreach (Bus p in Database)
@@ -145,7 +145,7 @@ namespace dotNet5781_01_5943_5565
         public void SelectBusToDrive(List<Bus> busDatabase)
         {
             Console.WriteLine("Enter the bus license number you wish to take the drive");
-            int candidateNumber = Int32.Parse(Console.ReadLine());
+            int candidateNumber = Int32.Parse(Console.ReadLine()); // turning string read from user into int
 
             Random r = new Random();
             int KM_Ride = r.Next(1, 1201);   // choosing random number between 1-1200 KM 
@@ -156,7 +156,7 @@ namespace dotNet5781_01_5943_5565
                 if (p.licenseNumber == candidateNumber && p.fuelKM >= KM_Ride &&
                     mileageSinceTreatment + KM_Ride <= 20000 &&
                     (DateTime.Now - p.lastTreatment).TotalDays <= 365)
-                {
+                {  // set mileage and fuel tank and confirm the bus is able to take the ride
                     p.Mileage += KM_Ride;
                     p.mileageSinceTreatment += KM_Ride;
                     p.fuelKM -= KM_Ride;
