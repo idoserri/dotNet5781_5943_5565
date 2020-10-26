@@ -158,13 +158,36 @@ namespace dotNet5781_01_5943_5565
             if (!flag)
                 Console.WriteLine("this bus is unable to take the drive");
         }
-        public void ShowMileage(List<Bus> busDatabase)//NOT COMPLETE
+        public void ShowMileage(List<Bus> busDatabase)
         {
              foreach (Bus p in busDatabase)
              {
+
+
                 if (p.StartDate.Year >= 2018)
-                    Console.WriteLine(p.licenseNumber / 100000 + "-" + (p.licenseNumber / 1000) % 100
-                        + "-" + p.licenseNumber % 1000 +"       " + p.mileageSinceTreatment);
+                {
+                    int[] arr = new int[8];
+                    int num = p.licenseNumber;
+                    for (int i = 7; i >=0 ; i--)
+                    {
+                        arr[i] = num % 10;
+                        num /= 10;
+                    }
+                    Console.WriteLine("{0}{1}{2}-{3}{4}-{5}{6}{7}   {8}",
+                        arr[0],arr[1], arr[2], arr[3], arr[4], arr[5], arr[6], arr[7],p.mileageSinceTreatment);
+                }
+                else
+                {
+                    int[] arr = new int[7];
+                    int num = p.licenseNumber;
+                    for (int i = 6; i >= 0; i--)
+                    {
+                        arr[i] = num % 10;
+                        num /= 10;
+                    }
+                    Console.WriteLine("{0}{1}-{2}{3}{4}-{5}{6}    {7}",
+                        arr[0], arr[1], arr[2], arr[3], arr[4], arr[5], arr[6],p.mileageSinceTreatment);
+                }
              }
         }
 
