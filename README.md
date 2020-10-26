@@ -4,6 +4,12 @@ Hello World :D
 for Final 
 
 
+UPDATE: 26/10/2020 - finished exercise 01  
+
+
+מה לעשות
+
+
 
 
 
