@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 /// <summary>
 /// assumptions :
-/// drive in one ride can be between 1-300 KM
+/// drive in one ride can be between 1-1200 KM (full tank)
 /// </summary>
 namespace dotNet5781_01_5943_5565
 {

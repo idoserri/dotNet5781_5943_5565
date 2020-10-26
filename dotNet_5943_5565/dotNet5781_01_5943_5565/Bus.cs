@@ -7,7 +7,6 @@ using System.Threading;
 using System.Threading.Tasks;
 namespace dotNet5781_01_5943_5565
 {
-
     public class Bus
     {
         private int licenseNumber;
@@ -105,40 +104,49 @@ namespace dotNet5781_01_5943_5565
 
         public void FuelTreatment(List<Bus> Database)
         {
-            Console.WriteLine("Enter the bus license number you wish to treat");
-            int candidateNumber = Int32.Parse(Console.ReadLine());
-            Console.WriteLine(              //show the menu for the user
+            Console.WriteLine("Enter the bus license number you wish to treat"); 
+            int candidateNumber = Int32.Parse(Console.ReadLine()); //
+
+            Console.WriteLine(               //show the menu for the user
 @"Enter treatment kind: 
 1 - fuel treatment
 2 - regular treatment");
             int choice = Int32.Parse(Console.ReadLine());
+
+            bool exist = false;             // variable to check if bus exists
             foreach (Bus p in Database)
             {
                 if (p.licenseNumber == candidateNumber)
                 {
                     switch (choice)
                     {
-                        case 1:
+                        case 1: // set fuel field and confirm the bus exists in the database
                             p.fuelKM = 1200;
+                            exist = true;
                             break;
-                        case 2:
+
+                        case 2: // set last treatment date and mileage since last treatment 
+                                // and confirm the bus exists in the database
                             p.lastTreatment = DateTime.Now;
                             p.mileageSinceTreatment = 0;
+                            exist = true;
                             break;
-                        default:
+
+                        default: 
                             Console.WriteLine("ERROR with treatment kind");
                             break;
                     }
                 }
             }
-
-
-
+            if (!exist)
+                Console.WriteLine("ERROR - bus does not exist");
         }
+
         public void SelectBusToDrive(List<Bus> busDatabase)
         {
             Console.WriteLine("Enter the bus license number you wish to take the drive");
             int candidateNumber = Int32.Parse(Console.ReadLine());
+
             Random r = new Random();
             int KM_Ride = r.Next(1, 1201);   // choosing random number between 1-1200 KM 
             bool flag = false;
@@ -146,14 +154,14 @@ namespace dotNet5781_01_5943_5565
             {
                 // if license number found and there is enough fuel and the bus had treatment in time
                 if (p.licenseNumber == candidateNumber && p.fuelKM >= KM_Ride &&
-                    mileageSinceTreatment+KM_Ride<=20000 && 
+                    mileageSinceTreatment + KM_Ride <= 20000 &&
                     (DateTime.Now - p.lastTreatment).TotalDays <= 365)
                 {
                     p.Mileage += KM_Ride;
                     p.mileageSinceTreatment += KM_Ride;
                     p.fuelKM -= KM_Ride;
                     flag = true;
-                }                
+                }
             }
             if (!flag)
                 Console.WriteLine("this bus is unable to take the drive");
