@@ -42,19 +42,19 @@ namespace dotNet5781_01_5943_5565
                     case "2": //SelectBusToDrive();
                         Bus b = new Bus(license_Number: 0, start_Date: DateTime.Now,
                                 _Mileage: 0, starting_Fuel_KM: 1200); //set a new bus with default parameters to access function in class
-                        b.SelectBusToDrive(busDatabase);
+                        b.SelectBusToDrive(busDatabase); //if the bus is able to take the ride then it's going to have a random drive between 1-1200 KM
                         break;
 
                     case "3": //FuelTreatment();
                         Bus c = new Bus(license_Number: 0, start_Date: DateTime.Now,
-                          _Mileage: 0, starting_Fuel_KM: 1200);
-                        c.FuelTreatment(busDatabase);                        
+                          _Mileage: 0, starting_Fuel_KM: 1200);//set a new bus with default parameters to access the function
+                        c.FuelTreatment(busDatabase);     //gives the user the choice to either fuel or treat the bus                   
                         break;
 
                     case "4": //ShowMileage();
                         Bus d = new Bus(license_Number: 0, start_Date: DateTime.Now,
                                 _Mileage: 0, starting_Fuel_KM: 1200); 
-                        d.ShowMileage(busDatabase);
+                        d.ShowMileage(busDatabase); //show the license number and the mileage since treatment of every bus in the database
                         break;
 
                     case "5":
@@ -66,7 +66,6 @@ namespace dotNet5781_01_5943_5565
                 }
             }
             Console.WriteLine("goodbye"); // program ends
-            Console.ReadKey();
         }
 
     }
