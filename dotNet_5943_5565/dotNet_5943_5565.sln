@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotNet_00_5943_5565", "dotN
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotNet5781_01_5943_5565", "dotNet5781_01_5943_5565\dotNet5781_01_5943_5565.csproj", "{EDF7122A-5586-41C7-B291-09F723C4DAC3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotNet5781_02_5943_5565", "dotNet5781_02_5943_5565\dotNet5781_02_5943_5565.csproj", "{9563DF23-46F2-42DA-8F6A-7B0FE6622453}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{EDF7122A-5586-41C7-B291-09F723C4DAC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDF7122A-5586-41C7-B291-09F723C4DAC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EDF7122A-5586-41C7-B291-09F723C4DAC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9563DF23-46F2-42DA-8F6A-7B0FE6622453}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9563DF23-46F2-42DA-8F6A-7B0FE6622453}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9563DF23-46F2-42DA-8F6A-7B0FE6622453}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9563DF23-46F2-42DA-8F6A-7B0FE6622453}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
