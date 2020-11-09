@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Device.Location;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -150,5 +152,55 @@ namespace dotNet5781_02_5943_5565
                 str += item.Code.ToString()+ " ";
             return str + "\n";
         }
+        public void AddStation(int index, BusStationLine toAdd)
+        {
+            Stack<BusStationLine> s = new Stack<BusStationLine>(); //temporary stack
+            while(index < stations.Count) //while the items left are still there
+            {
+                //s.push(stations.pop)
+                s.Push(stations[stations.Count]);   
+                stations.RemoveAt(stations.Count);
+            }
+            stations.Add(toAdd);    //add the desired line
+            while (s.Count!=0)      //while the stack isnt empty, add back the items we removed from the list
+                stations.Add(s.Pop());
+        }
+
+        public void RemoveStation(BusStationLine toRemove)
+        {
+            if (!StationExists(toRemove))
+                throw new Exception("ERROR: station doesn't exist\n");
+            stations.Remove(toRemove);
+        }
+        
+        public bool StationExists(BusStationLine blurb)
+        {
+            foreach (BusStationLine item in stations)
+                if (item == blurb)
+                    return true;
+            return false;
+        }
+
+        /*public double Distance(BusStationLine a, BusStationLine b)
+        {
+            var sCoord = new GeoCoordinate(sLatitude, sLongitude);
+            var eCoord = new GeoCoordinate(eLatitude, eLongitude);
+
+            return sCoord.GetDistanceTo(eCoord);
+        }*/
+
+        public BusLine SubLine(BusStationLine a, BusStationLine b)
+        {
+            //a is before b
+            BusLine toReturn = new BusLine(stations,line,firstStation,lastStation,area);
+            if (!StationExists(a) || !StationExists(b))
+                throw new Exception("ERROR: station doesn't exist\n");
+            while (toReturn.stations[0] != a)
+                toReturn.RemoveStation(stations[0]);
+            while (toReturn.stations[toReturn.stations.Count] != b)
+                toReturn.RemoveStation(stations[toReturn.stations.Count]);
+            return toReturn;
+        }
+       
     }
 }
