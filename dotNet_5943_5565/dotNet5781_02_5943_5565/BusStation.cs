@@ -294,50 +294,52 @@ namespace dotNet5781_02_5943_5565
         }
         public bool CheckLineExists(BusLine toCheck)
         {
-            foreach (BusLine item in lines)
+            foreach (BusLine item in lines) // check if line exists in the list of line
                 if (item.Line == toCheck.Line)
                     return true;
             return false;
         }
-        public IEnumerator GetEnumerator()
+        public IEnumerator GetEnumerator() // returns enumerator 
         {
             return lines.GetEnumerator();
         }
 
         public BusLine FindBusLine(BusLine toFind)
         {
-            foreach (BusLine item in lines)
+            foreach (BusLine item in lines) // check every line and return the match
                 if (item.Line == toFind.Line)
                     return item;
             throw new Exception("ERROR: Bus Doesn't exist in the collection\n");
         }
         public void AddBusLine(BusLine toAdd)
         {
-            if (CheckLineExists(toAdd))
+            if (CheckLineExists(toAdd)) // if item to add already exist 
             {
                 BusLine temp = FindBusLine(toAdd);
-                if (temp.FirstStation == toAdd.LastStation
+                if (temp.FirstStation == toAdd.LastStation //check if the item to add exists in the opposite direction
                     && temp.LastStation == toAdd.FirstStation && !temp.ExistsTwice)
                 {
+                    // add and update ExistsTwice fields in both of the bus lines
                     temp.ExistsTwice = true;
                     toAdd.ExistsTwice = true;
                     lines.Add(toAdd);
                 }
-                else
+                else // bus exist but doesn't match the item to add
                     throw new Exception("ERROR: Bus already exists in the Collection\n");
             }
-            else
+            else // bus doesn't exist so add new bus
                 lines.Add(toAdd);
-            count++;
+            count++; //update amount of lines
         }
         public void RemoveBusLine(BusLine toRemove)
         {
-            if (!CheckLineExists(toRemove))
+            if (!CheckLineExists(toRemove)) // Check if line exists
                 throw new Exception("ERROR: Bus doesn't exist in the collection\n");
-            while (CheckLineExists(toRemove))
+
+            while (CheckLineExists(toRemove)) // while the list contains the line to delete
             {
-                lines.Remove(FindBusLine(toRemove));
-                count--;
+                lines.Remove(FindBusLine(toRemove)); //remove first occurrence 
+                count--;        // set count of lines list 
             }
         }
         public List<BusLine> GetLinesInStation(int code)
@@ -347,23 +349,24 @@ namespace dotNet5781_02_5943_5565
             {
                 foreach(BusStationLine station in item.Stations)
                 {
-                    if(station.Code == code)
+                    if(station.Code == code) //search in every list of station in every bus line the item
                     {
-                        toReturn.Add(item);
-                        break;
+                        toReturn.Add(item); // adds bus line if matches the code
+                        break;      // no further search in this list because we already find the item
                     }
                 }
             }
-            if (toReturn.Count == 0)
+            if (toReturn.Count == 0)  // if we didn't find at all throw exeption
                 throw new Exception("ERROR: station doesn't have any lines going through it");
             return toReturn;
         }
-        public List<BusLine> SortBusList()
+        public List<BusLine> SortBusList() // function to sort the bus list
         {
             lines.Sort();
             return lines;
         }
 
+        // properties
         public BusLine this[int i]
         {
             get => lines[i];
