@@ -120,7 +120,7 @@ namespace dotNet5781_02_5943_5565
     }
 
     enum Areas { General, North, South, Center, Jerusalem }
-    class BusLine
+    class BusLine : IComparable
     {
         private List<BusStationLine> stations;
         private int line;
@@ -181,13 +181,13 @@ namespace dotNet5781_02_5943_5565
             return false;
         }
 
-        /*public double Distance(BusStationLine a, BusStationLine b)
+        public double Distance(BusStationLine a, BusStationLine b)
         {
-            var sCoord = new GeoCoordinate(sLatitude, sLongitude);
-            var eCoord = new GeoCoordinate(eLatitude, eLongitude);
+            var sCoord = new GeoCoordinate(a.Location.Latitude, a.Location.Longitude);
+            var eCoord = new GeoCoordinate(b.Location.Latitude, b.Location.Latitude);
 
             return sCoord.GetDistanceTo(eCoord);
-        }*/
+        }
 
         public BusLine SubLine(BusStationLine a, BusStationLine b)
         {
@@ -201,6 +201,18 @@ namespace dotNet5781_02_5943_5565
                 toReturn.RemoveStation(stations[toReturn.stations.Count]);
             return toReturn;
         }
-       
+
+        public TimeSpan TotalRideTime()
+        {
+            TimeSpan toReturn = new TimeSpan();
+            foreach (BusStationLine item in stations)
+                toReturn += item.TimeFromLastStation;
+            return toReturn;
+        }
+
+        public int CompareTo(object obj)
+        {
+            return TotalRideTime().CompareTo(((BusLine)obj).TotalRideTime());
+        }
     }
 }
