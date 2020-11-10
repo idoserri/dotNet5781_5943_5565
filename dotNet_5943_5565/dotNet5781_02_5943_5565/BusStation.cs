@@ -116,6 +116,10 @@ namespace dotNet5781_02_5943_5565
             timeFromLastStation = time;
         }
 
+        public BusStationLine(int _code)
+            :base(_code)
+        {}
+
         public double DistanceFromLastStationKM
         {
             get => distanceFromLastStationKM;
@@ -184,6 +188,17 @@ namespace dotNet5781_02_5943_5565
                 stations.Reverse();
             }
         }
+        public BusLine(List<BusStationLine> course, int number)
+        {
+            area = Areas.General;
+            stations = course;
+            line = number;
+            if (stations.Count != 0)
+            {
+                firstStation = stations[0];
+                lastStation = stations[stations.Count - 1];
+            }
+        }
         public override string ToString()
         {
             string str = "line: " + line.ToString() + "\n" + "area: " + area + "\n" + "stations: ";
@@ -203,6 +218,10 @@ namespace dotNet5781_02_5943_5565
             stations.Add(toAdd);    //add the desired line
             while (s.Count!=0)      //while the stack isnt empty, add back the items we removed from the list
                 stations.Add(s.Pop());
+            if (stations[0] != firstStation)
+                firstStation = stations[0];
+            if (stations[stations.Count - 1] != lastStation)
+                lastStation = stations[stations.Count - 1];
         }
 
         public void RemoveStation(BusStationLine toRemove)
@@ -220,13 +239,7 @@ namespace dotNet5781_02_5943_5565
             return false;
         }
 
-        public double GetDistance(BusStationLine a, BusStationLine b)
-        {
-            var sCoord = new GeoCoordinate(a.Location.Latitude, a.Location.Longitude);
-            var eCoord = new GeoCoordinate(b.Location.Latitude, b.Location.Latitude);
 
-            return sCoord.GetDistanceTo(eCoord);
-        }
 
         public BusLine GetSubLine(BusStationLine a, BusStationLine b)
         {
@@ -252,6 +265,13 @@ namespace dotNet5781_02_5943_5565
         public int CompareTo(object obj)
         {
             return GetTotalRideTime().CompareTo(((BusLine)obj).GetTotalRideTime());
+        }
+        public double GetDistance(BusStationLine a, BusStationLine b)
+        {
+            var sCoord = new GeoCoordinate(a.Location.Latitude, a.Location.Longitude);
+            var eCoord = new GeoCoordinate(b.Location.Latitude, b.Location.Latitude);
+
+            return sCoord.GetDistanceTo(eCoord);
         }
     }
 
