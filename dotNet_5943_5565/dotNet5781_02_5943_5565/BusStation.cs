@@ -107,13 +107,13 @@ namespace dotNet5781_02_5943_5565
     class BusStationLine : BusStation
     {
         private double distanceFromLastStationKM;
-        private TimeSpan timeFromLastStation;
-        public BusStationLine(double distance, TimeSpan time, int _code, string _address)
+        private double timeFromLastStation;
+        public BusStationLine(double distance, int _code, string _address)
             : base(_code, _address)
         {
 
             distanceFromLastStationKM = distance;
-            timeFromLastStation = time;
+            timeFromLastStation = distance*60000;
         }
 
         public BusStationLine(int _code, string _address)
@@ -128,7 +128,7 @@ namespace dotNet5781_02_5943_5565
             set => distanceFromLastStationKM = value;
         }
 
-        public TimeSpan TimeFromLastStation
+        public double TimeFromLastStation
         {
             get => timeFromLastStation;
             set => timeFromLastStation = value;
@@ -203,7 +203,7 @@ namespace dotNet5781_02_5943_5565
         }
         public override string ToString()
         {
-            string str = "line: " + line.ToString() + "\n" + "area: " + area + "\n" + "stations: ";
+            string str = "line: " + line.ToString() + "\n" +  "stations: ";
             foreach (BusStationLine item in stations)
                 str += item.Code.ToString()+ " ";
             return str + "\n";
@@ -255,6 +255,13 @@ namespace dotNet5781_02_5943_5565
                     return true;
             return false;
         }
+        public BusStationLine FindStation(int code)
+        {
+            foreach (BusStationLine item in stations)
+                if (item.Code == code)
+                    return item;
+            throw new Exception("ERROR: Station doesn't exist");
+        }
 
 
 
@@ -271,11 +278,11 @@ namespace dotNet5781_02_5943_5565
             return toReturn;
         }
 
-        public TimeSpan GetTotalRideTime()
+        public double GetTotalRideTime()
         {
-            TimeSpan toReturn = new TimeSpan();
-            foreach (BusStationLine item in stations)
-                toReturn += item.TimeFromLastStation;
+            double toReturn = 0;
+            for (int i = 0; i < stations.Count-1; i++)
+                toReturn += (GetDistance(stations[i], stations[i + 1])/1000)*60; //avg speed of a bus 60 km/h
             return toReturn;
         }
 

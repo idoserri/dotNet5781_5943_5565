@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -111,8 +112,22 @@ namespace dotNet5781_02_5943_5565
                                     int code1 = Console.Read();
                                     Console.WriteLine("Enter second station code:\n");
                                     int code2 = Console.Read();
-                                   
-                                    List<TimeSpan> times = new List<TimeSpan>();
+                                    BusLineCollection times = new BusLineCollection();
+                                    foreach (BusLine item in database)
+                                    {
+                                        if (item.CheckStationExists(new BusStationLine(code1))
+                                            && item.CheckStationExists(new BusStationLine(code2)))
+                                        {
+                                            BusLine tempBus = item.GetSubLine(item.FindStation(code1), item.FindStation(code2));
+                                            times.AddBusLine(item);
+                                        }
+                                    }
+                                    times.SortBusList();
+                                    Console.WriteLine("Fastest Lines: ");
+                                    foreach (BusLine item in times)
+                                        Console.WriteLine($"Line {item.Line}: {item.GetTotalRideTime()} hours");
+                                    break;
+                                    /*List<TimeSpan> times = new List<TimeSpan>();
                                     foreach (BusLine item in database)
                                     {
                                         TimeSpan t = new TimeSpan(0);
@@ -132,16 +147,28 @@ namespace dotNet5781_02_5943_5565
                                     times.Sort();
                                     Console.WriteLine(times);
 
-                                            break;
+                                            break;*/
+                            }
+                            break;
+                        case "4":
+                            Console.WriteLine("Enter your choice: \n" +
+                                "1-Print all of the lines in the database\n" +
+                                "2-Print all of the stations and the lines that go through them\n");
+                            secondaryChoice = Console.ReadLine();
+                            switch (secondaryChoice)
+                            {
+                                case "1":
+                                    foreach(BusLine item in database)
+                                        Console.WriteLine(item.ToString());
+                                    break;
+                                case "2":
                                     
 
                             }
-                            break;
-                    }
                 }
-                catch
+                catch (Exception msg)
                 {
-
+                    Console.WriteLine(msg.Message);
                 }
             }
         }
