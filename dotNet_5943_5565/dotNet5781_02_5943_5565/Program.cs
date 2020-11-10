@@ -12,10 +12,10 @@ namespace dotNet5781_02_5943_5565
         static void Main(string[] args)
         {
             BusLineCollection database = new BusLineCollection();
-            List<BusStationLine> tempStations = new List<BusStationLine>();
+            List<BusStationLine> stations = new List<BusStationLine>();
             for (int i = 0; i < 40; i++)
-                tempStations.Add(new BusStationLine(i));
-            BusLine temp = new BusLine(tempStations, 0);
+                stations.Add(new BusStationLine(i));
+            BusLine temp = new BusLine(stations, 0);
             for (int i = 0; i < 10; i++)
             {
                 //so there's at least 10 stations with more than 1 bus and every station has a line
@@ -58,6 +58,7 @@ namespace dotNet5781_02_5943_5565
                                     code = Console.Read();
                                     Console.WriteLine("Enter Bus Station Address\n");
                                     string address = Console.ReadLine();
+                                    stations.Add(new BusStationLine(code, address));
                                     Console.WriteLine("Enter Bus Station Index\n");
                                     int index = Console.Read();
                                     bus.AddStation(index, new BusStationLine(code, address));
@@ -158,13 +159,28 @@ namespace dotNet5781_02_5943_5565
                             switch (secondaryChoice)
                             {
                                 case "1":
-                                    foreach(BusLine item in database)
+                                    foreach (BusLine item in database)
                                         Console.WriteLine(item.ToString());
                                     break;
                                 case "2":
-                                    
-
+                                    foreach (BusStationLine station in stations)
+                                    {
+                                        Console.Write($"Address: {station.Address}, Code: {station.Code}, Lines: ");
+                                        foreach (BusLine bus in database)
+                                            if (bus.CheckStationExists(station))
+                                                Console.Write($"{bus.Line}, ");
+                                        Console.Write("\n");
+                                    }
+                                    break;
                             }
+                            break;
+                        case "5":
+                            menuLoop = false;
+                            break;
+                        default:
+                            Console.WriteLine("please enter a number between 1-5");   // the case where the user entered a choice that's invalid
+                            break;
+                    }
                 }
                 catch (Exception msg)
                 {
