@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections;
 
 namespace dotNet5781_02_5943_5565
 {
@@ -86,6 +87,15 @@ namespace dotNet5781_02_5943_5565
             location.Latitude = latit;
             location.Longitude = longt;
         }
+        public BusStation(int _code)
+        {
+            code = _code;
+            Random r = new Random();
+            double latit = r.NextDouble() * (33.3 - 31) + 31;
+            double longt = r.NextDouble() * (35.5 - 34.3) + 34.3;
+            location.Latitude = latit;
+            location.Longitude = longt;
+        }
         public override string ToString()
         {
             return "Bus Station Code: " + code + ", " +
@@ -127,7 +137,36 @@ namespace dotNet5781_02_5943_5565
         private BusStationLine firstStation;
         private BusStationLine lastStation;
         private Areas area;
+        private bool existsTwice = false;  //for the bus collection add
+        
+        public bool ExistsTwice
+        {
+            get => existsTwice;
+            set => existsTwice = value;
+        }
+        public int Line
+        {
+            get => line;
+            private set => line = value;
+        }
 
+        public BusStationLine FirstStation
+        {
+            get => firstStation;
+            private set => firstStation = value;
+        }
+
+        public BusStationLine LastStation
+        {
+            get => lastStation;
+            private set => lastStation = value;
+        }
+
+        public List<BusStationLine> Stations
+        {
+            get => stations;
+            private set => stations = value;
+        }
         public BusLine(List<BusStationLine> course, int number, BusStationLine FStation, BusStationLine LStation,Areas a)
         {
             area = a;
@@ -168,12 +207,12 @@ namespace dotNet5781_02_5943_5565
 
         public void RemoveStation(BusStationLine toRemove)
         {
-            if (!StationExists(toRemove))
+            if (!CheckStationExists(toRemove))
                 throw new Exception("ERROR: station doesn't exist\n");
             stations.Remove(toRemove);
         }
         
-        public bool StationExists(BusStationLine blurb)
+        public bool CheckStationExists(BusStationLine blurb)
         {
             foreach (BusStationLine item in stations)
                 if (item == blurb)
@@ -181,7 +220,7 @@ namespace dotNet5781_02_5943_5565
             return false;
         }
 
-        public double Distance(BusStationLine a, BusStationLine b)
+        public double GetDistance(BusStationLine a, BusStationLine b)
         {
             var sCoord = new GeoCoordinate(a.Location.Latitude, a.Location.Longitude);
             var eCoord = new GeoCoordinate(b.Location.Latitude, b.Location.Latitude);
@@ -189,11 +228,11 @@ namespace dotNet5781_02_5943_5565
             return sCoord.GetDistanceTo(eCoord);
         }
 
-        public BusLine SubLine(BusStationLine a, BusStationLine b)
+        public BusLine GetSubLine(BusStationLine a, BusStationLine b)
         {
             //a is before b
             BusLine toReturn = new BusLine(stations,line,firstStation,lastStation,area);
-            if (!StationExists(a) || !StationExists(b))
+            if (!CheckStationExists(a) || !CheckStationExists(b))
                 throw new Exception("ERROR: station doesn't exist\n");
             while (toReturn.stations[0] != a)
                 toReturn.RemoveStation(stations[0]);
@@ -202,7 +241,7 @@ namespace dotNet5781_02_5943_5565
             return toReturn;
         }
 
-        public TimeSpan TotalRideTime()
+        public TimeSpan GetTotalRideTime()
         {
             TimeSpan toReturn = new TimeSpan();
             foreach (BusStationLine item in stations)
@@ -212,7 +251,90 @@ namespace dotNet5781_02_5943_5565
 
         public int CompareTo(object obj)
         {
-            return TotalRideTime().CompareTo(((BusLine)obj).TotalRideTime());
+            return GetTotalRideTime().CompareTo(((BusLine)obj).GetTotalRideTime());
         }
+    }
+
+    class BusLineCollection : IEnumerable
+    {
+        private List<BusLine> lines;
+        public BusLineCollection()
+        {
+            lines = new List<BusLine>();
+        }
+        public bool CheckLineExists(BusLine toCheck)
+        {
+            foreach (BusLine item in lines)
+                if (item.Line == toCheck.Line)
+                    return true;
+            return false;
+        }
+        public IEnumerator GetEnumerator()
+        {
+            return lines.GetEnumerator();
+        }
+
+        public BusLine FindBusLine(BusLine toFind)
+        {
+            foreach (BusLine item in lines)
+                if (item.Line == toFind.Line)
+                    return item;
+            throw new Exception("ERROR: Bus Doesn't exist in the collection\n");
+        }
+        public void AddBusLine(BusLine toAdd)
+        {
+            if (CheckLineExists(toAdd))
+            {
+                BusLine temp = FindBusLine(toAdd);
+                if (temp.FirstStation == toAdd.LastStation
+                    && temp.LastStation == toAdd.FirstStation && !temp.ExistsTwice)
+                {
+                    temp.ExistsTwice = true;
+                    toAdd.ExistsTwice = true;
+                    lines.Add(toAdd);
+                }
+                else
+                    throw new Exception("ERROR: Bus already exists in the Collection\n");
+            }
+            else
+                lines.Add(toAdd);
+        }
+        public void RemoveBusLine(BusLine toRemove)
+        {
+            if (!CheckLineExists(toRemove))
+                throw new Exception("ERROR: Bus doesn't exist in the collection\n");
+            while(CheckLineExists(toRemove))
+                lines.Remove(FindBusLine(toRemove));
+        }
+        public List<BusLine> GetLinesInStation(int code)
+        {
+            List<BusLine> toReturn = new List<BusLine>();
+            foreach(BusLine item in lines)
+            {
+                foreach(BusStationLine station in item.Stations)
+                {
+                    if(station.Code == code)
+                    {
+                        toReturn.Add(item);
+                        break;
+                    }
+                }
+            }
+            if (toReturn.Count == 0)
+                throw new Exception("ERROR: station doesn't have any lines going through it");
+            return toReturn;
+        }
+        public List<BusLine> SortBusList()
+        {
+            lines.Sort();
+            return lines;
+        }
+
+        public BusLine this[int i]
+        {
+            get => lines[i];
+            set => lines[i] = value;
+        }
+
     }
 }
