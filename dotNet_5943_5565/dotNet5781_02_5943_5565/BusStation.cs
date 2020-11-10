@@ -116,9 +116,11 @@ namespace dotNet5781_02_5943_5565
             timeFromLastStation = time;
         }
 
+        public BusStationLine(int _code, string _address)
+            :base(_code,_address) {}
+
         public BusStationLine(int _code)
-            :base(_code)
-        {}
+            :base(_code){}
 
         public double DistanceFromLastStationKM
         {
@@ -151,7 +153,7 @@ namespace dotNet5781_02_5943_5565
         public int Line
         {
             get => line;
-            private set => line = value;
+            set => line = value;
         }
 
         public BusStationLine FirstStation
@@ -229,8 +231,23 @@ namespace dotNet5781_02_5943_5565
             if (!CheckStationExists(toRemove))
                 throw new Exception("ERROR: station doesn't exist\n");
             stations.Remove(toRemove);
+            if (stations[0] != firstStation)
+                firstStation = stations[0];
+            if (stations[stations.Count - 1] != lastStation)
+                lastStation = stations[stations.Count - 1];
         }
-        
+        public void RemoveStation(int code)
+        {
+            BusStationLine toRemove = new BusStationLine(code);
+            if (!CheckStationExists(toRemove))
+                throw new Exception("ERROR: station doesn't exist\n");
+            stations.Remove(toRemove);
+            if (stations[0] != firstStation)
+                firstStation = stations[0];
+            if (stations[stations.Count - 1] != lastStation)
+                lastStation = stations[stations.Count - 1];
+        }
+
         public bool CheckStationExists(BusStationLine blurb)
         {
             foreach (BusStationLine item in stations)
@@ -248,9 +265,9 @@ namespace dotNet5781_02_5943_5565
             if (!CheckStationExists(a) || !CheckStationExists(b))
                 throw new Exception("ERROR: station doesn't exist\n");
             while (toReturn.stations[0] != a)
-                toReturn.RemoveStation(stations[0]);
+                toReturn.RemoveStation(toReturn.stations[0]);
             while (toReturn.stations[toReturn.stations.Count] != b)
-                toReturn.RemoveStation(stations[toReturn.stations.Count]);
+                toReturn.RemoveStation(toReturn.stations[toReturn.stations.Count]);
             return toReturn;
         }
 
