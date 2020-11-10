@@ -11,7 +11,7 @@ using System.Collections;
 namespace dotNet5781_02_5943_5565
 {
 
-    class Location
+    /*class Location
     {
         /// <summary>
         /// this class represent location acccording to latitude and longitude 
@@ -41,7 +41,7 @@ namespace dotNet5781_02_5943_5565
             latitude = latit;
             longitude = longt;
         }
-    }
+    }*/
 
 
     class BusStation
@@ -50,7 +50,7 @@ namespace dotNet5781_02_5943_5565
         // class to represent a bus station in the database 
         
         private int code;            // max 6 digit code
-        private Location location;  // 2 values to describe location
+        private GeoCoordinate location;  // 2 values to describe location
         private string address;
 
         public int Code
@@ -59,7 +59,7 @@ namespace dotNet5781_02_5943_5565
             set => code = value;
         }
 
-       public Location Location
+       public GeoCoordinate Location
         {
             get => location;
             set
@@ -93,8 +93,7 @@ namespace dotNet5781_02_5943_5565
             Random r = new Random();
             double latit = r.NextDouble() * (33.3 - 31) + 31;
             double longt = r.NextDouble() * (35.5 - 34.3) + 34.3;
-            location.Latitude = latit;
-            location.Longitude = longt;
+            location = new GeoCoordinate(latit, longt);
         }
         public override string ToString()
         {
@@ -268,13 +267,28 @@ namespace dotNet5781_02_5943_5565
         public BusLine GetSubLine(BusStationLine a, BusStationLine b)
         {
             //a is before b
-            BusLine toReturn = new BusLine(stations,line,firstStation,lastStation,area);
+            BusLine toReturn = new BusLine(new List<BusStationLine>(stations),line,firstStation,lastStation,area);
             if (!CheckStationExists(a) || !CheckStationExists(b))
                 throw new Exception("ERROR: station doesn't exist\n");
-            while (toReturn.stations[0] != a)
-                toReturn.RemoveStation(toReturn.stations[0]);
-            while (toReturn.stations[toReturn.stations.Count] != b)
-                toReturn.RemoveStation(toReturn.stations[toReturn.stations.Count]);
+            int indexa = 0, indexb = 0;
+            while (toReturn.Stations[indexa] != a)
+                indexa++;
+            while (toReturn.Stations[indexb] != b)
+                indexb++;
+            if (indexa <= indexb)
+            {
+                while (toReturn.stations[0] != a)
+                    toReturn.RemoveStation(toReturn.stations[0]);
+                while (toReturn.stations[toReturn.stations.Count - 1] != b)
+                    toReturn.RemoveStation(toReturn.stations[toReturn.stations.Count - 1]);
+            }
+            else
+            {
+                while (toReturn.stations[0] != b)
+                    toReturn.RemoveStation(toReturn.stations[0]);
+                while (toReturn.stations[toReturn.stations.Count - 1] != a)
+                    toReturn.RemoveStation(toReturn.stations[toReturn.stations.Count - 1]);
+            }
             return toReturn;
         }
 

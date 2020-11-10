@@ -19,7 +19,7 @@ namespace dotNet5781_02_5943_5565
             for (int i = 0; i < 10; i++)
             {
                 //so there's at least 10 stations with more than 1 bus and every station has a line
-                BusLine bus = temp.GetSubLine(temp.Stations[i * 4], temp.Stations[temp.Stations.Count-i]); 
+                BusLine bus = temp.GetSubLine(temp.Stations[i * 4], temp.Stations[temp.Stations.Count-i-1]); 
                 bus.Line = i;
                 database.AddBusLine(bus);
             }
@@ -165,7 +165,7 @@ namespace dotNet5781_02_5943_5565
                                 case "2":
                                     foreach (BusStationLine station in stations)
                                     {
-                                        Console.Write($"Address: {station.Address}, Code: {station.Code}, Lines: ");
+                                        Console.Write($"{station.ToString()}, Lines: ");
                                         foreach (BusLine bus in database)
                                             if (bus.CheckStationExists(station))
                                                 Console.Write($"{bus.Line}, ");
