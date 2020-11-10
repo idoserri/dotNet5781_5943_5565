@@ -101,14 +101,42 @@ namespace dotNet5781_02_5943_5565
                                     {
                                         foreach (BusStationLine station in item.Stations)
                                         {
-                                            if(station.Code == code)
+                                            if (station.Code == code)
                                                 Console.Write($"{item.Line}, ");
                                         }
                                     }
                                     break;
+                                case "2":
+                                    Console.WriteLine("Enter first station code:\n");
+                                    int code1 = Console.Read();
+                                    Console.WriteLine("Enter second station code:\n");
+                                    int code2 = Console.Read();
+                                   
+                                    List<TimeSpan> times = new List<TimeSpan>();
+                                    foreach (BusLine item in database)
+                                    {
+                                        TimeSpan t = new TimeSpan(0);
+                                        bool count = false;
+                                        foreach (BusStationLine station in item.Stations)
+                                        {
+                                            if (count)
+                                                t += station.TimeFromLastStation;
+                                            if (station.Code == code1)
+                                                count = true;
+                                            if (station.Code == code2)
+                                                count = false;
+        
+                                        }
+                                        times.Add(t);
+                                    }
+                                    times.Sort();
+                                    Console.WriteLine(times);
+
+                                            break;
                                     
 
                             }
+                            break;
                     }
                 }
                 catch
