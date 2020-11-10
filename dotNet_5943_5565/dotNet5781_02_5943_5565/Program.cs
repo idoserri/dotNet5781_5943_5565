@@ -40,27 +40,29 @@ namespace dotNet5781_02_5943_5565
                     switch (choice)
                     {
                         case "1":
-                            Console.WriteLine("Enter your choice: \n1-Add a new bus line\n2-Add a station to a line\n");
+                            Console.WriteLine("Enter your choice: \n" +
+                                "1 - Add a new bus line\n" +
+                                "2 - Add a station to a line\n");
                             secondaryChoice = Console.ReadLine();
                             switch (secondaryChoice)
                             {
                                 case "1":
-                                    Console.WriteLine("Enter Bus Line:\n");
-                                    int code = Console.Read();
+                                    Console.WriteLine("Enter Bus Line:");
+                                    int code = Int32.Parse(Console.ReadLine());
                                     database.AddBusLine(new BusLine(new List<BusStationLine>(), code));
                                     break;
                                 case "2":
-                                    Console.WriteLine("Enter the Line to add the station to:\n");
-                                    code = Console.Read();
+                                    Console.WriteLine("Enter the Line to add the station to:");
+                                    code = Int32.Parse(Console.ReadLine());
                                     BusLine bus = database.FindBusLine(new BusLine(new List<BusStationLine>(), code));
                                     database.RemoveBusLine(bus);
-                                    Console.WriteLine("Enter Bus Station Code:\n");
-                                    code = Console.Read();
-                                    Console.WriteLine("Enter Bus Station Address\n");
+                                    Console.WriteLine("Enter Bus Station Code:");
+                                    code = Int32.Parse(Console.ReadLine());
+                                    Console.WriteLine("Enter Bus Station Address: ");
                                     string address = Console.ReadLine();
                                     stations.Add(new BusStationLine(code, address));
-                                    Console.WriteLine("Enter Bus Station Index\n");
-                                    int index = Console.Read();
+                                    Console.WriteLine($"Enter Bus Station Index: (Highest index right now: {database.Count-1} ");
+                                    int index = Int32.Parse(Console.ReadLine());
                                     bus.AddStation(index, new BusStationLine(code, address));
                                     database.AddBusLine(bus);
                                     break;
@@ -73,16 +75,16 @@ namespace dotNet5781_02_5943_5565
                             {
                                 case "1":
                                     Console.WriteLine("Enter Bus Line to remove: \n");
-                                    int code = Console.Read();
+                                    int code = Int32.Parse(Console.ReadLine());
                                     database.RemoveBusLine(new BusLine(new List<BusStationLine>(), code));
                                     break;
                                 case "2":
                                     Console.WriteLine("Enter the Line to remove the station from:\n");
-                                    code = Console.Read();
+                                    code = Int32.Parse(Console.ReadLine()); 
                                     BusLine bus = database.FindBusLine(new BusLine(new List<BusStationLine>(), code));
                                     database.RemoveBusLine(bus);
                                     Console.WriteLine("Enter Bus Station Code to Remove:\n");
-                                    code = Console.Read();
+                                    code = Int32.Parse(Console.ReadLine());
                                     bus.RemoveStation(code);
                                     database.AddBusLine(bus);
                                     break;

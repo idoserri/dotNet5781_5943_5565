@@ -83,9 +83,8 @@ namespace dotNet5781_02_5943_5565
             address = _address;
             Random r = new Random();
             double latit =  r.NextDouble() * (33.3 - 31) + 31;
-            double longt = r.NextDouble() * (35.5 - 34.3) + 34.3; 
-            location.Latitude = latit;
-            location.Longitude = longt;
+            double longt = r.NextDouble() * (35.5 - 34.3) + 34.3;
+            location = new GeoCoordinate(latit, longt);
         }
         public BusStation(int _code)
         {
@@ -98,7 +97,7 @@ namespace dotNet5781_02_5943_5565
         public override string ToString()
         {
             return "Bus Station Code: " + code + ", " +
-                location.Latitude + "°N " + location.Longitude + "°E\n";
+                location.Latitude + "°N " + location.Longitude + "°E";
         }
 
     }
@@ -316,6 +315,13 @@ namespace dotNet5781_02_5943_5565
     class BusLineCollection : IEnumerable
     {
         private List<BusLine> lines;
+        private int count = 0;
+        
+        public int Count
+        {
+            get => count;
+            private set => count = value;
+        }
         public BusLineCollection()
         {
             lines = new List<BusLine>();
@@ -356,13 +362,17 @@ namespace dotNet5781_02_5943_5565
             }
             else
                 lines.Add(toAdd);
+            count++;
         }
         public void RemoveBusLine(BusLine toRemove)
         {
             if (!CheckLineExists(toRemove))
                 throw new Exception("ERROR: Bus doesn't exist in the collection\n");
-            while(CheckLineExists(toRemove))
+            while (CheckLineExists(toRemove))
+            {
                 lines.Remove(FindBusLine(toRemove));
+                count--;
+            }
         }
         public List<BusLine> GetLinesInStation(int code)
         {
