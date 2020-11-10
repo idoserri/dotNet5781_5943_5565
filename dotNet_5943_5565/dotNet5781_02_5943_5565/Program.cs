@@ -42,7 +42,7 @@ namespace dotNet5781_02_5943_5565
                         case "1":
                             Console.WriteLine("Enter your choice: \n" +
                                 "1 - Add a new bus line\n" +
-                                "2 - Add a station to a line\n");
+                                "2 - Add a station to a line");
                             secondaryChoice = Console.ReadLine();
                             switch (secondaryChoice)
                             {
@@ -61,7 +61,7 @@ namespace dotNet5781_02_5943_5565
                                     Console.WriteLine("Enter Bus Station Address: ");
                                     string address = Console.ReadLine();
                                     stations.Add(new BusStationLine(code, address));
-                                    Console.WriteLine($"Enter Bus Station Index: (Highest index right now: {database.Count-1} ");
+                                    Console.WriteLine($"Enter Bus Line Index: (Highest index right now: {database.Count-1}) ");
                                     int index = Int32.Parse(Console.ReadLine());
                                     bus.AddStation(index, new BusStationLine(code, address));
                                     database.AddBusLine(bus);
@@ -69,7 +69,9 @@ namespace dotNet5781_02_5943_5565
                             }
                             break;
                         case "2":
-                            Console.WriteLine("Enter your choice: \n1-Remove a bus line\n2-Remove a station from a line\n");
+                            Console.WriteLine("Enter your choice: \n" +
+                                "1-Remove a bus line\n" +
+                                "2-Remove a station from a line");
                             secondaryChoice = Console.ReadLine();
                             switch (secondaryChoice)
                             {
@@ -82,11 +84,9 @@ namespace dotNet5781_02_5943_5565
                                     Console.WriteLine("Enter the Line to remove the station from:\n");
                                     code = Int32.Parse(Console.ReadLine()); 
                                     BusLine bus = database.FindBusLine(new BusLine(new List<BusStationLine>(), code));
-                                    database.RemoveBusLine(bus);
                                     Console.WriteLine("Enter Bus Station Code to Remove:\n");
                                     code = Int32.Parse(Console.ReadLine());
                                     bus.RemoveStation(code);
-                                    database.AddBusLine(bus);
                                     break;
                             }
                             break;
@@ -99,8 +99,8 @@ namespace dotNet5781_02_5943_5565
                             {
                                 case "1":
                                     Console.WriteLine("Enter station code:\n");
-                                    int code = Console.Read();
-                                    Console.Write($"Stations that go through station {code}:");
+                                    int code = Int32.Parse(Console.ReadLine());
+                                    Console.Write($"Stations that go through station {code}: ");
                                     foreach (BusLine item in database)
                                     {
                                         foreach (BusStationLine station in item.Stations)
@@ -109,12 +109,13 @@ namespace dotNet5781_02_5943_5565
                                                 Console.Write($"{item.Line}, ");
                                         }
                                     }
+                                    Console.Write("\n");
                                     break;
                                 case "2":
                                     Console.WriteLine("Enter first station code:\n");
-                                    int code1 = Console.Read();
+                                    int code1 = Int32.Parse(Console.ReadLine());
                                     Console.WriteLine("Enter second station code:\n");
-                                    int code2 = Console.Read();
+                                    int code2 = Int32.Parse(Console.ReadLine());
                                     BusLineCollection times = new BusLineCollection();
                                     foreach (BusLine item in database)
                                     {
@@ -130,27 +131,6 @@ namespace dotNet5781_02_5943_5565
                                     foreach (BusLine item in times)
                                         Console.WriteLine($"Line {item.Line}: {item.GetTotalRideTime()} hours");
                                     break;
-                                    /*List<TimeSpan> times = new List<TimeSpan>();
-                                    foreach (BusLine item in database)
-                                    {
-                                        TimeSpan t = new TimeSpan(0);
-                                        bool count = false;
-                                        foreach (BusStationLine station in item.Stations)
-                                        {
-                                            if (count)
-                                                t += station.TimeFromLastStation;
-                                            if (station.Code == code1)
-                                                count = true;
-                                            if (station.Code == code2)
-                                                count = false;
-        
-                                        }
-                                        times.Add(t);
-                                    }
-                                    times.Sort();
-                                    Console.WriteLine(times);
-
-                                            break;*/
                             }
                             break;
                         case "4":

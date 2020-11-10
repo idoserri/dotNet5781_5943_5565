@@ -236,9 +236,9 @@ namespace dotNet5781_02_5943_5565
         }
         public void RemoveStation(int code)
         {
-            BusStationLine toRemove = new BusStationLine(code);
-            if (!CheckStationExists(toRemove))
+            if (!CheckStationExists(FindStation(code)))
                 throw new Exception("ERROR: station doesn't exist\n");
+            BusStationLine toRemove = FindStation(code);
             stations.Remove(toRemove);
             if (stations[0] != firstStation)
                 firstStation = stations[0];
@@ -249,7 +249,7 @@ namespace dotNet5781_02_5943_5565
         public bool CheckStationExists(BusStationLine blurb)
         {
             foreach (BusStationLine item in stations)
-                if (item == blurb)
+                if (item.Code == blurb.Code)
                     return true;
             return false;
         }
@@ -295,7 +295,7 @@ namespace dotNet5781_02_5943_5565
         {
             double toReturn = 0;
             for (int i = 0; i < stations.Count-1; i++)
-                toReturn += (GetDistance(stations[i], stations[i + 1])/1000)*60; //avg speed of a bus 60 km/h
+                toReturn += (GetDistance(stations[i], stations[i + 1])/60000); //avg speed of a bus 60 km/h
             return toReturn;
         }
 
