@@ -10,40 +10,6 @@ using System.Collections;
 
 namespace dotNet5781_02_5943_5565
 {
-
-    /*class Location
-    {
-        /// <summary>
-        /// this class represent location acccording to latitude and longitude 
-        /// for the major class to bus station.
-        /// </summary>
-        private double latitude;
-        private double longitude;
-
-
-        //properties
-        public double Latitude
-        {
-            get => latitude;
-            set => latitude = value;
-        }
-        public double Longitude
-        {
-            get => longitude;
-            set => longitude = value;
-        }
-
-        public Location(double latit, double longt)
-        {
-            if (latit > 90 || latit < -90 || longt > 180 || longt < -180)
-                throw new Exception("location is out of range");
-
-            latitude = latit;
-            longitude = longt;
-        }
-    }*/
-
-
     class BusStation
     {
         
@@ -51,7 +17,7 @@ namespace dotNet5781_02_5943_5565
         
         private int code;            // max 6 digit code
         private GeoCoordinate location;  // 2 values to describe location
-        private string address;
+        private string address;         
 
         public int Code
         {
