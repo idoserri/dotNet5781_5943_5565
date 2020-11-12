@@ -20,7 +20,7 @@ VerticalAlignment="Stretch" Width="auto">
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions >
-            <ComboBox Name="cbBusLines" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1" IsSynchronizedWithCurrentItem="True" />
+            <ComboBox Name="cbBusLines" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1" IsSynchronizedWithCurrentItem="True" SelectionChanged="cbBusLines_SelectionChanged" />
             <TextBox Name ="tbArea" HorizontalAlignment= "Stretch" VerticalAlignment="Stretch" Text="{Binding Path=Area}" Grid.Column="3" Height="68" FontFamily="Tw Cen MT" SpellCheck.IsEnabled="True" FontSize="40"></TextBox>
             <Label Content="Bus line number:" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontFamily="Segoe UI Emoji" FontSize="25" Background="{x:Null}">
                 <Label.Effect>

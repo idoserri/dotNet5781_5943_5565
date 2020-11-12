@@ -21,9 +21,19 @@ namespace dotNet5781_03A_5943_5565
     /// </summary>
     public partial class MainWindow : Window
     {
-
+        private BusLine currentDisplayBusLine;
         BusLineCollection database = new BusLineCollection();
-     
+
+        private void cbBusLines_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ShowBusLine((cbBusLines.SelectedValue as BusLine).Line);
+        }
+        private void ShowBusLine(int index)
+        {
+            currentDisplayBusLine = database[index];
+            UpGrid.DataContext = currentDisplayBusLine;
+            lbBusLineStations.DataContext = currentDisplayBusLine.Stations;
+        }
         public MainWindow()
         {
             Random r = new Random();
@@ -39,10 +49,10 @@ namespace dotNet5781_03A_5943_5565
             InitializeComponent();
 
             // stuck in here
-            cbBusLines.ItemsSource = database;
-            cbBusLines.DisplayMemberPath = " BusLineNum ";
-            cbBusLines.SelectedIndex = 0;
-            //ShowBusLine(……….);
+            lbBusLineStations.ItemsSource = database;
+            lbBusLineStations.DisplayMemberPath = " line ";
+            lbBusLineStations.SelectedIndex = 0;
+            ShowBusLine(1);
             /*
             cbHostList.ItemsSource = database;
             cbHostList.DisplayMemberPath = " BusLineNum ";
@@ -50,5 +60,8 @@ namespace dotNet5781_03A_5943_5565
             ShowBusLine(……….)*/
 
         }
+
+       
+
     }
 }
