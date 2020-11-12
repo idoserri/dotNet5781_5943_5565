@@ -48,12 +48,16 @@ namespace dotNet5781_03A_5943_5565
 
             InitializeComponent();
 
-            
+            // stuck in here
             cbBusLines.ItemsSource = database;
-            cbBusLines.DisplayMemberPath = " line ";
+            cbBusLines.DisplayMemberPath = "Line";
             cbBusLines.SelectedIndex = 0;
-            ShowBusLine(1);
-            
+            //ShowBusLine(9);
+            /*
+            cbHostList.ItemsSource = database;
+            cbHostList.DisplayMemberPath = " BusLineNum ";
+            cbHostList.SelectedIndex = 0;
+            ShowBusLine(……….)*/
 
         }
 
