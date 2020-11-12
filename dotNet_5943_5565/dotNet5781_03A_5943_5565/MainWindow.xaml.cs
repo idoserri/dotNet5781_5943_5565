@@ -30,7 +30,7 @@ namespace dotNet5781_03A_5943_5565
         }
         private void ShowBusLine(int index)
         {
-            currentDisplayBusLine = database[index];
+            currentDisplayBusLine = database[index-1];
             UpGrid.DataContext = currentDisplayBusLine;
             lbBusLineStations.DataContext = currentDisplayBusLine.Stations;
         }
