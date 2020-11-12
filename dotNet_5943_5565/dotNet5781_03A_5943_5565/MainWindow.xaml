@@ -33,5 +33,7 @@ VerticalAlignment="Stretch" Width="auto">
                 </Label.Effect>
             </Label>
         </Grid>
-        <ListBox Name="lbBusLineStations" ItemsSource="{Binding}" HorizontalAlignment="Stretch" Height="100" Grid.Row="1" VerticalAlignment="Stretch"/>    </Grid>
+        <ListBox Name="lbBusLineStations" ItemsSource="{Binding}" HorizontalAlignment="Stretch" Height="100" Grid.Row="1" VerticalAlignment="Stretch"/>
+    </Grid>
+
 </Window>
