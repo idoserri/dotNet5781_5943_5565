@@ -20,7 +20,7 @@ VerticalAlignment="Stretch" Width="auto">
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions >
-            <ComboBox Name="cbBusLines" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1" IsSynchronizedWithCurrentItem="True" SelectionChanged="cbBusLines_SelectionChanged" />
+            <ComboBox Name="cbBusLines" HorizontalAlignment="Center" VerticalAlignment="Stretch" Grid.Column="1" IsSynchronizedWithCurrentItem="True" SelectionChanged="cbBusLines_SelectionChanged" FontSize="36" FontWeight="SemiBold" FontFamily="David" Margin="10.333,0" Width="178" />
             <TextBox Name ="tbArea" HorizontalAlignment= "Stretch" VerticalAlignment="Stretch" Text="{Binding Path=Area}" Grid.Column="3" Height="68" FontFamily="Tw Cen MT" SpellCheck.IsEnabled="True" FontSize="40"></TextBox>
             <Label Content="Bus line number:" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontFamily="Segoe UI Emoji" FontSize="25" Background="{x:Null}">
                 <Label.Effect>
@@ -33,7 +33,7 @@ VerticalAlignment="Stretch" Width="auto">
                 </Label.Effect>
             </Label>
         </Grid>
-        <ListBox Name="lbBusLineStations" ItemsSource="{Binding}" HorizontalAlignment="Stretch" Height="100" Grid.Row="1" VerticalAlignment="Stretch"/>
+        <ListBox Name="lbBusLineStations" ItemsSource="{Binding}" HorizontalAlignment="Stretch" Grid.Row="1" VerticalAlignment="Stretch" Margin="0,10,0.333,9.667" FontFamily="David" FontSize="24"/>
     </Grid>
 
 </Window>

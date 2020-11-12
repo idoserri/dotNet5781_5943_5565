@@ -43,21 +43,16 @@ namespace dotNet5781_03A_5943_5565
                 for (int i = 0; i < r.Next(2, 10); i++)  //initialize a list with 2-10 stations
                     stations.Add(new BusStationLine(i));
 
-                database.AddBusLine(new BusLine(stations, j)); //adding line
+                database.AddBusLine(new BusLine(stations, j )) ;//adding line
             }
 
             InitializeComponent();
 
-            // stuck in here
+            
             cbBusLines.ItemsSource = database;
             cbBusLines.DisplayMemberPath = "Line";
             cbBusLines.SelectedIndex = 0;
-            //ShowBusLine(9);
-            /*
-            cbHostList.ItemsSource = database;
-            cbHostList.DisplayMemberPath = " BusLineNum ";
-            cbHostList.SelectedIndex = 0;
-            ShowBusLine(……….)*/
+           
 
         }
 
