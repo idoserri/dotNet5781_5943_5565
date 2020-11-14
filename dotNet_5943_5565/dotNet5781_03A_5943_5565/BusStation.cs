@@ -18,7 +18,8 @@ namespace dotNet5781_02_5943_5565
         
         private int code;            // max 6 digit code
         private GeoCoordinate location;  // 2 values to describe location
-        private string address;         
+        private string address;   
+        private static Random r = new Random(DateTime.Now.Millisecond);
 
         public int Code
         {
@@ -49,7 +50,7 @@ namespace dotNet5781_02_5943_5565
         {
             code = _code;
             address = _address;
-            Random r = new Random();
+          //  Random r = new Random(DateTime.Now.Millisecond);
             double latit =  r.NextDouble() * (33.3 - 31) + 31; //random double between 31-33.3
             double longt = r.NextDouble() * (35.5 - 34.3) + 34.3; //random double between 34.3-35.5
             location = new GeoCoordinate(latit, longt);
@@ -58,7 +59,7 @@ namespace dotNet5781_02_5943_5565
         public BusStation(int _code)
         {
             code = _code;
-            Random r = new Random();
+        //    Random r = new Random(DateTime.Now.Millisecond);
             double latit = r.NextDouble() * (33.3 - 31) + 31; //random double between 31-33.3
             double longt = r.NextDouble() * (35.5 - 34.3) + 34.3;//random double between 34.3-35.5
             location = new GeoCoordinate(latit, longt);
