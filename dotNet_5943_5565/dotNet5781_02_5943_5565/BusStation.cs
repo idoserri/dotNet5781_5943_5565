@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Device.Location;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
 using System.Collections;
-using System.Runtime.InteropServices;
+using System.Collections.Generic;
+using System.Device.Location;
+using System.Linq;
 
 namespace dotNet5781_02_5943_5565
 {
