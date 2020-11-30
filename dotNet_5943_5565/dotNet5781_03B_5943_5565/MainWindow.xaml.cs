@@ -44,7 +44,8 @@ namespace dotNet5781_03B_5943_5565
         public MainWindow()
         {
             database = Initialization();
-            busListBox.DataContext = database;
+            busListBox.DataContext =  database;
+
             InitializeComponent();
         }
 
@@ -52,5 +53,7 @@ namespace dotNet5781_03B_5943_5565
         {
             //show new window for adding a bus
         }
+
+       
     }
 }

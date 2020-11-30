@@ -28,9 +28,10 @@ namespace dotNet5781_03B_5943_5565
         }
         public DateTime LastTreatment
         {
-            get => LastTreatment;
-            set => LastTreatment = value;
+            get => lastTreatment;
+            set => lastTreatment = value;
         }
+    
         public Bus(int license_Number, DateTime start_Date, int _Mileage, 
             int starting_Fuel_KM ,DateTime _lastTreatment ,int _mileageSinceTreatment, State _state = State.ready)
         {
@@ -48,10 +49,7 @@ namespace dotNet5781_03B_5943_5565
         public DateTime StartDate
         {
             get => startDate;
-            private set
-            {
-                startDate = EnterDate();
-            }
+            set => startDate = value;
         }
 
         public int Mileage
