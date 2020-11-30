@@ -21,9 +21,11 @@ namespace dotNet5781_03B_5943_5565
     public partial class MainWindow : Window
     {
         public static Random rand = new Random(DateTime.Now.Millisecond);
-        public static void Initialization(List<Bus> collection)
+        List<Bus> database = new List<Bus>();
+        public static List<Bus> Initialization()
         {
-          // function to create 10 random buses
+            List<Bus> collection = new List<Bus>();
+            // function to create 10 random buses
             for (int i = 0; i < 10; i++)
             {
                 DateTime temp1 = new DateTime(rand.Next(2000, 2021), rand.Next(1, 13), (rand.Next(1, 31))); // random dates
@@ -36,11 +38,18 @@ namespace dotNet5781_03B_5943_5565
             collection[1].MileageSinceTreatment = 19990;  // close to treatment by 10 KM
             collection[2].FuelKM = 1;        // close to fueling
 
-
+            return collection;
         }
         public MainWindow()
         {
+            database = Initialization();
+            busListBox.DataContext = database;
             InitializeComponent();
+        }
+
+        private void addBusButton_Click(object sender, RoutedEventArgs e)
+        {
+            //show new window for adding a bus
         }
     }
 }

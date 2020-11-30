@@ -7,6 +7,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Button x:Name="addBusButton" Content="Add Bus" HorizontalAlignment="Left" Height="21" Margin="39,366,0,0" VerticalAlignment="Top" Width="57" Click="addBusButton_Click"/>
+        <ListBox x:Name="busListBox" HorizontalAlignment="Left" Height="256" Margin="64,43,0,0" VerticalAlignment="Top" Width="511"/>
+
     </Grid>
 </Window>
