@@ -22,14 +22,14 @@ namespace dotNet5781_03B_5943_5565
     public partial class MainWindow : Window
     {
         public static Random rand = new Random(DateTime.Now.Millisecond);
-        List<Bus> database = new List<Bus>();
+        static List<Bus> database = new List<Bus>();
         public void Initialization()
         {
             // function to create 10 random buses
             for (int i = 0; i < 10; i++)
             {
-                DateTime temp1 = new DateTime(rand.Next(2000, 2021), rand.Next(1, 13), (rand.Next(1, 31))); // random dates
-                DateTime temp2 = new DateTime(rand.Next(2000, 2021), rand.Next(1, 13), (rand.Next(1, 31)));
+                DateTime temp1 = new DateTime(rand.Next(2000, 2021), rand.Next(1, 13), (rand.Next(1, 30))); // random dates
+                DateTime temp2 = new DateTime(rand.Next(2000, 2021), rand.Next(1, 13), (rand.Next(1, 30)));
                 Bus toAdd = new Bus(rand.Next(0, 99999999), temp1, rand.Next(1000, 10000), rand.Next(0, 1201), temp2,rand.Next(0,20000)); // random bus
                 database.Add(toAdd);
             }
@@ -48,7 +48,8 @@ namespace dotNet5781_03B_5943_5565
 
         private void addBusButton_Click(object sender, RoutedEventArgs e)
         {
-            //show new window for adding a bus
+            AddBusWindow addBusWindow = new AddBusWindow(database);
+            addBusWindow.ShowDialog();
         }
 
         private void busListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

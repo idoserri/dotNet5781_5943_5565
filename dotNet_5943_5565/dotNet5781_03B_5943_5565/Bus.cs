@@ -20,7 +20,7 @@ namespace dotNet5781_03B_5943_5565
         private State state;
         public static Random r = new Random(DateTime.Now.Millisecond);
 
-
+        public Bus() { }
         public int MileageSinceTreatment
         {
             get => mileageSinceTreatment;
@@ -55,7 +55,7 @@ namespace dotNet5781_03B_5943_5565
         public int Mileage
         {
             get => mileage;
-            private set => mileage = value;
+            set => mileage = value;
         }
 
         public int FuelKM
@@ -68,7 +68,7 @@ namespace dotNet5781_03B_5943_5565
         public int LicenseNumber
         {
             get { return licenseNumber; }
-            private set
+            set
             {
                 if (value > 99999999)     //because at max there are 8 digits on a bus
                     throw new Exception();
