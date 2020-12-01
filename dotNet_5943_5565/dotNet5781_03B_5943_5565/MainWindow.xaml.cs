@@ -23,30 +23,27 @@ namespace dotNet5781_03B_5943_5565
     {
         public static Random rand = new Random(DateTime.Now.Millisecond);
         List<Bus> database = new List<Bus>();
-        public static List<Bus> Initialization()
+        public void Initialization()
         {
-            List<Bus> collection = new List<Bus>();
             // function to create 10 random buses
             for (int i = 0; i < 10; i++)
             {
                 DateTime temp1 = new DateTime(rand.Next(2000, 2021), rand.Next(1, 13), (rand.Next(1, 31))); // random dates
                 DateTime temp2 = new DateTime(rand.Next(2000, 2021), rand.Next(1, 13), (rand.Next(1, 31)));
                 Bus toAdd = new Bus(rand.Next(0, 99999999), temp1, rand.Next(1000, 10000), rand.Next(0, 1201), temp2,rand.Next(0,20000)); // random bus
-                collection.Add(toAdd);
+                database.Add(toAdd);
             }
             // three different buses to impliment require conditions
-            collection[0].LastTreatment = DateTime.Now; // just treated
-            collection[1].MileageSinceTreatment = 19990;  // close to treatment by 10 KM
-            collection[2].FuelKM = 1;        // close to fueling
-
-            return collection;
+            database[0].LastTreatment = DateTime.Now; // just treated
+            database[1].MileageSinceTreatment = 19990;  // close to treatment by 10 KM
+            //database[1].Mileage += database[1].MileageSinceTreatment;
+            database[2].FuelKM = 1;        // close to fueling
         }
         public MainWindow()
         {
-            database = Initialization();
-            busListBox.DataContext =  database;
-
+            Initialization();
             InitializeComponent();
+            busListBox.DataContext = database;
         }
 
         private void addBusButton_Click(object sender, RoutedEventArgs e)
@@ -54,6 +51,9 @@ namespace dotNet5781_03B_5943_5565
             //show new window for adding a bus
         }
 
-       
+        private void busListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
