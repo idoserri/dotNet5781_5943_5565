@@ -52,5 +52,21 @@ namespace dotNet5781_03B_5943_5565
             addBusWindow.ShowDialog();
             lvBusses.Items.Refresh();
         }
+
+        private void bDrive_Click(object sender, RoutedEventArgs e)
+        {
+            Bus v = (sender as Button).DataContext as Bus;
+            if(v.State == State.ready)
+            {
+                DrivingWindow drivingWindow = new DrivingWindow(ref v);
+                drivingWindow.ShowDialog();
+                lvBusses.Items.Refresh();
+            }
+        }
+
+        private void bFuel_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

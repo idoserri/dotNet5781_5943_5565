@@ -8,7 +8,10 @@
         Title="I'm Bussing Here" Height="600" Width="1000">
     <Window.Resources>
         <DataTemplate x:Key="DriveDataTemplate" DataType="local:Bus">
-            <Button Content="Drive"></Button>
+            <Button Name="bDrive" Content="Drive" Click="bDrive_Click"></Button>
+        </DataTemplate>
+        <DataTemplate x:Key="FuelDataTemplate" DataType="local:Bus">
+            <Button Name="bFuel" Content="Fuel" Click="bFuel_Click"></Button>
         </DataTemplate>
     </Window.Resources>
     <Grid Margin="0,0,3.333,-19.333">
@@ -18,8 +21,9 @@
                 <GridView>
                     <GridViewColumn Header="Liscense Number" Width="Auto" DisplayMemberBinding="{Binding LicenseNumber}" />
                     <GridViewColumn Header="KM" Width="Auto" DisplayMemberBinding="{Binding MileageSinceTreatment}" />
-                    <GridViewColumn Header="State" Width="Auto" DisplayMemberBinding="{Binding State}" />
+                    <GridViewColumn Header="State" Width="50" DisplayMemberBinding="{Binding State}" />
                     <GridViewColumn Header="Drive" Width="Auto" CellTemplate="{StaticResource DriveDataTemplate}"/>
+                    <GridViewColumn Header="Fuel" Width="Auto" CellTemplate="{StaticResource FuelDataTemplate}"/>
                 </GridView>
             </ListView.View>
         </ListView>
