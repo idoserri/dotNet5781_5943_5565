@@ -225,6 +225,7 @@ namespace dotNet5781_03B_5943_5565
                     num /= 10;
                 }
                 toReturn = arr[0] + "" + arr[1] + "" + arr[2] + "-" + arr[3] + "" + arr[4] + "-" + arr[5] + "" + arr[6] + "" + arr[7];
+                toReturn += "           " + this.MileageSinceTreatment;
             }
             else
             {
@@ -236,7 +237,9 @@ namespace dotNet5781_03B_5943_5565
                     num /= 10;
                 }
                 toReturn = arr[0] + "" + arr[1] + "-" + arr[2] + "" + arr[3] + "" + arr[4] + "-" + arr[5] + "" + arr[6];
+                toReturn += "             " + this.MileageSinceTreatment;
             }
+            
             return toReturn;
         }
     }

@@ -48,7 +48,7 @@ namespace dotNet5781_03B_5943_5565
 
         private void addBusButton_Click(object sender, RoutedEventArgs e)
         {
-            AddBusWindow addBusWindow = new AddBusWindow(database);
+            AddBusWindow addBusWindow = new AddBusWindow(ref database);
             addBusWindow.ShowDialog();
         }
 

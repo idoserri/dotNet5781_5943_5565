@@ -20,31 +20,23 @@ namespace dotNet5781_03B_5943_5565
     public partial class AddBusWindow : Window
     {
         List<Bus> database = new List<Bus>();
-        public AddBusWindow(List<Bus> _database)
+        public AddBusWindow(ref List<Bus> _database)
         {
             database = _database;
             InitializeComponent();
         }
 
-        private void OnKeyDown(object sender, KeyEventArgs e)
-        {
-            Bus addedBus = new Bus();
-            if(e.Key == Key.Enter)
-            {
-                addedBus.LicenseNumber = Int32.Parse(enterLiscenceTextBox.Text);
-            }
-            database.Add(addedBus);
-            
-        }
-
         private void Grid_KeyDown(object sender, KeyEventArgs e)
         {
-            Bus addedBus = new Bus();
+           
             if (e.Key == Key.Enter)
             {
+                Bus addedBus = new Bus();
                 addedBus.LicenseNumber = Int32.Parse(enterLiscenceTextBox.Text);
+                database.Add(addedBus);
+                this.Close();
             }
-            database.Add(addedBus);
+
         }
     }
 }
