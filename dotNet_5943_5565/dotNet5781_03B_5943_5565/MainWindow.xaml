@@ -6,14 +6,20 @@
         xmlns:local="clr-namespace:dotNet5781_03B_5943_5565"
         mc:Ignorable="d"
         Title="I'm Bussing Here" Height="600" Width="1000">
+    <Window.Resources>
+        <DataTemplate x:Key="DriveDataTemplate" DataType="local:Bus">
+            <Button Content="Drive"></Button>
+        </DataTemplate>
+    </Window.Resources>
     <Grid Margin="0,0,3.333,-19.333">
         <Button x:Name="addBusButton" Content="Add Bus" HorizontalAlignment="Left" Height="21" Margin="39,366,0,0" VerticalAlignment="Top" Width="57" Click="addBusButton_Click"/>
         <ListView x:Name="lvBusses" HorizontalAlignment="Left" Height="276" Margin="39,41,0,0" VerticalAlignment="Top" Width="553">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Liscense Number" Width="120" DisplayMemberBinding="{Binding LicenseNumber}" />
-                    <GridViewColumn Header="KM" Width="50" DisplayMemberBinding="{Binding MileageSinceTreatment}" />
-                    <GridViewColumn Header="State" Width="150" DisplayMemberBinding="{Binding State}" />
+                    <GridViewColumn Header="Liscense Number" Width="Auto" DisplayMemberBinding="{Binding LicenseNumber}" />
+                    <GridViewColumn Header="KM" Width="Auto" DisplayMemberBinding="{Binding MileageSinceTreatment}" />
+                    <GridViewColumn Header="State" Width="Auto" DisplayMemberBinding="{Binding State}" />
+                    <GridViewColumn Header="Drive" Width="Auto" CellTemplate="{StaticResource DriveDataTemplate}"/>
                 </GridView>
             </ListView.View>
         </ListView>
