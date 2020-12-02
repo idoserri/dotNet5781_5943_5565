@@ -50,7 +50,6 @@ namespace dotNet5781_03B_5943_5565
         {
             AddBusWindow addBusWindow = new AddBusWindow(ref database);
             addBusWindow.ShowDialog();
-            InitializeComponent();
             busListBox.DataContext = database;
         }
 

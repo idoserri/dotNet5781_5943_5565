@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:dotNet5781_03B_5943_5565"
         mc:Ignorable="d"
-        Title="AddBusWindow" Height="450" Width="800">
-    <Grid KeyDown="Grid_KeyDown">
+        Title="AddBusWindow" Height="342.001" Width="567.999">
+    <Grid KeyDown="Grid_KeyDown" Margin="0,0,146.333,208.667">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="345*"/>
             <ColumnDefinition Width="448*"/>
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="enterLiscenceTextBox" HorizontalAlignment="Left" Height="22" Margin="112,53,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="152" />
-        <Label x:Name="label" Content="Liscence Number: " HorizontalAlignment="Left" Height="32" Margin="10,53,0,0" VerticalAlignment="Top" Width="81"/>
+        <TextBox x:Name="enterLiscenceTextBox" HorizontalAlignment="Left" Height="29" Margin="112,53,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="324" Grid.ColumnSpan="2" RenderTransformOrigin="0.865,0.531" />
+        <Label x:Name="label" Content="Liscence Number: " HorizontalAlignment="Left" Height="29" Margin="10,53,0,0" VerticalAlignment="Top" Width="126"/>
 
     </Grid>
 </Window>
