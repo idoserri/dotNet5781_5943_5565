@@ -32,6 +32,8 @@ namespace dotNet5781_03B_5943_5565
             set => lastTreatment = value;
         }
 
+        public State State{get; set;}
+
         public Bus(int license_Number, DateTime start_Date, int _Mileage,
             int starting_Fuel_KM, DateTime _lastTreatment, int _mileageSinceTreatment, State _state = State.ready)
         {
@@ -65,14 +67,40 @@ namespace dotNet5781_03B_5943_5565
 
         }
 
-        public int LicenseNumber
+        public string LicenseNumber
         {
-            get { return licenseNumber; }
+            get 
+            {
+                if (this.StartDate.Year >= 2018)
+                {
+                    int[] arr = new int[8];
+                    int num = this.licenseNumber;
+                    for (int i = 7; i >= 0; i--)
+                    {
+                        arr[i] = num % 10;
+                        num /= 10;
+                    }
+                    return String.Format("{0}{1}{2}-{3}{4}-{5}{6}{7}",
+                        arr[0], arr[1], arr[2], arr[3], arr[4], arr[5], arr[6], arr[7]);
+                }
+                else
+                {
+                    int[] arr = new int[7];
+                    int num = this.licenseNumber;
+                    for (int i = 6; i >= 0; i--)
+                    {
+                        arr[i] = num % 10;
+                        num /= 10;
+                    }
+                    return String.Format("{0}{1}-{2}{3}{4}-{5}{6}",
+                        arr[0], arr[1], arr[2], arr[3], arr[4], arr[5], arr[6]);
+                }
+            }
             set
             {
-                if (value > 99999999)     //because at max there are 8 digits on a bus
+                if (Int32.Parse(value) > 99999999)     //because at max there are 8 digits on a bus
                     throw new Exception();
-                licenseNumber = value;
+                licenseNumber = Int32.Parse(value);
             }
         }
         public static DateTime EnterDate() // function to enter a date by month/day/year
@@ -212,7 +240,7 @@ namespace dotNet5781_03B_5943_5565
                 }
             }
         }
-        public override string ToString()
+        /*public override string ToString()
         {
             string toReturn;
             if (this.StartDate.Year >= 2018)
@@ -257,6 +285,6 @@ namespace dotNet5781_03B_5943_5565
             }
             
             return toReturn;
-        }
+        }*/
     }
 }

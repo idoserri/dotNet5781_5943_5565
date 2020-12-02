@@ -43,19 +43,14 @@ namespace dotNet5781_03B_5943_5565
         {
             Initialization();
             InitializeComponent();
-            busListBox.DataContext = database;
+            lvBusses.ItemsSource = database;
         }
 
         private void addBusButton_Click(object sender, RoutedEventArgs e)
         {
             AddBusWindow addBusWindow = new AddBusWindow(ref database);
             addBusWindow.ShowDialog();
-            busListBox.Items.Refresh();
-        }
-
-        private void busListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
+            lvBusses.Items.Refresh();
         }
     }
 }
