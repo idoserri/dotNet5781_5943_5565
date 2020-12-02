@@ -50,7 +50,7 @@ namespace dotNet5781_03B_5943_5565
         {
             AddBusWindow addBusWindow = new AddBusWindow(ref database);
             addBusWindow.ShowDialog();
-            busListBox.DataContext = database;
+            busListBox.Items.Refresh();
         }
 
         private void busListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

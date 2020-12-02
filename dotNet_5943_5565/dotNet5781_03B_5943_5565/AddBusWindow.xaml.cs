@@ -26,18 +26,14 @@ namespace dotNet5781_03B_5943_5565
             InitializeComponent();
         }
 
-        private void Grid_KeyDown(object sender, KeyEventArgs e)
-        {
-           
-            if (e.Key == Key.Enter)
-            {
-                DateTime temp = DateTime.Now;
-                int lnum = Int32.Parse(enterLiscenceTextBox.Text);
-                Bus addedBus = new Bus(lnum, temp, 0, 1200, temp, 0, State.ready);
-                database.Add(addedBus);
-                this.Close();
-            }
 
+        private void enterBusButton_Click(object sender, RoutedEventArgs e)
+        {
+            DateTime temp = DateTime.Now;
+            int lnum = Int32.Parse(enterLiscenceTextBox.Text);
+            Bus addedBus = new Bus(lnum, temp, 0, 1200, temp, 0, State.ready);
+            database.Add(addedBus);
+            this.Close();
         }
     }
 }

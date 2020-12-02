@@ -5,14 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:dotNet5781_03B_5943_5565"
         mc:Ignorable="d"
-        Title="AddBusWindow" Height="342.001" Width="567.999">
-    <Grid KeyDown="Grid_KeyDown" Margin="0,0,146.333,208.667">
+        Title="AddBusWindow" Height="207.718" Width="567.999">
+    <Grid  Margin="0,0,3.333,-162.667">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="181*"/>
+            <RowDefinition Height="161*"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="345*"/>
-            <ColumnDefinition Width="448*"/>
+            <ColumnDefinition Width="26*"/>
+            <ColumnDefinition Width="217*"/>
+            <ColumnDefinition Width="11*"/>
+            <ColumnDefinition Width="304*"/>
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="enterLiscenceTextBox" HorizontalAlignment="Left" Height="29" Margin="112,53,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="324" Grid.ColumnSpan="2" RenderTransformOrigin="0.865,0.531" />
-        <Label x:Name="label" Content="Liscence Number: " HorizontalAlignment="Left" Height="29" Margin="10,53,0,0" VerticalAlignment="Top" Width="126"/>
+        <TextBox x:Name="enterLiscenceTextBox" HorizontalAlignment="Left" Height="29" Margin="86,53,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="324" Grid.ColumnSpan="3" RenderTransformOrigin="0.865,0.531" Grid.Column="1" />
+        <Label x:Name="label" Content="Liscence Number: " HorizontalAlignment="Left" Height="29" Margin="10,53,0,0" VerticalAlignment="Top" Width="126" Grid.ColumnSpan="2"/>
+        <Button x:Name="enterBusButton" Content="Enter Bus" HorizontalAlignment="Left" Height="42" Margin="115,112,0,0" VerticalAlignment="Top" Width="142" Grid.Column="3" Click="enterBusButton_Click"/>
 
     </Grid>
 </Window>

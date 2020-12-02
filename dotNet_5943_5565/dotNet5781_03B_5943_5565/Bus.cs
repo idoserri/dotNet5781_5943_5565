@@ -224,8 +224,17 @@ namespace dotNet5781_03B_5943_5565
                     arr[i] = num % 10;
                     num /= 10;
                 }
+                string _mileage = this.mileageSinceTreatment.ToString();
+                int temp = this.mileageSinceTreatment;
+                while (temp < 100000 && temp != 0)
+                {
+                    _mileage = "0" + mileage;
+                    temp *= 10;
+                }
+                if (temp == 0)
+                    _mileage = "00000";
                 toReturn = arr[0] + "" + arr[1] + "" + arr[2] + "-" + arr[3] + "" + arr[4] + "-" + arr[5] + "" + arr[6] + "" + arr[7];
-                toReturn = String.Format("{0,-20} {1,-20} {2,-20}",toReturn, this.MileageSinceTreatment, state);
+                toReturn = String.Format("{0,-20}{1,-10}  {2,-10}",toReturn, _mileage, state);
             }
             else
             {
@@ -236,8 +245,15 @@ namespace dotNet5781_03B_5943_5565
                     arr[i] = num % 10;
                     num /= 10;
                 }
-                toReturn = arr[0] + "" + arr[1] + "-" + arr[2] + "" + arr[3] + "" + arr[4] + "-" + arr[5] + "" + arr[6];
-                toReturn = String.Format("{0,-20} {1,-20} {2,-20}", toReturn, this.MileageSinceTreatment, state);
+                string _mileage = this.mileageSinceTreatment.ToString();
+                int temp = this.mileageSinceTreatment;
+                while (temp < 10000)
+                {
+                    _mileage = "0" + mileage;
+                    temp *= 10;
+                }
+                toReturn = arr[0] + "" + arr[1] + "-" + arr[2] + "" + arr[3] + "" + arr[4] + "-" + arr[5] + "" + arr[6] +" ";
+                toReturn = String.Format("{0,-20} {1,-10}  {2,-10}", toReturn, _mileage, state);
             }
             
             return toReturn;
