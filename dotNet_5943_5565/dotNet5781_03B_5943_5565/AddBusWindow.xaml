@@ -11,7 +11,8 @@
             <ColumnDefinition Width="345*"/>
             <ColumnDefinition Width="448*"/>
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="enterLiscenceTextBox" HorizontalAlignment="Left" Height="22" Margin="112,53,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="152" />
+        <TextBox x:Name="enterLiscenceTextBox" HorizontalAlignment="Left" Height="22" Margin="112,53,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="152" />
+        <Label x:Name="label" Content="Liscence Number: " HorizontalAlignment="Left" Height="32" Margin="10,53,0,0" VerticalAlignment="Top" Width="81"/>
 
     </Grid>
 </Window>
