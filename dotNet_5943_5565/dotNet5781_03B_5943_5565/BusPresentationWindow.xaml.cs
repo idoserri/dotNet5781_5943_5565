@@ -19,9 +19,27 @@ namespace dotNet5781_03B_5943_5565
     /// </summary>
     public partial class BusPresentationWindow : Window
     {
-        public BusPresentationWindow()
+        public BusPresentationWindow(Bus v)
         {
             InitializeComponent();
+            this.liscenceNum.Content +=  v.LicenseNumber.ToString();
+            lastTreatment.Content += v.LastTreatment.ToString().Substring(0,8);
+            startDate.Content += v.StartDate.ToString().Substring(0, 8);
+            mileage.Content += v.Mileage.ToString();
+            mileageSince.Content += v.MileageSinceTreatment.ToString();
+            FuelKM.Content += v.FuelKM.ToString();
+            State.Content += v.State.ToString();
+           
+        }
+
+        private void Fuel_btn_Click(object sender, RoutedEventArgs e)
+        {
+            // fuel treat
+        }
+
+        private void Repair_btn_Click(object sender, RoutedEventArgs e)
+        {
+            // regular treat
         }
     }
 }

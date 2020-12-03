@@ -36,7 +36,7 @@ namespace dotNet5781_03B_5943_5565
             // three different buses to impliment require conditions
             database[0].LastTreatment = DateTime.Now; // just treated
             database[1].MileageSinceTreatment = 19990;  // close to treatment by 10 KM
-            //database[1].Mileage += database[1].MileageSinceTreatment;
+            database[1].Mileage += database[1].MileageSinceTreatment;
             database[2].FuelKM = 1;        // close to fueling
         }
         public MainWindow()
@@ -82,6 +82,8 @@ namespace dotNet5781_03B_5943_5565
                 if (obj.GetType() == typeof(ListViewItem))
                 {
                     Bus v = (sender as ListView).SelectedItem as Bus;
+                    BusPresentationWindow newWindow = new BusPresentationWindow( v);
+                    newWindow.ShowDialog();
                 }
                 obj = VisualTreeHelper.GetParent(obj);
             }
