@@ -5,29 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:dotNet5781_03B_5943_5565"
         mc:Ignorable="d"
-        Title="I'm Bussing Here" Height="600" Width="1000" Icon="busImag.jpg">
+        Title="I'm Bussing Here" Height="600" Width="1000" Icon="bus-32.png">
     <Window.Resources>
         <DataTemplate x:Key="DriveDataTemplate" DataType="local:Bus">
-            <Button Name="bDrive" Content="Drive"  Click="bDrive_Click"/>
+            <Button Name="bDrive" Content="" Height="30" Width="30" Click="bDrive_Click" BorderBrush="{x:Null}" Foreground="Black">
+                <Button.Background>
+                    <ImageBrush ImageSource="steeringImag3.jpg" />
+                </Button.Background>
+            </Button>
         </DataTemplate>
         <DataTemplate x:Key="FuelDataTemplate" DataType="local:Bus">
-            <Button Name="bFuel" Content="Fuel" Click="bFuel_Click"/>
+            <Button Name="bFuel" Content="" Height="30" Width="30" Click="bFuel_Click" BorderBrush="{x:Null}">
+                <Button.Background>
+                    <ImageBrush ImageSource="fuelImag.png"/>
+                </Button.Background>
+            </Button>
         </DataTemplate>
     </Window.Resources>
     <Grid>
-        <Button x:Name="addBusButton" Content="Add Bus"  VerticalAlignment="Center" Height="50" Width="300" Click="addBusButton_Click" Margin="357,407,336.333,113.667"/>
+        <Button x:Name="addBusButton" Content="Add Bus"  VerticalAlignment="Center" Height="50" Width="300" Click="addBusButton_Click" Margin="341,498,352.333,22.667"/>
         <ListView x:Name="lvBusses" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="111,87,89.333,0" >
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Liscense Number" Width="200" DisplayMemberBinding="{Binding LicenseNumber}" />
                     <GridViewColumn Header="KM" Width="140" DisplayMemberBinding="{Binding MileageSinceTreatment}" />
                     <GridViewColumn Header="State" Width="150" DisplayMemberBinding="{Binding State}" />
-                    <GridViewColumn Header="Drive" Width="150" CellTemplate="{StaticResource DriveDataTemplate}"/>
-                    <GridViewColumn Header="Fuel" Width="150" CellTemplate="{StaticResource FuelDataTemplate}"/>
-                    
+                    <GridViewColumn Header="Drive" Width="Auto" CellTemplate="{StaticResource DriveDataTemplate}"/>
+                    <GridViewColumn Header="Fuel" Width="Auto" CellTemplate="{StaticResource FuelDataTemplate}"/>
+
                 </GridView>
             </ListView.View>
-         
+
         </ListView>
     </Grid>
 </Window>

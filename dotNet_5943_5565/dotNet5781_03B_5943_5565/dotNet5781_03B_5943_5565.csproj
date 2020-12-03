@@ -109,5 +109,23 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="busImag.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="steeringImag.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="steeringImag2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="steeringImag3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="fuelImag.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="bus-32.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

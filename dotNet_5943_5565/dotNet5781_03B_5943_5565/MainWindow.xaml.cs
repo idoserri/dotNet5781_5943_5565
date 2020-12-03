@@ -66,7 +66,11 @@ namespace dotNet5781_03B_5943_5565
 
         private void bFuel_Click(object sender, RoutedEventArgs e)
         {
-
+            Bus v = (sender as Button).DataContext as Bus;
+            if(v.State == State.ready)
+            {
+                v.State = State.fueling;
+            }
         }
 
       
