@@ -23,13 +23,18 @@ namespace dotNet5781_03B_5943_5565
     {
         public static Random rand = new Random(DateTime.Now.Millisecond);
         static List<Bus> database = new List<Bus>();
+        DispatcherTimer timer2;
+        public List<Bus> Database
+        {
+            get => database; set => database = value;
+        }
         public void Initialization()
         {
             // function to create 10 random buses
             for (int i = 0; i < 10; i++)
             {
-                DateTime temp1 = new DateTime(rand.Next(2000, 2021), rand.Next(1, 13), (rand.Next(1, 30))); // random dates
-                DateTime temp2 = new DateTime(rand.Next(2000, 2021), rand.Next(1, 13), (rand.Next(1, 30)));
+                DateTime temp1 = new DateTime(rand.Next(2000, 2021), rand.Next(1, 13), (rand.Next(1, 29))); // random dates
+                DateTime temp2 = new DateTime(rand.Next(2019, 2021), rand.Next(1, 13), (rand.Next(1, 29)));
                 Bus toAdd = new Bus(rand.Next(0, 99999999), temp1, rand.Next(1000, 10000), rand.Next(0, 1201), temp2, rand.Next(0, 20000)); // random bus
                 database.Add(toAdd);
             }
@@ -44,6 +49,10 @@ namespace dotNet5781_03B_5943_5565
             Initialization();
             InitializeComponent();
             lvBusses.ItemsSource = database;
+            timer2 = new DispatcherTimer();
+            timer2.Interval = TimeSpan.FromSeconds(3);
+            timer2.Tick += Timer2_Tick;
+            timer2.Start();
         }
 
         private void addBusButton_Click(object sender, RoutedEventArgs e)
@@ -58,7 +67,7 @@ namespace dotNet5781_03B_5943_5565
             Bus v = (sender as Button).DataContext as Bus;
             if (v.State == State.ready)
             {
-                DrivingWindow drivingWindow = new DrivingWindow(ref v);
+                DrivingWindow drivingWindow = new DrivingWindow( v,  App.Current.MainWindow as MainWindow);
                 drivingWindow.ShowDialog();
                 lvBusses.Items.Refresh();
             }
@@ -88,5 +97,30 @@ namespace dotNet5781_03B_5943_5565
                 obj = VisualTreeHelper.GetParent(obj);
             }
         }
+        private void Timer2_Tick(object sender, EventArgs e)
+        {
+            updateTime();
+            lvBusses.Items.Refresh();
+            updateBuses();
+            lvBusses.Items.Refresh();
+        }
+        public void updateTime()
+        {
+            foreach (Bus bus in database)
+            {
+                bus.timeUntillReady(DateTime.Now);
+            }
+            lvBusses.Items.Refresh();
+        }
+        public void updateBuses()
+        {
+            if (database.Count() != 0)
+                foreach (Bus bus in database)
+                {
+                    bus.updateState(DateTime.Now);
+                }
+            lvBusses.Items.Refresh();
+        }
+
     }
 }
