@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:dotNet5781_03B_5943_5565"
         mc:Ignorable="d"
-        Title="DrivingWindow" Height="450" Width="800">
+        Title="DrivingWindow" Height="450" Width="800" Icon="steeringImag3.jpg">
     <Grid KeyDown="Grid_KeyDown">
         <TextBox x:Name="tbEnterDrive" HorizontalAlignment="Left" Height="21" Margin="125,141,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="151"/>
         <Label x:Name="lEnterDrive" Content="Enter KM to Drive:" HorizontalAlignment="Left" Height="36" Margin="125,100,0,0" VerticalAlignment="Top" Width="114"/>

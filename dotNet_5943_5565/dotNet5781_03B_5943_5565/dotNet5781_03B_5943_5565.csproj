@@ -59,6 +59,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="BusPresentationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="DrivingWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -75,6 +79,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Bus.cs" />
+    <Compile Include="BusPresentationWindow.xaml.cs">
+      <DependentUpon>BusPresentationWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DrivingWindow.xaml.cs">
       <DependentUpon>DrivingWindow.xaml</DependentUpon>
     </Compile>

@@ -30,7 +30,7 @@ namespace dotNet5781_03B_5943_5565
             {
                 DateTime temp1 = new DateTime(rand.Next(2000, 2021), rand.Next(1, 13), (rand.Next(1, 30))); // random dates
                 DateTime temp2 = new DateTime(rand.Next(2000, 2021), rand.Next(1, 13), (rand.Next(1, 30)));
-                Bus toAdd = new Bus(rand.Next(0, 99999999), temp1, rand.Next(1000, 10000), rand.Next(0, 1201), temp2,rand.Next(0,20000)); // random bus
+                Bus toAdd = new Bus(rand.Next(0, 99999999), temp1, rand.Next(1000, 10000), rand.Next(0, 1201), temp2, rand.Next(0, 20000)); // random bus
                 database.Add(toAdd);
             }
             // three different buses to impliment require conditions
@@ -56,7 +56,7 @@ namespace dotNet5781_03B_5943_5565
         private void bDrive_Click(object sender, RoutedEventArgs e)
         {
             Bus v = (sender as Button).DataContext as Bus;
-            if(v.State == State.ready)
+            if (v.State == State.ready)
             {
                 DrivingWindow drivingWindow = new DrivingWindow(ref v);
                 drivingWindow.ShowDialog();
@@ -67,12 +67,24 @@ namespace dotNet5781_03B_5943_5565
         private void bFuel_Click(object sender, RoutedEventArgs e)
         {
             Bus v = (sender as Button).DataContext as Bus;
-            if(v.State == State.ready)
+            if (v.State == State.ready)
             {
                 v.State = State.fueling;
             }
         }
 
-      
+        private void lvBusses_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            DependencyObject obj = (DependencyObject)e.OriginalSource;
+
+            while (obj != null && obj != lvBusses)
+            {
+                if (obj.GetType() == typeof(ListViewItem))
+                {
+                    Bus v = (sender as ListView).SelectedItem as Bus;
+                }
+                obj = VisualTreeHelper.GetParent(obj);
+            }
+        }
     }
 }
