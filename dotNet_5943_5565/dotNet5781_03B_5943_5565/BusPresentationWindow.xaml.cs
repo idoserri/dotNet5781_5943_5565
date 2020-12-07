@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Threading
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -22,7 +23,7 @@ namespace dotNet5781_03B_5943_5565
         public BusPresentationWindow(Bus v)
         {
             InitializeComponent();
-            this.liscenceNum.Content +=  v.LicenseNumber.ToString();
+            liscenceNum.Content +=  v.LicenseNumber.ToString();
             lastTreatment.Content += v.LastTreatment.ToString().Substring(0,8);
             startDate.Content += v.StartDate.ToString().Substring(0, 8);
             mileage.Content += v.Mileage.ToString();
@@ -34,6 +35,7 @@ namespace dotNet5781_03B_5943_5565
 
         private void Fuel_btn_Click(object sender, RoutedEventArgs e)
         {
+        
             // fuel treat
         }
 
