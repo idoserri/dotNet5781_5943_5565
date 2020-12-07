@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Threading
+using System.Windows.Threading;
+using System.Threading;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -20,8 +21,10 @@ namespace dotNet5781_03B_5943_5565
     /// </summary>
     public partial class BusPresentationWindow : Window
     {
-        public BusPresentationWindow(Bus v)
+        Bus v;
+        public BusPresentationWindow(Bus _v)
         {
+            v = _v;
             InitializeComponent();
             liscenceNum.Content +=  v.LicenseNumber.ToString();
             lastTreatment.Content += v.LastTreatment.ToString().Substring(0,8);
@@ -35,13 +38,33 @@ namespace dotNet5781_03B_5943_5565
 
         private void Fuel_btn_Click(object sender, RoutedEventArgs e)
         {
-        
-            // fuel treat
+           
+                v.FuelKM = 1200;
+                v.changeState(dotNet5781_03B_5943_5565.State.fueling);
+                v.StateTimer.AddSeconds(12);
+                FuelKM.Content = " FuelKM:         12000 ";
+                State.Content = " state:            fueling ";
+                InitializeComponent();
+                // this.Close();
+               
+            new Thread(() =>
+            {
+                while ((int)(DateTime.Now - v.StateTimer).TotalSeconds < 0)
+                {
+                    v.State = dotNet5781_03B_5943_5565.State.fueling;
+                        //  Thread.Sleep(3000);
+                    }
+                v.State = dotNet5781_03B_5943_5565.State.ready;
+            }).Start();
+
+            State.Content = " state:       just fueled";
+
+
         }
 
         private void Repair_btn_Click(object sender, RoutedEventArgs e)
         {
-            // regular treat
+           
         }
     }
 }

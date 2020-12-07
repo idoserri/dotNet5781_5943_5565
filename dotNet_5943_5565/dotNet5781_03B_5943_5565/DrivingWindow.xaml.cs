@@ -22,10 +22,11 @@ namespace dotNet5781_03B_5943_5565
 
         private void Grid_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Enter)
+            if (e.Key == Key.Enter && v.State == State.ready)
             {
                 int distance = int.Parse(tbEnterDrive.Text);
                 v.addDistance(distance);
+                v.State = State.driving;
                 v.changeState(State.driving, distance);
               //  mainWindow.Database.Sort(delegate (Bus c1, Bus c2) { return c1.MileageSinceTreatment.CompareTo(c2.MileageSinceTreatment); });
               //  mainWindow.Database.Reverse();
