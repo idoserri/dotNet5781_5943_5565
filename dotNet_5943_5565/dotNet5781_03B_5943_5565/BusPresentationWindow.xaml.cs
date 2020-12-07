@@ -27,8 +27,8 @@ namespace dotNet5781_03B_5943_5565
             v = _v;
             InitializeComponent();
             liscenceNum.Content +=  v.LicenseNumber.ToString();
-            lastTreatment.Content += v.LastTreatment.ToString().Substring(0,8);
-            startDate.Content += v.StartDate.ToString().Substring(0, 8);
+            lastTreatment.Content += v.LastTreatment.ToString().Substring(0,9);
+            startDate.Content += v.StartDate.ToString().Substring(0, 9);
             mileage.Content += v.Mileage.ToString();
             mileageSince.Content += v.MileageSinceTreatment.ToString();
             FuelKM.Content += v.FuelKM.ToString();
