@@ -71,6 +71,10 @@ namespace dotNet5781_03B_5943_5565
                 drivingWindow.ShowDialog();
                 lvBusses.Items.Refresh();
             }
+            else
+            {
+                MessageBox.Show(" this bus is unable to take the drive " ,"ERROR", MessageBoxButton.OK , MessageBoxImage.Error);
+            }
         }
 
         private void bFuel_Click(object sender, RoutedEventArgs e)
