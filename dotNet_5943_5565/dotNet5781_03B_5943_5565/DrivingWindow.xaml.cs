@@ -12,7 +12,7 @@ namespace dotNet5781_03B_5943_5565
         Bus v;
         MainWindow mainWindow;
         public static Random r = new Random(DateTime.Now.Millisecond);
-        public DrivingWindow(Bus _v, MainWindow _mainWindow)
+        public DrivingWindow(ref Bus _v, MainWindow _mainWindow)
         {
             mainWindow = _mainWindow;
             v = _v;
