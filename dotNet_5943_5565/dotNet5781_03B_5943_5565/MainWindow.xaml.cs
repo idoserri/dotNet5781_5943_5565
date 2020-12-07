@@ -136,6 +136,7 @@ namespace dotNet5781_03B_5943_5565
                 {
                     bus.updateState(DateTime.Now);
                 }
+
             lvBusses.Items.Refresh();
         }
 

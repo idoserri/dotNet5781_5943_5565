@@ -25,27 +25,27 @@
     <Grid>
         <Button x:Name="addBusButton" Content="Add Bus"  VerticalAlignment="Center" Height="50" Width="300" Click="addBusButton_Click" Margin="341,498,352.333,22.667"/>
         <ListView x:Name="lvBusses" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="111,87,89.333,0" MouseDoubleClick="lvBusses_MouseDoubleClick" >
-                        <ListView.Resources>
+            <ListView.ItemContainerStyle>
                 <Style TargetType="{x:Type ListViewItem}">
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding State}" Value="State.ready">
+                        <DataTrigger Binding="{Binding State}" Value="ready">
                             <Setter Property="Background" Value="LightSeaGreen"/>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding State}" Value="State.unavailable">
+                        <DataTrigger Binding="{Binding State}" Value="unavailable">
                             <Setter Property="Background" Value="PaleVioletRed"/>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding State}" Value="State.driving">
+                        <DataTrigger Binding="{Binding State}" Value="driving">
                             <Setter Property="Background" Value="LightYellow"/>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding State}" Value="State.fueling">
+                        <DataTrigger Binding="{Binding State}" Value="fueling">
                             <Setter Property="Background" Value="LightYellow"/>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding State}" Value="State.treatment">
+                        <DataTrigger Binding="{Binding State}" Value="treatment">
                             <Setter Property="Background" Value="LightYellow"/>
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>
-            </ListView.Resources>
+            </ListView.ItemContainerStyle>
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Liscense Number" Width="200" DisplayMemberBinding="{Binding LicenseNumber}" />
