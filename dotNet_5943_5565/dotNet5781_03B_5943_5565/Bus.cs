@@ -323,6 +323,7 @@ namespace dotNet5781_03B_5943_5565
                 untilReady = String.Format("{0}:0{1}", minutes, seconds);
             }
         }
+      
         public void updateState(DateTime userTime)
         {
             if (checkTime(1) == false || mileageSinceTreatment > 20000)

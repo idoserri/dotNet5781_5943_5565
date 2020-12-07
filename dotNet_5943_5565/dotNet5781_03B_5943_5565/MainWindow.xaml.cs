@@ -77,6 +77,10 @@ namespace dotNet5781_03B_5943_5565
                 drivingWindow.ShowDialog();
                 lvBusses.Items.Refresh();
             }
+            else
+            {
+                MessageBox.Show(" this bus is unable to take the drive " ,"ERROR", MessageBoxButton.OK , MessageBoxImage.Error);
+            }
         }
 
         private void bFuel_Click(object sender, RoutedEventArgs e)
@@ -85,6 +89,8 @@ namespace dotNet5781_03B_5943_5565
             if (v.State == State.ready)
             {
                 v.State = State.fueling;
+                v.StateTimer.AddSeconds(12);
+              // need to add 12 seconds to timer
             }
         }
 
@@ -97,7 +103,7 @@ namespace dotNet5781_03B_5943_5565
                 if (obj.GetType() == typeof(ListViewItem))
                 {
                     Bus v = (sender as ListView).SelectedItem as Bus;
-                    BusPresentationWindow newWindow = new BusPresentationWindow( v);
+                   BusPresentationWindow newWindow = new BusPresentationWindow(v);
                     newWindow.ShowDialog();
                 }
                 obj = VisualTreeHelper.GetParent(obj);
