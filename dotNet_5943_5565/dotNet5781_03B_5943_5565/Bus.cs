@@ -54,6 +54,9 @@ namespace dotNet5781_03B_5943_5565
             lastTreatment = _lastTreatment;
             mileageSinceTreatment = _mileageSinceTreatment;
             state = _state;
+            if (!this.checkTime() || this.mileageSinceTreatment > 20000 || fuelKM <= 0)
+                state = State.unavailable;
+
         }
 
         public DateTime StartDate
@@ -326,7 +329,7 @@ namespace dotNet5781_03B_5943_5565
       
         public void updateState(DateTime userTime)
         {
-            if (checkTime(1) == false || mileageSinceTreatment > 20000)
+            if (checkTime() == false || mileageSinceTreatment > 20000)
             {
                 changeState(State.unavailable);
             }
@@ -364,7 +367,7 @@ namespace dotNet5781_03B_5943_5565
                     break;
             }
         }
-        public bool checkTime(int newDistance)
+        public bool checkTime()
         {
             if (DateTime.Now.AddDays(-365) > lastTreatment)
             {

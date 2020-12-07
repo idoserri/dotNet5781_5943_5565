@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace dotNet5781_03B_5943_5565
 {
     /// <summary>
@@ -34,7 +35,7 @@ namespace dotNet5781_03B_5943_5565
             for (int i = 0; i < 10; i++)
             {
                 DateTime temp1 = new DateTime(rand.Next(2000, 2021), rand.Next(1, 13), (rand.Next(1, 29))); // random dates
-                DateTime temp2 = new DateTime(rand.Next(2019, 2021), rand.Next(1, 13), (rand.Next(1, 29)));
+                DateTime temp2 = new DateTime(rand.Next(2010, 2021), rand.Next(1, 13), (rand.Next(1, 29)));
                 Bus toAdd = new Bus(rand.Next(0, 99999999), temp1, rand.Next(1000, 10000), rand.Next(0, 1201), temp2, rand.Next(0, 20000)); // random bus
                 database.Add(toAdd);
             }
@@ -43,6 +44,8 @@ namespace dotNet5781_03B_5943_5565
             database[1].MileageSinceTreatment = 19990;  // close to treatment by 10 KM
             database[1].Mileage += database[1].MileageSinceTreatment;
             database[2].FuelKM = 1;        // close to fueling
+            database.Sort(delegate (Bus c1, Bus c2) { return c1.MileageSinceTreatment.CompareTo(c2.MileageSinceTreatment); });
+            database.Reverse();
         }
         public MainWindow()
         {
@@ -65,12 +68,6 @@ namespace dotNet5781_03B_5943_5565
         private void bDrive_Click(object sender, RoutedEventArgs e)
         {
             Bus v = (sender as Button).DataContext as Bus;
-            if (v.State == State.unavailable)
-                MessageBox.Show("The selected bus is unavailable for the ride. Please choose a different one.",
-                    "Bus is unavailable",
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Stop,
-                    MessageBoxResult.OK);
             if (v.State == State.ready)
             {
                 DrivingWindow drivingWindow = new DrivingWindow(ref v,  App.Current.MainWindow as MainWindow);
@@ -78,9 +75,11 @@ namespace dotNet5781_03B_5943_5565
                 lvBusses.Items.Refresh();
             }
             else
-            {
-                MessageBox.Show(" this bus is unable to take the drive " ,"ERROR", MessageBoxButton.OK , MessageBoxImage.Error);
-            }
+                MessageBox.Show("The selected bus is unavailable for the ride. Please choose a different one.",
+    "Bus is unavailable",
+    MessageBoxButton.OK,
+    MessageBoxImage.Stop,
+    MessageBoxResult.OK);
         }
 
         private void bFuel_Click(object sender, RoutedEventArgs e)
@@ -88,10 +87,16 @@ namespace dotNet5781_03B_5943_5565
             Bus v = (sender as Button).DataContext as Bus;
             if (v.State == State.ready)
             {
-                v.State = State.fueling;
-                v.StateTimer.AddSeconds(12);
-              // need to add 12 seconds to timer
+                v.changeState(State.fueling);
+                v.FuelKM = 1200;
             }
+            else
+                MessageBox.Show("The selected bus is unavailable to refuel.",
+    "Bus is unavailable",
+    MessageBoxButton.OK,
+    MessageBoxImage.Stop,
+    MessageBoxResult.OK);
+
         }
 
         private void lvBusses_MouseDoubleClick(object sender, MouseButtonEventArgs e)

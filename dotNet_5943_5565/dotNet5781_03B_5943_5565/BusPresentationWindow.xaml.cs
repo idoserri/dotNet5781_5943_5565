@@ -38,13 +38,13 @@ namespace dotNet5781_03B_5943_5565
 
         private void Fuel_btn_Click(object sender, RoutedEventArgs e)
         {
-           
-                v.FuelKM = 1200;
-                v.changeState(dotNet5781_03B_5943_5565.State.fueling);
-                v.StateTimer.AddSeconds(12);
-                FuelKM.Content = " FuelKM:         12000 ";
-                State.Content = " state:            fueling ";
-                InitializeComponent();
+            v.FuelKM = 1200;
+            v.changeState(dotNet5781_03B_5943_5565.State.fueling);
+            v.StateTimer.AddSeconds(12);
+            FuelKM.Content = " FuelKM:         12000 ";
+            State.Content = " state:            fueling ";
+            InitializeComponent();
+
                 // this.Close();
                
             new Thread(() =>
