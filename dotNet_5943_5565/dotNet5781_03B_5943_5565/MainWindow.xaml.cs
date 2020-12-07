@@ -65,6 +65,12 @@ namespace dotNet5781_03B_5943_5565
         private void bDrive_Click(object sender, RoutedEventArgs e)
         {
             Bus v = (sender as Button).DataContext as Bus;
+            if (v.State == State.unavailable)
+                MessageBox.Show("The selected bus is unavailable for the ride. Please choose a different one.",
+                    "Bus is unavailable",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Stop,
+                    MessageBoxResult.OK);
             if (v.State == State.ready)
             {
                 DrivingWindow drivingWindow = new DrivingWindow(ref v,  App.Current.MainWindow as MainWindow);

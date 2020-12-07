@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace dotNet5781_03B_5943_5565
 {
     public enum State
-    { ready, driving, fueling, treatment, dangerous}
+    { ready, driving, fueling, treatment, unavailable}
     public class Bus
     {
         private int licenseNumber;
@@ -327,11 +327,11 @@ namespace dotNet5781_03B_5943_5565
         {
             if (checkTime(1) == false || mileageSinceTreatment > 20000)
             {
-                changeState(State.dangerous);
+                changeState(State.unavailable);
             }
             else
             {
-                if ((userTime - StateTimer).TotalSeconds > 0) ;
+                if ((userTime - StateTimer).TotalSeconds > 0)
                     changeState(State.ready);
             }
         }
@@ -356,8 +356,8 @@ namespace dotNet5781_03B_5943_5565
                     StateTimer = DateTime.Now;
                     StateTimer = DateTime.Now.AddSeconds(144);
                     break;
-                case State.dangerous:
-                    state = State.dangerous;
+                case State.unavailable:
+                    state = State.unavailable;
                     break;
                 default:
                     break;
