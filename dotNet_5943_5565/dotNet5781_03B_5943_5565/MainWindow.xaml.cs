@@ -50,7 +50,7 @@ namespace dotNet5781_03B_5943_5565
             InitializeComponent();
             lvBusses.ItemsSource = database;
             timer2 = new DispatcherTimer();
-            timer2.Interval = TimeSpan.FromSeconds(3);
+            timer2.Interval = TimeSpan.FromSeconds(1);
             timer2.Tick += Timer2_Tick;
             timer2.Start();
         }
@@ -67,7 +67,7 @@ namespace dotNet5781_03B_5943_5565
             Bus v = (sender as Button).DataContext as Bus;
             if (v.State == State.ready)
             {
-                DrivingWindow drivingWindow = new DrivingWindow( v,  App.Current.MainWindow as MainWindow);
+                DrivingWindow drivingWindow = new DrivingWindow(ref v,  App.Current.MainWindow as MainWindow);
                 drivingWindow.ShowDialog();
                 lvBusses.Items.Refresh();
             }

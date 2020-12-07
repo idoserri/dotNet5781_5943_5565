@@ -39,7 +39,8 @@ namespace dotNet5781_03B_5943_5565
             set => lastTreatment = value;
         }
 
-        public State State{get; set;}
+        public State State{get=>state;
+            set=>state=value;}
 
         public Bus(int license_Number, DateTime start_Date, int _Mileage,
             int starting_Fuel_KM, DateTime _lastTreatment, int _mileageSinceTreatment, State _state = State.ready)
@@ -331,7 +332,7 @@ namespace dotNet5781_03B_5943_5565
             }
             else
             {
-                if ((userTime - StateTimer).TotalSeconds * -1 < 0)
+                if ((userTime - StateTimer).TotalSeconds > 0) ;
                     changeState(State.ready);
             }
         }
