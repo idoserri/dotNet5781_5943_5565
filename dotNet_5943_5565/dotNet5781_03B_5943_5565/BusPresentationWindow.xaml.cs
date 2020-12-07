@@ -40,7 +40,8 @@ namespace dotNet5781_03B_5943_5565
         {
             v.FuelKM = 1200;
             v.changeState(dotNet5781_03B_5943_5565.State.fueling);
-            v.StateTimer.AddSeconds(12);
+            //we don't need all of this, works just fine without it
+            /*v.StateTimer.AddSeconds(12);
             FuelKM.Content = " FuelKM:         12000 ";
             State.Content = " state:            fueling ";
             InitializeComponent();
@@ -58,7 +59,7 @@ namespace dotNet5781_03B_5943_5565
             }).Start();
 
             State.Content = " state:       just fueled";
-
+            */ 
 
         }
 

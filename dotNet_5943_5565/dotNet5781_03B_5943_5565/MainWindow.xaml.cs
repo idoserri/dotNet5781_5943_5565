@@ -91,7 +91,7 @@ namespace dotNet5781_03B_5943_5565
                 v.FuelKM = 1200;
             }
             else
-                MessageBox.Show("The selected bus is unavailable to refuel.",
+                MessageBox.Show("The selected bus is unavailable to refuel, it is either driving or needs maintenance.",
     "Bus is unavailable",
     MessageBoxButton.OK,
     MessageBoxImage.Stop,
