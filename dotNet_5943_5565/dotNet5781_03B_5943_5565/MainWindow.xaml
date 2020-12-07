@@ -30,9 +30,9 @@
                     <GridViewColumn Header="Liscense Number" Width="200" DisplayMemberBinding="{Binding LicenseNumber}" />
                     <GridViewColumn Header="KM" Width="140" DisplayMemberBinding="{Binding MileageSinceTreatment}" />
                     <GridViewColumn Header="State" Width="150" DisplayMemberBinding="{Binding State}" />
+                    <GridViewColumn Header="Time" Width="50" DisplayMemberBinding="{Binding UntilReady}"/>
                     <GridViewColumn Header="Drive" Width="Auto" CellTemplate="{StaticResource DriveDataTemplate}"/>
                     <GridViewColumn Header="Fuel" Width="Auto" CellTemplate="{StaticResource FuelDataTemplate}"/>
-
                 </GridView>
             </ListView.View>
 

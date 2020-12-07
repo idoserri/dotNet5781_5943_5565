@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace dotNet5781_03B_5943_5565
 {
     public enum State
-    { ready, driving, fueling, treatment }
+    { ready, driving, fueling, treatment, dangerous}
     public class Bus
     {
         private int licenseNumber;
@@ -19,12 +19,19 @@ namespace dotNet5781_03B_5943_5565
         private int fuelKM;
         private State state;
         public static Random r = new Random(DateTime.Now.Millisecond);
+        private DateTime stateTimer;
+        private string untilReady;
 
         public Bus() { }
         public int MileageSinceTreatment
         {
             get => mileageSinceTreatment;
             set => mileageSinceTreatment = value;
+        }
+        public DateTime StateTimer
+        {
+            get { return stateTimer; }
+            set { stateTimer = value; }
         }
         public DateTime LastTreatment
         {
@@ -65,6 +72,11 @@ namespace dotNet5781_03B_5943_5565
             get => fuelKM;
             set => fuelKM = value;
 
+        }
+        public string UntilReady
+        {
+            get { return untilReady; }
+            set { untilReady = value; }
         }
 
         public string LicenseNumber
@@ -286,5 +298,91 @@ namespace dotNet5781_03B_5943_5565
             
             return toReturn;
         }*/
+        public void timeUntillReady(DateTime now)
+        {
+            int seconds;
+            int minutes = 0;
+            int totalseconds = (int)(now - stateTimer).TotalSeconds * -1;
+            if (totalseconds < 0)
+            {
+                seconds = 0;
+            }
+            else
+            {
+                minutes = totalseconds / 60;
+                seconds = totalseconds % 60;
+            }
+            if (seconds > 9)
+            {
+
+                untilReady = String.Format("{0}:{1}", minutes, seconds);
+            }
+            else
+            {
+                untilReady = String.Format("{0}:0{1}", minutes, seconds);
+            }
+        }
+        public void updateState(DateTime userTime)
+        {
+            if (checkTime(1) == false || mileageSinceTreatment > 20000)
+            {
+                changeState(State.dangerous);
+            }
+            else
+            {
+                if ((userTime - StateTimer).TotalSeconds * -1 < 0)
+                    changeState(State.ready);
+            }
+        }
+        public void changeState(State newState, int distance)
+        {
+            state = State.driving;
+            StateTimer = DateTime.Now.AddSeconds((distance / r.Next(20, 50)) * 6);
+        }
+        public void changeState(State newState)
+        {
+            switch (newState)
+            {
+                case State.ready:
+                    state = State.ready;
+                    break;
+                case State.fueling:
+                    state = State.fueling;
+                    StateTimer = DateTime.Now.AddSeconds(12);
+                    break;
+                case State.treatment:
+                    state = State.treatment;
+                    StateTimer = DateTime.Now;
+                    StateTimer = DateTime.Now.AddSeconds(144);
+                    break;
+                case State.dangerous:
+                    state = State.dangerous;
+                    break;
+                default:
+                    break;
+            }
+        }
+        public bool checkTime(int newDistance)
+        {
+            if (DateTime.Now.AddDays(-365) > lastTreatment)
+            {
+                return false;
+            }
+            return true;
+        }
+        public bool checkDistance(int newDistance)
+        {
+            if ((newDistance + mileageSinceTreatment) > 20000)
+            {
+                return false;
+            }
+            return true;
+        }
+        public void addDistance(int newDistance)
+        {
+            mileageSinceTreatment += newDistance;
+            mileage += newDistance;
+            fuelKM -= newDistance;
+        }
     }
 }
