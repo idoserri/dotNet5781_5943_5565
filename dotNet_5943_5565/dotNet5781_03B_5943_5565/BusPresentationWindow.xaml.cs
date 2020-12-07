@@ -27,8 +27,8 @@ namespace dotNet5781_03B_5943_5565
             v = _v;
             InitializeComponent();
             liscenceNum.Content +=  v.LicenseNumber.ToString();
-            lastTreatment.Content += v.LastTreatment.ToString().Substring(0,10);
-            startDate.Content += v.StartDate.ToString().Substring(0, 10);
+            lastTreatment.Content += v.LastTreatment.ToString().Substring(0,9);
+            startDate.Content += v.StartDate.ToString().Substring(0, 9);
             mileage.Content += v.Mileage.ToString();
             mileageSince.Content += v.MileageSinceTreatment.ToString();
             FuelKM.Content += v.FuelKM.ToString();
@@ -40,13 +40,13 @@ namespace dotNet5781_03B_5943_5565
         {
             v.FuelKM = 1200;
             v.changeState(dotNet5781_03B_5943_5565.State.fueling);
-            v.StateTimer.AddSeconds(12);
+            //v.StateTimer.AddSeconds(12);
             FuelKM.Content = " FuelKM:         12000 ";
             State.Content = " state:            fueling ";
             InitializeComponent();
+            State.Content += ",  just fueled";
 
-               
-            new Thread(() =>
+            /* Thread(() =>
             {
                 while ((int)(DateTime.Now - v.StateTimer).TotalSeconds < 0)
                     v.State = dotNet5781_03B_5943_5565.State.fueling;
@@ -55,7 +55,7 @@ namespace dotNet5781_03B_5943_5565
                 v.State = dotNet5781_03B_5943_5565.State.ready;
             }).Start();
 
-            State.Content += ",  just fueled";
+            State.Content += ",  just fueled";*/
 
 
         }
@@ -65,19 +65,19 @@ namespace dotNet5781_03B_5943_5565
             v.LastTreatment = DateTime.Now;
             v.MileageSinceTreatment = 0;
             v.changeState(dotNet5781_03B_5943_5565.State.treatment);
-            v.StateTimer.AddSeconds(144);
+           // v.StateTimer.AddSeconds(144);
             lastTreatment.Content = "Last treatment date:     " + v.LastTreatment.ToString().Substring(0, 10);
             mileageSince.Content ="Mileage since last treatment:  "+ v.MileageSinceTreatment.ToString();
             InitializeComponent();
            
-            new Thread(() =>
+            /*new Thread(() =>
             {
                 while ((int)(DateTime.Now - v.StateTimer).TotalSeconds < 0)
                     v.State = dotNet5781_03B_5943_5565.State.treatment;
 
 
                 v.State = dotNet5781_03B_5943_5565.State.ready;
-            }).Start();
+            }).Start();*/
 
             State.Content += " , just repaired";
 

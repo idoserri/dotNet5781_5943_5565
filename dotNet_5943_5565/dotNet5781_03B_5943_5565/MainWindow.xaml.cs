@@ -35,7 +35,7 @@ namespace dotNet5781_03B_5943_5565
             for (int i = 0; i < 10; i++)
             {
                 DateTime temp1 = new DateTime(rand.Next(2000, 2021), rand.Next(1, 13), (rand.Next(1, 29))); // random dates
-                DateTime temp2 = new DateTime(rand.Next(2010, 2021), rand.Next(1, 13), (rand.Next(1, 29)));
+                DateTime temp2 = new DateTime(rand.Next(2018, 2021), rand.Next(1, 13), (rand.Next(1, 29)));
                 Bus toAdd = new Bus(rand.Next(0, 99999999), temp1, rand.Next(1000, 10000), rand.Next(0, 1201), temp2, rand.Next(0, 20000)); // random bus
                 database.Add(toAdd);
             }
