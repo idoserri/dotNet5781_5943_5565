@@ -140,5 +140,8 @@
   <ItemGroup>
     <Resource Include="add2.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="redbus.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

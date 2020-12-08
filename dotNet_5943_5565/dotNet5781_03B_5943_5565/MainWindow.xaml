@@ -83,5 +83,6 @@
             </ListView.View>
         </ListView>
         <Label x:Name="label" Content="Add Bus:" HorizontalAlignment="Left" Height="25" Margin="712,353,0,0" VerticalAlignment="Top" Width="70" RenderTransformOrigin="0.548,-0.453" FontFamily="Segoe UI Black"/>
+        <Image x:Name="image" HorizontalAlignment="Left" Height="134" Margin="47,443,0,0" VerticalAlignment="Top" Width="220" Source="redbus.png"/>
     </Grid>
 </Window>

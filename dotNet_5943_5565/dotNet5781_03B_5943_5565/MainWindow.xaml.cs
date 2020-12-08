@@ -14,7 +14,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-
 namespace dotNet5781_03B_5943_5565
 {
     /// <summary>
@@ -85,18 +84,22 @@ namespace dotNet5781_03B_5943_5565
         private void bFuel_Click(object sender, RoutedEventArgs e)
         {
             Bus v = (sender as Button).DataContext as Bus;
-            if (v.State == State.Ready)
-            {
-                v.changeState(State.Fueling);
-                v.FuelKM = 1200;
-            }
+            if (v.FuelKM >= 1200)
+                MessageBox.Show("This Bus's fuel tank is already full", "Bus is already fueled", MessageBoxButton.OK, MessageBoxImage.Information);
             else
-                MessageBox.Show("The selected bus is unavailable to refuel, it is either driving or needs maintenance.",
-    "Bus is unavailable",
-    MessageBoxButton.OK,
-    MessageBoxImage.Stop,
-    MessageBoxResult.OK);
-
+            {
+                if (v.State == State.Ready)
+                {
+                    v.changeState(State.Fueling);
+                    v.FuelKM = 1200;
+                }
+                else
+                    MessageBox.Show("The selected bus is unavailable to refuel, it is either driving or needs maintenance.",
+        "Bus is unavailable",
+        MessageBoxButton.OK,
+        MessageBoxImage.Stop,
+        MessageBoxResult.OK);
+            }
         }
 
         private void lvBusses_MouseDoubleClick(object sender, MouseButtonEventArgs e)
