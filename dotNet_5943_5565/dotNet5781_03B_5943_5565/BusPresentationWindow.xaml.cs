@@ -71,7 +71,6 @@ MessageBoxResult.OK);
             InitializeComponent();
             State.Content += " , just repaired";
 
-
         }
     }
 }

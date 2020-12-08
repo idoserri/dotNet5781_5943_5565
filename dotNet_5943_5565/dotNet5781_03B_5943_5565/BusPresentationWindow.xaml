@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:dotNet5781_03B_5943_5565"
         mc:Ignorable="d"
-        Title="BusPresentationWindow" Height="500" Width="400">
+        Title="Bus" Height="500" Width="400" Icon="Bus-32.png">
     <Grid>
 
         <Grid.ColumnDefinitions>
@@ -13,13 +13,13 @@
             <ColumnDefinition Width="auto" />
         </Grid.ColumnDefinitions>
         <StackPanel Orientation="Vertical" Grid.Column="1" Margin="0.333,0,-363.667,-0.333">
-            <Label x:Name="liscenceNum" Content="Liscence number:            " HorizontalAlignment="Center"  VerticalAlignment="Top" Width="252" Margin="0,0,112.667,0"/>
-            <Label x:Name="lastTreatment" Content="Last Treatment Date:        " HorizontalAlignment="Center"  VerticalAlignment="Top" Width="254" Margin="1,0,111,0"/>
-            <Label x:Name="startDate" Content="Start Date:               " HorizontalAlignment="Center"  VerticalAlignment="Top" Width="235" Margin="1,0,130.667,0" />
-            <Label x:Name="mileage" Content="Mileage:                 " HorizontalAlignment="Center"  VerticalAlignment="Top" Width="236" Margin="2,0,129.333,0"/>
-            <Label x:Name="mileageSince" Content="Mileage Since Treatment:       " HorizontalAlignment="Center" VerticalAlignment="Top" Width="257" Margin="0,0,111,0"/>
-            <Label x:Name="FuelKM" Content="Fuel Left:                  " HorizontalAlignment="Center"  VerticalAlignment="Top" Width="211" Margin="3,0,156,0"  />
-            <Label x:Name="State" Content="state:                       " HorizontalAlignment="Center" VerticalAlignment="Top" Width="259" Margin="2,0,109,0" RenderTransformOrigin="0.5,0.5">
+            <Label x:Name="liscenceNum" Content="Liscence number:            " HorizontalAlignment="Center"  VerticalAlignment="Top" Width="252" Margin="0,0,112.667,0" FontFamily="Segoe UI Black"/>
+            <Label x:Name="lastTreatment" Content="Last Treatment Date:        " HorizontalAlignment="Center"  VerticalAlignment="Top" Width="254" Margin="1,0,111,0" FontFamily="Segoe UI Black"/>
+            <Label x:Name="startDate" Content="Start Date:               " HorizontalAlignment="Center"  VerticalAlignment="Top" Width="235" Margin="1,0,130.667,0" FontFamily="Segoe UI Black" />
+            <Label x:Name="mileage" Content="Mileage:                 " HorizontalAlignment="Center"  VerticalAlignment="Top" Width="236" Margin="2,0,129.333,0" FontFamily="Segoe UI Black"/>
+            <Label x:Name="mileageSince" Content="Mileage Since Treatment:       " HorizontalAlignment="Center" VerticalAlignment="Top" Width="257" Margin="0,0,111,0" FontFamily="Segoe UI Black"/>
+            <Label x:Name="FuelKM" Content="Fuel Left:                  " HorizontalAlignment="Center"  VerticalAlignment="Top" Width="211" Margin="3,0,156,0" FontFamily="Segoe UI Black"  />
+            <Label x:Name="State" Content="state:                       " HorizontalAlignment="Center" VerticalAlignment="Top" Width="259" Margin="2,0,109,0" RenderTransformOrigin="0.5,0.5" FontFamily="Segoe UI Black">
                 <Label.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -29,8 +29,8 @@
                     </TransformGroup>
                 </Label.RenderTransform>
             </Label>
-            <Button x:Name="Fuel_btn" Content="Fuel" Height="65" Click="Fuel_btn_Click" />
-            <Button x:Name="Repair_btn" Content="Repair" Height="65" Click="Repair_btn_Click"/>
+            <Button x:Name="Fuel_btn" Content="Fuel" Height="65" Click="Fuel_btn_Click" FontFamily="Segoe UI Black" />
+            <Button x:Name="Repair_btn" Content="Repair" Height="65" Click="Repair_btn_Click" FontFamily="Segoe UI Black"/>
         </StackPanel>
     </Grid>
 </Window>

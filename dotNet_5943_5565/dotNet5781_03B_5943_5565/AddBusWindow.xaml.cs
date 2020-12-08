@@ -30,10 +30,28 @@ namespace dotNet5781_03B_5943_5565
         private void enterBusButton_Click(object sender, RoutedEventArgs e)
         {
             DateTime temp = DateTime.Now;
-            int lnum = Int32.Parse(enterLiscenceTextBox.Text);
-            Bus addedBus = new Bus(lnum, temp, 0, 1200, temp, 0, State.Ready);
-            database.Add(addedBus);
-            this.Close();
+            int lnum;
+            Int32.TryParse(enterLiscenceTextBox.Text, out lnum);
+            if (lnum > 999999999)
+                MessageBox.Show("The liscence number that was entered was out of range",
+    "Liscence number is invalid",
+    MessageBoxButton.OK,
+    MessageBoxImage.Stop,
+    MessageBoxResult.OK);
+            else
+            {
+                Bus addedBus = new Bus(lnum, temp, 0, 1200, temp, 0, State.Ready);
+                database.Add(addedBus);
+                this.Close();
+            }
+        }
+
+        private void Grid_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                enterBusButton_Click(sender, e);
+            }
         }
     }
 }
