@@ -63,14 +63,22 @@ MessageBoxResult.OK);
 
         private void Repair_btn_Click(object sender, RoutedEventArgs e)
         {
-            v.LastTreatment = DateTime.Now;
-            v.MileageSinceTreatment = 0;
-            v.changeState(dotNet5781_03B_5943_5565.State.Treatment);
-            lastTreatment.Content = "Last treatment date:     " + v.LastTreatment.ToString().Substring(0, 10);
-            mileageSince.Content ="Mileage since last treatment:  "+ v.MileageSinceTreatment.ToString();
-            InitializeComponent();
-            State.Content += " , just repaired";
-
+            if (v.State == dotNet5781_03B_5943_5565.State.Fueling)
+                MessageBox.Show("The selected bus is currently fueling. Please wait until completion.",
+"Bus is currently fueling",
+MessageBoxButton.OK,
+MessageBoxImage.Stop,
+MessageBoxResult.OK);
+            else
+            {
+                v.LastTreatment = DateTime.Now;
+                v.MileageSinceTreatment = 0;
+                v.changeState(dotNet5781_03B_5943_5565.State.Treatment);
+                lastTreatment.Content = "Last treatment date:     " + v.LastTreatment.ToString().Substring(0, 10);
+                mileageSince.Content = "Mileage since last treatment:  " + v.MileageSinceTreatment.ToString();
+                InitializeComponent();
+                State.Content += " , just repaired";
+            }
         }
     }
 }
