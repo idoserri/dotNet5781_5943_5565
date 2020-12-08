@@ -9,6 +9,7 @@
     <Grid KeyDown="Grid_KeyDown">
         <TextBox x:Name="tbEnterDrive" HorizontalAlignment="Left" Height="21" Margin="125,141,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="151"/>
         <Label x:Name="lEnterDrive" Content="Enter KM to Drive:" HorizontalAlignment="Left" Height="36" Margin="125,100,0,0" VerticalAlignment="Top" Width="114"/>
+        <Button x:Name="btnDrive" Content="Drive" HorizontalAlignment="Left" Height="45" Margin="125,204,0,0" VerticalAlignment="Top" Width="151" Click="btnDrive_Click"/>
 
     </Grid>
 </Window>

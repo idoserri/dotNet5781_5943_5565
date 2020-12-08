@@ -31,7 +31,7 @@ namespace dotNet5781_03B_5943_5565
         {
             DateTime temp = DateTime.Now;
             int lnum = Int32.Parse(enterLiscenceTextBox.Text);
-            Bus addedBus = new Bus(lnum, temp, 0, 1200, temp, 0, State.ready);
+            Bus addedBus = new Bus(lnum, temp, 0, 1200, temp, 0, State.Ready);
             database.Add(addedBus);
             this.Close();
         }

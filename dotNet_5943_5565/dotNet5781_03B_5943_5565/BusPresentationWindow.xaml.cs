@@ -38,47 +38,37 @@ namespace dotNet5781_03B_5943_5565
 
         private void Fuel_btn_Click(object sender, RoutedEventArgs e)
         {
-            v.FuelKM = 1200;
-            v.changeState(dotNet5781_03B_5943_5565.State.fueling);
-            //v.StateTimer.AddSeconds(12);
-            FuelKM.Content = " FuelKM:         12000 ";
-            State.Content = " state:            fueling ";
-            InitializeComponent();
-            State.Content += ",  just fueled";
-
-            /* Thread(() =>
+            if (v.State == dotNet5781_03B_5943_5565.State.Treatment)
+                MessageBox.Show("The selected bus is under treatment. Please wait until completion.",
+"Bus is currently under treatment",
+MessageBoxButton.OK,
+MessageBoxImage.Stop,
+MessageBoxResult.OK);
+            else if(v.State == dotNet5781_03B_5943_5565.State.Driving)
+                MessageBox.Show("The selected bus is currently driving. Please wait until completion of trip.",
+"Bus is currently driving",
+MessageBoxButton.OK,
+MessageBoxImage.Stop,
+MessageBoxResult.OK);
+            else
             {
-                while ((int)(DateTime.Now - v.StateTimer).TotalSeconds < 0)
-                    v.State = dotNet5781_03B_5943_5565.State.fueling;
-                      
-                 
-                v.State = dotNet5781_03B_5943_5565.State.ready;
-            }).Start();
-
-            State.Content += ",  just fueled";*/
-
-
+                v.FuelKM = 1200;
+                v.changeState(dotNet5781_03B_5943_5565.State.Fueling);
+                FuelKM.Content = " FuelKM:         12000 ";
+                State.Content = " state:            fueling ";
+                InitializeComponent();
+                State.Content += ",  just fueled";
+            }
         }
 
         private void Repair_btn_Click(object sender, RoutedEventArgs e)
         {
             v.LastTreatment = DateTime.Now;
             v.MileageSinceTreatment = 0;
-            v.changeState(dotNet5781_03B_5943_5565.State.treatment);
-           // v.StateTimer.AddSeconds(144);
+            v.changeState(dotNet5781_03B_5943_5565.State.Treatment);
             lastTreatment.Content = "Last treatment date:     " + v.LastTreatment.ToString().Substring(0, 10);
             mileageSince.Content ="Mileage since last treatment:  "+ v.MileageSinceTreatment.ToString();
             InitializeComponent();
-           
-            /*new Thread(() =>
-            {
-                while ((int)(DateTime.Now - v.StateTimer).TotalSeconds < 0)
-                    v.State = dotNet5781_03B_5943_5565.State.treatment;
-
-
-                v.State = dotNet5781_03B_5943_5565.State.ready;
-            }).Start();*/
-
             State.Content += " , just repaired";
 
 

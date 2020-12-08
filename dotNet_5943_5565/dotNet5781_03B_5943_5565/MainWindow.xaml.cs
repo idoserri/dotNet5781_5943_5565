@@ -68,7 +68,7 @@ namespace dotNet5781_03B_5943_5565
         private void bDrive_Click(object sender, RoutedEventArgs e)
         {
             Bus v = (sender as Button).DataContext as Bus;
-            if (v.State == State.ready)
+            if (v.State == State.Ready)
             {
                 DrivingWindow drivingWindow = new DrivingWindow(ref v,  App.Current.MainWindow as MainWindow);
                 drivingWindow.ShowDialog();
@@ -85,9 +85,9 @@ namespace dotNet5781_03B_5943_5565
         private void bFuel_Click(object sender, RoutedEventArgs e)
         {
             Bus v = (sender as Button).DataContext as Bus;
-            if (v.State == State.ready)
+            if (v.State == State.Ready)
             {
-                v.changeState(State.fueling);
+                v.changeState(State.Fueling);
                 v.FuelKM = 1200;
             }
             else
@@ -139,6 +139,5 @@ namespace dotNet5781_03B_5943_5565
 
             lvBusses.Items.Refresh();
         }
-
     }
 }

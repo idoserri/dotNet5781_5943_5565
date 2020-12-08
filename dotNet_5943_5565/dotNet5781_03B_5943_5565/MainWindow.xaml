@@ -5,42 +5,67 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:dotNet5781_03B_5943_5565"
         mc:Ignorable="d"
-        Title="I'm Bussing Here" Height="600" Width="1000" Icon="bus-32.png">
+        Title="I'm Bussing Here" Height="649.333" Width="1010.667" Icon="bus-32.png">
     <Window.Resources>
         <DataTemplate x:Key="DriveDataTemplate" DataType="local:Bus">
-            <Button Name="bDrive" Content="" Height="30" Width="30" Click="bDrive_Click" BorderBrush="{x:Null}" Foreground="Black">
+            <Button Name="bDrive" Height="30" Width="30" Click="bDrive_Click" BorderBrush="{x:Null}" Foreground="Black" >
+                <Button.Content>
+                    <Image Source="steeringImag3.jpg" >
+                        <Image.OpacityMask>
+                            <ImageBrush ImageSource="steeringImag3.jpg"/>
+                        </Image.OpacityMask>
+                    </Image>
+                </Button.Content>
                 <Button.Background>
                     <ImageBrush ImageSource="steeringImag3.jpg" />
                 </Button.Background>
             </Button>
         </DataTemplate>
         <DataTemplate x:Key="FuelDataTemplate" DataType="local:Bus">
-            <Button Name="bFuel" Content="" Height="30" Width="30" Click="bFuel_Click" BorderBrush="{x:Null}">
+            <Button Name="bFuel" Height="30" Width="30" Click="bFuel_Click" BorderBrush="{x:Null}">
+                <Button.Content>
+                    <Image Source="fuelImag.png" >
+                        <Image.OpacityMask>
+                            <ImageBrush ImageSource="fuelImag.png"/>
+                        </Image.OpacityMask>
+                    </Image>
+                </Button.Content>
                 <Button.Background>
                     <ImageBrush ImageSource="fuelImag.png"/>
                 </Button.Background>
             </Button>
         </DataTemplate>
     </Window.Resources>
-    <Grid>
-        <Button x:Name="addBusButton" Content="Add Bus"  VerticalAlignment="Center" Height="50" Width="300" Click="addBusButton_Click" Margin="341,498,352.333,22.667"/>
-        <ListView x:Name="lvBusses" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="111,87,89.333,0" MouseDoubleClick="lvBusses_MouseDoubleClick" >
+    <Grid Margin="0,0,-36,32.667">
+        <Button x:Name="addBusButton" Click="addBusButton_Click" Margin="697,372,243,138" FontFamily="Segoe UI Black" FontWeight="Bold" Height="70" Width="70" BorderBrush="{x:Null}" >
+            <Button.Content>
+                <Image Source="add2.png" >
+                    <Image.OpacityMask>
+                        <ImageBrush ImageSource="add2.png" Stretch="Uniform"/>
+                    </Image.OpacityMask>
+                </Image>
+            </Button.Content>
+            <Button.Background>
+                <ImageBrush ImageSource="add2.png" Stretch="Uniform"/>
+            </Button.Background>
+        </Button>
+        <ListView x:Name="lvBusses" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="28,63,369,0" MouseDoubleClick="lvBusses_MouseDoubleClick" FontFamily="Segoe UI Black" FontWeight="Bold" Height="375" >
             <ListView.ItemContainerStyle>
                 <Style TargetType="{x:Type ListViewItem}">
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding State}" Value="ready">
+                        <DataTrigger Binding="{Binding State}" Value="Ready">
                             <Setter Property="Background" Value="LightSeaGreen"/>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding State}" Value="unavailable">
+                        <DataTrigger Binding="{Binding State}" Value="Unavailable">
                             <Setter Property="Background" Value="PaleVioletRed"/>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding State}" Value="driving">
+                        <DataTrigger Binding="{Binding State}" Value="Driving">
                             <Setter Property="Background" Value="LightYellow"/>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding State}" Value="fueling">
+                        <DataTrigger Binding="{Binding State}" Value="Fueling">
                             <Setter Property="Background" Value="LightYellow"/>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding State}" Value="treatment">
+                        <DataTrigger Binding="{Binding State}" Value="Treatment">
                             <Setter Property="Background" Value="LightYellow"/>
                         </DataTrigger>
                     </Style.Triggers>
@@ -48,14 +73,15 @@
             </ListView.ItemContainerStyle>
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Liscense Number" Width="200" DisplayMemberBinding="{Binding LicenseNumber}" />
-                    <GridViewColumn Header="KM" Width="140" DisplayMemberBinding="{Binding MileageSinceTreatment}" />
-                    <GridViewColumn Header="State" Width="150" DisplayMemberBinding="{Binding State}" />
+                    <GridViewColumn Header="Liscense Number" Width="150" DisplayMemberBinding="{Binding LicenseNumber}"/>
+                    <GridViewColumn Header="KM" Width="120" DisplayMemberBinding="{Binding MileageSinceTreatment}" />
+                    <GridViewColumn Header="State" Width="100" DisplayMemberBinding="{Binding State}" />
                     <GridViewColumn Header="Time" Width="50" DisplayMemberBinding="{Binding UntilReady}"/>
                     <GridViewColumn Header="Drive" Width="Auto" CellTemplate="{StaticResource DriveDataTemplate}"/>
                     <GridViewColumn Header="Fuel" Width="Auto" CellTemplate="{StaticResource FuelDataTemplate}"/>
                 </GridView>
             </ListView.View>
         </ListView>
+        <Label x:Name="label" Content="Add Bus:" HorizontalAlignment="Left" Height="25" Margin="712,353,0,0" VerticalAlignment="Top" Width="70" RenderTransformOrigin="0.548,-0.453" FontFamily="Segoe UI Black"/>
     </Grid>
 </Window>

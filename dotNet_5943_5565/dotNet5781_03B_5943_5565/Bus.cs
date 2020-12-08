@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace dotNet5781_03B_5943_5565
 {
     public enum State
-    { ready, driving, fueling, treatment, unavailable}
+    { Ready, Driving, Fueling, Treatment, Unavailable}
     public class Bus
     {
         private int licenseNumber;
@@ -43,7 +43,7 @@ namespace dotNet5781_03B_5943_5565
             set=>state=value;}
 
         public Bus(int license_Number, DateTime start_Date, int _Mileage,
-            int starting_Fuel_KM, DateTime _lastTreatment, int _mileageSinceTreatment, State _state = State.ready)
+            int starting_Fuel_KM, DateTime _lastTreatment, int _mileageSinceTreatment, State _state = State.Ready)
         {
             if (license_Number > 99999999 || starting_Fuel_KM > 1200)
                 throw new Exception();
@@ -55,7 +55,7 @@ namespace dotNet5781_03B_5943_5565
             mileageSinceTreatment = _mileageSinceTreatment;
             state = _state;
             if (!this.checkTime() || this.mileageSinceTreatment > 20000 || fuelKM <= 0)
-                state = State.unavailable;
+                state = State.Unavailable;
 
         }
 
@@ -331,37 +331,37 @@ namespace dotNet5781_03B_5943_5565
         {
             if (checkTime() == false || mileageSinceTreatment > 20000)
             {
-                changeState(State.unavailable);
+                changeState(State.Unavailable);
             }
             else
             {
                 if ((userTime - StateTimer).TotalSeconds > 0)
-                    changeState(State.ready);
+                    changeState(State.Ready);
             }
         }
         public void changeState(State newState, int distance)
         {
-            state = State.driving;
+            state = State.Driving;
             StateTimer = DateTime.Now.AddSeconds((distance / r.Next(20, 50)) * 6);
         }
         public void changeState(State newState)
         {
             switch (newState)
             {
-                case State.ready:
-                    state = State.ready;
+                case State.Ready:
+                    state = State.Ready;
                     break;
-                case State.fueling:
-                    state = State.fueling;
+                case State.Fueling:
+                    state = State.Fueling;
                     StateTimer = DateTime.Now.AddSeconds(12);
                     break;
-                case State.treatment:
-                    state = State.treatment;
+                case State.Treatment:
+                    state = State.Treatment;
                     StateTimer = DateTime.Now;
                     StateTimer = DateTime.Now.AddSeconds(144);
                     break;
-                case State.unavailable:
-                    state = State.unavailable;
+                case State.Unavailable:
+                    state = State.Unavailable;
                     break;
                 default:
                     break;
