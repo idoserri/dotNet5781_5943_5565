@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using System.Text.RegularExpressions;
 namespace dotNet5781_03B_5943_5565
 {
     /// <summary>
@@ -32,7 +32,7 @@ namespace dotNet5781_03B_5943_5565
             DateTime temp = DateTime.Now;
             int lnum;
             Int32.TryParse(enterLiscenceTextBox.Text, out lnum);
-            if (lnum > 999999999)
+            if (lnum > 99999999)
                 MessageBox.Show("The liscence number that was entered was out of range",
     "Liscence number is invalid",
     MessageBoxButton.OK,
@@ -52,6 +52,7 @@ namespace dotNet5781_03B_5943_5565
             {
                 enterBusButton_Click(sender, e);
             }
+
         }
     }
 }

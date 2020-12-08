@@ -40,7 +40,7 @@ MessageBoxButton.OK,
 MessageBoxImage.Stop,
 MessageBoxResult.OK);
             }
-            else if (distance + v.MileageSinceTreatment > 20000)
+            else if (distance + v.MileageSinceTreatment >= 20000)
             {
                 MessageBox.Show("Bus will become dangerous if it takes this ride, it needs to go through maintenance.",
 "Bus needs maintenance",
