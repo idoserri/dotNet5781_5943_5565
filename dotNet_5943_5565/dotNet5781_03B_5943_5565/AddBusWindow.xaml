@@ -17,9 +17,9 @@
             <ColumnDefinition Width="11*"/>
             <ColumnDefinition Width="304*"/>
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="enterLiscenceTextBox" HorizontalAlignment="Left" Height="29" Margin="110,53,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="324" Grid.ColumnSpan="3" RenderTransformOrigin="0.865,0.531" Grid.Column="1" FontFamily="Segoe UI Black" FontSize="16" />
-        <Label x:Name="label" Content="Liscence Number: " HorizontalAlignment="Left" Height="29" Margin="10,53,0,0" VerticalAlignment="Top" Width="126" Grid.ColumnSpan="2" FontFamily="Segoe UI Black"/>
-        <Button x:Name="enterBusButton" Content="Enter Bus" HorizontalAlignment="Left" Height="42" Margin="115,112,0,0" VerticalAlignment="Top" Width="142" Grid.Column="3" Click="enterBusButton_Click" Background="Red" FontFamily="Segoe UI Black" FontSize="20"/>
+        <TextBox x:Name="enterLiscenceTextBox" HorizontalAlignment="Left" Height="29" Margin="85,44,0,107.667" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="324" Grid.ColumnSpan="3" RenderTransformOrigin="0.865,0.531" Grid.Column="1" FontFamily="Segoe UI Black" FontSize="16" />
+        <Label x:Name="label" Content="Licence Number: " Grid.Column="1" HorizontalAlignment="Left" Height="29" Margin="10,10,0,0" VerticalAlignment="Top" Width="126" FontFamily="Segoe UI Black"/>
+        <Button x:Name="enterBusButton" Content="Enter Bus" HorizontalAlignment="Stretch" Height="42" Margin="134,0,28,21.667" VerticalAlignment="Bottom" Width="142" Grid.Column="3" Click="enterBusButton_Click" Background="Red" FontFamily="Segoe UI Black" FontSize="20"/>
 
     </Grid>
 </Window>

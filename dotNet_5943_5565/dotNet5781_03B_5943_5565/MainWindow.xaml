@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:dotNet5781_03B_5943_5565"
         mc:Ignorable="d"
-        Title="I'm Bussing Here" Height="649.333" Width="1010.667" Icon="bus-32.png">
+        Title="I'm Bussing Here" Height="649.333" Width="990.667" Icon="bus-32.png">
     <Window.Resources>
         <DataTemplate x:Key="DriveDataTemplate" DataType="local:Bus">
             <Button Name="bDrive" Height="30" Width="30" Click="bDrive_Click" BorderBrush="{x:Null}" Foreground="Black" >
@@ -36,10 +36,10 @@
             </Button>
         </DataTemplate>
     </Window.Resources>
-    <Grid Margin="0,0,-36,32.667">
-        <Button x:Name="addBusButton" Click="addBusButton_Click" Margin="697,372,243,138" FontFamily="Segoe UI Black" FontWeight="Bold" Height="70" Width="70" BorderBrush="{x:Null}" >
+    <Grid Margin="0,0,-36,0">
+        <Button x:Name="addBusButton" Click="addBusButton_Click" Margin="200,40" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontFamily="Segoe UI Black" FontWeight="Bold" Height="70" Width="70" BorderBrush="{x:Null}" RenderTransformOrigin="-0.369,0.388" >
             <Button.Content>
-                <Image Source="add2.png" >
+                <Image Source="add2.png" UseLayoutRounding="True" >
                     <Image.OpacityMask>
                         <ImageBrush ImageSource="add2.png" Stretch="Uniform"/>
                     </Image.OpacityMask>
@@ -49,7 +49,7 @@
                 <ImageBrush ImageSource="add2.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <ListView x:Name="lvBusses" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="28,63,369,0" MouseDoubleClick="lvBusses_MouseDoubleClick" FontFamily="Segoe UI Black" FontWeight="Bold" Height="375" >
+        <ListView x:Name="lvBusses" HorizontalAlignment="Center"  VerticalAlignment="Top" Margin="223,40,200,0" MouseDoubleClick="lvBusses_MouseDoubleClick" FontFamily="Segoe UI Black" FontWeight="Bold" Height="435" Width="597" >
             <ListView.ItemContainerStyle>
                 <Style TargetType="{x:Type ListViewItem}">
                     <Style.Triggers>
@@ -82,7 +82,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Label x:Name="label" Content="Add Bus:" HorizontalAlignment="Left" Height="25" Margin="712,353,0,0" VerticalAlignment="Top" Width="70" RenderTransformOrigin="0.548,-0.453" FontFamily="Segoe UI Black"/>
-        <Image x:Name="image" HorizontalAlignment="Left" Height="134" Margin="47,443,0,0" VerticalAlignment="Top" Width="220" Source="redbus.png"/>
+        <Label x:Name="label" Content="Add Bus:" HorizontalAlignment="Left" Height="25" Margin="652,530,0,0" VerticalAlignment="Top" Width="70" RenderTransformOrigin="0.548,-0.453" FontFamily="Segoe UI Black"/>
+        <Image x:Name="image" HorizontalAlignment="Left" Height="134" Margin="10,476,0,0" VerticalAlignment="Top" Width="220" Source="redbus.png"/>
     </Grid>
 </Window>

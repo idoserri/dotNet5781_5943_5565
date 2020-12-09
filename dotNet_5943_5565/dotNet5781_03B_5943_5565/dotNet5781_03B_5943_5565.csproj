@@ -143,5 +143,11 @@
   <ItemGroup>
     <Resource Include="redbus.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="maintance.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="letter-i.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

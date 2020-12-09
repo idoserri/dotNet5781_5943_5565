@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:dotNet5781_03B_5943_5565"
         mc:Ignorable="d"
-        Title="Bus" Height="500" Width="400" Icon="Bus-32.png">
-    <Grid>
+        Title="Bus information" Height="365" Width="400" Icon="Bus-32.png">
+    <Grid Margin="0,0,0.333,1.667">
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto" />
@@ -29,8 +29,32 @@
                     </TransformGroup>
                 </Label.RenderTransform>
             </Label>
-            <Button x:Name="Fuel_btn" Content="Fuel" Height="65" Click="Fuel_btn_Click" FontFamily="Segoe UI Black" />
-            <Button x:Name="Repair_btn" Content="Repair" Height="65" Click="Repair_btn_Click" FontFamily="Segoe UI Black"/>
+            <Button x:Name="Fuel_btn" Content="Fuel" Height="65" Click="Fuel_btn_Click" FontFamily="Segoe UI Black" >
+                <Button.Effect>
+                    <DropShadowEffect/>
+                </Button.Effect>
+                <Button.Background>
+                    <ImageBrush ImageSource="fuelImag.png" Stretch="Uniform">
+                        <ImageBrush.RelativeTransform>
+                            <TransformGroup>
+                                <ScaleTransform CenterY="0.95" CenterX="4"/>
+                                <SkewTransform CenterY="0.95" CenterX="4"/>
+                                <RotateTransform CenterY="0.95" CenterX="4"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ImageBrush.RelativeTransform>
+                    </ImageBrush>
+                </Button.Background>
+            </Button>
+            <Button x:Name="Repair_btn" Content="Repair" Height="65" Click="Repair_btn_Click" FontFamily="Segoe UI Black" RenderTransformOrigin="0,0">
+                <Button.Effect>
+                    <DropShadowEffect/>
+                </Button.Effect>
+                <Button.Background>
+                    <ImageBrush ImageSource="maintance.png"/>
+                </Button.Background>
+            </Button>
+
         </StackPanel>
     </Grid>
 </Window>

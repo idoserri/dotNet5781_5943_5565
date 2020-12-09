@@ -369,19 +369,12 @@ namespace dotNet5781_03B_5943_5565
         }
         public bool checkTime()
         {
-            if (DateTime.Now.AddDays(-365) > lastTreatment)
-            {
-                return false;
-            }
-            return true;
+            return DateTime.Now.AddDays(-365) < lastTreatment;
         }
         public bool checkDistance(int newDistance)
         {
-            if ((newDistance + mileageSinceTreatment) > 20000)
-            {
-                return false;
-            }
-            return true;
+            return (newDistance + mileageSinceTreatment) < 20000;
+            
         }
         public void addDistance(int newDistance)
         {

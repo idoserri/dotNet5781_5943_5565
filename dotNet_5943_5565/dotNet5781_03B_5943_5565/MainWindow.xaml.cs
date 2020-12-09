@@ -19,17 +19,25 @@ namespace dotNet5781_03B_5943_5565
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
+    /// present list of buses with KM since treatment, license number
+    /// state, timer (00:00 if there is not operation running) ,
+    /// and 2 buttons for fueling and maintence.
+    /// also there is a button to add new bus to the list.
+    /// by double click any bus a new window will open and 
+    /// will present all the data about the selected bus.
     /// </summary>
     public partial class MainWindow : Window
     {
+        // random variable for the program and creating database for the listview in main window
         public static Random rand = new Random(DateTime.Now.Millisecond);
         static List<Bus> database = new List<Bus>();
-        DispatcherTimer timer2;
-        public List<Bus> Database
+        DispatcherTimer timer2; // timer to show time utill bus finishes an operation
+        public List<Bus> Database // properties for database
         {
-            get => database; set => database = value;
+            get => database;
+            set => database = value;
         }
-        public void Initialization()
+        public void Initialization() // of data base
         {
             // function to create 10 random buses
             for (int i = 0; i < 10; i++)
@@ -49,17 +57,19 @@ namespace dotNet5781_03B_5943_5565
         }
         public MainWindow()
         {
+            //Initializations
             Initialization();
             InitializeComponent();
             lvBusses.ItemsSource = database;
             timer2 = new DispatcherTimer();
-            timer2.Interval = TimeSpan.FromSeconds(1);
+            timer2.Interval = TimeSpan.FromSeconds(1); // update every second 
             timer2.Tick += Timer2_Tick;
-            timer2.Start();
+            timer2.Start();  // start dispatcher operattion 
         }
 
         private void addBusButton_Click(object sender, RoutedEventArgs e)
         {
+            // open new window to add a new bus by license number
             AddBusWindow addBusWindow = new AddBusWindow(ref database);
             addBusWindow.ShowDialog();
             lvBusses.Items.Refresh();
@@ -67,14 +77,15 @@ namespace dotNet5781_03B_5943_5565
 
         private void bDrive_Click(object sender, RoutedEventArgs e)
         {
+            // if bus availabe to drive open new window
             Bus v = (sender as Button).DataContext as Bus;
             if (v.State == State.Ready)
             {
-                DrivingWindow drivingWindow = new DrivingWindow(ref v,  App.Current.MainWindow as MainWindow);
-                drivingWindow.ShowDialog();
+                DrivingWindow drivingWindow = new DrivingWindow(ref v, App.Current.MainWindow as MainWindow);
+                drivingWindow.ShowDialog(); // window to recieve KM for the drive
                 lvBusses.Items.Refresh();
             }
-            else
+            else // if bus is unavailable show the message
                 MessageBox.Show("The selected bus is unavailable for the ride. Please choose a different one.",
     "Bus is unavailable",
     MessageBoxButton.OK,
@@ -84,17 +95,18 @@ namespace dotNet5781_03B_5943_5565
 
         private void bFuel_Click(object sender, RoutedEventArgs e)
         {
+            // fueling bus if possible
             Bus v = (sender as Button).DataContext as Bus;
-            if (v.FuelKM >= 1200)
+            if (v.FuelKM >= 1200) // check if tank is full
                 MessageBox.Show("This Bus's fuel tank is already full", "Bus is already fueled", MessageBoxButton.OK, MessageBoxImage.Information);
             else
             {
-                if (v.State == State.Ready)
+                if (v.State == State.Ready) // if possible to fuel
                 {
-                    v.changeState(State.Fueling);
-                    v.FuelKM = 1200;
+                    v.changeState(State.Fueling); //changeState
+                    v.FuelKM = 1200; // update field
                 }
-                else
+                else // show message
                     MessageBox.Show("The selected bus is unavailable to refuel, it is either driving or needs maintenance.",
         "Bus is unavailable",
         MessageBoxButton.OK,
@@ -105,6 +117,7 @@ namespace dotNet5781_03B_5943_5565
 
         private void lvBusses_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            
             DependencyObject obj = (DependencyObject)e.OriginalSource;
 
             while (obj != null && obj != lvBusses)
@@ -112,7 +125,7 @@ namespace dotNet5781_03B_5943_5565
                 if (obj.GetType() == typeof(ListViewItem))
                 {
                     Bus v = (sender as ListView).SelectedItem as Bus;
-                   BusPresentationWindow newWindow = new BusPresentationWindow(v);
+                    BusPresentationWindow newWindow = new BusPresentationWindow(v);
                     newWindow.ShowDialog();
                 }
                 obj = VisualTreeHelper.GetParent(obj);
@@ -120,28 +133,37 @@ namespace dotNet5781_03B_5943_5565
         }
         private void Timer2_Tick(object sender, EventArgs e)
         {
-            updateTime();
-            lvBusses.Items.Refresh();
-            updateBuses();
-            lvBusses.Items.Refresh();
+            // updates to do every second
+            AllUpdates();
         }
-        public void updateTime()
-        {
-            foreach (Bus bus in database)
-            {
-                bus.timeUntillReady(DateTime.Now);
-            }
-            lvBusses.Items.Refresh();
-        }
-        public void updateBuses()
+        public void AllUpdates()
         {
             if (database.Count() != 0)
                 foreach (Bus bus in database)
                 {
-                    bus.updateState(DateTime.Now);
+                    bus.timeUntillReady(DateTime.Now); // update timer until ready
+                    bus.updateState(DateTime.Now); // update state 
                 }
 
-            lvBusses.Items.Refresh();
+            lvBusses.Items.Refresh(); // refresh list to show changes
         }
+        public void updateTime()
+         {
+            // update timer until ready for all buses
+            foreach (Bus bus in database)
+                 bus.timeUntillReady(DateTime.Now);
+             
+             lvBusses.Items.Refresh(); // refresh list to show changes
+        }
+         public void updateBuses()
+         {
+             if (database.Count() != 0)
+                 foreach (Bus bus in database)
+                     bus.updateState(DateTime.Now); //update state for all buses
+
+             lvBusses.Items.Refresh(); // refresh list to show changes
+        }
+
+        
     }
 }
