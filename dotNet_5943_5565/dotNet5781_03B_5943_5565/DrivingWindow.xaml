@@ -17,7 +17,7 @@
             <ColumnDefinition Width="11*"/>
             <ColumnDefinition Width="304*"/>
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="tbEnterDrive" HorizontalAlignment="Left" Height="43" Margin="48,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="324"  IsUndoEnabled="True" Grid.Column="1" Grid.ColumnSpan="3" RenderTransformOrigin="0.515,0.194" FontSize="30" FontWeight="Bold"/>
+        <TextBox x:Name="tbEnterDrive" HorizontalAlignment="Left" Height="52" Margin="48,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="324"  IsUndoEnabled="True" Grid.Column="1" Grid.ColumnSpan="3" RenderTransformOrigin="0.515,0.194" FontSize="30" FontWeight="Bold"/>
         <Label x:Name="lEnterDrive" Content="Enter KM to Drive:" Grid.Column="1" HorizontalAlignment="Left" Height="36" Margin="3,20,0,0" VerticalAlignment="Top" Width="204" FontSize="20" FontWeight="Bold" Background="#FFBCFFC1">
             <Label.Effect>
                 <DropShadowEffect/>
