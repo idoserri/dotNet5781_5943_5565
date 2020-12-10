@@ -117,17 +117,20 @@ namespace dotNet5781_03B_5943_5565
 
         private void lvBusses_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            
-            DependencyObject obj = (DependencyObject)e.OriginalSource;
+            //to find the origin of the double click
+            DependencyObject obj = (DependencyObject)e.OriginalSource; 
 
+            //loop to find the origin, once the parent is lvbusses it stops
             while (obj != null && obj != lvBusses)
             {
-                if (obj.GetType() == typeof(ListViewItem))
+                //if obj is a lvItem-- open the bus presentation window
+                if (obj.GetType() == typeof(ListViewItem)) 
                 {
                     Bus v = (sender as ListView).SelectedItem as Bus;
                     BusPresentationWindow newWindow = new BusPresentationWindow(v);
                     newWindow.ShowDialog();
                 }
+                //obj = it's parent, stops when we reach lvbusses
                 obj = VisualTreeHelper.GetParent(obj);
             }
         }
@@ -138,13 +141,15 @@ namespace dotNet5781_03B_5943_5565
         }
         public void AllUpdates()
         {
+
             if (database.Count() != 0)
                 foreach (Bus bus in database)
                 {
                     bus.timeUntillReady(DateTime.Now); // update timer until ready
                     bus.updateState(DateTime.Now); // update state 
                 }
-
+            database.Sort(delegate (Bus c1, Bus c2) { return c1.MileageSinceTreatment.CompareTo(c2.MileageSinceTreatment); });
+            database.Reverse(); //sort the busses
             lvBusses.Items.Refresh(); // refresh list to show changes
         }
         public void updateTime()
