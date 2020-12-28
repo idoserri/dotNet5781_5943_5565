@@ -7,7 +7,21 @@ using DO;
 
 namespace DS
 {
-    public class Class1
+    public static class DataSource
     {
+        public static List<Bus> listBusses;
+        public static List<Station> listStations;
+        public static List<Line> listLines;
+        public static List<LineStation> listLineStations;
+        public static List<AdjacentStations> listAdjacentStations;
+            
+        static DataSource()
+        {
+            InitialLists();
+        }
+        static void InitialLists()
+        {
+
+        }
     }
 }
