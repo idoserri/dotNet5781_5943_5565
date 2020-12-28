@@ -21,7 +21,7 @@ namespace DS
         }
         static void InitialLists()
         {
-
+            //initial the lists with randoms
         }
     }
 }
