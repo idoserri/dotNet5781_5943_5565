@@ -634,7 +634,7 @@ namespace DS
             #region LineStations
             listLineStations = new List<LineStation>
             {
-                // line 1 (stations 1-10)
+                #region line 1 (stations 1-10)
                 new LineStation
                 {
                     LineID = 1,
@@ -715,9 +715,9 @@ namespace DS
                     PrevStation = 9,
                     NextStation = 0  // 0 means there is not prev/next station
                 },
-                // end of line 1
+                #endregion
 
-                // line 2 (stations 5-15)
+                #region line 2 (stations 5-15)
                 new LineStation
                 {
                     LineID = 2,
@@ -726,7 +726,815 @@ namespace DS
                     PrevStation = 0,
                     NextStation = 6
                 },
+                new LineStation
+                {
+                    LineID = 2,
+                    Station = 6,
+                    LineStationIndex = 2,
+                    PrevStation = 5,
+                    NextStation = 7
+                },
+                new LineStation
+                {
+                    LineID = 2,
+                    Station = 7,
+                    LineStationIndex = 3,
+                    PrevStation = 6,
+                    NextStation = 8
+                },
+                new LineStation
+                {
+                    LineID = 2,
+                    Station = 8,
+                    LineStationIndex = 4,
+                    PrevStation = 7,
+                    NextStation = 9
+                },
+                new LineStation
+                {
+                    LineID = 2,
+                    Station = 9,
+                    LineStationIndex = 5,
+                    PrevStation = 8,
+                    NextStation = 10
+                },
+                new LineStation
+                {
+                    LineID = 2,
+                    Station = 10,
+                    LineStationIndex = 6,
+                    PrevStation = 9,
+                    NextStation = 11
+                },
+                new LineStation
+                {
+                    LineID = 2,
+                    Station = 11,
+                    LineStationIndex = 7,
+                    PrevStation = 10,
+                    NextStation = 12
+                },
+                new LineStation
+                {
+                    LineID = 2,
+                    Station = 12,
+                    LineStationIndex = 8,
+                    PrevStation = 11,
+                    NextStation = 13
+                },
+                new LineStation
+                {
+                    LineID = 2,
+                    Station = 13,
+                    LineStationIndex = 9,
+                    PrevStation = 12,
+                    NextStation = 14
+                },
+                new LineStation
+                {
+                    LineID = 2,
+                    Station = 14,
+                    LineStationIndex = 10,
+                    PrevStation = 13,
+                    NextStation = 15
+                },
+                new LineStation
+                {
+                    LineID = 2,
+                    Station = 15,
+                    LineStationIndex = 11,
+                    PrevStation = 14,
+                    NextStation = 0
+                },
+                #endregion
 
+                #region line 3 (stations 10-20)
+                new LineStation
+                {
+                    LineID = 3,
+                    Station = 10,
+                    LineStationIndex = 1,
+                    PrevStation = 0, // 0 means there is not prev/next station
+                    NextStation = 11
+                },
+                new LineStation
+                {
+                    LineID = 3,
+                    Station = 11,
+                    LineStationIndex = 2,
+                    PrevStation = 10, 
+                    NextStation = 12
+                },
+                new LineStation
+                {
+                    LineID = 3,
+                    Station = 12,
+                    LineStationIndex = 3,
+                    PrevStation = 11, 
+                    NextStation = 13
+                },
+                new LineStation
+                {
+                    LineID = 3,
+                    Station = 13,
+                    LineStationIndex = 4,
+                    PrevStation = 12, 
+                    NextStation = 14
+                },
+                new LineStation
+                {
+                    LineID = 3,
+                    Station = 14,
+                    LineStationIndex = 5,
+                    PrevStation = 13, 
+                    NextStation = 15
+                },
+                new LineStation
+                {
+                    LineID = 3,
+                    Station = 15,
+                    LineStationIndex = 6,
+                    PrevStation = 14,
+                    NextStation = 16
+                },
+                new LineStation
+                {
+                    LineID = 3,
+                    Station = 16,
+                    LineStationIndex = 7,
+                    PrevStation = 15,
+                    NextStation = 17
+                },
+                new LineStation
+                {
+                    LineID = 3,
+                    Station = 17,
+                    LineStationIndex = 8,
+                    PrevStation = 16,
+                    NextStation = 18
+                },
+                new LineStation
+                {
+                    LineID = 3,
+                    Station = 18,
+                    LineStationIndex = 9,
+                    PrevStation = 17,
+                    NextStation = 19
+                },
+                new LineStation
+                {
+                    LineID = 3,
+                    Station = 19,
+                    LineStationIndex = 10,
+                    PrevStation = 18,
+                    NextStation = 20
+                },
+                new LineStation
+                {
+                    LineID = 3,
+                    Station = 20,
+                    LineStationIndex = 11,
+                    PrevStation = 19,
+                    NextStation = 0
+                },
+                #endregion
+
+                #region line 4 (stations 15-25)
+                new LineStation
+                {
+                    LineID = 4,
+                    Station = 15,
+                    LineStationIndex = 1,
+                    PrevStation = 0,
+                    NextStation = 16
+                },
+                new LineStation
+                {
+                    LineID = 4,
+                    Station = 16,
+                    LineStationIndex = 2,
+                    PrevStation = 15,
+                    NextStation = 17
+                },
+                new LineStation
+                {
+                    LineID = 4,
+                    Station = 17,
+                    LineStationIndex = 3,
+                    PrevStation = 16,
+                    NextStation = 18
+                },
+                new LineStation
+                {
+                    LineID = 4,
+                    Station = 18,
+                    LineStationIndex = 4,
+                    PrevStation = 17,
+                    NextStation = 19
+                },
+                new LineStation
+                {
+                    LineID = 4,
+                    Station = 19,
+                    LineStationIndex = 5,
+                    PrevStation = 18,
+                    NextStation = 20
+                },
+                new LineStation
+                {
+                    LineID = 4,
+                    Station = 20,
+                    LineStationIndex = 6,
+                    PrevStation = 19,
+                    NextStation = 21
+                },
+                new LineStation
+                {
+                    LineID = 4,
+                    Station = 21,
+                    LineStationIndex = 7,
+                    PrevStation = 20,
+                    NextStation = 22
+                },
+                new LineStation
+                {
+                    LineID = 4,
+                    Station = 22,
+                    LineStationIndex = 8,
+                    PrevStation = 21,
+                    NextStation = 23
+                },
+                new LineStation
+                {
+                    LineID = 4,
+                    Station = 23,
+                    LineStationIndex = 9,
+                    PrevStation = 22,
+                    NextStation = 24
+                },
+                new LineStation
+                {
+                    LineID = 4,
+                    Station = 24,
+                    LineStationIndex = 10,
+                    PrevStation = 23,
+                    NextStation = 25
+                },
+                new LineStation
+                {
+                    LineID = 4,
+                    Station = 25,
+                    LineStationIndex = 11,
+                    PrevStation = 24,
+                    NextStation = 0
+                },
+                #endregion
+
+                #region line 5 (stations 20-30)
+                new LineStation
+                {
+                    LineID = 5,
+                    Station = 20,
+                    LineStationIndex = 1,
+                    PrevStation = 0,
+                    NextStation = 21
+                },
+                new LineStation
+                {
+                    LineID = 5,
+                    Station = 21,
+                    LineStationIndex = 2,
+                    PrevStation = 20,
+                    NextStation = 22
+                },
+                new LineStation
+                {
+                    LineID = 5,
+                    Station = 22,
+                    LineStationIndex = 3,
+                    PrevStation = 21,
+                    NextStation = 23
+                },
+                new LineStation
+                {
+                    LineID = 5,
+                    Station = 23,
+                    LineStationIndex = 4,
+                    PrevStation = 22,
+                    NextStation = 24
+                },
+                new LineStation
+                {
+                    LineID = 5,
+                    Station = 24,
+                    LineStationIndex = 5,
+                    PrevStation = 23,
+                    NextStation = 25
+                },
+                new LineStation
+                {
+                    LineID = 5,
+                    Station = 25,
+                    LineStationIndex = 6,
+                    PrevStation = 24,
+                    NextStation = 26
+                },
+                new LineStation
+                {
+                    LineID = 5,
+                    Station = 26,
+                    LineStationIndex = 7,
+                    PrevStation = 25,
+                    NextStation = 27
+                },
+                new LineStation
+                {
+                    LineID = 5,
+                    Station = 27,
+                    LineStationIndex = 8,
+                    PrevStation = 26,
+                    NextStation = 28
+                },
+                new LineStation
+                {
+                    LineID = 5,
+                    Station = 28,
+                    LineStationIndex = 9,
+                    PrevStation = 27,
+                    NextStation = 29
+                },
+                new LineStation
+                {
+                    LineID = 5,
+                    Station = 29,
+                    LineStationIndex = 10,
+                    PrevStation = 28,
+                    NextStation = 30
+                },
+                new LineStation
+                {
+                    LineID = 5,
+                    Station = 30,
+                    LineStationIndex = 11,
+                    PrevStation = 29,
+                    NextStation = 0
+                },
+                #endregion
+
+                #region line 6 (stations 25-35)
+                new LineStation
+                {
+                    LineID = 6,
+                    Station = 25,
+                    LineStationIndex = 1,
+                    PrevStation = 0,
+                    NextStation = 26
+                },
+                new LineStation
+                {
+                    LineID = 6,
+                    Station = 26,
+                    LineStationIndex = 2,
+                    PrevStation = 25,
+                    NextStation = 27
+                },
+                new LineStation
+                {
+                    LineID = 6,
+                    Station = 27,
+                    LineStationIndex = 3,
+                    PrevStation = 26,
+                    NextStation = 28
+                },
+                new LineStation
+                {
+                    LineID = 6,
+                    Station = 28,
+                    LineStationIndex = 4,
+                    PrevStation = 27,
+                    NextStation = 29
+                },
+                new LineStation
+                {
+                    LineID = 6,
+                    Station = 29,
+                    LineStationIndex = 5,
+                    PrevStation = 28,
+                    NextStation = 30
+                },
+                new LineStation
+                {
+                    LineID = 6,
+                    Station = 30,
+                    LineStationIndex = 6,
+                    PrevStation = 29,
+                    NextStation = 31
+                },
+                new LineStation
+                {
+                    LineID = 6,
+                    Station = 31,
+                    LineStationIndex = 7,
+                    PrevStation = 30,
+                    NextStation = 32
+                },
+                new LineStation
+                {
+                    LineID = 6,
+                    Station = 32,
+                    LineStationIndex = 8,
+                    PrevStation = 31,
+                    NextStation = 33
+                },
+                new LineStation
+                {
+                    LineID = 6,
+                    Station = 33,
+                    LineStationIndex = 9,
+                    PrevStation = 32,
+                    NextStation = 34
+                },
+                new LineStation
+                {
+                    LineID = 6,
+                    Station = 34,
+                    LineStationIndex = 10,
+                    PrevStation = 33,
+                    NextStation = 35
+                },
+                new LineStation
+                {
+                    LineID = 6,
+                    Station = 35,
+                    LineStationIndex = 11,
+                    PrevStation = 34,
+                    NextStation = 0
+                },
+                #endregion
+
+                #region line 7 (stations 30-40)
+                new LineStation
+                {
+                    LineID = 7,
+                    Station = 30,
+                    LineStationIndex = 1,
+                    PrevStation = 0,
+                    NextStation = 31
+                },
+                new LineStation
+                {
+                    LineID = 7,
+                    Station = 31,
+                    LineStationIndex = 2,
+                    PrevStation = 30,
+                    NextStation = 32
+                },
+                new LineStation
+                {
+                    LineID = 7,
+                    Station = 32,
+                    LineStationIndex = 3,
+                    PrevStation = 31,
+                    NextStation = 33
+                },
+                new LineStation
+                {
+                    LineID = 7,
+                    Station = 33,
+                    LineStationIndex = 4,
+                    PrevStation = 32,
+                    NextStation = 34
+                },
+                new LineStation
+                {
+                    LineID = 7,
+                    Station = 34,
+                    LineStationIndex = 5,
+                    PrevStation = 33,
+                    NextStation = 35
+                },
+                new LineStation
+                {
+                    LineID = 7,
+                    Station = 35,
+                    LineStationIndex = 6,
+                    PrevStation = 34,
+                    NextStation = 36
+                },
+                new LineStation
+                {
+                    LineID = 7,
+                    Station = 36,
+                    LineStationIndex = 7,
+                    PrevStation = 35,
+                    NextStation = 37
+                },
+                new LineStation
+                {
+                    LineID = 7,
+                    Station = 37,
+                    LineStationIndex = 8,
+                    PrevStation = 36,
+                    NextStation = 38
+                },
+                new LineStation
+                {
+                    LineID = 7,
+                    Station = 38,
+                    LineStationIndex = 9,
+                    PrevStation = 37,
+                    NextStation = 39
+                },
+                new LineStation
+                {
+                    LineID = 7,
+                    Station = 39,
+                    LineStationIndex = 10,
+                    PrevStation = 38,
+                    NextStation = 40
+                },
+                new LineStation
+                {
+                    LineID = 7,
+                    Station = 40,
+                    LineStationIndex = 11,
+                    PrevStation = 39,
+                    NextStation = 0
+                },
+                #endregion
+
+                #region line 8 (stations 35-45)
+                new LineStation
+                {
+                    LineID = 8,
+                    Station = 35,
+                    LineStationIndex = 1,
+                    PrevStation = 0,
+                    NextStation = 36
+                },
+                new LineStation
+                {
+                    LineID = 8,
+                    Station = 36,
+                    LineStationIndex = 2,
+                    PrevStation = 35,
+                    NextStation = 37
+                },
+                new LineStation
+                {
+                    LineID = 8,
+                    Station = 37,
+                    LineStationIndex = 3,
+                    PrevStation = 36,
+                    NextStation = 38
+                },
+                new LineStation
+                {
+                    LineID = 8,
+                    Station = 38,
+                    LineStationIndex = 4,
+                    PrevStation = 37,
+                    NextStation = 39
+                },
+                new LineStation
+                {
+                    LineID = 8,
+                    Station = 39,
+                    LineStationIndex = 5,
+                    PrevStation = 38,
+                    NextStation = 40
+                },
+                new LineStation
+                {
+                    LineID = 8,
+                    Station = 40,
+                    LineStationIndex = 6,
+                    PrevStation = 39,
+                    NextStation = 41
+                },
+                new LineStation
+                {
+                    LineID = 8,
+                    Station = 41,
+                    LineStationIndex = 7,
+                    PrevStation = 40,
+                    NextStation = 42
+                },
+                new LineStation
+                {
+                    LineID = 8,
+                    Station = 42,
+                    LineStationIndex = 8,
+                    PrevStation = 41,
+                    NextStation = 43
+                },
+                new LineStation
+                {
+                    LineID = 8,
+                    Station = 43,
+                    LineStationIndex = 9,
+                    PrevStation = 42,
+                    NextStation = 44
+                },
+                new LineStation
+                {
+                    LineID = 8,
+                    Station = 44,
+                    LineStationIndex = 10,
+                    PrevStation = 43,
+                    NextStation = 45
+                },
+                new LineStation
+                {
+                    LineID = 8,
+                    Station = 45,
+                    LineStationIndex = 11,
+                    PrevStation = 44,
+                    NextStation = 0
+                },
+                #endregion
+
+                #region line 9 (stations 38-48)
+                new LineStation
+                {
+                    LineID = 9,
+                    Station = 38,
+                    LineStationIndex = 1,
+                    PrevStation = 0,
+                    NextStation = 39
+                },
+                new LineStation
+                {
+                    LineID = 9,
+                    Station = 39,
+                    LineStationIndex = 2,
+                    PrevStation = 38,
+                    NextStation = 40
+                },
+                new LineStation
+                {
+                    LineID = 9,
+                    Station = 40,
+                    LineStationIndex = 3,
+                    PrevStation = 39,
+                    NextStation = 41
+                },
+                new LineStation
+                {
+                    LineID = 9,
+                    Station = 41,
+                    LineStationIndex = 4,
+                    PrevStation = 40,
+                    NextStation = 42
+                },
+                new LineStation
+                {
+                    LineID = 9,
+                    Station = 42,
+                    LineStationIndex = 5,
+                    PrevStation = 41,
+                    NextStation = 43
+                },
+                new LineStation
+                {
+                    LineID = 9,
+                    Station = 43,
+                    LineStationIndex = 6,
+                    PrevStation = 42,
+                    NextStation = 44
+                },
+                new LineStation
+                {
+                    LineID = 9,
+                    Station = 44,
+                    LineStationIndex = 7,
+                    PrevStation = 43,
+                    NextStation = 45
+                },
+                new LineStation
+                {
+                    LineID = 9,
+                    Station = 45,
+                    LineStationIndex = 8,
+                    PrevStation = 44,
+                    NextStation = 46
+                },
+                new LineStation
+                {
+                    LineID = 9,
+                    Station = 46,
+                    LineStationIndex = 9,
+                    PrevStation = 45,
+                    NextStation = 47
+                },
+                new LineStation
+                {
+                    LineID = 9,
+                    Station = 47,
+                    LineStationIndex = 10,
+                    PrevStation = 46,
+                    NextStation = 48
+                },
+                new LineStation
+                {
+                    LineID = 9,
+                    Station = 48,
+                    LineStationIndex = 11,
+                    PrevStation = 47,
+                    NextStation = 0
+                },
+                #endregion
+
+                #region line 10 (stations 40-50)
+                new LineStation
+                {
+                    LineID = 10,
+                    Station = 40,
+                    LineStationIndex = 1,
+                    PrevStation = 0,
+                    NextStation = 41
+                },
+                new LineStation
+                {
+                    LineID = 10,
+                    Station = 41,
+                    LineStationIndex = 2,
+                    PrevStation = 40,
+                    NextStation = 42
+                },
+                new LineStation
+                {
+                    LineID = 10,
+                    Station = 42,
+                    LineStationIndex = 3,
+                    PrevStation = 41,
+                    NextStation = 43
+                },
+                new LineStation
+                {
+                    LineID = 10,
+                    Station = 43,
+                    LineStationIndex = 4,
+                    PrevStation = 42,
+                    NextStation = 44
+                },
+                new LineStation
+                {
+                    LineID = 10,
+                    Station = 44,
+                    LineStationIndex = 5,
+                    PrevStation = 43,
+                    NextStation = 45
+                },
+                new LineStation
+                {
+                    LineID = 10,
+                    Station = 45,
+                    LineStationIndex = 6,
+                    PrevStation = 44,
+                    NextStation = 46
+                },
+                new LineStation
+                {
+                    LineID = 10,
+                    Station = 46,
+                    LineStationIndex = 7,
+                    PrevStation = 45,
+                    NextStation = 47
+                },
+                new LineStation
+                {
+                    LineID = 10,
+                    Station = 47,
+                    LineStationIndex = 8,
+                    PrevStation = 46,
+                    NextStation = 48
+                },
+                new LineStation
+                {
+                    LineID = 10,
+                    Station = 48,
+                    LineStationIndex = 9,
+                    PrevStation = 47,
+                    NextStation = 49
+                },
+                new LineStation
+                {
+                    LineID = 10,
+                    Station = 49,
+                    LineStationIndex = 10,
+                    PrevStation = 48,
+                    NextStation = 50
+                },
+                new LineStation
+                {
+                    LineID = 10,
+                    Station = 50,
+                    LineStationIndex = 11,
+                    PrevStation = 49,
+                    NextStation = 0
+                },
+                #endregion
                 //will be continued***********
 
             };
