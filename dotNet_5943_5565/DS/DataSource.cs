@@ -21,6 +21,7 @@ namespace DS
         }
         static void InitialLists()
         {
+            #region Busses
             listBusses = new List<Bus>
             {
                 new Bus
@@ -31,8 +32,162 @@ namespace DS
                     FuelRemain = 1200,
                     BusStatus = Status.Ready
                 },
-
+                new Bus
+                {
+                    LicenseNum = 2,
+                    FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
+                    Mileage = 0,
+                    FuelRemain = 1200,
+                    BusStatus = Status.Ready
+                },
+                new Bus
+                {
+                    LicenseNum = 3,
+                    FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
+                    Mileage = 0,
+                    FuelRemain = 1200,
+                    BusStatus = Status.Ready
+                },
+                new Bus
+                {
+                    LicenseNum = 4,
+                    FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
+                    Mileage = 0,
+                    FuelRemain = 1200,
+                    BusStatus = Status.Ready
+                },
+                new Bus
+                {
+                    LicenseNum = 5,
+                    FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
+                    Mileage = 0,
+                    FuelRemain = 1200,
+                    BusStatus = Status.Ready
+                },
+                new Bus
+                {
+                    LicenseNum = 6,
+                    FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
+                    Mileage = 0,
+                    FuelRemain = 1200,
+                    BusStatus = Status.Ready
+                },
+                new Bus
+                {
+                    LicenseNum = 7,
+                    FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
+                    Mileage = 0,
+                    FuelRemain = 1200,
+                    BusStatus = Status.Ready
+                },
+                new Bus
+                {
+                    LicenseNum = 8,
+                    FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
+                    Mileage = 0,
+                    FuelRemain = 1200,
+                    BusStatus = Status.Ready
+                },
+                new Bus
+                {
+                    LicenseNum = 9,
+                    FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
+                    Mileage = 0,
+                    FuelRemain = 1200,
+                    BusStatus = Status.Ready
+                },
+                new Bus
+                {
+                    LicenseNum = 10,
+                    FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
+                    Mileage = 0,
+                    FuelRemain = 1200,
+                    BusStatus = Status.Ready
+                },
+                new Bus
+                {
+                    LicenseNum = 11,
+                    FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
+                    Mileage = 0,
+                    FuelRemain = 1200,
+                    BusStatus = Status.Ready
+                },
+                new Bus
+                {
+                    LicenseNum = 12,
+                    FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
+                    Mileage = 0,
+                    FuelRemain = 1200,
+                    BusStatus = Status.Ready
+                },
+                new Bus
+                {
+                    LicenseNum = 13,
+                    FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
+                    Mileage = 0,
+                    FuelRemain = 1200,
+                    BusStatus = Status.Ready
+                },
+                new Bus
+                {
+                    LicenseNum = 14,
+                    FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
+                    Mileage = 0,
+                    FuelRemain = 1200,
+                    BusStatus = Status.Ready
+                },
+                new Bus
+                {
+                    LicenseNum = 15,
+                    FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
+                    Mileage = 0,
+                    FuelRemain = 1200,
+                    BusStatus = Status.Ready
+                },
+                new Bus
+                {
+                    LicenseNum = 16,
+                    FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
+                    Mileage = 0,
+                    FuelRemain = 1200,
+                    BusStatus = Status.Ready
+                },
+                new Bus
+                {
+                    LicenseNum = 17,
+                    FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
+                    Mileage = 0,
+                    FuelRemain = 1200,
+                    BusStatus = Status.Ready
+                },
+                new Bus
+                {
+                    LicenseNum = 18,
+                    FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
+                    Mileage = 0,
+                    FuelRemain = 1200,
+                    BusStatus = Status.Ready
+                },
+                new Bus
+                {
+                    LicenseNum = 19,
+                    FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
+                    Mileage = 0,
+                    FuelRemain = 1200,
+                    BusStatus = Status.Ready
+                },
+                new Bus
+                {
+                    LicenseNum = 20,
+                    FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
+                    Mileage = 0,
+                    FuelRemain = 1200,
+                    BusStatus = Status.Ready
+                },
             };
+            #endregion
+
+            #region Stations
             listStations = new List<Station>
             {
                 new Station
@@ -388,7 +543,9 @@ namespace DS
 
 
             };
+            #endregion
 
+            #region Lines
             listLines = new List<Line>
             {
                 new Line
@@ -472,7 +629,9 @@ namespace DS
                     LastStation = 50,
                 }
             };
+            #endregion
 
+            #region LineStations
             listLineStations = new List<LineStation>
             {
                 // line 1 (stations 1-10)
@@ -571,6 +730,7 @@ namespace DS
                 //will be continued***********
 
             };
+            #endregion
         }
     }
 }
