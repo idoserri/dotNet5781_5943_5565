@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BO
 {
-    public abstract class AdjStations
+    public class AdjStations
     {
         public int Station1 { get; set; }
 

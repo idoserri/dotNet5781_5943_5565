@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BO
 {
-    public abstract class Station
+    public class Station
     {
         public int Code { get; set; }
 
@@ -15,5 +15,7 @@ namespace BO
         public double Longitude { get; set; }
 
         public double Latitude { get; set; }
+
+        public IEnumerable<Line> ListOfLines { get; set; }
     }
 }

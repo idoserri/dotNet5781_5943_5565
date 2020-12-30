@@ -8,5 +8,6 @@ namespace BLAPI
 {
     public interface IBL
     {
+
     }
 }

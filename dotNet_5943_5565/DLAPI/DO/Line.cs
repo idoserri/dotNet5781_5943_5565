@@ -11,7 +11,7 @@ namespace DO
     {
         public int ID { get; set; }
         
-        public int Code { get; set; }
+        public int LineNum { get; set; }
 
         public Areas Area { get; set; }
 

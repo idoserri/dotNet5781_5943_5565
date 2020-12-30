@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BO
 {
-    public abstract class LineStation
+    public class LineStation
     {
         public int LineID { get; set; }
 
@@ -17,5 +17,7 @@ namespace BO
         public int PrevStation { get; set; }
 
         public int NextStation { get; set; }
+
+
     }
 }

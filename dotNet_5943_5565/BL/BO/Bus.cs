@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BO
 {
-    public abstract class Bus
+    public class Bus
     {
         public int LicenseNum { get; set; }
 

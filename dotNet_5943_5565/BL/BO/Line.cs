@@ -6,16 +6,14 @@ using System.Threading.Tasks;
 
 namespace BO
 {
-    public abstract class Line
+    public class Line
     {
         public int ID { get; set; }
 
-        public int Code { get; set; }
-
-        public Areas Area { get; set; }
-
-        public int FirstStation { get; set; }
+        public int LineNum { get; set; }
 
         public int LastStation { get; set; }
+
+        public IEnumerable<LineStation> ListOfLineStations { get; set; }
     }
 }
