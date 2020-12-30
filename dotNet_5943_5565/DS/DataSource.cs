@@ -1540,8 +1540,29 @@ namespace DS
 
             };
             #endregion
-            #region AdjStations
 
+
+            #region AdjStations
+            listAdjacentStations = new List<AdjacentStations>();
+
+            for (int i = 0; i < listStations.Count()-1; i++)
+            {
+                var s1 = new GeoCoordinate(listStations[i].Latitude, listStations[i].Longitude);
+                var s2 = new GeoCoordinate(listStations[i+1].Latitude, listStations[i+1].Longitude);
+                double distance = s1.GetDistanceTo(s2);
+                int sec = (int)(distance + r.NextDouble() * 0.5 * distance) / 14;  // meter/sec
+                TimeSpan t = new TimeSpan(0,0,sec);
+
+                listAdjacentStations.Add(
+                    new AdjacentStations
+                    {
+                        Station1 = listStations[i].Code,
+                        Station2 = listStations[i + 1].Code,
+                        Distance = distance/1000,
+                        Time = t
+                    });
+
+            }
             #endregion
         }
     }
