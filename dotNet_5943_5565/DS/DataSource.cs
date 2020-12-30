@@ -1535,10 +1535,20 @@ namespace DS
                     NextStation = 0
                 },
                 #endregion
-                //will be continued***********
+               
 
             };
             #endregion
+
+            listAdjacentStations = new List<AdjacentStations>
+            {
+                new AdjacentStations
+                {
+                    Station1 = 1,
+                    Station2 = 2,
+                    
+                }
+            };
         }
     }
 }
