@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace DO
 {
-    public enum Status
-    { Ready, Driving, Fueling, Treatment, Unavailable }
+
     public class Bus
     {
         public int LicenseNum { get; set; }

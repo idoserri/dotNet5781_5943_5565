@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DO
 {
-    public enum Areas { General, North, South, Center, Jerusalem }
+
     public class Line
     {
         public int ID { get; set; }
