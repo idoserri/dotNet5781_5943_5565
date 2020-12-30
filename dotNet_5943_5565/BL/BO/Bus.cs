@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DO
+namespace BO
 {
-
     public class Bus
     {
         public int LicenseNum { get; set; }
@@ -18,7 +17,5 @@ namespace DO
         public double FuelRemain { get; set; }
 
         public Status BusStatus { get; set; }
-
-
     }
 }

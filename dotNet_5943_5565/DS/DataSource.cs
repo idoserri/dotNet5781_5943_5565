@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Device.Location;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -193,352 +194,352 @@ namespace DS
                 new Station
                 {
                     Code = 1,
-                    Name = "station1",
-                    Latitude =  r.NextDouble() * (33.3 - 31) + 31,
-                    Longitude = r.NextDouble() * (35.5 - 34.3) + 34.3,
+                    Name = "Dr. Josheph Burg St.",
+                    Latitude =  31.968936,
+                    Longitude = 34.820043,
                 },
                 new Station
                 {
                     Code = 2,
-                    Name = "station2",
-                    Latitude =  r.NextDouble() * (33.3 - 31) + 31,
-                    Longitude = r.NextDouble() * (35.5 - 34.3) + 34.3,
+                    Name = "Vietzman St.",
+                    Latitude =  31.923041,
+                    Longitude = 34.798033,
                 },
                 new Station
                 {
                     Code = 3,
-                    Name = "station3",
-                    Latitude =  r.NextDouble() * (33.3 - 31) + 31,
-                    Longitude = r.NextDouble() * (35.5 - 34.3) + 34.3,
+                    Name = "Moshe Dayan Blvd.",
+                    Latitude =  31.98568,
+                    Longitude = 34.764014,
                 },
                 new Station
                 {
                     Code = 4,
-                    Name = "station4",
-                    Latitude =  r.NextDouble() * (33.3 - 31) + 31,
-                    Longitude = r.NextDouble() * (35.5 - 34.3) + 34.3,
+                    Name = "Haim Moshe Shapira 4",
+                    Latitude =  31.992583,
+                    Longitude = 34.751999,
                 },
                 new Station
                 {
                     Code = 5,
-                    Name = "station5",
-                    Latitude =  r.NextDouble() * (33.3 - 31) + 31,
-                    Longitude = r.NextDouble() * (35.5 - 34.3) + 34.3,
+                    Name = "Haim Moshe Shapira 16",
+                    Latitude =  31.990757,
+                    Longitude = 34.755683,
                 },
                 new Station
                 {
                     Code = 6,
-                    Name = "station6",
-                    Latitude =  r.NextDouble() * (33.3 - 31) + 31,
-                    Longitude = r.NextDouble() * (35.5 - 34.3) + 34.3,
+                    Name = "Jacob Blvd. 65",
+                    Latitude =  31.950254,
+                    Longitude = 34.819244,
                 },
                 new Station
                 {
                     Code = 7,
-                    Name = "station7",
-                    Latitude =  r.NextDouble() * (33.3 - 31) + 31,
-                    Longitude = r.NextDouble() * (35.5 - 34.3) + 34.3,
+                    Name = "Jacob Blvd. 59",
+                    Latitude = 31.95111,
+                    Longitude = 34.819766,
                 },
                 new Station
                 {
                     Code = 8,
-                    Name = "station8",
-                    Latitude =  r.NextDouble() * (33.3 - 31) + 31,
-                    Longitude = r.NextDouble() * (35.5 - 34.3) + 34.3,
+                    Name = "Yehuda Leib Yosefzona St.",
+                    Latitude =  31.905052,
+                    Longitude = 34.818909,
                 },
                 new Station
                 {
                     Code = 9,
-                    Name = "station9",
-                    Latitude =  r.NextDouble() * (33.3 - 31) + 31,
-                    Longitude = r.NextDouble() * (35.5 - 34.3) + 34.3,
+                    Name = "Rabbi Yaakov Berman 4",
+                    Latitude = 31.901879,
+                    Longitude = 34.819443,
                 },
                 new Station
                 {
                     Code = 10,
-                    Name = "station10",
-                    Latitude =  r.NextDouble() * (33.3 - 31) + 31,
-                    Longitude = r.NextDouble() * (35.5 - 34.3) + 34.3,
+                    Name = "Rabbi Yaakov Berman St.",
+                    Latitude = 31.90281,
+                    Longitude = 34.818922,
                 },
                 new Station
                 {
                     Code = 11,
-                    Name = "station11",
-                    Latitude =  r.NextDouble() * (33.3 - 31) + 31,
-                    Longitude = r.NextDouble() * (35.5 - 34.3) + 34.3,
+                    Name = "Shulamit 2",
+                    Latitude = 32.270586,
+                    Longitude = 34.837598,
                 },
                 new Station
                 {
                     Code = 12,
-                    Name = "station12",
-                    Latitude =  r.NextDouble() * (33.3 - 31) + 31,
-                    Longitude = r.NextDouble() * (35.5 - 34.3) + 34.3,
+                    Name = "Shosh Atari/Blob",
+                    Latitude =  32.272632,
+                    Longitude = 34.838726,
                 },
                 new Station
                 {
                     Code = 13,
-                    Name = "station13",
-                    Latitude =  r.NextDouble() * (33.3 - 31) + 31,
-                    Longitude = r.NextDouble() * (35.5 - 34.3) + 34.3,
+                    Name = "Shosh Atari/Gleb",
+                    Latitude =  32.27242,
+                    Longitude = 34.838508,
                 },
                 new Station
                 {
                     Code = 14,
-                    Name = "station14",
-                    Latitude =  r.NextDouble() * (33.3 - 31) + 31,
-                    Longitude = r.NextDouble() * (35.5 - 34.3) + 34.3,
+                    Name = "Ehud Manor/Larry King",
+                    Latitude =  32.274543,
+                    Longitude = 34.8413,
                 },
                 new Station
                 {
                     Code = 15,
-                    Name = "station15",
-                    Latitude =  r.NextDouble() * (33.3 - 31) + 31,
-                    Longitude = r.NextDouble() * (35.5 - 34.3) + 34.3,
+                    Name = "Ehud Manor/Prince Boi",
+                    Latitude =  32.27487,
+                    Longitude = 34.842868,
                 },
                 new Station
                 {
                     Code = 16,
-                    Name = "station16",
-                    Latitude =  r.NextDouble() * (33.3 - 31) + 31,
-                    Longitude = r.NextDouble() * (35.5 - 34.3) + 34.3,
+                    Name = "Zalman Shazar/Stephen Murry",
+                    Latitude =  32.27572,
+                    Longitude = 34.845201,
                 },
                 new Station
                 {
                     Code = 17,
-                    Name = "station17",
-                    Latitude =  r.NextDouble() * (33.3 - 31) + 31,
-                    Longitude = r.NextDouble() * (35.5 - 34.3) + 34.3,
+                    Name = "Zalman Shazar/Connor McFly",
+                    Latitude =  32.276562,
+                    Longitude = 34.846404,
                 },
                 new Station
                 {
                     Code = 18,
-                    Name = "station18",
-                    Latitude =  r.NextDouble() * (33.3 - 31) + 31,
-                    Longitude = r.NextDouble() * (35.5 - 34.3) + 34.3,
+                    Name = "Zalman Shazar/Lemurs",
+                    Latitude =  32.276837,
+                    Longitude = 34.847509,
                 },
                 new Station
                 {
                     Code = 19,
-                    Name = "station19",
-                    Latitude =  r.NextDouble() * (33.3 - 31) + 31,
-                    Longitude = r.NextDouble() * (35.5 - 34.3) + 34.3,
+                    Name = "Adam/Bojack Faceman",
+                    Latitude =  32.256581,
+                    Longitude = 34.864843,
                 },
                 new Station
                 {
                     Code = 20,
-                    Name = "station10",
-                    Latitude =  r.NextDouble() * (33.3 - 31) + 31,
-                    Longitude = r.NextDouble() * (35.5 - 34.3) + 34.3,
+                    Name = "Golda Meir Blvd.",
+                    Latitude =  32.27659,
+                    Longitude = 34.85165,
                 },
                 new Station
                 {
                     Code = 21,
-                    Name = "station21",
-                    Latitude =  r.NextDouble() * (33.3 - 31) + 31,
-                    Longitude = r.NextDouble() * (35.5 - 34.3) + 34.3,
+                    Name = "Havradim/Peanut Butter",
+                    Latitude = 32.267569,
+                    Longitude = 34.913161,
                 },
                 new Station
                 {
                     Code = 22,
-                    Name = "station22",
-                    Latitude =  r.NextDouble() * (33.3 - 31) + 31,
-                    Longitude = r.NextDouble() * (35.5 - 34.3) + 34.3,
+                    Name = "Haerez/Vineman",
+                    Latitude =  32.266731,
+                    Longitude = 34.913567,
                 },
                 new Station
                 {
                     Code = 23,
-                    Name = "station23",
-                    Latitude =  r.NextDouble() * (33.3 - 31) + 31,
-                    Longitude = r.NextDouble() * (35.5 - 34.3) + 34.3,
+                    Name = "Katzanelson/Coodchuck-Berkowitz",
+                    Latitude =  32.272356,
+                    Longitude = 34.9105,
                 },
                 new Station
                 {
                     Code = 24,
-                    Name = "station24",
-                    Latitude =  r.NextDouble() * (33.3 - 31) + 31,
-                    Longitude = r.NextDouble() * (35.5 - 34.3) + 34.3,
+                    Name = "Yoseftal/Vincent Adultman",
+                    Latitude =  32.27471,
+                    Longitude = 34.907677,
                 },
                 new Station
                 {
                     Code = 25,
-                    Name = "station25",
-                    Latitude =  r.NextDouble() * (33.3 - 31) + 31,
-                    Longitude = r.NextDouble() * (35.5 - 34.3) + 34.3,
+                    Name = "Yanosh Korchack/Todd Chavez",
+                    Latitude = 32.275943,
+                    Longitude = 34.908497,
                 },
                 new Station
                 {
                     Code = 26,
-                    Name = "station26",
-                    Latitude =  r.NextDouble() * (33.3 - 31) + 31,
-                    Longitude = r.NextDouble() * (35.5 - 34.3) + 34.3,
+                    Name = "Melvin Gordon/Derrick Henry",
+                    Latitude =  32.273996,
+                    Longitude = 34.909588,
                 },
                 new Station
                 {
                     Code = 27,
-                    Name = "station27",
-                    Latitude =  r.NextDouble() * (33.3 - 31) + 31,
-                    Longitude = r.NextDouble() * (35.5 - 34.3) + 34.3,
+                    Name = "Yanosh Korchack/James Yarden",
+                    Latitude = 32.275772,
+                    Longitude = 34.909654,
                 },
                 new Station
                 {
                     Code = 28,
-                    Name = "station28",
-                    Latitude =  r.NextDouble() * (33.3 - 31) + 31,
-                    Longitude = r.NextDouble() * (35.5 - 34.3) + 34.3,
+                    Name = "Yanosh Korchack/Morty McRick",
+                    Latitude = 32.275743,
+                    Longitude = 34.910497,
                 },
                 new Station
                 {
                     Code = 29,
-                    Name = "station29",
-                    Latitude =  r.NextDouble() * (33.3 - 31) + 31,
-                    Longitude = r.NextDouble() * (35.5 - 34.3) + 34.3,
+                    Name = "Jabotinsky/Lebowski",
+                    Latitude =  32.268747,
+                    Longitude = 34.91245,
                 },
                 new Station
                 {
                     Code = 30,
-                    Name = "station30",
-                    Latitude =  r.NextDouble() * (33.3 - 31) + 31,
-                    Longitude = r.NextDouble() * (35.5 - 34.3) + 34.3,
+                    Name = "Hahistadrut/Kenya",
+                    Latitude =  32.269922,
+                    Longitude = 34.912325,
                 },
                 new Station
                 {
                     Code = 31,
-                    Name = "station31",
-                    Latitude =  r.NextDouble() * (33.3 - 31) + 31,
-                    Longitude = r.NextDouble() * (35.5 - 34.3) + 34.3,
+                    Name = "Hahistadrut West",
+                    Latitude =  32.2710195,
+                    Longitude = 34.912545,
                 },
                 new Station
                 {
                     Code = 32,
-                    Name = "station32",
-                    Latitude =  r.NextDouble() * (33.3 - 31) + 31,
-                    Longitude = r.NextDouble() * (35.5 - 34.3) + 34.3,
+                    Name = "Shawazzi/Yemen",
+                    Latitude =  32.272628,
+                    Longitude = 34.911703,
                 },
                 new Station
                 {
                     Code = 33,
-                    Name = "station33",
-                    Latitude =  r.NextDouble() * (33.3 - 31) + 31,
-                    Longitude = r.NextDouble() * (35.5 - 34.3) + 34.3,
+                    Name = "Ahidekel/Mahms Pageti",
+                    Latitude =  32.269267,
+                    Longitude = 34.913385,
                 },
                 new Station
                 {
                     Code = 34,
-                    Name = "station34",
-                    Latitude =  r.NextDouble() * (33.3 - 31) + 31,
-                    Longitude = r.NextDouble() * (35.5 - 34.3) + 34.3,
+                    Name = "M.G. Morgan",
+                    Latitude =  32.271478,
+                    Longitude = 34.913327,
                 },
                 new Station
                 {
                     Code = 35,
-                    Name = "station35",
-                    Latitude =  r.NextDouble() * (33.3 - 31) + 31,
-                    Longitude = r.NextDouble() * (35.5 - 34.3) + 34.3,
+                    Name = "M.G. Gaecant",
+                    Latitude =  32.271388,
+                    Longitude = 34.914331,
                 },
                 new Station
                 {
                     Code = 36,
-                    Name = "station36",
-                    Latitude =  r.NextDouble() * (33.3 - 31) + 31,
-                    Longitude = r.NextDouble() * (35.5 - 34.3) + 34.3,
+                    Name = "Shawazzi/Plozki",
+                    Latitude = 32.273004,
+                    Longitude = 34.913138,
                 },
                 new Station
                 {
                     Code = 37,
-                    Name = "station37",
-                    Latitude =  r.NextDouble() * (33.3 - 31) + 31,
-                    Longitude = r.NextDouble() * (35.5 - 34.3) + 34.3,
+                    Name = "Shawazzi/Klotzki",
+                    Latitude =  32.273334,
+                    Longitude = 34.913549,
                 },
                 new Station
                 {
                     Code = 38,
-                    Name = "station38",
-                    Latitude =  r.NextDouble() * (33.3 - 31) + 31,
-                    Longitude = r.NextDouble() * (35.5 - 34.3) + 34.3,
+                    Name = "Yavne/Lienz",
+                    Latitude =  32.180757,
+                    Longitude = 34.915164,
                 },
                 new Station
                 {
                     Code = 39,
-                    Name = "station39",
-                    Latitude =  r.NextDouble() * (33.3 - 31) + 31,
-                    Longitude = r.NextDouble() * (35.5 - 34.3) + 34.3,
+                    Name = "Bar Ilan/Indira",
+                    Latitude =  32.181731,
+                    Longitude = 34.913225,
                 },
                 new Station
                 {
                     Code = 40,
-                    Name = "station40",
-                    Latitude =  r.NextDouble() * (33.3 - 31) + 31,
-                    Longitude = r.NextDouble() * (35.5 - 34.3) + 34.3,
+                    Name = "Azar/Help",
+                    Latitude =  32.182884,
+                    Longitude = 34.914328,
                 },
                 new Station
                 {
                     Code = 41,
-                    Name = "station41",
-                    Latitude =  r.NextDouble() * (33.3 - 31) + 31,
-                    Longitude = r.NextDouble() * (35.5 - 34.3) + 34.3,
+                    Name = "Zamanhoff/Schwarzenegger",
+                    Latitude = 32.177881,
+                    Longitude = 34.920374,
                 },
                 new Station
                 {
                     Code = 42,
-                    Name = "station42",
-                    Latitude =  r.NextDouble() * (33.3 - 31) + 31,
-                    Longitude = r.NextDouble() * (35.5 - 34.3) + 34.3,
+                    Name = "Hagalil/Pls",
+                    Latitude =  32.177963,
+                    Longitude = 34.918212,
                 },
                 new Station
                 {
                     Code = 43,
-                    Name = "station43",
-                    Latitude =  r.NextDouble() * (33.3 - 31) + 31,
-                    Longitude = r.NextDouble() * (35.5 - 34.3) + 34.3,
+                    Name = "Hagalil/Pizdetz",
+                    Latitude =  32.176566,
+                    Longitude = 34.917749,
                 },
                 new Station
                 {
                     Code = 44,
-                    Name = "station44",
-                    Latitude =  r.NextDouble() * (33.3 - 31) + 31,
-                    Longitude = r.NextDouble() * (35.5 - 34.3) + 34.3,
+                    Name = "Hacarmel/Habbznot",
+                    Latitude =  32.176925,
+                    Longitude = 34.914404,
                 },
                 new Station
                 {
                     Code = 45,
-                    Name = "station45",
-                    Latitude =  r.NextDouble() * (33.3 - 31) + 31,
-                    Longitude = r.NextDouble() * (35.5 - 34.3) + 34.3,
+                    Name = "Hacarmel/Hatavloor",
+                    Latitude = 32.177581,
+                    Longitude = 34.911645,
                 },
                 new Station
                 {
                     Code = 46,
-                    Name = "station46",
-                    Latitude =  r.NextDouble() * (33.3 - 31) + 31,
-                    Longitude = r.NextDouble() * (35.5 - 34.3) + 34.3,
+                    Name = "Hacarmel/Sekiro",
+                    Latitude =  32.178461,
+                    Longitude = 34.907682,
                 },
                 new Station
                 {
                     Code = 47,
-                    Name = "station47",
-                    Latitude =  r.NextDouble() * (33.3 - 31) + 31,
-                    Longitude = r.NextDouble() * (35.5 - 34.3) + 34.3,
+                    Name = "Veitzman/Vineman",
+                    Latitude =  32.173907,
+                    Longitude = 34.914826,
                 },
                 new Station
                 {
                     Code = 48,
-                    Name = "station48",
-                    Latitude =  r.NextDouble() * (33.3 - 31) + 31,
-                    Longitude = r.NextDouble() * (35.5 - 34.3) + 34.3,
+                    Name = "Hashachar/Hanutella",
+                    Latitude =  32.180341,
+                    Longitude = 34.909755,
                 },
                 new Station
                 {
                     Code = 49,
-                    Name = "station49",
-                    Latitude =  r.NextDouble() * (33.3 - 31) + 31,
-                    Longitude = r.NextDouble() * (35.5 - 34.3) + 34.3,
+                    Name = "Tscharnichovsky/Pewders",
+                    Latitude =  32.1865,
+                    Longitude = 34.903738,
                 },
                 new Station
                 {
                     Code = 50,
-                    Name = "station50",
-                    Latitude =  r.NextDouble() * (33.3 - 31) + 31,
-                    Longitude = r.NextDouble() * (35.5 - 34.3) + 34.3,
+                    Name = "Tscharnichovsky/Levov",
+                    Latitude =  32.189203,
+                    Longitude = 34.906032,
                 },
 
 
@@ -551,7 +552,7 @@ namespace DS
                 new Line
                 {
                     ID = 1,
-                    Code = 1,
+                    LineNum = 1,
                     Area = Areas.Center,
                     FirstStation = 1,
                     LastStation = 10
@@ -559,7 +560,7 @@ namespace DS
                 new Line
                 {
                     ID = 2,
-                    Code = 2,
+                    LineNum = 2,
                     Area = Areas.Center,
                     FirstStation = 5,
                     LastStation = 15
@@ -567,7 +568,7 @@ namespace DS
                 new Line
                 {
                     ID = 3,
-                    Code = 3,
+                    LineNum = 3,
                     Area = Areas.General,
                     FirstStation = 10,
                     LastStation = 20
@@ -575,7 +576,7 @@ namespace DS
                 new Line
                 {
                     ID = 4,
-                    Code = 4,
+                    LineNum = 4,
                     Area = Areas.General,
                     FirstStation = 15,
                     LastStation = 25
@@ -583,7 +584,7 @@ namespace DS
                 new Line
                 {
                     ID = 5,
-                    Code = 5,
+                    LineNum = 5,
                     Area = Areas.Jerusalem,
                     FirstStation = 20,
                     LastStation = 30
@@ -591,7 +592,7 @@ namespace DS
                 new Line
                 {
                     ID = 6,
-                    Code = 6,
+                    LineNum = 6,
                     Area = Areas.Jerusalem,
                     FirstStation = 25,
                     LastStation = 35
@@ -599,7 +600,7 @@ namespace DS
                 new Line
                 {
                     ID = 7,
-                    Code = 7,
+                    LineNum = 7,
                     Area = Areas.North,
                     FirstStation = 30,
                     LastStation = 40
@@ -607,7 +608,7 @@ namespace DS
                 new Line
                 {
                     ID = 8,
-                    Code = 8,
+                    LineNum = 8,
                     Area = Areas.North,
                     FirstStation = 35,
                     LastStation = 45
@@ -615,7 +616,7 @@ namespace DS
                 new Line
                 {
                     ID = 9,
-                    Code = 9,
+                    LineNum = 9,
                     Area = Areas.South,
                     FirstStation = 38,
                     LastStation = 48
@@ -623,7 +624,7 @@ namespace DS
                 new Line
                 {
                     ID = 10,
-                    Code = 10,
+                    LineNum = 10,
                     Area = Areas.South,
                     FirstStation = 40,
                     LastStation = 50,
@@ -1535,20 +1536,13 @@ namespace DS
                     NextStation = 0
                 },
                 #endregion
-               
+                
 
             };
             #endregion
+            #region AdjStations
 
-            listAdjacentStations = new List<AdjacentStations>
-            {
-                new AdjacentStations
-                {
-                    Station1 = 1,
-                    Station2 = 2,
-                    
-                }
-            };
+            #endregion
         }
     }
 }

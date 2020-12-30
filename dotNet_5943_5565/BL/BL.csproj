@@ -42,7 +42,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="BO\AdjStations.cs" />
+    <Compile Include="BO\Bus.cs" />
+    <Compile Include="BO\Enums.cs" />
+    <Compile Include="BO\Line.cs" />
+    <Compile Include="BO\LineStation.cs" />
+    <Compile Include="BO\Station.cs" />
+    <Compile Include="IBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
