@@ -42,23 +42,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLAPI\BLFactory.cs" />
+    <Compile Include="BLImp.cs" />
     <Compile Include="BO\AdjStations.cs" />
     <Compile Include="BO\Bus.cs" />
     <Compile Include="BO\Enums.cs" />
     <Compile Include="BO\Line.cs" />
     <Compile Include="BO\LineStation.cs" />
     <Compile Include="BO\Station.cs" />
-    <Compile Include="IBL.cs" />
+    <Compile Include="BLAPI\IBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DLAPI\DLAPI.csproj">
       <Project>{73722c57-97c0-4080-b0c2-8cb0de6dd790}</Project>
       <Name>DLAPI</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DLObject\DLObject.csproj">
-      <Project>{cc93340b-aeb0-4d99-b6b0-3f00ae73d77a}</Project>
-      <Name>DLObject</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

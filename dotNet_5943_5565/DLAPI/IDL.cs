@@ -9,14 +9,15 @@ namespace DLAPI
 {
     public interface IDL
     {
+
         #region Bus
         void AddBus(Bus bus);
-        Bus GetBus(int liscense);
+        Bus GetBus(int license);
         IEnumerable<Bus> GetAllBusses();
         IEnumerable<Bus> GetAllBussesBy(Predicate<Bus> predicate);
         void UpdateBus(Bus bus);
-        void UpdateBus(int liscense, Action<Bus> update);
-        void DeleteBus(int liscense);
+        void UpdateBus(int license, Action<Bus> update);
+        void DeleteBus(int license);
         #endregion
 
         #region Station
