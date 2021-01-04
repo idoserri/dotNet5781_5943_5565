@@ -5,8 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="openning screen" Height="450" Width="800" >
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Button Content="Management" HorizontalAlignment="Center" Grid.Row="0"  VerticalAlignment="Center" Width="100" Click="open_management_window"/>
+        <Button Content="passenger" HorizontalAlignment="Center" Grid.Row="1"  VerticalAlignment="Center" Width="100" Click="open_passenger_window"/>
     </Grid>
 </Window>
