@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using BLAPI;
 namespace PL
 {
     /// <summary>
@@ -20,6 +20,7 @@ namespace PL
     /// </summary>
     public partial class MainWindow : Window
     {
+        IBL bl = BLFactory.GetBL("1");
         public MainWindow()
         {
             InitializeComponent();
@@ -27,7 +28,7 @@ namespace PL
 
         private void open_management_window(object sender, RoutedEventArgs e)
         {
-            Management ToOpen = new Management();
+            Management ToOpen = new Management(bl);
             ToOpen.ShowDialog();
         }
 

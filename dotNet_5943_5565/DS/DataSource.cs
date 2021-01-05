@@ -184,7 +184,7 @@ namespace DS
                     Mileage = 0,
                     FuelRemain = 1200,
                     BusStatus = Status.Ready
-                },
+                }
             };
             #endregion
 
@@ -540,7 +540,7 @@ namespace DS
                     Name = "Tscharnichovsky/Levov",
                     Latitude =  32.189203,
                     Longitude = 34.906032,
-                },
+                }
 
 
             };
@@ -1534,7 +1534,7 @@ namespace DS
                     LineStationIndex = 11,
                     PrevStation = 49,
                     NextStation = 0
-                },
+                }
                 #endregion
                 
 

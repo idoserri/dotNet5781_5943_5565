@@ -11,6 +11,8 @@ namespace BL
 {
     class BLImp : IBL
     {
+        IDL dl = DLFactory.GetDL();
+
         #region Bus
         public Bus GetBus(int license)
         {
@@ -39,6 +41,15 @@ namespace BL
         #endregion
 
         #region Line
+
+        BO.Line lineBoDoAdapter(DO.Line lineDO)
+        {
+            BO.Line lineBO = new BO.Line();
+            lineBO.ID = lineDO.ID;
+            lineBO.LastStation = lineDO.LastStation;
+            lineBO.LineNum = lineDO.LineNum;
+            return lineBO;
+        }
         public void AddLine(Line line)
         {
             throw new NotImplementedException();
@@ -49,7 +60,8 @@ namespace BL
         }
         public IEnumerable<Line> GetAllLines()
         {
-            throw new NotImplementedException();
+            return from item in dl.GetAllLines()
+                   select lineBoDoAdapter(item);
         }
         public Line GetLine(int id)
         {

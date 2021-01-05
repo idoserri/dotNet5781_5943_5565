@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using BLAPI;
 namespace PL
 {
     /// <summary>
@@ -19,9 +19,19 @@ namespace PL
     /// </summary>
     public partial class Management : Window
     {
-        public Management()
+        IBL bl;
+        public Management(IBL _bl)
         {
+
+            bl = _bl;
+            Lines_lv.ItemsSource = bl.GetAllLines();
             InitializeComponent();
+        }
+
+        private void Lines_btn_Click(object sender, RoutedEventArgs e)
+        {
+            Lines_lv.Visibility = Visibility.Visible;
+
         }
     }
 }

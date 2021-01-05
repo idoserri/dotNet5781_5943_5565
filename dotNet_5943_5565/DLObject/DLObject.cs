@@ -87,7 +87,9 @@ namespace DL
         }
         public IEnumerable<Line> GetAllLines()
         {
-            throw new NotImplementedException();
+            IEnumerable<Line> toReturn = from line in DataSource.listLines
+                                         select line.Clone();
+            return toReturn;
         }
         public IEnumerable<Line> GetAllLinesBy(Predicate<Line> predicate)
         {
