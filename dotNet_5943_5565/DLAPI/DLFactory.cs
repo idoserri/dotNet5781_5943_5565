@@ -23,8 +23,11 @@ namespace DLAPI
         /// <returns>Dal tier implementation object</returns>
         public static IDL GetDL()
         {
+           
             // get dal implementation name from config.xml according to <data> element
             string dlType = DLConfig.DLName;
+
+
             // bring package name (dll file name) for the dal name (above) from the list of packages in config.xml
             DLConfig.DLPackage dlPackage;
             try // get dal package info according to <dal> element value in config file
