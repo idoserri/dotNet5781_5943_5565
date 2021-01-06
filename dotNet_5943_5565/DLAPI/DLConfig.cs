@@ -54,7 +54,7 @@ namespace DLAPI
         /// </summary>
         static DLConfig()
         {
-            XElement dlConfig = XElement.Load(@"config.xml");
+            XElement dlConfig = XElement.Load(@"C:\Users\aaron\source\repos\idoserri\dotNet5781_5943_5565\dotNet_5943_5565\config.xml");
             DLName = dlConfig.Element("dl").Value;
             DLPackages = (from pkg in dlConfig.Element("dl-packages").Elements()
                           let tmp1 = pkg.Attribute("namespace")

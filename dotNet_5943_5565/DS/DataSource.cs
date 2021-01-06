@@ -631,7 +631,7 @@ namespace DS
                 }
             };
             #endregion
-
+            /*
             #region LineStations
             listLineStations = new List<LineStation>
             {
@@ -1539,7 +1539,7 @@ namespace DS
                 
 
             };
-            #endregion
+            #endregion*/
 
 
             #region AdjStations

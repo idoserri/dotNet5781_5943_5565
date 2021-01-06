@@ -22,14 +22,13 @@ namespace PL
         IBL bl;
         public Management(IBL _bl)
         {
-
-            bl = _bl;
-            Lines_lv.ItemsSource = bl.GetAllLines();
             InitializeComponent();
+            bl = _bl;
         }
 
         private void Lines_btn_Click(object sender, RoutedEventArgs e)
         {
+            Lines_lv.DataContext = bl.GetAllLines().ToList();
             Lines_lv.Visibility = Visibility.Visible;
 
         }

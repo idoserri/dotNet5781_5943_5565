@@ -23,7 +23,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DS", "DS\DS.csproj", "{AF37
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BL", "BL\BL.csproj", "{E9498425-07F4-4A1A-9790-3349B210EED1}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9711B708-819D-4788-9FC8-3732561113B4}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{19D2CD16-DC29-46D1-B932-E6FD12F8982C}"
 	ProjectSection(SolutionItems) = preProject
 		config.xml = config.xml
 	EndProjectSection
