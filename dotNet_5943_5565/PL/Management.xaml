@@ -14,9 +14,8 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Line number" Width="100" DisplayMemberBinding="{Binding LineNum}" />
-                    <GridViewColumn Header="Area" Width="100" DisplayMemberBinding="{Binding Areas}" />
-                    <GridViewColumn Header="First station" Width="100" DisplayMemberBinding="{Binding FirstStation}" />
-                    <GridViewColumn Header="Last station" Width="100" DisplayMemberBinding="{Binding LastStation}" />
+                    <GridViewColumn Header="Area" Width="100" DisplayMemberBinding="{Binding Area}" />
+                   
                 </GridView>
             </ListView.View>
         </ListView>
@@ -27,7 +26,7 @@
                     <GridViewColumn Header="From date" Width="100" DisplayMemberBinding="{Binding FromDate}" />
                     <GridViewColumn Header="Mileage" Width="100" DisplayMemberBinding="{Binding Mileage}" />
                     <GridViewColumn Header="Fuel remain" Width="100" DisplayMemberBinding="{Binding FuelRemain}" />
-                    <GridViewColumn Header="Status" Width="100" DisplayMemberBinding="{Binding Status}" />
+                    <GridViewColumn Header="Status" Width="100" DisplayMemberBinding="{Binding BusStatus}" />
 
 
                 </GridView>
@@ -38,6 +37,7 @@
                 <GridView>
                     <GridViewColumn Header="Code" Width="100" DisplayMemberBinding="{Binding Code}" />
                     <GridViewColumn Header="Name" Width="200" DisplayMemberBinding="{Binding Name}" />
+                    <GridViewColumn Header="Area" Width="100" DisplayMemberBinding="{Binding Area}" />
                   
                 </GridView>
             </ListView.View>

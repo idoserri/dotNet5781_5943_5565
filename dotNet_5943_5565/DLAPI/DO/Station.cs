@@ -16,5 +16,7 @@ namespace DO
 
         public double Latitude { get; set; }
 
+        public Areas Area { get; set; }
+
     }
 }

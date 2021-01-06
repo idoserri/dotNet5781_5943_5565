@@ -14,6 +14,7 @@ namespace BO
 
         public int LastStation { get; set; }
 
+        public Areas Area { get; set; }
         public IEnumerable<LineStation> ListOfLineStations { get; set; }
     }
 }

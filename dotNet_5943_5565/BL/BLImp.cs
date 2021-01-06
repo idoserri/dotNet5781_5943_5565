@@ -17,12 +17,34 @@ namespace BL
         BO.Bus BusBoDoAdapter(DO.Bus busDO)
         {
             BO.Bus busBO = new BO.Bus();
+            
             busBO.LicenseNum = busDO.LicenseNum;
             busBO.Mileage = busDO.Mileage;
             busBO.FuelRemain = busDO.FuelRemain;
             busBO.FromDate = busDO.FromDate;
-            //busBO.BusStatus = (Status)busDO.BusStatus;
+            busBO.BusStatus = BusEnumAdapter(busDO.BusStatus);
             return busBO;
+        }
+
+        public Status BusEnumAdapter(DO.Status statusDO)
+        {
+            if (DO.Status.Ready == statusDO)
+                return Status.Ready;
+
+            if (DO.Status.Fueling == statusDO)
+                return Status.Fueling;
+
+            if (DO.Status.Driving == statusDO)
+                return Status.Driving;
+
+            if (DO.Status.Treatment == statusDO)
+                return Status.Treatment;
+
+            else 
+                return Status.Unavailable;
+
+
+
         }
         public Bus GetBus(int license)
         {
@@ -97,7 +119,32 @@ namespace BL
             stationBO.Longitude = stationDO.Longitude;
             stationBO.Latitude = stationDO.Latitude;
             stationBO.Code = stationDO.Code;
+            stationBO.Area = StationEnumAdapter(stationDO.Area);
             return stationBO;
+        }
+
+        public Areas StationEnumAdapter(DO.Areas areaDO)
+        {
+            switch (areaDO)
+            {
+                case DO.Areas.General:
+                    return BO.Areas.General;                
+                    
+                case DO.Areas.North:
+                    return BO.Areas.North;
+
+                case DO.Areas.South:
+                    return BO.Areas.South;
+
+                case DO.Areas.Center:
+                    return BO.Areas.Center;
+
+                case DO.Areas.Jerusalem:
+                    return BO.Areas.Jerusalem;
+
+                default:
+                    return BO.Areas.General;
+            }
         }
         public void AddStation(Station station)
         {
@@ -125,5 +172,7 @@ namespace BL
             throw new NotImplementedException();
         }
         #endregion
+
+
     }
 }

@@ -16,6 +16,8 @@ namespace BO
 
         public double Latitude { get; set; }
 
+        public Areas Area { get; set; }
+
         public IEnumerable<Line> ListOfLines { get; set; }
     }
 }
