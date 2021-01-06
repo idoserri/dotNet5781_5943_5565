@@ -21,7 +21,6 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="License Number" Width="100" DisplayMemberBinding="{Binding LicenseNum}" />
-
                 </GridView>
             </ListView.View>
         </ListView>
