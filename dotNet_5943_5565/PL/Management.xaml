@@ -7,30 +7,27 @@
         mc:Ignorable="d"
         Title="Management" Height="450" Width="800">
     <Grid>
-        <Button x:Name="Busses_btn" Content="Busses" HorizontalAlignment="Left" Height="28" Margin="166,166,0,0" VerticalAlignment="Top" Width="70"/>
-        <Button x:Name="Stations_btn" Content="Stations" HorizontalAlignment="Left" Height="28" Margin="433,166,0,0" VerticalAlignment="Top" Width="70" RenderTransformOrigin="3.024,0.482"/>
+        <Button x:Name="Busses_btn" Content="Busses" HorizontalAlignment="Left" Height="28" Margin="166,166,0,0" VerticalAlignment="Top" Width="70" Click="Busses_btn_Click"/>
+        <Button x:Name="Stations_btn" Content="Stations" HorizontalAlignment="Left" Height="28" Margin="433,166,0,0" VerticalAlignment="Top" Width="70" RenderTransformOrigin="3.024,0.482" Click="Stations_btn_Click"/>
         <Button x:Name="Lines_btn" Content="Lines" HorizontalAlignment="Left" Height="28" Margin="288,166,0,0" VerticalAlignment="Top" Width="70" RenderTransformOrigin="1.567,0.589" Click="Lines_btn_Click"/>
         <ListView x:Name="Lines_lv" HorizontalAlignment="Left" Height="166" Margin="65,219,0,0" VerticalAlignment="Top" Width="461" Visibility="Hidden">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Line Number" Width="100" DisplayMemberBinding="{Binding LineNum}" />
-                    <GridViewColumn Header="Area" Width="100" DisplayMemberBinding="{Binding Area}" />
-                    <GridViewColumn Header="First station" Width="100" DisplayMemberBinding="{Binding FirstStation}" />
-                    <GridViewColumn Header="Last station" Width="100" DisplayMemberBinding="{Binding LastStation}" />
                 </GridView>
             </ListView.View>
         </ListView>
         <ListView x:Name="Busses_lv" HorizontalAlignment="Left" Height="166" Margin="65,219,0,0" VerticalAlignment="Top" Width="461" Visibility="Hidden">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn/>
+                    <GridViewColumn Header="License Number" Width="100" DisplayMemberBinding="{Binding LicenseNum}" />
                 </GridView>
             </ListView.View>
         </ListView>
         <ListView x:Name="Stations_lv" HorizontalAlignment="Left" Height="166" Margin="65,219,0,0" VerticalAlignment="Top" Width="461" Visibility="Hidden">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn/>
+                    <GridViewColumn Header="Name" Width="100" DisplayMemberBinding="{Binding Name}" />
                 </GridView>
             </ListView.View>
         </ListView>
