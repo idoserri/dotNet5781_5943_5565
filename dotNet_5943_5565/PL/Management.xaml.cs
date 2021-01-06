@@ -28,9 +28,26 @@ namespace PL
 
         private void Lines_btn_Click(object sender, RoutedEventArgs e)
         {
-            Lines_lv.DataContext = bl.GetAllLines().ToList();
+            Lines_lv.ItemsSource = bl.GetAllLines().ToList();
+            Busses_lv.Visibility = Visibility.Hidden;
+            Stations_lv.Visibility = Visibility.Hidden;
             Lines_lv.Visibility = Visibility.Visible;
+        }
 
+        private void Busses_btn_Click(object sender, RoutedEventArgs e)
+        {
+            Busses_lv.ItemsSource = bl.GetAllBusses().ToList();
+            Lines_lv.Visibility = Visibility.Hidden;
+            Stations_lv.Visibility = Visibility.Hidden;
+            Busses_lv.Visibility = Visibility.Visible;
+        }
+
+        private void Stations_btn_Click(object sender, RoutedEventArgs e)
+        {
+            Stations_lv.ItemsSource = bl.GetAllStations().ToList();
+            Lines_lv.Visibility = Visibility.Hidden;
+            Busses_lv.Visibility = Visibility.Hidden;
+            Stations_lv.Visibility = Visibility.Visible;
         }
     }
 }

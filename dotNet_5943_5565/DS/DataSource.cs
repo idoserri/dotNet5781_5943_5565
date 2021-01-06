@@ -15,7 +15,7 @@ namespace DS
         public static List<Line> listLines;
         public static List<LineStation> listLineStations;
         public static List<AdjacentStations> listAdjacentStations;
-        public static Random r;
+        public static Random r = new Random();
         static DataSource()
         {
             InitialLists();
@@ -25,167 +25,168 @@ namespace DS
             #region Busses
             listBusses = new List<Bus>
             {
-                new Bus
-                {
-                    LicenseNum = 1,
-                    FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
-                    Mileage = 0,
-                    FuelRemain = 1200,
-                    BusStatus = Status.Ready
-                },
-                new Bus
-                {
-                    LicenseNum = 10,
-                    FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
-                    Mileage = 0,
-                    FuelRemain = 1200,
-                    BusStatus = Status.Ready
-                },
-                new Bus
-                {
-                    LicenseNum = 11,
-                    FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
-                    Mileage = 0,
-                    FuelRemain = 1200,
-                    BusStatus = Status.Ready
-                },
-                new Bus
-                {
-                    LicenseNum = 100,
-                    FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
-                    Mileage = 0,
-                    FuelRemain = 1200,
-                    BusStatus = Status.Ready
-                },
-                new Bus
-                {
-                    LicenseNum = 101,
-                    FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
-                    Mileage = 0,
-                    FuelRemain = 1200,
-                    BusStatus = Status.Ready
-                },
-                new Bus
-                {
-                    LicenseNum = 110,
-                    FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
-                    Mileage = 0,
-                    FuelRemain = 1200,
-                    BusStatus = Status.Ready
-                },
-                new Bus
-                {
-                    LicenseNum = 111,
-                    FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
-                    Mileage = 0,
-                    FuelRemain = 1200,
-                    BusStatus = Status.Ready
-                },
-                new Bus
-                {
-                    LicenseNum = 1000,
-                    FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
-                    Mileage = 0,
-                    FuelRemain = 1200,
-                    BusStatus = Status.Ready
-                },
-                new Bus
-                {
-                    LicenseNum = 1001,
-                    FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
-                    Mileage = 0,
-                    FuelRemain = 1200,
-                    BusStatus = Status.Ready
-                },
-                new Bus
-                {
-                    LicenseNum = 1010,
-                    FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
-                    Mileage = 0,
-                    FuelRemain = 1200,
-                    BusStatus = Status.Ready
-                },
-                new Bus
-                {
-                    LicenseNum = 1011,
-                    FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
-                    Mileage = 0,
-                    FuelRemain = 1200,
-                    BusStatus = Status.Ready
-                },
-                new Bus
-                {
-                    LicenseNum = 1100,
-                    FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
-                    Mileage = 0,
-                    FuelRemain = 1200,
-                    BusStatus = Status.Ready
-                },
-                new Bus
-                {
-                    LicenseNum = 1101,
-                    FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
-                    Mileage = 0,
-                    FuelRemain = 1200,
-                    BusStatus = Status.Ready
-                },
-                new Bus
-                {
-                    LicenseNum = 1110,
-                    FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
-                    Mileage = 0,
-                    FuelRemain = 1200,
-                    BusStatus = Status.Ready
-                },
-                new Bus
-                {
-                    LicenseNum = 1111,
-                    FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
-                    Mileage = 0,
-                    FuelRemain = 1200,
-                    BusStatus = Status.Ready
-                },
-                new Bus
-                {
-                    LicenseNum = 10000,
-                    FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
-                    Mileage = 0,
-                    FuelRemain = 1200,
-                    BusStatus = Status.Ready
-                },
-                new Bus
-                {
-                    LicenseNum = 10001,
-                    FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
-                    Mileage = 0,
-                    FuelRemain = 1200,
-                    BusStatus = Status.Ready
-                },
-                new Bus
-                {
-                    LicenseNum = 10010,
-                    FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
-                    Mileage = 0,
-                    FuelRemain = 1200,
-                    BusStatus = Status.Ready
-                },
-                new Bus
-                {
-                    LicenseNum = 10011,
-                    FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
-                    Mileage = 0,
-                    FuelRemain = 1200,
-                    BusStatus = Status.Ready
-                },
-                new Bus
-                {
-                    LicenseNum = 10100,
-                    FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
-                    Mileage = 0,
-                    FuelRemain = 1200,
-                    BusStatus = Status.Ready
-                }
-            };
+             new Bus
+             {
+                 LicenseNum = 1,
+                 FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
+                 Mileage = 0,
+                 FuelRemain = 1200,
+                 BusStatus = Status.Ready
+             },
+             new Bus
+             {
+                 LicenseNum = 10,
+                 FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
+                 Mileage = 0,
+                 FuelRemain = 1200,
+                 BusStatus = Status.Ready
+             },
+             new Bus
+             {
+                 LicenseNum = 11,
+                 FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
+                 Mileage = 0,
+                 FuelRemain = 1200,
+                 BusStatus = Status.Ready
+             },
+             new Bus
+             {
+                 LicenseNum = 100,
+                 FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
+                 Mileage = 0,
+                 FuelRemain = 1200,
+                 BusStatus = Status.Ready
+             },
+             new Bus
+             {
+                 LicenseNum = 101,
+                 FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
+                 Mileage = 0,
+                 FuelRemain = 1200,
+                 BusStatus = Status.Ready
+             },
+             new Bus
+             {
+                 LicenseNum = 110,
+                 FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
+                 Mileage = 0,
+                 FuelRemain = 1200,
+                 BusStatus = Status.Ready
+             },
+             new Bus
+             {
+                 LicenseNum = 111,
+                 FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
+                 Mileage = 0,
+                 FuelRemain = 1200,
+                 BusStatus = Status.Ready
+             },
+             new Bus
+             {
+                 LicenseNum = 1000,
+                 FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
+                 Mileage = 0,
+                 FuelRemain = 1200,
+                 BusStatus = Status.Ready
+             },
+             new Bus
+             {
+                 LicenseNum = 1001,
+                 FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
+                 Mileage = 0,
+                 FuelRemain = 1200,
+                 BusStatus = Status.Ready
+             },
+             new Bus
+             {
+                 LicenseNum = 1010,
+                 FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
+                 Mileage = 0,
+                 FuelRemain = 1200,
+                 BusStatus = Status.Ready
+             },
+             new Bus
+             {
+                 LicenseNum = 1011,
+                 FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
+                 Mileage = 0,
+                 FuelRemain = 1200,
+                 BusStatus = Status.Ready
+             },
+             new Bus
+             {
+                 LicenseNum = 1100,
+                 FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
+                 Mileage = 0,
+                 FuelRemain = 1200,
+                 BusStatus = Status.Ready
+             },
+             new Bus
+             {
+                 LicenseNum = 1101,
+                 FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
+                 Mileage = 0,
+                 FuelRemain = 1200,
+                 BusStatus = Status.Ready
+             },
+             new Bus
+             {
+                 LicenseNum = 1110,
+                 FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
+                 Mileage = 0,
+                 FuelRemain = 1200,
+                 BusStatus = Status.Ready
+             },
+             new Bus
+             {
+                 LicenseNum = 1111,
+                 FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
+                 Mileage = 0,
+                 FuelRemain = 1200,
+                 BusStatus = Status.Ready
+             },
+             new Bus
+             {
+                 LicenseNum = 10000,
+                 FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
+                 Mileage = 0,
+                 FuelRemain = 1200,
+                 BusStatus = Status.Ready
+             },
+             new Bus
+             {
+                 LicenseNum = 10001,
+                 FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
+                 Mileage = 0,
+                 FuelRemain = 1200,
+                 BusStatus = Status.Ready
+             },
+             new Bus
+             {
+                 LicenseNum = 10010,
+                 FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
+                 Mileage = 0,
+                 FuelRemain = 1200,
+                 BusStatus = Status.Ready
+             },
+             new Bus
+             {
+                 LicenseNum = 10011,
+                 FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
+                 Mileage = 0,
+                 FuelRemain = 1200,
+                 BusStatus = Status.Ready
+             },
+             new Bus
+             {
+                 LicenseNum = 10100,
+                 FromDate = DateTime.Now.AddDays(r.Next(-3000, 0)),
+                 Mileage = 0,
+                 FuelRemain = 1200,
+                 BusStatus = Status.Ready
+             }
+
+         };
             #endregion
 
             #region Stations
@@ -631,7 +632,7 @@ namespace DS
                 }
             };
             #endregion
-            /*
+            
             #region LineStations
             listLineStations = new List<LineStation>
             {
@@ -1539,7 +1540,7 @@ namespace DS
                 
 
             };
-            #endregion*/
+            #endregion
 
 
             #region AdjStations

@@ -25,7 +25,8 @@ namespace DL
         }
         public IEnumerable<Bus> GetAllBusses()
         {
-            throw new NotImplementedException();
+            return from bus in DataSource.listBusses
+                   select bus.Clone();
         }
         public IEnumerable<Bus> GetAllBussesBy(Predicate<Bus> predicate)
         {
@@ -56,7 +57,8 @@ namespace DL
         }
         public IEnumerable<Station> GetAllStations()
         {
-            throw new NotImplementedException();
+            return from station in DataSource.listStations
+                   select station.Clone();
         }
         public IEnumerable<Station> GetAllStationsBy(Predicate<Station> predicate)
         {

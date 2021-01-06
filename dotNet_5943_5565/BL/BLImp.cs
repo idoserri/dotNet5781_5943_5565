@@ -14,6 +14,16 @@ namespace BL
         IDL dl = DLFactory.GetDL();
 
         #region Bus
+        BO.Bus BusBoDoAdapter(DO.Bus busDO)
+        {
+            BO.Bus busBO = new BO.Bus();
+            busBO.LicenseNum = busDO.LicenseNum;
+            busBO.Mileage = busDO.Mileage;
+            busBO.FuelRemain = busDO.FuelRemain;
+            busBO.FromDate = busDO.FromDate;
+            //busBO.BusStatus = (Status)busDO.BusStatus;
+            return busBO;
+        }
         public Bus GetBus(int license)
         {
             throw new NotImplementedException();
@@ -28,7 +38,8 @@ namespace BL
         }
         public IEnumerable<Bus> GetAllBusses()
         {
-            throw new NotImplementedException();
+            return from item in dl.GetAllBusses()
+                   select BusBoDoAdapter(item);
         }
         public IEnumerable<Bus> GetBussesBy(Predicate<Bus> predicate)
         {
@@ -78,6 +89,16 @@ namespace BL
         #endregion
 
         #region Station
+
+        BO.Station StationBoDoAdapter(DO.Station stationDO)
+        {
+            BO.Station stationBO = new BO.Station();
+            stationBO.Name = stationDO.Name;
+            stationBO.Longitude = stationDO.Longitude;
+            stationBO.Latitude = stationDO.Latitude;
+            stationBO.Code = stationDO.Code;
+            return stationBO;
+        }
         public void AddStation(Station station)
         {
             throw new NotImplementedException();
@@ -88,7 +109,8 @@ namespace BL
         }
         public IEnumerable<Station> GetAllStations()
         {
-            throw new NotImplementedException();
+            return from item in dl.GetAllStations()
+                   select StationBoDoAdapter(item);
         }
         public Station GetStation(int code)
         {
