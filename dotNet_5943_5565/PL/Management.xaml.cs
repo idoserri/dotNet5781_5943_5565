@@ -49,5 +49,56 @@ namespace PL
             Busses_lv.Visibility = Visibility.Hidden;
             Stations_lv.Visibility = Visibility.Visible;
         }
+
+       
+
+       // add !!!!!
+
+        private void addBusButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void addLineButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void addStationButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        // updates !!!!
+        private void bUpdateBus_Click(object sender, RoutedEventArgs e)
+        {
+            //some
+        }
+
+        private void bUpdateLine_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void bUpdateStation_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        // deletes
+        private void bDeleteBus_Click(object sender, RoutedEventArgs e)
+        {
+            //something
+        }
+
+        private void bDeleteStation_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void bDeleteLine_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -81,6 +81,7 @@ namespace BL
             lineBO.ID = lineDO.ID;
             lineBO.LastStation = lineDO.LastStation;
             lineBO.LineNum = lineDO.LineNum;
+            lineBO.Area = AreasEnumAdapter(lineDO.Area);
             return lineBO;
         }
         public void AddLine(Line line)
@@ -119,11 +120,11 @@ namespace BL
             stationBO.Longitude = stationDO.Longitude;
             stationBO.Latitude = stationDO.Latitude;
             stationBO.Code = stationDO.Code;
-            stationBO.Area = StationEnumAdapter(stationDO.Area);
+            stationBO.Area = AreasEnumAdapter(stationDO.Area);
             return stationBO;
         }
 
-        public Areas StationEnumAdapter(DO.Areas areaDO)
+        public Areas AreasEnumAdapter(DO.Areas areaDO)
         {
             switch (areaDO)
             {
