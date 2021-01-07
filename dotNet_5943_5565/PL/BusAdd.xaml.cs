@@ -20,7 +20,7 @@ namespace PL
     public partial class BusAdd : Window
     {
         IBL bl;
-        public BusAdd(BO.Bus _bus, IBL _bl)
+        public BusAdd(IBL _bl)
         {
             InitializeComponent();
             bl = _bl;
@@ -38,6 +38,7 @@ namespace PL
                 FuelRemain = Double.Parse(fuelRemain_txtb.Text)
             };
             bl.AddBus(toAdd);
+            this.Close();
         }
     }
 }

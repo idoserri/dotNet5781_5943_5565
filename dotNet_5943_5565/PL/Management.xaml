@@ -97,7 +97,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="70"/>
             <RowDefinition Height="480"/>
-        </Grid.RowDefinitions>
+        </Grid.RowDefinitions> 
         <StackPanel Orientation="Horizontal"   >
             
             <TextBlock TextWrapping="Wrap" Text="  add bus:" VerticalAlignment="Center" Height="23" Width="101" FontSize="20" FontWeight="Bold" />

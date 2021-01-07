@@ -76,7 +76,10 @@ namespace PL
 
         private void addBusButton_Click(object sender, RoutedEventArgs e)
         {
-
+            BO.Bus b = (sender as Button).DataContext as BO.Bus;
+            BusAdd busAdd = new BusAdd(bl);
+            busAdd.ShowDialog();
+            RefreshAndShowListView("busses");
         }
 
         private void addLineButton_Click(object sender, RoutedEventArgs e)

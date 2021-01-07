@@ -24,9 +24,11 @@ namespace BL
         {
             throw new NotImplementedException();
         }
-        public void AddBus(Bus bus)
+        public void AddBus(Bus busBO)
         {
-            throw new NotImplementedException();
+            DO.Bus busDO = new DO.Bus();
+            busBO.CopyPropertiesTo(busDO);
+            dl.AddBus(busDO);
         }
         public void DeleteBus(int license)
         {
@@ -54,6 +56,7 @@ namespace BL
             bus.CopyPropertiesTo(busDO);
             dl.UpdateBus(busDO);
         }
+
         #endregion
 
         #region Line

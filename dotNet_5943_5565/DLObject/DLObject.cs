@@ -49,8 +49,10 @@ namespace DL
         }
         public void AddBus(Bus bus)
         {
-            throw new NotImplementedException();
-        }
+            /*if (DataSource.listBusses.FirstOrDefault(b => (bus.LicenseNum == b.LicenseNum)) != null)
+                throw new NotImplementedException(); *///new exception needed
+            DataSource.listBusses.Add(bus);
+        }   
         public void DeleteBus(int liscense)
         {
             DO.Bus bus = DataSource.listBusses.Find(b => b.LicenseNum == liscense);
