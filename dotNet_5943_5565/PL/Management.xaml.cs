@@ -31,21 +31,21 @@ namespace PL
             switch (type)
             {
                 case "lines":
-                    Lines_lv.ItemsSource = bl.GetAllLines().ToList();
+                    Lines_lv.ItemsSource = bl.GetAllLines().ToList().OrderBy(line => line.LineNum);
                     Busses_lv.Visibility = Visibility.Hidden;
                     Stations_lv.Visibility = Visibility.Hidden;
                     Lines_lv.Visibility = Visibility.Visible;
                     Lines_lv.Items.Refresh();
                     break;
                 case "stations":
-                    Stations_lv.ItemsSource = bl.GetAllStations().ToList();
+                    Stations_lv.ItemsSource = bl.GetAllStations().ToList().OrderBy(station => station.Name);
                     Lines_lv.Visibility = Visibility.Hidden;
                     Busses_lv.Visibility = Visibility.Hidden;
                     Stations_lv.Visibility = Visibility.Visible;
                     Stations_lv.Items.Refresh();
                     break;
                 case "busses":
-                    Busses_lv.ItemsSource = bl.GetAllBusses().ToList();
+                    Busses_lv.ItemsSource = bl.GetAllBusses().ToList().OrderBy(bus => bus.LicenseNum);
                     Lines_lv.Visibility = Visibility.Hidden;
                     Stations_lv.Visibility = Visibility.Hidden;
                     Busses_lv.Visibility = Visibility.Visible;
@@ -95,6 +95,7 @@ namespace PL
             BO.Bus b = (sender as Button).DataContext as BO.Bus;
             BusUpdate busUpdate = new BusUpdate(b, bl);
             busUpdate.ShowDialog();
+            RefreshAndShowListView("busses");
         }
 
         private void bUpdateLine_Click(object sender, RoutedEventArgs e)

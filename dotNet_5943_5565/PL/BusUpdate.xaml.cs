@@ -26,7 +26,23 @@ namespace PL
             InitializeComponent();
             bl = _bl;
             toUpdate = _bus;
-            liscenceNum_lbl.Content += toUpdate.LicenseNum.ToString();
+            licenseNum_txtb.Text = toUpdate.LicenseNum.ToString();
+            mileage_txtb.Text = toUpdate.Mileage.ToString();
+            fuelRemain_txtb.Text = toUpdate.FuelRemain.ToString();
+            Status_cb.ItemsSource = Enum.GetValues(typeof(BO.Status));
+            Status_cb.SelectedValue = toUpdate.BusStatus;
+            fromDate_dp.DisplayDate = toUpdate.FromDate;
+        }
+
+        private void update_btn_Click(object sender, RoutedEventArgs e)
+        {
+            toUpdate.FromDate = fromDate_dp.DisplayDate;
+            toUpdate.FuelRemain = Double.Parse(fuelRemain_txtb.Text);
+            toUpdate.LicenseNum = Int32.Parse(licenseNum_txtb.Text);
+            toUpdate.BusStatus = (BO.Status)Status_cb.SelectedItem;
+            toUpdate.Mileage = Double.Parse(mileage_txtb.Text);
+            bl.UpdateBus(toUpdate);
+            this.Close();
         }
     }
 }

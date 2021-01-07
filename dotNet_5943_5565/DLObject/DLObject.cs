@@ -34,7 +34,14 @@ namespace DL
         }
         public void UpdateBus(Bus bus)
         {
-            throw new NotImplementedException();
+            Bus toRemove = DataSource.listBusses.Find(b => b.LicenseNum == bus.LicenseNum);
+            if (toRemove != null)
+            {
+                DataSource.listBusses.Remove(toRemove);
+                DataSource.listBusses.Add(bus.Clone());
+            }
+            else //create exception for not exists
+                throw new NotImplementedException();
         }
         public void UpdateBus(int liscense, Action<Bus> update)
         {

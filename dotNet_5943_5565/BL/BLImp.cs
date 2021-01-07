@@ -17,34 +17,8 @@ namespace BL
         BO.Bus BusBoDoAdapter(DO.Bus busDO)
         {
             BO.Bus busBO = new BO.Bus();
-            
-            busBO.LicenseNum = busDO.LicenseNum;
-            busBO.Mileage = busDO.Mileage;
-            busBO.FuelRemain = busDO.FuelRemain;
-            busBO.FromDate = busDO.FromDate;
-            busBO.BusStatus = BusEnumAdapter(busDO.BusStatus);
+            busDO.CopyPropertiesTo(busBO);
             return busBO;
-        }
-
-        public Status BusEnumAdapter(DO.Status statusDO)
-        {
-            if (DO.Status.Ready == statusDO)
-                return Status.Ready;
-
-            if (DO.Status.Fueling == statusDO)
-                return Status.Fueling;
-
-            if (DO.Status.Driving == statusDO)
-                return Status.Driving;
-
-            if (DO.Status.Treatment == statusDO)
-                return Status.Treatment;
-
-            else 
-                return Status.Unavailable;
-
-
-
         }
         public Bus GetBus(int license)
         {
@@ -76,7 +50,9 @@ namespace BL
         }
         public void UpdateBus(Bus bus)
         {
-            throw new NotImplementedException();
+            DO.Bus busDO = new DO.Bus();
+            bus.CopyPropertiesTo(busDO);
+            dl.UpdateBus(busDO);
         }
         #endregion
 
@@ -85,10 +61,7 @@ namespace BL
         BO.Line lineBoDoAdapter(DO.Line lineDO)
         {
             BO.Line lineBO = new BO.Line();
-            lineBO.ID = lineDO.ID;
-            lineBO.LastStation = lineDO.LastStation;
-            lineBO.LineNum = lineDO.LineNum;
-            lineBO.Area = AreasEnumAdapter(lineDO.Area);
+            lineDO.CopyPropertiesTo(lineBO);
             return lineBO;
         }
         public void AddLine(Line line)
@@ -130,11 +103,7 @@ namespace BL
         BO.Station StationBoDoAdapter(DO.Station stationDO)
         {
             BO.Station stationBO = new BO.Station();
-            stationBO.Name = stationDO.Name;
-            stationBO.Longitude = stationDO.Longitude;
-            stationBO.Latitude = stationDO.Latitude;
-            stationBO.Code = stationDO.Code;
-            stationBO.Area = AreasEnumAdapter(stationDO.Area);
+            stationDO.CopyPropertiesTo(stationBO);
             return stationBO;
         }
         public void AddStation(Station station)
@@ -161,32 +130,6 @@ namespace BL
         public void UpdateStation(Station station)
         {
             throw new NotImplementedException();
-        }
-        #endregion
-
-        #region Misc Functions
-        public Areas AreasEnumAdapter(DO.Areas areaDO)
-        {
-            switch (areaDO)
-            {
-                case DO.Areas.General:
-                    return BO.Areas.General;
-
-                case DO.Areas.North:
-                    return BO.Areas.North;
-
-                case DO.Areas.South:
-                    return BO.Areas.South;
-
-                case DO.Areas.Center:
-                    return BO.Areas.Center;
-
-                case DO.Areas.Jerusalem:
-                    return BO.Areas.Jerusalem;
-
-                default:
-                    return BO.Areas.General;
-            }
         }
         #endregion
     }
