@@ -26,31 +26,51 @@ namespace PL
             bl = _bl;
         }
 
+        void RefreshAndShowListView(string type)
+        {
+            switch (type)
+            {
+                case "lines":
+                    Lines_lv.ItemsSource = bl.GetAllLines().ToList();
+                    Busses_lv.Visibility = Visibility.Hidden;
+                    Stations_lv.Visibility = Visibility.Hidden;
+                    Lines_lv.Visibility = Visibility.Visible;
+                    Lines_lv.Items.Refresh();
+                    break;
+                case "stations":
+                    Stations_lv.ItemsSource = bl.GetAllStations().ToList();
+                    Lines_lv.Visibility = Visibility.Hidden;
+                    Busses_lv.Visibility = Visibility.Hidden;
+                    Stations_lv.Visibility = Visibility.Visible;
+                    Stations_lv.Items.Refresh();
+                    break;
+                case "busses":
+                    Busses_lv.ItemsSource = bl.GetAllBusses().ToList();
+                    Lines_lv.Visibility = Visibility.Hidden;
+                    Stations_lv.Visibility = Visibility.Hidden;
+                    Busses_lv.Visibility = Visibility.Visible;
+                    Busses_lv.Items.Refresh();
+                    break;
+                default:
+                    break;
+            }
+        }
+
         private void Lines_btn_Click(object sender, RoutedEventArgs e)
         {
-            Lines_lv.ItemsSource = bl.GetAllLines().ToList();
-            Busses_lv.Visibility = Visibility.Hidden;
-            Stations_lv.Visibility = Visibility.Hidden;
-            Lines_lv.Visibility = Visibility.Visible;
+            RefreshAndShowListView("lines");
         }
 
         private void Busses_btn_Click(object sender, RoutedEventArgs e)
         {
-            Busses_lv.ItemsSource = bl.GetAllBusses().ToList();
-            Lines_lv.Visibility = Visibility.Hidden;
-            Stations_lv.Visibility = Visibility.Hidden;
-            Busses_lv.Visibility = Visibility.Visible;
+            RefreshAndShowListView("busses");
         }
 
         private void Stations_btn_Click(object sender, RoutedEventArgs e)
         {
-            Stations_lv.ItemsSource = bl.GetAllStations().ToList();
-            Lines_lv.Visibility = Visibility.Hidden;
-            Busses_lv.Visibility = Visibility.Hidden;
-            Stations_lv.Visibility = Visibility.Visible;
+            RefreshAndShowListView("stations");
         }
 
-       
 
        // add !!!!!
 
@@ -72,7 +92,9 @@ namespace PL
         // updates !!!!
         private void bUpdateBus_Click(object sender, RoutedEventArgs e)
         {
-            //some
+            BO.Bus b = (sender as Button).DataContext as BO.Bus;
+            BusUpdate busUpdate = new BusUpdate(b, bl);
+            busUpdate.ShowDialog();
         }
 
         private void bUpdateLine_Click(object sender, RoutedEventArgs e)
@@ -88,7 +110,9 @@ namespace PL
         // deletes
         private void bDeleteBus_Click(object sender, RoutedEventArgs e)
         {
-            //something
+            BO.Bus b = (sender as Button).DataContext as BO.Bus;
+            bl.DeleteBus(b.LicenseNum);
+            RefreshAndShowListView("busses");
         }
 
         private void bDeleteStation_Click(object sender, RoutedEventArgs e)

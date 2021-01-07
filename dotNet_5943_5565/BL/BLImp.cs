@@ -56,7 +56,14 @@ namespace BL
         }
         public void DeleteBus(int license)
         {
-            throw new NotImplementedException();
+            try
+            {
+                dl.DeleteBus(license);
+            }
+            catch //create new exception for id
+            {
+                throw new NotImplementedException();
+            }
         }
         public IEnumerable<Bus> GetAllBusses()
         {
@@ -90,7 +97,14 @@ namespace BL
         }
         public void DeleteLine(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                dl.DeleteLine(id);
+            }
+            catch(Exception)//create exception for bad id
+            {
+                throw new NotImplementedException();
+            }
         }
         public IEnumerable<Line> GetAllLines()
         {
@@ -123,30 +137,6 @@ namespace BL
             stationBO.Area = AreasEnumAdapter(stationDO.Area);
             return stationBO;
         }
-
-        public Areas AreasEnumAdapter(DO.Areas areaDO)
-        {
-            switch (areaDO)
-            {
-                case DO.Areas.General:
-                    return BO.Areas.General;                
-                    
-                case DO.Areas.North:
-                    return BO.Areas.North;
-
-                case DO.Areas.South:
-                    return BO.Areas.South;
-
-                case DO.Areas.Center:
-                    return BO.Areas.Center;
-
-                case DO.Areas.Jerusalem:
-                    return BO.Areas.Jerusalem;
-
-                default:
-                    return BO.Areas.General;
-            }
-        }
         public void AddStation(Station station)
         {
             throw new NotImplementedException();
@@ -174,6 +164,30 @@ namespace BL
         }
         #endregion
 
+        #region Misc Functions
+        public Areas AreasEnumAdapter(DO.Areas areaDO)
+        {
+            switch (areaDO)
+            {
+                case DO.Areas.General:
+                    return BO.Areas.General;
 
+                case DO.Areas.North:
+                    return BO.Areas.North;
+
+                case DO.Areas.South:
+                    return BO.Areas.South;
+
+                case DO.Areas.Center:
+                    return BO.Areas.Center;
+
+                case DO.Areas.Jerusalem:
+                    return BO.Areas.Jerusalem;
+
+                default:
+                    return BO.Areas.General;
+            }
+        }
+        #endregion
     }
 }

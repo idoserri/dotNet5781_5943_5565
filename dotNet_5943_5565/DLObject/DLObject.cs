@@ -46,7 +46,11 @@ namespace DL
         }
         public void DeleteBus(int liscense)
         {
-            throw new NotImplementedException();
+            DO.Bus bus = DataSource.listBusses.Find(b => b.LicenseNum == liscense);
+            if (bus != null)
+                DataSource.listBusses.Remove(bus);
+            else //create bad license exception
+                throw new NotImplementedException(); 
         }
         #endregion
 
