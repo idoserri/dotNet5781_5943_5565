@@ -89,6 +89,10 @@ namespace PL
 
         private void addStationButton_Click(object sender, RoutedEventArgs e)
         {
+            BO.Station s = (sender as Button).DataContext as BO.Station;
+            StationAdd toAdd = new StationAdd(bl);
+            toAdd.ShowDialog();
+            RefreshAndShowListView("stations");
 
         }
 
@@ -108,6 +112,10 @@ namespace PL
 
         private void bUpdateStation_Click(object sender, RoutedEventArgs e)
         {
+            BO.Station b = (sender as Button).DataContext as BO.Station;
+            StationUpdate busUpdate = new StationUpdate(b, bl);
+            busUpdate.ShowDialog();
+            RefreshAndShowListView("stations");
 
         }
 

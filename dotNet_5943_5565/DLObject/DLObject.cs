@@ -66,7 +66,9 @@ namespace DL
         #region Station
         public void AddStation(Station station)
         {
-            throw new NotImplementedException();
+           /* if (DataSource.listStations.FirstOrDefault(b => (station.Code == b.Code)) != null)
+               throw new NotImplementedException(); ///new exception needed*/
+            DataSource.listStations.Add(station);
         }
         public IEnumerable<Station> GetAllStations()
         {
@@ -87,7 +89,14 @@ namespace DL
         }
         public void UpdateStation(Station station)
         {
-            throw new NotImplementedException();
+            Station toRemove = DataSource.listStations.Find(b => b.Code == station.Code);
+            if (toRemove != null)
+            {
+                DataSource.listStations.Remove(toRemove);
+                DataSource.listStations.Add(station.Clone());
+            }
+            else //create exception for not exists
+                throw new NotImplementedException();
         }
         public void UpdateStation(int code, Action<Station> update)
         {

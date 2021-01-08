@@ -109,9 +109,11 @@ namespace BL
             stationDO.CopyPropertiesTo(stationBO);
             return stationBO;
         }
-        public void AddStation(Station station)
+        public void AddStation(Station stationBO)
         {
-            throw new NotImplementedException();
+            DO.Station stationDO = new DO.Station();
+            stationBO.CopyPropertiesTo(stationDO);
+            dl.AddStation(stationDO);
         }
         public void DeleteStation(int code)
         {
@@ -132,7 +134,9 @@ namespace BL
         }
         public void UpdateStation(Station station)
         {
-            throw new NotImplementedException();
+            DO.Station stationDO = new DO.Station();
+            station.CopyPropertiesTo(stationDO);
+            dl.UpdateStation(stationDO);
         }
         #endregion
     }
