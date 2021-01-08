@@ -18,8 +18,10 @@ namespace BO
 
         public Status BusStatus { get; set; }
 
-        public override string ToString()
+        public string LiscenseNumString
         {
+            get
+            {
                 if (this.FromDate.Year >= 2018)
                 {
                     int[] arr = new int[8];
@@ -44,6 +46,7 @@ namespace BO
                     return String.Format("{0}{1}-{2}{3}{4}-{5}{6}",
                         arr[0], arr[1], arr[2], arr[3], arr[4], arr[5], arr[6]);
                 }
+            }
         }
     }
 }

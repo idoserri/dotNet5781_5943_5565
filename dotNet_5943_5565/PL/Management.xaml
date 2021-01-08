@@ -153,7 +153,7 @@
         <ListView x:Name="Busses_lv" Grid.Row="1" HorizontalAlignment="Center" Height="400"  VerticalAlignment="Bottom" Width="800" Visibility="Hidden">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="License Number" Width="100" DisplayMemberBinding="{Binding LicenseNum}" />
+                    <GridViewColumn Header="License Number" Width="100" DisplayMemberBinding="{Binding LiscenseNumString}" />
                     <GridViewColumn Header="From date" Width="100" DisplayMemberBinding="{Binding FromDate}" />
                     <GridViewColumn Header="Mileage" Width="100" DisplayMemberBinding="{Binding Mileage}" />
                     <GridViewColumn Header="Fuel remain" Width="100" DisplayMemberBinding="{Binding FuelRemain}" />
