@@ -18,7 +18,37 @@ namespace BL
         {
             BO.Bus busBO = new BO.Bus();
             busDO.CopyPropertiesTo(busBO);
+            busBO.LicenseNumName = LicenseNumConverter(busBO);
             return busBO;
+        }
+        string LicenseNumConverter(BO.Bus bus)
+        {
+            {
+                if (bus.FromDate.Year >= 2018)
+                {
+                    int[] arr = new int[8];
+                    int num = bus.LicenseNum;
+                    for (int i = 7; i >= 0; i--)
+                    {
+                        arr[i] = num % 10;
+                        num /= 10;
+                    }
+                    return String.Format("{0}{1}{2}-{3}{4}-{5}{6}{7}",
+                        arr[0], arr[1], arr[2], arr[3], arr[4], arr[5], arr[6], arr[7]);
+                }
+                else
+                {
+                    int[] arr = new int[7];
+                    int num = bus.LicenseNum;
+                    for (int i = 6; i >= 0; i--)
+                    {
+                        arr[i] = num % 10;
+                        num /= 10;
+                    }
+                    return String.Format("{0}{1}-{2}{3}{4}-{5}{6}",
+                        arr[0], arr[1], arr[2], arr[3], arr[4], arr[5], arr[6]);
+                }
+            }
         }
         public Bus GetBus(int license)
         {
@@ -61,11 +91,27 @@ namespace BL
 
         #region Line
 
-        BO.Line lineBoDoAdapter(DO.Line lineDO)
+        BO.Line LineBoDoAdapter(DO.Line lineDO)
         {
             BO.Line lineBO = new BO.Line();
             lineDO.CopyPropertiesTo(lineBO);
+            lineBO.ListOfLineStations = from item in dl.GetAllLineStations()
+                                        where item.LineID == lineBO.ID
+                                        select LineStationBoDoAdapter(item);
+            lineBO.ListOfStations = from station in dl.GetAllStations()
+                                    from linestat in lineBO.ListOfLineStations
+                                    where station.Code == linestat.Station
+                                    select StationBoDoAdapter(station);
+            lineBO.LastStationName = LineNameConverter(lineBO);
             return lineBO;
+        }
+        string LineNameConverter(BO.Line line)
+        {
+            IEnumerable<string> toReturn = from station in line.ListOfStations
+                                           where line.LastStation == station.Code
+                                           select station.Name; 
+                              
+            return toReturn.Last();
         }
         public void AddLine(Line line)
         {
@@ -85,7 +131,7 @@ namespace BL
         public IEnumerable<Line> GetAllLines()
         {
             return from item in dl.GetAllLines()
-                   select lineBoDoAdapter(item);
+                   select LineBoDoAdapter(item);
         }
         public Line GetLine(int id)
         {
@@ -107,6 +153,10 @@ namespace BL
         {
             BO.Station stationBO = new BO.Station();
             stationDO.CopyPropertiesTo(stationBO);
+            stationBO.ListOfLines = from line in GetAllLines()
+                                    from linestation in line.ListOfLineStations
+                                    where linestation.Station == stationBO.Code
+                                    select line;
             return stationBO;
         }
         public void AddStation(Station stationBO)
@@ -137,6 +187,15 @@ namespace BL
             DO.Station stationDO = new DO.Station();
             station.CopyPropertiesTo(stationDO);
             dl.UpdateStation(stationDO);
+        }
+        #endregion
+
+        #region LineStation
+        BO.LineStation LineStationBoDoAdapter(DO.LineStation lineStationDO)
+        {
+            BO.LineStation lineStationBO = new BO.LineStation();
+            lineStationDO.CopyPropertiesTo(lineStationBO);
+            return lineStationBO;
         }
         #endregion
     }

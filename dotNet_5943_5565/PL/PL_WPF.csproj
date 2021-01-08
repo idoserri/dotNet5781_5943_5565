@@ -59,6 +59,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="LineUpdate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="StationUpdate.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -79,6 +83,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="LineUpdate.xaml.cs">
+      <DependentUpon>LineUpdate.xaml</DependentUpon>
+    </Compile>
     <Compile Include="StationUpdate.xaml.cs">
       <DependentUpon>StationUpdate.xaml</DependentUpon>
     </Compile>

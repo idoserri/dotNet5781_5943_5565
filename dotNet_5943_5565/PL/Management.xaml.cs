@@ -31,21 +31,27 @@ namespace PL
             switch (type)
             {
                 case "lines":
-                    Lines_lv.ItemsSource = bl.GetAllLines().ToList().OrderBy(line => line.LineNum);
+                    Lines_lv.ItemsSource = from line in bl.GetAllLines().ToList()
+                                           orderby line.LastStationName
+                                           select line;
                     Busses_lv.Visibility = Visibility.Hidden;
                     Stations_lv.Visibility = Visibility.Hidden;
                     Lines_lv.Visibility = Visibility.Visible;
                     Lines_lv.Items.Refresh();
                     break;
                 case "stations":
-                    Stations_lv.ItemsSource = bl.GetAllStations().ToList().OrderBy(station => station.Name);
+                    Stations_lv.ItemsSource = from station in bl.GetAllStations().ToList()
+                                              orderby station.Name
+                                              select station;
                     Lines_lv.Visibility = Visibility.Hidden;
                     Busses_lv.Visibility = Visibility.Hidden;
                     Stations_lv.Visibility = Visibility.Visible;
                     Stations_lv.Items.Refresh();
                     break;
                 case "busses":
-                    Busses_lv.ItemsSource = bl.GetAllBusses().ToList().OrderBy(bus => bus.LicenseNum);
+                    Busses_lv.ItemsSource = from bus in bl.GetAllBusses().ToList()
+                                            orderby bus.LicenseNum
+                                            select bus;
                     Lines_lv.Visibility = Visibility.Hidden;
                     Stations_lv.Visibility = Visibility.Hidden;
                     Busses_lv.Visibility = Visibility.Visible;
@@ -107,7 +113,9 @@ namespace PL
 
         private void bUpdateLine_Click(object sender, RoutedEventArgs e)
         {
-
+            BO.Line line = (sender as Button).DataContext as BO.Line;
+            LineUpdate lineUpdate = new LineUpdate(line, bl);
+            lineUpdate.ShowDialog();
         }
 
         private void bUpdateStation_Click(object sender, RoutedEventArgs e)
@@ -134,7 +142,9 @@ namespace PL
 
         private void bDeleteLine_Click(object sender, RoutedEventArgs e)
         {
-
+            BO.Line line = (sender as Button).DataContext as BO.Line;
+            bl.DeleteLine(line.ID);
+            RefreshAndShowListView("lines");
         }
     }
 }

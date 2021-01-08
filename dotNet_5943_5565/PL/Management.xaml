@@ -144,6 +144,7 @@
                 <GridView>
                     <GridViewColumn Header="Line number" Width="100" DisplayMemberBinding="{Binding LineNum}" />
                     <GridViewColumn Header="Area" Width="100" DisplayMemberBinding="{Binding Area}" />
+                    <GridViewColumn Header="Last Station" Width="200" DisplayMemberBinding="{Binding LastStationName}" />
                     <GridViewColumn Header="Delete" Width="50" CellTemplate="{StaticResource DeleteLineDataTemplate}"/>
                     <GridViewColumn Header="Update" Width="50" CellTemplate="{StaticResource UpdateLineDataTemplate}"/>
 
@@ -153,7 +154,7 @@
         <ListView x:Name="Busses_lv" Grid.Row="1" HorizontalAlignment="Center" Height="400"  VerticalAlignment="Bottom" Width="800" Visibility="Hidden">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="License Number" Width="100" DisplayMemberBinding="{Binding LiscenseNumString}" />
+                    <GridViewColumn Header="License Number" Width="100" DisplayMemberBinding="{Binding LicenseNumName}" />
                     <GridViewColumn Header="From date" Width="100" DisplayMemberBinding="{Binding FromDate}" />
                     <GridViewColumn Header="Mileage" Width="100" DisplayMemberBinding="{Binding Mileage}" />
                     <GridViewColumn Header="Fuel remain" Width="100" DisplayMemberBinding="{Binding FuelRemain}" />

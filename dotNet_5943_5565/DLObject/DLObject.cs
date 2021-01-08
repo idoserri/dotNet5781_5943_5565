@@ -49,8 +49,8 @@ namespace DL
         }
         public void AddBus(Bus bus)
         {
-            /*if (DataSource.listBusses.FirstOrDefault(b => (bus.LicenseNum == b.LicenseNum)) != null)
-                throw new NotImplementedException(); *///new exception needed
+            if (DataSource.listBusses.FirstOrDefault(b => (bus.LicenseNum == b.LicenseNum)) != null)
+                throw new NotImplementedException(); //new exception needed
             DataSource.listBusses.Add(bus);
         }   
         public void DeleteBus(int liscense)
@@ -120,7 +120,12 @@ namespace DL
         }
         public void DeleteLine(int id)
         {
-            throw new NotImplementedException();
+            DO.Line line = DataSource.listLines.Find(b => b.ID == id);
+            if (line != null)
+                DataSource.listLines.Remove(line);
+            else //create bad id exception
+                throw new NotImplementedException();
+
         }
         public Line GetLine(int id)
         {
@@ -143,7 +148,8 @@ namespace DL
         }
         public IEnumerable<LineStation> GetAllLineStations()
         {
-            throw new NotImplementedException();
+            return from linestation in DataSource.listLineStations
+                   select linestation;
         }
         public IEnumerable<LineStation> GetAllLineStationsBy(Predicate<LineStation> predicate)
         {
