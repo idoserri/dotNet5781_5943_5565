@@ -133,7 +133,14 @@ namespace DL
         }
         public void UpdateLine(Line line)
         {
-            throw new NotImplementedException();
+            Line toRemove = DataSource.listLines.Find(b => b.ID == line.ID);
+            if (toRemove != null)
+            {
+                DataSource.listLines.Remove(toRemove);
+                DataSource.listLines.Add(line.Clone());
+            }
+            else //create exception for not exists
+                throw new NotImplementedException();
         }
         public void UpdateLine(int id, Action<Line> update)
         {

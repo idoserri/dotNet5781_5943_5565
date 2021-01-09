@@ -107,11 +107,9 @@ namespace BL
         }
         string LineNameConverter(BO.Line line)
         {
-            IEnumerable<string> toReturn = from station in line.ListOfStations
-                                           where line.LastStation == station.Code
-                                           select station.Name; 
-                              
-            return toReturn.Last();
+            return (from station in line.ListOfStations
+                    where line.LastStation == station.Code
+                    select station.Name).First();
         }
         public void AddLine(Line line)
         {
@@ -143,7 +141,10 @@ namespace BL
         }
         public void UpdateLine(Line line)
         {
-            throw new NotImplementedException();
+            DO.Line lineDO = new DO.Line();
+            line.CopyPropertiesTo(lineDO);
+            
+            dl.UpdateLine(lineDO);
         }
         #endregion
 

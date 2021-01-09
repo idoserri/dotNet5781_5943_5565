@@ -116,6 +116,8 @@ namespace PL
             BO.Line line = (sender as Button).DataContext as BO.Line;
             LineUpdate lineUpdate = new LineUpdate(line, bl);
             lineUpdate.ShowDialog();
+            RefreshAndShowListView("lines");
+
         }
 
         private void bUpdateStation_Click(object sender, RoutedEventArgs e)

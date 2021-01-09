@@ -33,6 +33,8 @@ namespace PL
                                          select station.Name;
             lastStation_cb.SelectedValue = bl.GetAllStations().ToList()
                 .Find(station => station.Code == ToUpdate.LastStation).Name;
+            id_txtb.Text = ToUpdate.ID.ToString();
+            lineNum_txtb.Text = ToUpdate.LineNum.ToString();
         }
 
 
@@ -40,6 +42,13 @@ namespace PL
         private void Update_btn_Click(object sender, RoutedEventArgs e)
         {
             ToUpdate.Area = (BO.Areas)areas_cb.SelectedItem;
+            ToUpdate.LastStation = (from station in bl.GetAllStations().ToList()
+                                    let name = lastStation_cb.SelectedValue as string
+                                    where station.Name == name
+                                    select station.Code).First();
+            ToUpdate.ListOfStations.ToList().
+                Add(bl.GetAllStations().ToList().Find(s => s.Code == ToUpdate.LastStation));
+            ToUpdate.LineNum = Int32.Parse(lineNum_txtb.Text);
             bl.UpdateLine(ToUpdate);
             this.Close();
         }
