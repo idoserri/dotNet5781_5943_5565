@@ -7,12 +7,18 @@
         mc:Ignorable="d"
         Title="Update Line" Height="450" Width="600" >
     <Window.Resources>
-        <DataTemplate x:Key="StationInLineCheckBox" DataType="local:Line">
-            <CheckBox Name="StationIsOnLine_checkb"></CheckBox>
+        <DataTemplate x:Key="AddStationToLine" DataType="local:Line">
+            <Button Name="AddStationToLine_btn" Content="Add" Click="AddStationToLine_btn_Click"></Button>
+        </DataTemplate>
+        <DataTemplate x:Key="AddStationAfter" DataType="local:Line">
+            <Button Name="AddStationAfter_btn" Content="Add After" Click="AddStationAfter_btn_Click"/>
+        </DataTemplate>
+        <DataTemplate x:Key="DeleteStationFromLine" DataType="local:Line">
+            <Button Name="DeleteStationFromLine_btn" Content="Remove" Click="DeleteStationFromLine_btn_Click"/>
         </DataTemplate>
     </Window.Resources>
     <Grid>
-        <Button x:Name="update_btn" Content="Update" HorizontalAlignment="Left" Height="85" Margin="70,326,0,0" VerticalAlignment="Top" Width="245" Click="Update_btn_Click"/>
+        <Button x:Name="update_btn" Content="Update" HorizontalAlignment="Left" Height="85" Margin="42,315,0,0" VerticalAlignment="Top" Width="245" Click="Update_btn_Click"/>
         <Label x:Name="id_lbl" Content="Line ID: " HorizontalAlignment="Left" Height="31" Margin="6,13,0,0" VerticalAlignment="Top" Width="52"/>
         <TextBox x:Name="id_txtb" HorizontalAlignment="Left" Height="31" Margin="102,13,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="144" IsEnabled="False" />
         <Label x:Name="lineNum_lbl" Content="Line Number:  " HorizontalAlignment="Left" Height="31" Margin="6,66,0,0" VerticalAlignment="Top" Width="96"/>
@@ -21,21 +27,36 @@
         <ComboBox x:Name="areas_cb" HorizontalAlignment="Left" Height="31" Margin="127,123,0,0" VerticalAlignment="Top" Width="119" DisplayMemberPath="{Binding Areas}"/>
         <Label x:Name="lastStation_lbl" Content="Select Last Station: " HorizontalAlignment="Left" Height="31" Margin="6,171,0,0" VerticalAlignment="Top" Width="116"/>
         <ComboBox x:Name="lastStation_cb" HorizontalAlignment="Left" Margin="127,171,0,0" VerticalAlignment="Top" Width="119" Height="31"/>
-        <ListView x:Name="stations_lv" HorizontalAlignment="Left" Height="141" Margin="294,61,0,0" VerticalAlignment="Top" Width="260">
-            <ListView.ItemTemplate>
-                <DataTemplate DataType="local:Line" x:Name="Station_cb">
-                    
-                </DataTemplate>
-            </ListView.ItemTemplate>
+        <ListView x:Name="stations_lv" HorizontalAlignment="Left" Height="141" Margin="294,44,0,0" VerticalAlignment="Top" Width="289">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Station ID" Width="Auto" DisplayMemberBinding="{Binding Code}"/>
                     <GridViewColumn Header="Station Name" Width="Auto" DisplayMemberBinding="{Binding Name}"/>
-                    <GridViewColumn Header="In Line's Route?" Width="Auto" CellTemplate="{StaticResource StationInLineCheckBox}"/>
+                    <GridViewColumn Header="Add to Route" Width="Auto" CellTemplate="{StaticResource AddStationAfter}"/>
                 </GridView>
             </ListView.View>
         </ListView>
-        <Label x:Name="listStations_lbl" Content="Select Stations: " HorizontalAlignment="Left" Height="31" Margin="294,13,0,0" VerticalAlignment="Top" Width="92"/>
+        <Label x:Name="listStations_lbl" Content="Add Station To Line:  " HorizontalAlignment="Left" Height="31" Margin="294,13,0,0" VerticalAlignment="Top" Width="121"/>
+        <Label x:Name="where_lbl" Content="Where to Add On the Route?" HorizontalAlignment="Left" Height="31" Margin="294,13,0,0" VerticalAlignment="Top" Width="165" Visibility="Hidden"/>
+        <ListView x:Name="listLineStations_lv" HorizontalAlignment="Left" Height="141" Margin="294,44,0,0" VerticalAlignment="Top" Width="289" Visibility="Hidden">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Station ID" Width="Auto" DisplayMemberBinding="{Binding Code}"/>
+                    <GridViewColumn Header="Station Name" Width="Auto" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Add Station" Width="Auto" CellTemplate="{StaticResource AddStationToLine}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListView x:Name="stationsOnLine_lv" HorizontalAlignment="Left" Height="141" Margin="294,232,0,0" VerticalAlignment="Top" Width="289">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Station ID" Width="Auto" DisplayMemberBinding="{Binding Code}"/>
+                    <GridViewColumn Header="Station Name" Width="Auto" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Remove Station" Width="Auto" CellTemplate="{StaticResource DeleteStationFromLine}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label x:Name="lineStations_lbl" Content="Line Route: " HorizontalAlignment="Left" Height="31" Margin="294,196,0,0" VerticalAlignment="Top" Width="121"/>
 
     </Grid>
 </Window>

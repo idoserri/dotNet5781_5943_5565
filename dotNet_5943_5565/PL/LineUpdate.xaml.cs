@@ -21,6 +21,7 @@ namespace PL
     {
         IBL bl;
         BO.Line ToUpdate;
+        BO.Station ToAdd;
         public LineUpdate(BO.Line _Line, IBL _bl)
         {
             InitializeComponent();
@@ -28,13 +29,20 @@ namespace PL
             ToUpdate = _Line;
             areas_cb.ItemsSource = Enum.GetValues(typeof(BO.Areas));
             areas_cb.SelectedValue = ToUpdate.Area;
-            stations_lv.ItemsSource = bl.GetAllStations();
+            stations_lv.ItemsSource = from station in bl.GetAllStations()
+                                      where ToUpdate.ListOfStations.ToList().Find(s => s.Code == station.Code) == null
+                                      select station;
+            
             lastStation_cb.ItemsSource = from station in bl.GetAllStations()
                                          select station.Name;
             lastStation_cb.SelectedValue = bl.GetAllStations().ToList()
                 .Find(station => station.Code == ToUpdate.LastStation).Name;
             id_txtb.Text = ToUpdate.ID.ToString();
             lineNum_txtb.Text = ToUpdate.LineNum.ToString();
+            listLineStations_lv.ItemsSource = from station in ToUpdate.ListOfStations
+                                              select station;
+            stationsOnLine_lv.ItemsSource = from station in ToUpdate.ListOfStations
+                                            select station;
         }
 
 
@@ -46,11 +54,29 @@ namespace PL
                                     let name = lastStation_cb.SelectedValue as string
                                     where station.Name == name
                                     select station.Code).First();
-            ToUpdate.ListOfStations.ToList().
-                Add(bl.GetAllStations().ToList().Find(s => s.Code == ToUpdate.LastStation));
             ToUpdate.LineNum = Int32.Parse(lineNum_txtb.Text);
             bl.UpdateLine(ToUpdate);
             this.Close();
+        }
+
+        private void AddStationToLine_btn_Click(object sender, RoutedEventArgs e)
+        {
+            ToAdd = (sender as Button).DataContext as BO.Station;
+            where_lbl.Visibility = Visibility.Visible;
+            listLineStations_lv.Visibility = Visibility.Visible;
+            listStations_lbl.Visibility = Visibility.Hidden;
+            stations_lv.Visibility = Visibility.Hidden;
+        }
+
+        private void AddStationAfter_btn_Click(object sender, RoutedEventArgs e)
+        {
+            BO.Station addAfter = (sender as Button).DataContext as BO.Station;
+            //add bl function to insert with line stationToAddAfter and toAdd
+        }
+
+        private void DeleteStationFromLine_btn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
