@@ -76,7 +76,7 @@ namespace PL
 
         private void DeleteStationFromLine_btn_Click(object sender, RoutedEventArgs e)
         {
-
+            //add bl function to delete from listofstations
         }
     }
 }
