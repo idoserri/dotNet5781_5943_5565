@@ -124,12 +124,25 @@ namespace BL
         }
         public void AddStationToLine(BO.Line line, BO.Station toAdd, BO.Station addAfter)
         {
-            for(int index = 0; index < line.ListOfStations.Count(); index++)
+            
+            for (int index = 0; index < line.ListOfStations.Count(); index++)
             {
                 if (line.ListOfStations.ToList()[index].Code == addAfter.Code)
                 {
-                    line.ListOfStations.ToList().Insert(index + 1, toAdd);
+                    line.ListOfStations.ToList().Add(toAdd);
+                    if (line.ListOfStations.ToList()[index + 1] != null)
+                    {
+                        line.ListOfStations.ToList().Add(toAdd);
+                        for (int j = line.ListOfStations.Count()-1; j > index + 1; j--)
+                        {
+                            BO.Station temp = line.ListOfStations.ToList()[j];
+                            line.ListOfStations.ToList()[j] = line.ListOfStations.ToList()[j-1];
+                            line.ListOfStations.ToList()[j - 1] = temp;
+                        }
+                   
+                    }
                     UpdateLineStations(line);
+                    break;
                 }
             }
         }
@@ -226,6 +239,7 @@ namespace BL
         }
         public void UpdateLineStations(BO.Line line)
         {
+
             line.ListOfLineStations = StationsToLineStations(line.ListOfStations, line);
             foreach (LineStation ls in line.ListOfLineStations)
                 UpdateLineStation(ls);

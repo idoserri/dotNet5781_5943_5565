@@ -60,8 +60,8 @@ namespace PL
             BO.Station addAfter = (sender as Button).DataContext as BO.Station;
             //add bl function to insert with line stationToAddAfter and toAdd
             bl.AddStationToLine(ToUpdate, ToAdd, addAfter);
-            stationsOnLine_lv.ItemsSource = ToUpdate.ListOfStations;
-            listLineStations_lv.ItemsSource = ToUpdate.ListOfStations;
+            stationsOnLine_lv.ItemsSource = bl.GetAllStationsInLine(ToUpdate);
+            listLineStations_lv.ItemsSource = bl.GetAllStationsInLine(ToUpdate);
             stations_lv.ItemsSource = bl.GetAllStationsNotInLine(ToUpdate);
             listLineStations_lv.Items.Refresh();
             stationsOnLine_lv.Items.Refresh();

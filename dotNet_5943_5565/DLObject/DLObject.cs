@@ -176,7 +176,7 @@ namespace DL
                 .Find(ls => (ls.LineID == lineStation.LineID) && (ls.Station == lineStation.Station));
             if (toRemove != null)
                 DataSource.listLineStations.Remove(toRemove);
-            DataSource.listLineStations.Add(lineStation);
+            DataSource.listLineStations.Add(lineStation.Clone());
         }
         public void UpdateLineStation(int lineID, int station, Action<LineStation> update)
         {
