@@ -16,6 +16,7 @@ namespace PL
 {
     /// <summary>
     /// Interaction logic for BusUpdate.xaml
+    /// add some station to list in database
     /// </summary>
     public partial class StationAdd : Window
     {
