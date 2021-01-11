@@ -25,14 +25,12 @@
         <TextBox x:Name="lineNum_txtb" HorizontalAlignment="Left" Height="31" Margin="102,66,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="144" />
         <Label x:Name="areas_lbl" Content="Area: " HorizontalAlignment="Left" Height="31" Margin="10,123,0,0" VerticalAlignment="Top" Width="44"/>
         <ComboBox x:Name="areas_cb" HorizontalAlignment="Left" Height="31" Margin="127,123,0,0" VerticalAlignment="Top" Width="119" DisplayMemberPath="{Binding Areas}"/>
-        <Label x:Name="lastStation_lbl" Content="Select Last Station: " HorizontalAlignment="Left" Height="31" Margin="6,171,0,0" VerticalAlignment="Top" Width="116"/>
-        <ComboBox x:Name="lastStation_cb" HorizontalAlignment="Left" Margin="127,171,0,0" VerticalAlignment="Top" Width="119" Height="31"/>
         <ListView x:Name="stations_lv" HorizontalAlignment="Left" Height="141" Margin="294,44,0,0" VerticalAlignment="Top" Width="289">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Station ID" Width="Auto" DisplayMemberBinding="{Binding Code}"/>
                     <GridViewColumn Header="Station Name" Width="Auto" DisplayMemberBinding="{Binding Name}"/>
-                    <GridViewColumn Header="Add to Route" Width="Auto" CellTemplate="{StaticResource AddStationAfter}"/>
+                    <GridViewColumn Header="Add to Route" Width="Auto" CellTemplate="{StaticResource AddStationToLine}"/>
                 </GridView>
             </ListView.View>
         </ListView>
@@ -43,7 +41,7 @@
                 <GridView>
                     <GridViewColumn Header="Station ID" Width="Auto" DisplayMemberBinding="{Binding Code}"/>
                     <GridViewColumn Header="Station Name" Width="Auto" DisplayMemberBinding="{Binding Name}"/>
-                    <GridViewColumn Header="Add Station" Width="Auto" CellTemplate="{StaticResource AddStationToLine}"/>
+                    <GridViewColumn Header="Add Station" Width="Auto" CellTemplate="{StaticResource AddStationAfter}"/>
                 </GridView>
             </ListView.View>
         </ListView>

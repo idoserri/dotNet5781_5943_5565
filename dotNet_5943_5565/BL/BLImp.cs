@@ -111,6 +111,28 @@ namespace BL
                     where line.LastStation == station.Code
                     select station.Name).First();
         }
+        public IEnumerable<BO.Station> GetAllStationsNotInLine(BO.Line line)
+        {
+            return from station in GetAllStations()
+                   where line.ListOfStations.ToList().Find(s => s.Code == station.Code) == null
+                   select station;
+        }
+        public IEnumerable<BO.Station> GetAllStationsInLine(BO.Line line)
+        {
+            return from station in line.ListOfStations
+                   select station;
+        }
+        public void AddStationToLine(BO.Line line, BO.Station toAdd, BO.Station addAfter)
+        {
+            for(int index = 0; index < line.ListOfStations.Count(); index++)
+            {
+                if (line.ListOfStations.ToList()[index].Code == addAfter.Code)
+                {
+                    line.ListOfStations.ToList().Insert(index + 1, toAdd);
+                    UpdateLineStations(line);
+                }
+            }
+        }
         public void AddLine(Line line)
         {
             throw new NotImplementedException();
@@ -143,7 +165,6 @@ namespace BL
         {
             DO.Line lineDO = new DO.Line();
             line.CopyPropertiesTo(lineDO);
-            
             dl.UpdateLine(lineDO);
         }
         #endregion
@@ -197,6 +218,48 @@ namespace BL
             BO.LineStation lineStationBO = new BO.LineStation();
             lineStationDO.CopyPropertiesTo(lineStationBO);
             return lineStationBO;
+        }
+        public IEnumerable<LineStation> GetAllLineStations()
+        {
+            return from ls in dl.GetAllLineStations()
+                   select LineStationBoDoAdapter(ls);
+        }
+        public void UpdateLineStations(BO.Line line)
+        {
+            line.ListOfLineStations = StationsToLineStations(line.ListOfStations, line);
+            foreach (LineStation ls in line.ListOfLineStations)
+                UpdateLineStation(ls);
+        }
+        void UpdateLineStation(BO.LineStation ls)
+        {
+            DO.LineStation lsDO = new DO.LineStation();
+            ls.CopyPropertiesTo(lsDO);
+            dl.UpdateLineStation(lsDO);
+        }
+        IEnumerable<LineStation> StationsToLineStations(IEnumerable<Station> stations, Line line)
+        {
+            IEnumerable<LineStation> toReturn = new List<LineStation>();
+            for(int i = 0; i < stations.Count(); i++)
+            {
+                int prev,next;
+                if (i == 0)
+                    prev = 0;
+                else
+                    prev = stations.ToList()[i - 1].Code;
+                if (i == stations.Count() - 1)
+                    next = 0;
+                else
+                    next = stations.ToList()[i + 1].Code;
+                toReturn.ToList().Add(new LineStation
+                {
+                    LineID = line.ID,
+                    Station = stations.ToList()[i].Code,
+                    PrevStation = prev,
+                    NextStation = next,
+                    LineStationIndex = i
+                });
+            }
+            return toReturn;
         }
         #endregion
     }

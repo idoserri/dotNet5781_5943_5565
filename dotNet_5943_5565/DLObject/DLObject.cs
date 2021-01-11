@@ -172,7 +172,11 @@ namespace DL
         }
         public void UpdateLineStation(LineStation lineStation)
         {
-            throw new NotImplementedException();
+            LineStation toRemove = DataSource.listLineStations
+                .Find(ls => (ls.LineID == lineStation.LineID) && (ls.Station == lineStation.Station));
+            if (toRemove != null)
+                DataSource.listLineStations.Remove(toRemove);
+            DataSource.listLineStations.Add(lineStation);
         }
         public void UpdateLineStation(int lineID, int station, Action<LineStation> update)
         {

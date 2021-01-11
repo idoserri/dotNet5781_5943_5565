@@ -22,6 +22,9 @@ namespace BLAPI
         Line GetLine(int id);
         IEnumerable<Line> GetAllLines();
         IEnumerable<Line> GetLinesBy(Predicate<Line> predicate);
+        IEnumerable<BO.Station> GetAllStationsNotInLine(BO.Line line);
+        IEnumerable<BO.Station> GetAllStationsInLine(BO.Line line);
+        void AddStationToLine(BO.Line line, BO.Station toAdd, BO.Station addAfter);
         void AddLine(Line line);
         void UpdateLine(Line line);
         void DeleteLine(int id);
@@ -34,6 +37,12 @@ namespace BLAPI
         void AddStation(Station station);
         void UpdateStation(Station station);
         void DeleteStation(int code);
+        #endregion
+
+        #region LineStation
+        IEnumerable<LineStation> GetAllLineStations();
+
+        void UpdateLineStations(Line line);
         #endregion
     }
 }

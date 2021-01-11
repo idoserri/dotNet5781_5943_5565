@@ -29,20 +29,11 @@ namespace PL
             ToUpdate = _Line;
             areas_cb.ItemsSource = Enum.GetValues(typeof(BO.Areas));
             areas_cb.SelectedValue = ToUpdate.Area;
-            stations_lv.ItemsSource = from station in bl.GetAllStations()
-                                      where ToUpdate.ListOfStations.ToList().Find(s => s.Code == station.Code) == null
-                                      select station;
-            
-            lastStation_cb.ItemsSource = from station in bl.GetAllStations()
-                                         select station.Name;
-            lastStation_cb.SelectedValue = bl.GetAllStations().ToList()
-                .Find(station => station.Code == ToUpdate.LastStation).Name;
+            stations_lv.ItemsSource = bl.GetAllStationsNotInLine(ToUpdate);
             id_txtb.Text = ToUpdate.ID.ToString();
             lineNum_txtb.Text = ToUpdate.LineNum.ToString();
-            listLineStations_lv.ItemsSource = from station in ToUpdate.ListOfStations
-                                              select station;
-            stationsOnLine_lv.ItemsSource = from station in ToUpdate.ListOfStations
-                                            select station;
+            listLineStations_lv.ItemsSource = bl.GetAllStationsInLine(ToUpdate);
+            stationsOnLine_lv.ItemsSource = bl.GetAllStationsInLine(ToUpdate);
         }
 
 
@@ -50,10 +41,6 @@ namespace PL
         private void Update_btn_Click(object sender, RoutedEventArgs e)
         {
             ToUpdate.Area = (BO.Areas)areas_cb.SelectedItem;
-            ToUpdate.LastStation = (from station in bl.GetAllStations().ToList()
-                                    let name = lastStation_cb.SelectedValue as string
-                                    where station.Name == name
-                                    select station.Code).First();
             ToUpdate.LineNum = Int32.Parse(lineNum_txtb.Text);
             bl.UpdateLine(ToUpdate);
             this.Close();
@@ -72,6 +59,17 @@ namespace PL
         {
             BO.Station addAfter = (sender as Button).DataContext as BO.Station;
             //add bl function to insert with line stationToAddAfter and toAdd
+            bl.AddStationToLine(ToUpdate, ToAdd, addAfter);
+            stationsOnLine_lv.ItemsSource = ToUpdate.ListOfStations;
+            listLineStations_lv.ItemsSource = ToUpdate.ListOfStations;
+            stations_lv.ItemsSource = bl.GetAllStationsNotInLine(ToUpdate);
+            listLineStations_lv.Items.Refresh();
+            stationsOnLine_lv.Items.Refresh();
+            stations_lv.Items.Refresh();
+            where_lbl.Visibility = Visibility.Hidden;
+            listLineStations_lv.Visibility = Visibility.Hidden;
+            listStations_lbl.Visibility = Visibility.Visible;
+            stations_lv.Visibility = Visibility.Visible;
         }
 
         private void DeleteStationFromLine_btn_Click(object sender, RoutedEventArgs e)
