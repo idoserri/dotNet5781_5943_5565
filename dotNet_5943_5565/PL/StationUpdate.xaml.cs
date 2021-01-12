@@ -33,7 +33,9 @@ namespace PL
             longitude_txtb.Text = ToUpdate.Longitude.ToString();
             areas_cb.ItemsSource = Enum.GetValues(typeof(BO.Areas));
             areas_cb.SelectedValue = ToUpdate.Area;
-            //lines_lbl.DataContext = ToUpdate.ListOfLines;
+            LinesIn_lv.ItemsSource = bl.GetAllLinesInStation(ToUpdate);
+
+
         }
 
 

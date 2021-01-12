@@ -115,13 +115,19 @@ namespace BL
         public IEnumerable<BO.Station> GetAllStationsNotInLine(BO.Line line)
         {
             return from station in GetAllStations()
-                   where line.ListOfStations.ToList().Find(s => s.Code == station.Code) == null
+                   where line.ListOfStations.ToList().
+                   Find(s => s.Code == station.Code) == null
                    select station;
         }
         public IEnumerable<BO.Station> GetAllStationsInLine(BO.Line line)
         {
             return from station in line.ListOfStations
                    select station;
+        }
+        public IEnumerable<BO.Line> GetAllLinesInStation(BO.Station InStation)
+        {
+            return from line in InStation.ListOfLines
+                   select line;
         }
         public void AddStationToLine(BO.Line line, BO.Station toAdd, BO.Station addAfter)
         {
@@ -203,13 +209,21 @@ namespace BL
         }
         public void DeleteStation(int code)
         {
-            throw new NotImplementedException();
+            try
+            {
+                dl.DeleteStation(code);
+            }
+            catch (Exception)//create exception for bad id
+            {
+                throw new NotImplementedException();
+            }
         }
         public IEnumerable<Station> GetAllStations()
         {
             return from item in dl.GetAllStations()
                    select StationBoDoAdapter(item);
         }
+        
         public Station GetStation(int code)
         {
             throw new NotImplementedException();

@@ -5,22 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
-        Title="Add Station" Height="450" Width="450" >
+        Title="Add Station" Height="400" Width="450" >
     <Grid>
 
-        <Button x:Name="add_btn" Content="Add" HorizontalAlignment="Left" Height="85" Margin="70,326,0,0" VerticalAlignment="Top" Width="245" Click="add_btn_Click"/>
-        <Label x:Name="code_lbl" Content="Station: " HorizontalAlignment="Left" Height="31" Margin="70,10,0,0" VerticalAlignment="Top" Width="47"/>
-        <TextBox x:Name="code_txtb" HorizontalAlignment="Left" Height="31" Margin="122,10,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="256" />
-        <Label x:Name="name_lbl" Content="Name " HorizontalAlignment="Left" Height="31" Margin="88,63,0,0" VerticalAlignment="Top" Width="57"/>
-        <TextBox x:Name="name_txtb" HorizontalAlignment="Left" Height="31" Margin="150,63,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="228" />
-        <Label x:Name="latitude_lbl" Content="Latitude " HorizontalAlignment="Left" Height="31" Margin="88,110,0,0" VerticalAlignment="Top" Width="93"/>
-        <TextBox x:Name="latitude_txtb" HorizontalAlignment="Left" Height="31" Margin="186,110,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="192" />
-        <Label x:Name="longitude_lbl" Content="Longitude " Height="31"  Width="93" Margin="93,146,257.333,243.667" RenderTransformOrigin="0.541,0.522"/>
-        <TextBox x:Name="longitude_txtb" Height="31" Margin="186,146,65.333,243.667" TextWrapping="Wrap"  Width="192" />
-        <Label x:Name="areas_lbl" Content="Area: " HorizontalAlignment="Left" Height="31" Margin="122,193,0,0" VerticalAlignment="Top" Width="44"/>
-        <ComboBox x:Name="areas_cb" HorizontalAlignment="Left" Height="31" Margin="190,193,0,0" VerticalAlignment="Top" Width="140" DisplayMemberPath="{Binding Areas}"/>
-        <Label x:Name="fromDate_lbl" Content="Lines going through" HorizontalAlignment="Left" Height="31" Margin="70,244,0,0" VerticalAlignment="Top" Width="116"/>
-        <ComboBox x:Name="Lines_CB" HorizontalAlignment="Left" Margin="210,244,0,0" VerticalAlignment="Top" Width="120" Height="31"/>
+        <Button x:Name="add_btn" Content="Add" HorizontalAlignment="Left" Height="85" Margin="71,253,0,0" VerticalAlignment="Top" Width="245" Click="add_btn_Click"/>
+        <Label x:Name="code_lbl" Content="Station: " HorizontalAlignment="Left" Height="31" Margin="10,10,0,0" VerticalAlignment="Top" Width="47"/>
+        <TextBox x:Name="code_txtb" HorizontalAlignment="Left" Height="31" Margin="70,10,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="256" />
+        <Label x:Name="name_lbl" Content="Name " HorizontalAlignment="Left" Height="31" Margin="10,63,0,0" VerticalAlignment="Top" Width="57"/>
+        <TextBox x:Name="name_txtb" HorizontalAlignment="Left" Height="31" Margin="70,63,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="228" />
+        <Label x:Name="latitude_lbl" Content="Latitude " HorizontalAlignment="Left" Height="31" Margin="10,115,0,0" VerticalAlignment="Top" Width="71"/>
+        <TextBox x:Name="latitude_txtb" HorizontalAlignment="Left" Height="31" Margin="81,115,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="192" />
+        <Label x:Name="longitude_lbl" Content="Longitude " Height="31" Margin="10,151,367.333,188.667" RenderTransformOrigin="0.541,0.522"/>
+        <TextBox x:Name="longitude_txtb" Height="31" Margin="81,151,170.333,188.667" TextWrapping="Wrap"  Width="192" />
+        <Label x:Name="areas_lbl" Content="Area: " HorizontalAlignment="Left" Height="31" Margin="10,209,0,0" VerticalAlignment="Top" Width="44"/>
+        <ComboBox x:Name="areas_cb" HorizontalAlignment="Left" Height="31" Margin="70,209,0,0" VerticalAlignment="Top" Width="140" DisplayMemberPath="{Binding Areas}"/>
+       
+       
 
     </Grid>
 </Window>

@@ -30,8 +30,9 @@ namespace PL
         {
             switch (type)
             {
+                
                 case "lines":
-                    Lines_lv.ItemsSource = from line in bl.GetAllLines().ToList()
+                    Lines_lv.ItemsSource = from line in bl.GetAllLines().ToList()                                           
                                            orderby line.LastStationName
                                            select line;
                     Busses_lv.Visibility = Visibility.Hidden;
@@ -139,7 +140,9 @@ namespace PL
 
         private void bDeleteStation_Click(object sender, RoutedEventArgs e)
         {
-
+            BO.Station StationTo = (sender as Button).DataContext as BO.Station;
+            bl.DeleteStation(StationTo.Code);
+            RefreshAndShowListView("stations");
         }
 
         private void bDeleteLine_Click(object sender, RoutedEventArgs e)

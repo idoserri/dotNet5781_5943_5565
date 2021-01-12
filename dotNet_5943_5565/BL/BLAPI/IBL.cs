@@ -21,6 +21,7 @@ namespace BLAPI
         #region Line
         Line GetLine(int id);
         IEnumerable<Line> GetAllLines();
+        IEnumerable<Line> GetAllLinesInStation(BO.Station line);
         IEnumerable<Line> GetLinesBy(Predicate<Line> predicate);
         IEnumerable<BO.Station> GetAllStationsNotInLine(BO.Line line);
         IEnumerable<BO.Station> GetAllStationsInLine(BO.Line line);

@@ -81,7 +81,11 @@ namespace DL
         }
         public void DeleteStation(int code)
         {
-            throw new NotImplementedException();
+            DO.Station s = DataSource.listStations.Find(b => b.Code == code);
+            if (s != null)
+                DataSource.listStations.Remove(s);
+            else //create bad license exception
+                throw new NotImplementedException();
         }
         public Station GetStation(int code)
         {
