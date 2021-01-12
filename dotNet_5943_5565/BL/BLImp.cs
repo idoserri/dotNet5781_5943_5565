@@ -126,19 +126,24 @@ namespace BL
 
         public void AddStationToLine(BO.Line line, BO.Station toAdd, BO.Station addAfter)
         {
-            LineStation lsAF = line.ListOfLineStations.ToList().Find(ls => ls.Station == addAfter.Code);
-            int nextS = lsAF.NextStation;
+            LineStation lsAF = line.ListOfLineStations.ToList(). // find prev station
+                Find(ls => ls.Station == addAfter.Code);
+            
+            int tempNext = lsAF.NextStation;       // save next station (after ToAdd) code
+
             foreach (LineStation ls in line.ListOfLineStations)
                 if (ls.LineStationIndex > lsAF.LineStationIndex)
-                    ls.LineStationIndex++;
-            lsAF.NextStation = toAdd.Code;
-            LineStation lsAdd = new LineStation
+                    ls.LineStationIndex++; // move indexes to make room for new station
+
+            lsAF.NextStation = toAdd.Code;  // update prev station about the addition
+
+            LineStation lsAdd = new LineStation // the addition
             {
                 LineID = line.ID,
                 Station = toAdd.Code,
-                LineStationIndex = lsAF.LineStationIndex + 1,
+                LineStationIndex = lsAF.LineStationIndex,
                 PrevStation = addAfter.Code,
-                NextStation = nextS,
+                NextStation = tempNext
             };
             AddLineStation(lsAdd);
             UpdateLineStations(line);
