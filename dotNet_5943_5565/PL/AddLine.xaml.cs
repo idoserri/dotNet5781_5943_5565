@@ -1,0 +1,73 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+using BLAPI;
+namespace PL
+{
+    /// <summary>
+    /// Interaction logic for BusUpdate.xaml
+    /// </summary>
+    public partial class AddLine : Window
+    {
+        IBL bl;
+        BO.Line ToUpdate;
+        BO.Station ToAdd;
+        public AddLine(BO.Line _Line, IBL _bl)
+        {
+            InitializeComponent();
+            bl = _bl;
+           
+           areas_cb.ItemsSource = Enum.GetValues(typeof(BO.Areas));          
+        }
+
+
+
+       
+
+        private void AddStationToLine_btn_Click(object sender, RoutedEventArgs e)
+        {
+            ToAdd = (sender as Button).DataContext as BO.Station;
+            where_lbl.Visibility = Visibility.Visible;
+            listLineStations_lv.Visibility = Visibility.Visible;
+            listStations_lbl.Visibility = Visibility.Hidden;
+            stations_lv.Visibility = Visibility.Hidden;
+        }
+
+        private void AddStationAfter_btn_Click(object sender, RoutedEventArgs e)
+        {
+            BO.Station addAfter = (sender as Button).DataContext as BO.Station;
+            //add bl function to insert with line stationToAddAfter and toAdd
+            bl.AddStationToLine(ToUpdate, ToAdd, addAfter);
+            stationsOnLine_lv.ItemsSource = bl.GetAllStationsInLine(ToUpdate);
+            listLineStations_lv.ItemsSource = bl.GetAllStationsInLine(ToUpdate);
+            stations_lv.ItemsSource = bl.GetAllStationsNotInLine(ToUpdate);
+            listLineStations_lv.Items.Refresh();
+            stationsOnLine_lv.Items.Refresh();
+            stations_lv.Items.Refresh();
+            where_lbl.Visibility = Visibility.Hidden;
+            listLineStations_lv.Visibility = Visibility.Hidden;
+            listStations_lbl.Visibility = Visibility.Visible;
+            stations_lv.Visibility = Visibility.Visible;
+        }
+
+        private void add_btn_Click(object sender, RoutedEventArgs e)
+        {
+           
+        }
+
+        private void DeleteStationFromLine_btn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+    }
+}

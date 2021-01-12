@@ -91,7 +91,10 @@ namespace PL
 
         private void addLineButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            BO.Line line = (sender as Button).DataContext as BO.Line;
+            AddLine open = new AddLine(line, bl);
+            open.ShowDialog();
+            RefreshAndShowListView("lines");
         }
 
         private void addStationButton_Click(object sender, RoutedEventArgs e)
