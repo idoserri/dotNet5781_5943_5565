@@ -328,7 +328,7 @@ namespace DS
                 new Station
                 {
                     Code = 20,
-                    Name = "Golda Meir Blvd.",
+                    Name = "Darth Diabetus/The Wide ave.",
                     Latitude =  32.27659,
                     Longitude = 34.85165,
                 },

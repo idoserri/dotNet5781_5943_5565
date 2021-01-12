@@ -19,7 +19,5 @@ namespace BO
         public string LastStationName { get; set; }
 
         public IEnumerable<LineStation> ListOfLineStations { get; set; }
-
-        public IEnumerable<Station> ListOfStations { get; set; }
     }
 }

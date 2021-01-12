@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Device.Location;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,7 @@ namespace BL
     class BLImp : IBL
     {
         IDL dl = DLFactory.GetDL();
-
+        static Random r = new Random();
         #region Bus
         BO.Bus BusBoDoAdapter(DO.Bus busDO)
         {
@@ -98,60 +99,69 @@ namespace BL
             lineDO.CopyPropertiesTo(lineBO);
             lineBO.ListOfLineStations = from item in dl.GetAllLineStations()
                                         where item.LineID == lineBO.ID
+                                        orderby item.LineStationIndex ascending
                                         select LineStationBoDoAdapter(item);
-            lineBO.ListOfStations = from station in dl.GetAllStations()
-                                    from linestat in lineBO.ListOfLineStations
-                                    where station.Code == linestat.Station
-                                    select StationBoDoAdapter(station);
             lineBO.LastStationName = LineNameConverter(lineBO);
             return lineBO;
         }
         string LineNameConverter(BO.Line line)
         {
-            return (from station in line.ListOfStations
-                    where line.LastStation == station.Code
-                    select station.Name).First();
+            return GetAllStations().ToList()
+                .Find(s => s.Code == line.ListOfLineStations.Last().Station).Name;
         }
         public IEnumerable<BO.Station> GetAllStationsNotInLine(BO.Line line)
         {
+            BO.Line lineB = GetLine(line.ID);
             return from station in GetAllStations()
-                   where line.ListOfStations.ToList().
-                   Find(s => s.Code == station.Code) == null
+                   where lineB.ListOfLineStations.ToList().
+                   Find(s => s.Station == station.Code) == null
                    select station;
         }
         public IEnumerable<BO.Station> GetAllStationsInLine(BO.Line line)
         {
-            return from station in line.ListOfStations
-                   select station;
+            BO.Line lineB = GetLine(line.ID);
+            return from ls in lineB.ListOfLineStations
+                   select GetAllStations().ToList().Find(s => s.Code == ls.Station);
         }
-        public IEnumerable<BO.Line> GetAllLinesInStation(BO.Station InStation)
-        {
-            return from line in InStation.ListOfLines
-                   select line;
-        }
+
         public void AddStationToLine(BO.Line line, BO.Station toAdd, BO.Station addAfter)
         {
-            
-            for (int index = 0; index < line.ListOfStations.Count(); index++)
+            LineStation lsAF = line.ListOfLineStations.ToList().Find(ls => ls.Station == addAfter.Code);
+            int nextS = lsAF.NextStation;
+            foreach (LineStation ls in line.ListOfLineStations)
+                if (ls.LineStationIndex > lsAF.LineStationIndex)
+                    ls.LineStationIndex++;
+            lsAF.NextStation = toAdd.Code;
+            LineStation lsAdd = new LineStation
             {
-                if (line.ListOfStations.ToList()[index].Code == addAfter.Code)
+                LineID = line.ID,
+                Station = toAdd.Code,
+                LineStationIndex = lsAF.LineStationIndex + 1,
+                PrevStation = addAfter.Code,
+                NextStation = nextS,
+            };
+            AddLineStation(lsAdd);
+            UpdateLineStations(line);
+            AdjStations adjStations1 = new AdjStations
+            {
+                Station1 = lsAF.Station,
+                Station2 = lsAdd.Station,
+                Distance = CalcDistance(toAdd, addAfter),
+                Time = CalcTime(toAdd, addAfter)
+            };
+            LineStation next = line.ListOfLineStations.FirstOrDefault(ls => lsAdd.NextStation == ls.Station);
+            if (lsAdd.NextStation != 0)
+            {
+                AdjStations adjStations2 = new AdjStations
                 {
-                    line.ListOfStations.ToList().Add(toAdd);
-                    if (line.ListOfStations.ToList()[index + 1] != null)
-                    {
-                        line.ListOfStations.ToList().Add(toAdd);
-                        for (int j = line.ListOfStations.Count()-1; j > index + 1; j--)
-                        {
-                            BO.Station temp = line.ListOfStations.ToList()[j];
-                            line.ListOfStations.ToList()[j] = line.ListOfStations.ToList()[j-1];
-                            line.ListOfStations.ToList()[j - 1] = temp;
-                        }
-                   
-                    }
-                    UpdateLineStations(line);
-                    break;
-                }
+                    Station1 = lsAdd.Station,
+                    Station2 = next.Station,
+                    Distance = CalcDistance(toAdd, GetStation(lsAdd.NextStation)),
+                    Time = CalcTime(toAdd, GetStation(lsAdd.NextStation))
+                };
+                AddAdjStations(adjStations2);
             }
+            AddAdjStations(adjStations1);
         }
         public void AddLine(Line line)
         {
@@ -175,7 +185,7 @@ namespace BL
         }
         public Line GetLine(int id)
         {
-            throw new NotImplementedException();
+            return LineBoDoAdapter(dl.GetLine(id));
         }
         public IEnumerable<Line> GetLinesBy(Predicate<Line> predicate)
         {
@@ -185,6 +195,7 @@ namespace BL
         {
             DO.Line lineDO = new DO.Line();
             line.CopyPropertiesTo(lineDO);
+            UpdateLineStations(line);
             dl.UpdateLine(lineDO);
         }
         #endregion
@@ -226,7 +237,7 @@ namespace BL
         
         public Station GetStation(int code)
         {
-            throw new NotImplementedException();
+            return StationBoDoAdapter(dl.GetStation(code));
         }
         public IEnumerable<Station> GetStationsBy()
         {
@@ -247,6 +258,11 @@ namespace BL
             lineStationDO.CopyPropertiesTo(lineStationBO);
             return lineStationBO;
         }
+        public IEnumerable<BO.Line> GetAllLinesInStation(BO.Station InStation)
+        {
+            return from line in InStation.ListOfLines
+                   select line;
+        }
         public IEnumerable<LineStation> GetAllLineStations()
         {
             return from ls in dl.GetAllLineStations()
@@ -254,8 +270,6 @@ namespace BL
         }
         public void UpdateLineStations(BO.Line line)
         {
-
-            line.ListOfLineStations = StationsToLineStations(line.ListOfStations, line);
             foreach (LineStation ls in line.ListOfLineStations)
                 UpdateLineStation(ls);
         }
@@ -265,30 +279,33 @@ namespace BL
             ls.CopyPropertiesTo(lsDO);
             dl.UpdateLineStation(lsDO);
         }
-        IEnumerable<LineStation> StationsToLineStations(IEnumerable<Station> stations, Line line)
+        public void AddLineStation(LineStation ls)
         {
-            IEnumerable<LineStation> toReturn = new List<LineStation>();
-            for(int i = 0; i < stations.Count(); i++)
-            {
-                int prev,next;
-                if (i == 0)
-                    prev = 0;
-                else
-                    prev = stations.ToList()[i - 1].Code;
-                if (i == stations.Count() - 1)
-                    next = 0;
-                else
-                    next = stations.ToList()[i + 1].Code;
-                toReturn.ToList().Add(new LineStation
-                {
-                    LineID = line.ID,
-                    Station = stations.ToList()[i].Code,
-                    PrevStation = prev,
-                    NextStation = next,
-                    LineStationIndex = i
-                });
-            }
-            return toReturn;
+            DO.LineStation lsDO = new DO.LineStation();
+            ls.CopyPropertiesTo(lsDO);
+            dl.AddLineStation(lsDO);
+            
+        }
+        #endregion
+
+        #region AdjStations
+        double CalcDistance(BO.Station s1, BO.Station s2)
+        {
+            var g1 = new GeoCoordinate(s1.Latitude, s1.Longitude);
+            var g2 = new GeoCoordinate(s2.Latitude, s2.Longitude);
+            return g1.GetDistanceTo(g2);
+        }
+        TimeSpan CalcTime(BO.Station s1, BO.Station s2)
+        {
+            double distance = CalcDistance(s1, s2);
+            int sec = (int)(distance + r.NextDouble() * 0.5 * distance) / 14;  // meter/sec
+            return new TimeSpan(0, 0, sec);
+        }
+        public void AddAdjStations(BO.AdjStations adjBO)
+        {
+            DO.AdjacentStations adjDO = new DO.AdjacentStations();
+            adjBO.CopyPropertiesTo(adjDO);
+            dl.AddAdjStations(adjDO);
         }
         #endregion
     }

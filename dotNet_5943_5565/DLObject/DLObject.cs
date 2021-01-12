@@ -89,7 +89,11 @@ namespace DL
         }
         public Station GetStation(int code)
         {
-            throw new NotImplementedException();
+            DO.Station st = DataSource.listStations.Find(s => s.Code == code);
+            if (st != null)
+                return st.Clone();
+            else //bad code exception
+                throw new NotImplementedException();
         }
         public void UpdateStation(Station station)
         {
@@ -133,7 +137,11 @@ namespace DL
         }
         public Line GetLine(int id)
         {
-            throw new NotImplementedException();
+            DO.Line line = DataSource.listLines.Find(s => s.ID == id);
+            if (line != null)
+                return line.Clone();
+            else //throw bad id excpetion
+                throw new NotImplementedException();
         }
         public void UpdateLine(Line line)
         {
@@ -155,7 +163,8 @@ namespace DL
         #region LineStation
         public void AddLineStation(LineStation lineStation)
         {
-            throw new NotImplementedException();
+            //add excpetion for already exists
+            DataSource.listLineStations.Add(lineStation);
         }
         public IEnumerable<LineStation> GetAllLineStations()
         {
@@ -191,7 +200,8 @@ namespace DL
         #region AdjacentStations
         public void AddAdjStations(AdjacentStations adjacentStations)
         {
-            throw new NotImplementedException();
+            //excpetion for already exists
+            DataSource.listAdjacentStations.Add(adjacentStations);
         }
         public void DeleteAdjStations(int station1, int station2)
         {

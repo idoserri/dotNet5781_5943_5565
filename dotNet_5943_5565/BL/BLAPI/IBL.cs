@@ -42,8 +42,12 @@ namespace BLAPI
 
         #region LineStation
         IEnumerable<LineStation> GetAllLineStations();
-
+        void AddLineStation(LineStation ls);
         void UpdateLineStations(Line line);
+        #endregion
+
+        #region AdjStations
+        void AddAdjStations(BO.AdjStations adj);
         #endregion
     }
 }
