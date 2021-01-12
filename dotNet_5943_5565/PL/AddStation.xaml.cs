@@ -30,19 +30,23 @@ namespace PL
 
         private void add_btn_Click(object sender, RoutedEventArgs e)
         {
-
-            BO.Station toAdd = new BO.Station
+            if (code_txtb.Text.Length == 0 || name_txtb.Text.Length == 0 ||
+                latitude_txtb.Text.Length == 0 || longitude_txtb.Text.Length == 0)
+                MessageBox.Show("You have to fill ALL fields with the correct data!!!", "ERROR",
+                    MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.OK);
+            else
             {
-                Code = Int32.Parse(code_txtb.Text),
-                Name = name_txtb.Text,
-                Latitude = Int32.Parse(latitude_txtb.Text),
-                Longitude = Int32.Parse(longitude_txtb.Text),
-                Area = (BO.Areas)(areas_cb.SelectedItem),
-                
-                 //need list of lines !!!!!
-            };
-            bl.AddStation(toAdd);
-            this.Close();
+                BO.Station toAdd = new BO.Station
+                {
+                    Code = Int32.Parse(code_txtb.Text),
+                    Name = name_txtb.Text,
+                    Latitude = Int32.Parse(latitude_txtb.Text),
+                    Longitude = Int32.Parse(longitude_txtb.Text),
+                    Area = (BO.Areas)(areas_cb.SelectedItem),
+                };
+                bl.AddStation(toAdd);
+                this.Close();
+            }
         }
     }
 }
