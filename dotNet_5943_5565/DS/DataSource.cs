@@ -1537,9 +1537,10 @@ namespace DS
                     NextStation = 0
                 }
                 #endregion
-                
-
             };
+            foreach (LineStation item in listLineStations)            
+                item.LineStationIndex--;
+            
             #endregion
 
 

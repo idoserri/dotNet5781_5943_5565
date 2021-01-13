@@ -26,13 +26,13 @@ namespace PL
             InitializeComponent();
         }
 
-        private void open_management_window(object sender, RoutedEventArgs e)
+        private void Open_management_window(object sender, RoutedEventArgs e)
         {
             Management ToOpen = new Management(bl);
             ToOpen.ShowDialog();
         }
 
-        private void open_passenger_window(object sender, RoutedEventArgs e)
+        private void Open_passenger_window(object sender, RoutedEventArgs e)
         {
             Passenger ToOpen = new Passenger();
             ToOpen.ShowDialog();

@@ -11,7 +11,7 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Button Content="Management" HorizontalAlignment="Stretch" Grid.Row="0"  VerticalAlignment="Stretch" Click="open_management_window" FontSize="50"/>
-        <Button Content="passenger" HorizontalAlignment="Stretch" Grid.Row="1"  VerticalAlignment="Stretch"  Click="open_passenger_window" FontSize="50"/>
+        <Button Content="Management" HorizontalAlignment="Stretch" Grid.Row="0"  VerticalAlignment="Stretch" Click="Open_management_window" FontSize="50"/>
+        <Button Content="passenger" HorizontalAlignment="Stretch" Grid.Row="1"  VerticalAlignment="Stretch"  Click="Open_passenger_window" FontSize="50"/>
     </Grid>
 </Window>

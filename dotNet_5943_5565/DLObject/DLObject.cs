@@ -175,9 +175,13 @@ namespace DL
         {
             throw new NotImplementedException();
         }
-        public void DeleteLineStation(int lineID, int Station)
+        public void DeleteLineStation(int lineID, int station)
         {
-            throw new NotImplementedException();
+            DO.LineStation lineStat = DataSource.listLineStations.Find(ls => ls.LineID == lineID && ls.Station == station);
+            if (lineStat != null)
+                DataSource.listLineStations.Remove(lineStat);
+            else //create bad id/station exception
+                throw new NotImplementedException();
         }
         public LineStation GetLineStation(int lineID, int Station)
         {
@@ -188,8 +192,12 @@ namespace DL
             LineStation toRemove = DataSource.listLineStations
                 .Find(ls => (ls.LineID == lineStation.LineID) && (ls.Station == lineStation.Station));
             if (toRemove != null)
+            {
                 DataSource.listLineStations.Remove(toRemove);
-            DataSource.listLineStations.Add(lineStation.Clone());
+                DataSource.listLineStations.Add(lineStation.Clone());
+            }
+            else //new exception
+                throw new NotImplementedException();
         }
         public void UpdateLineStation(int lineID, int station, Action<LineStation> update)
         {

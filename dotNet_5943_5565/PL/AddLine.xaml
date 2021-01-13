@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
-        Title="Update Line" Height="450" Width="600" >
+        Title="Add Line" Height="450" Width="600" >
     <Window.Resources>
         <DataTemplate x:Key="AddStationToLine" DataType="local:Line">
             <Button Name="AddStationToLine_btn" Content="Add" Click="AddStationToLine_btn_Click"></Button>

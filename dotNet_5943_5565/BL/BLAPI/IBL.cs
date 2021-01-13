@@ -29,6 +29,9 @@ namespace BLAPI
         void AddLine(Line line);
         void UpdateLine(Line line);
         void DeleteLine(int id);
+        void DeleteStationFromLine(Line line,int station);
+        double CalcTotalLineDistance(BO.Line line);
+        string CalcTotalLineTime(BO.Line line);
         #endregion
 
         #region Station
@@ -44,6 +47,7 @@ namespace BLAPI
         IEnumerable<LineStation> GetAllLineStations();
         void AddLineStation(LineStation ls);
         void UpdateLineStations(Line line);
+        void DeleteLineStation(int lineID, int station);
         #endregion
 
         #region AdjStations

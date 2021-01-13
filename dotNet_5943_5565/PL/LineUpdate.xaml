@@ -55,6 +55,8 @@
             </ListView.View>
         </ListView>
         <Label x:Name="lineStations_lbl" Content="Line Route: " HorizontalAlignment="Left" Height="31" Margin="294,196,0,0" VerticalAlignment="Top" Width="121"/>
+        <Label x:Name="Distance_lbl" Content="Total Distance: " HorizontalAlignment="Left" Height="31" Margin="10,178,0,0" VerticalAlignment="Top" Width="192" RenderTransformOrigin="0.417,1.452"/>
+        <Label x:Name="Time_lbl" Content="Total Time: " HorizontalAlignment="Left" Height="31" Margin="10,230,0,0" VerticalAlignment="Top" Width="192" RenderTransformOrigin="0.417,1.452"/>
 
     </Grid>
 </Window>

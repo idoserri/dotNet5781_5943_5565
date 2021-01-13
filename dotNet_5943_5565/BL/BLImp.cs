@@ -92,7 +92,22 @@ namespace BL
         #endregion
 
         #region Line
-
+        public double CalcTotalLineDistance(BO.Line line)
+        {
+            return (from dis in line.ListOfLineStations
+                    where dis.NextStation != 0
+                    select CalcDistance(GetStation(dis.Station), GetStation(dis.NextStation))).Sum()/1000;
+        }
+        public string CalcTotalLineTime(BO.Line line)
+        {
+            IEnumerable<TimeSpan> list = from dis in line.ListOfLineStations
+                                         where dis.NextStation != 0
+                                         select CalcTime(GetStation(dis.Station), GetStation(dis.NextStation));
+            TimeSpan total = new TimeSpan(0,0,0);
+            foreach (TimeSpan time in list)
+                total += time;
+            return total.ToString().Substring(0, 8);
+        }
         BO.Line LineBoDoAdapter(DO.Line lineDO)
         {
             BO.Line lineBO = new BO.Line();
@@ -106,6 +121,7 @@ namespace BL
         }
         string LineNameConverter(BO.Line line)
         {
+            //try catch in case is empty
             return GetAllStations().ToList()
                 .Find(s => s.Code == line.ListOfLineStations.Last().Station).Name;
         }
@@ -120,52 +136,85 @@ namespace BL
         public IEnumerable<BO.Station> GetAllStationsInLine(BO.Line line)
         {
             BO.Line lineB = GetLine(line.ID);
-            return from ls in lineB.ListOfLineStations
+            return from ls in lineB.ListOfLineStations.OrderBy(ls => ls.LineStationIndex)
                    select GetAllStations().ToList().Find(s => s.Code == ls.Station);
         }
+        public void DeleteStationFromLine(BO.Line line, int toRemove)
+        {
+            IEnumerable<LineStation> list = new List<LineStation>();
+            LineStation toDel = GetAllLineStations()
+                .FirstOrDefault(ls => ls.LineID == line.ID && ls.Station == toRemove);
+            LineStation prevStat = GetAllLineStations()
+                .FirstOrDefault(ls => ls.LineID == line.ID && ls.Station == toDel.PrevStation);
+            LineStation nextStat = GetAllLineStations()
+                .FirstOrDefault(ls => ls.LineID == line.ID && ls.Station == toDel.NextStation);
+            if (prevStat == null && nextStat == null)
+            {
+                DeleteLineStation(line.ID, toDel.Station);
+                return;
+            }
+            if (prevStat != null)
+                prevStat.NextStation = toDel.NextStation;
+            else
+                nextStat.PrevStation = 0;
+            if (nextStat != null)
+                nextStat.PrevStation = toDel.PrevStation;
+            else
+                prevStat.NextStation = 0;
+            if (prevStat != null)
+                UpdateLineStation(prevStat);
+            if (nextStat != null)
+            {
+                UpdateLineStation(nextStat);
+                list = from ls in GetAllLineStations()
+                       where ls.LineID == line.ID && ls.LineStationIndex >= nextStat.LineStationIndex
+                       select ls;
+            }
+            DeleteLineStation(line.ID, toDel.Station);
 
+            foreach (LineStation ls in list)
+                ls.LineStationIndex--;
+        }
         public void AddStationToLine(BO.Line line, BO.Station toAdd, BO.Station addAfter)
         {
-            LineStation lsAF = line.ListOfLineStations.ToList(). // find prev station
-                Find(ls => ls.Station == addAfter.Code);
-            
-            int tempNext = lsAF.NextStation;       // save next station (after ToAdd) code
-
-            foreach (LineStation ls in line.ListOfLineStations)
-                if (ls.LineStationIndex > lsAF.LineStationIndex)
-                    ls.LineStationIndex++; // move indexes to make room for new station
-
-            lsAF.NextStation = toAdd.Code;  // update prev station about the addition
-
-            LineStation lsAdd = new LineStation // the addition
+            LineStation prevStat = GetAllLineStations().FirstOrDefault(ls => ls.LineID == line.ID && ls.Station == addAfter.Code);
+            LineStation nextStat = GetAllLineStations().FirstOrDefault(ls => ls.LineID == line.ID && ls.Station == prevStat.NextStation);
+            LineStation toInsert = new LineStation
             {
                 LineID = line.ID,
+                LineStationIndex = prevStat.LineStationIndex+1,
                 Station = toAdd.Code,
-                LineStationIndex = lsAF.LineStationIndex,
-                PrevStation = addAfter.Code,
-                NextStation = tempNext
+                PrevStation = prevStat.Station,
+                NextStation = prevStat.NextStation
             };
-            AddLineStation(lsAdd);
-            UpdateLineStations(line);
-            AdjStations adjStations1 = new AdjStations
+            prevStat.NextStation = toInsert.Station;
+            UpdateLineStation(prevStat);
+            if (nextStat != null)
             {
-                Station1 = lsAF.Station,
-                Station2 = lsAdd.Station,
-                Distance = CalcDistance(toAdd, addAfter),
-                Time = CalcTime(toAdd, addAfter)
-            };
-            LineStation next = line.ListOfLineStations.FirstOrDefault(ls => lsAdd.NextStation == ls.Station);
-            if (lsAdd.NextStation != 0)
-            {
+                nextStat.PrevStation = toInsert.Station;
+                UpdateLineStation(nextStat);
+                IEnumerable<LineStation> list = from ls in GetAllLineStations()
+                                                where ls.LineID == line.ID && ls.LineStationIndex >= nextStat.LineStationIndex
+                                                select ls;
+                foreach (LineStation ls in list)
+                    ls.LineStationIndex++;
                 AdjStations adjStations2 = new AdjStations
                 {
-                    Station1 = lsAdd.Station,
-                    Station2 = next.Station,
-                    Distance = CalcDistance(toAdd, GetStation(lsAdd.NextStation)),
-                    Time = CalcTime(toAdd, GetStation(lsAdd.NextStation))
+                    Station1 = toInsert.Station,
+                    Station2 = nextStat.Station,
+                    Distance = CalcDistance(toAdd, GetStation(nextStat.Station)),
+                    Time = CalcTime(toAdd, GetStation(nextStat.Station))
                 };
                 AddAdjStations(adjStations2);
             }
+            AddLineStation(toInsert);
+            AdjStations adjStations1 = new AdjStations
+            {
+                Station1 = prevStat.Station,
+                Station2 = toInsert.Station,
+                Distance = CalcDistance(toAdd, addAfter),
+                Time = CalcTime(toAdd, addAfter)
+            };
             AddAdjStations(adjStations1);
         }
         public void AddLine(Line line)
@@ -290,6 +339,10 @@ namespace BL
             ls.CopyPropertiesTo(lsDO);
             dl.AddLineStation(lsDO);
             
+        }
+        public void DeleteLineStation(int lineID, int station)
+        {
+            dl.DeleteLineStation(lineID, station);
         }
         #endregion
 

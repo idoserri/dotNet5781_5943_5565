@@ -34,6 +34,8 @@ namespace PL
             lineNum_txtb.Text = ToUpdate.LineNum.ToString();
             listLineStations_lv.ItemsSource = bl.GetAllStationsInLine(ToUpdate);
             stationsOnLine_lv.ItemsSource = bl.GetAllStationsInLine(ToUpdate);
+            Distance_lbl.Content += bl.CalcTotalLineDistance(ToUpdate).ToString("#.000") + " KM";
+            Time_lbl.Content += bl.CalcTotalLineTime(ToUpdate);
         }
 
 
@@ -66,6 +68,8 @@ namespace PL
             listLineStations_lv.Items.Refresh();
             stationsOnLine_lv.Items.Refresh();
             stations_lv.Items.Refresh();
+            Distance_lbl.Content = "Total Distance: " + bl.CalcTotalLineDistance(ToUpdate).ToString("#.000") + " KM";
+            Time_lbl.Content = "Total Time: " + bl.CalcTotalLineTime(ToUpdate);
             where_lbl.Visibility = Visibility.Hidden;
             listLineStations_lv.Visibility = Visibility.Hidden;
             listStations_lbl.Visibility = Visibility.Visible;
@@ -74,7 +78,20 @@ namespace PL
 
         private void DeleteStationFromLine_btn_Click(object sender, RoutedEventArgs e)
         {
-            //add bl function to delete from listofstations
+            BO.Station toDel = (sender as Button).DataContext as BO.Station;
+            //messagebox "Are you sure????"
+            bl.DeleteStationFromLine(ToUpdate,toDel.Code);
+            stationsOnLine_lv.ItemsSource = bl.GetAllStationsInLine(ToUpdate);
+            listLineStations_lv.ItemsSource = bl.GetAllStationsInLine(ToUpdate);
+            stations_lv.ItemsSource = bl.GetAllStationsNotInLine(ToUpdate);
+            listLineStations_lv.Items.Refresh();
+            stationsOnLine_lv.Items.Refresh();
+            stations_lv.Items.Refresh();
+            Distance_lbl.Content = "Total Distance: " + bl.CalcTotalLineDistance(ToUpdate).ToString("#.000") + " KM";
+            where_lbl.Visibility = Visibility.Hidden;
+            listLineStations_lv.Visibility = Visibility.Hidden;
+            listStations_lbl.Visibility = Visibility.Visible;
+            stations_lv.Visibility = Visibility.Visible;
         }
     }
 }
