@@ -175,15 +175,15 @@ namespace BL
             foreach (LineStation ls in list)
                 ls.LineStationIndex--;
         }
-        public void AddStationToLine(BO.Line line, BO.Station toAdd, BO.Station addAfter)
+        public void AddStationToLine(BO.Line line, int toAdd, int addAfter)
         {
-            LineStation prevStat = GetAllLineStations().FirstOrDefault(ls => ls.LineID == line.ID && ls.Station == addAfter.Code);
+            LineStation prevStat = GetAllLineStations().FirstOrDefault(ls => ls.LineID == line.ID && ls.Station == addAfter);
             LineStation nextStat = GetAllLineStations().FirstOrDefault(ls => ls.LineID == line.ID && ls.Station == prevStat.NextStation);
             LineStation toInsert = new LineStation
             {
                 LineID = line.ID,
                 LineStationIndex = prevStat.LineStationIndex+1,
-                Station = toAdd.Code,
+                Station = toAdd,
                 PrevStation = prevStat.Station,
                 NextStation = prevStat.NextStation
             };
@@ -202,8 +202,8 @@ namespace BL
                 {
                     Station1 = toInsert.Station,
                     Station2 = nextStat.Station,
-                    Distance = CalcDistance(toAdd, GetStation(nextStat.Station)),
-                    Time = CalcTime(toAdd, GetStation(nextStat.Station))
+                    Distance = CalcDistance(GetStation(toAdd), GetStation(nextStat.Station)),
+                    Time = CalcTime(GetStation(toAdd), GetStation(nextStat.Station))
                 };
                 AddAdjStations(adjStations2);
             }
@@ -212,14 +212,26 @@ namespace BL
             {
                 Station1 = prevStat.Station,
                 Station2 = toInsert.Station,
-                Distance = CalcDistance(toAdd, addAfter),
-                Time = CalcTime(toAdd, addAfter)
+                Distance = CalcDistance(GetStation(toAdd), GetStation(addAfter)),
+                Time = CalcTime(GetStation(toAdd), GetStation(addAfter)),
             };
             AddAdjStations(adjStations1);
         }
-        public void AddLine(Line line)
+        public void AddLine(Line line, LineStation first, LineStation last)
         {
-            throw new NotImplementedException();
+            AddLineStation(first);
+            AddLineStation(last);
+            AdjStations adj = new AdjStations
+            {
+                Station1 = first.Station,
+                Station2 = last.Station,
+                Distance = CalcDistance(GetStation(first.Station), GetStation(last.Station)),
+                Time = CalcTime(GetStation(first.Station), GetStation(last.Station))
+            };
+            AddAdjStations(adj);
+            DO.Line lineDO = new DO.Line();
+            line.CopyPropertiesTo(lineDO);
+            dl.AddLine(lineDO);
         }
         public void DeleteLine(int id)
         {

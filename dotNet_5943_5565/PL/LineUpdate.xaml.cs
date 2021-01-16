@@ -20,31 +20,31 @@ namespace PL
     public partial class LineUpdate : Window
     {
         IBL bl;
-        BO.Line ToUpdate;
+        BO.Line toUpdate;
         BO.Station ToAdd;
         public LineUpdate(BO.Line _Line, IBL _bl)
         {
             InitializeComponent();
             bl = _bl;
-            ToUpdate = _Line;
+            toUpdate = _Line;
             areas_cb.ItemsSource = Enum.GetValues(typeof(BO.Areas));
-            areas_cb.SelectedValue = ToUpdate.Area;
-            stations_lv.ItemsSource = bl.GetAllStationsNotInLine(ToUpdate);
-            id_txtb.Text = ToUpdate.ID.ToString();
-            lineNum_txtb.Text = ToUpdate.LineNum.ToString();
-            listLineStations_lv.ItemsSource = bl.GetAllStationsInLine(ToUpdate);
-            stationsOnLine_lv.ItemsSource = bl.GetAllStationsInLine(ToUpdate);
-            Distance_lbl.Content += bl.CalcTotalLineDistance(ToUpdate).ToString("#.000") + " KM";
-            Time_lbl.Content += bl.CalcTotalLineTime(ToUpdate);
+            areas_cb.SelectedValue = toUpdate.Area;
+            stations_lv.ItemsSource = bl.GetAllStationsNotInLine(toUpdate);
+            id_txtb.Text = toUpdate.ID.ToString();
+            lineNum_txtb.Text = toUpdate.LineNum.ToString();
+            listLineStations_lv.ItemsSource = bl.GetAllStationsInLine(toUpdate);
+            stationsOnLine_lv.ItemsSource = bl.GetAllStationsInLine(toUpdate);
+            Distance_lbl.Content += bl.CalcTotalLineDistance(toUpdate).ToString("#.000") + " KM";
+            Time_lbl.Content += bl.CalcTotalLineTime(toUpdate);
         }
 
 
 
         private void Update_btn_Click(object sender, RoutedEventArgs e)
         {
-            ToUpdate.Area = (BO.Areas)areas_cb.SelectedItem;
-            ToUpdate.LineNum = Int32.Parse(lineNum_txtb.Text);
-            bl.UpdateLine(ToUpdate);
+            toUpdate.Area = (BO.Areas)areas_cb.SelectedItem;
+            toUpdate.LineNum = Int32.Parse(lineNum_txtb.Text);
+            bl.UpdateLine(toUpdate);
             this.Close();
         }
 
@@ -61,15 +61,15 @@ namespace PL
         {
             BO.Station addAfter = (sender as Button).DataContext as BO.Station;
             //add bl function to insert with line stationToAddAfter and toAdd
-            bl.AddStationToLine(ToUpdate, ToAdd, addAfter);
-            stationsOnLine_lv.ItemsSource = bl.GetAllStationsInLine(ToUpdate);
-            listLineStations_lv.ItemsSource = bl.GetAllStationsInLine(ToUpdate);
-            stations_lv.ItemsSource = bl.GetAllStationsNotInLine(ToUpdate);
+            bl.AddStationToLine(toUpdate, ToAdd.Code, addAfter.Code);
+            stationsOnLine_lv.ItemsSource = bl.GetAllStationsInLine(toUpdate);
+            listLineStations_lv.ItemsSource = bl.GetAllStationsInLine(toUpdate);
+            stations_lv.ItemsSource = bl.GetAllStationsNotInLine(toUpdate);
             listLineStations_lv.Items.Refresh();
             stationsOnLine_lv.Items.Refresh();
             stations_lv.Items.Refresh();
-            Distance_lbl.Content = "Total Distance: " + bl.CalcTotalLineDistance(ToUpdate).ToString("#.000") + " KM";
-            Time_lbl.Content = "Total Time: " + bl.CalcTotalLineTime(ToUpdate);
+            Distance_lbl.Content = "Total Distance: " + bl.CalcTotalLineDistance(toUpdate).ToString("#.000") + " KM";
+            Time_lbl.Content = "Total Time: " + bl.CalcTotalLineTime(toUpdate);
             where_lbl.Visibility = Visibility.Hidden;
             listLineStations_lv.Visibility = Visibility.Hidden;
             listStations_lbl.Visibility = Visibility.Visible;
@@ -80,14 +80,14 @@ namespace PL
         {
             BO.Station toDel = (sender as Button).DataContext as BO.Station;
             //messagebox "Are you sure????"
-            bl.DeleteStationFromLine(ToUpdate,toDel.Code);
-            stationsOnLine_lv.ItemsSource = bl.GetAllStationsInLine(ToUpdate);
-            listLineStations_lv.ItemsSource = bl.GetAllStationsInLine(ToUpdate);
-            stations_lv.ItemsSource = bl.GetAllStationsNotInLine(ToUpdate);
+            bl.DeleteStationFromLine(toUpdate,toDel.Code);
+            stationsOnLine_lv.ItemsSource = bl.GetAllStationsInLine(toUpdate);
+            listLineStations_lv.ItemsSource = bl.GetAllStationsInLine(toUpdate);
+            stations_lv.ItemsSource = bl.GetAllStationsNotInLine(toUpdate);
             listLineStations_lv.Items.Refresh();
             stationsOnLine_lv.Items.Refresh();
             stations_lv.Items.Refresh();
-            Distance_lbl.Content = "Total Distance: " + bl.CalcTotalLineDistance(ToUpdate).ToString("#.000") + " KM";
+            Distance_lbl.Content = "Total Distance: " + bl.CalcTotalLineDistance(toUpdate).ToString("#.000") + " KM";
             where_lbl.Visibility = Visibility.Hidden;
             listLineStations_lv.Visibility = Visibility.Hidden;
             listStations_lbl.Visibility = Visibility.Visible;

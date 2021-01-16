@@ -115,7 +115,7 @@ namespace DL
         #region Line
         public void AddLine(Line line)
         {
-            throw new NotImplementedException();
+            DataSource.listLines.Add(line);
         }
         public IEnumerable<Line> GetAllLines()
         {

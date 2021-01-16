@@ -1,7 +1,7 @@
 ﻿<Window x:Class="PL.AddLine"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
@@ -10,17 +10,11 @@
         <DataTemplate x:Key="AddStationToLine" DataType="local:Line">
             <Button Name="AddStationToLine_btn" Content="Add" Click="AddStationToLine_btn_Click"></Button>
         </DataTemplate>
-        <DataTemplate x:Key="AddStationAfter" DataType="local:Line">
-            <Button Name="AddStationAfter_btn" Content="Add After" Click="AddStationAfter_btn_Click"/>
-        </DataTemplate>
-        <DataTemplate x:Key="DeleteStationFromLine" DataType="local:Line">
-            <Button Name="DeleteStationFromLine_btn" Content="Remove" Click="DeleteStationFromLine_btn_Click"/>
-        </DataTemplate>
     </Window.Resources>
     <Grid>
         <Button x:Name="add_btn" Content="Add" FontSize="30" HorizontalAlignment="Left" Height="85" Margin="42,315,0,0" VerticalAlignment="Top" Width="245" Click="add_btn_Click"/>
         <Label x:Name="id_lbl" Content="Line ID: " HorizontalAlignment="Left" Height="31" Margin="6,13,0,0" VerticalAlignment="Top" Width="52"/>
-        <TextBox x:Name="id_txtb" HorizontalAlignment="Left" Height="31" Margin="102,13,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="144"  />
+        <TextBox x:Name="id_txtb" HorizontalAlignment="Left" Height="31" Margin="102,13,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="144" IsEnabled="False"  />
         <Label x:Name="lineNum_lbl" Content="Line Number:  " HorizontalAlignment="Left" Height="31" Margin="6,66,0,0" VerticalAlignment="Top" Width="96"/>
         <TextBox x:Name="lineNum_txtb" HorizontalAlignment="Left" Height="31" Margin="102,66,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="144" />
         <Label x:Name="areas_lbl" Content="Area: " HorizontalAlignment="Left" Height="31" Margin="10,123,0,0" VerticalAlignment="Top" Width="44"/>
@@ -34,27 +28,8 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Label x:Name="listStations_lbl" Content="Add Station To Line:  " HorizontalAlignment="Left" Height="31" Margin="294,13,0,0" VerticalAlignment="Top" Width="121"/>
-        <Label x:Name="where_lbl" Content="Where to Add On the Route?" HorizontalAlignment="Left" Height="31" Margin="294,13,0,0" VerticalAlignment="Top" Width="165" Visibility="Hidden"/>
-        <ListView x:Name="listLineStations_lv" HorizontalAlignment="Left" Height="141" Margin="294,44,0,0" VerticalAlignment="Top" Width="289" Visibility="Hidden">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Station ID" Width="Auto" DisplayMemberBinding="{Binding Code}"/>
-                    <GridViewColumn Header="Station Name" Width="Auto" DisplayMemberBinding="{Binding Name}"/>
-                    <GridViewColumn Header="Add Station" Width="Auto" CellTemplate="{StaticResource AddStationAfter}"/>
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <ListView x:Name="stationsOnLine_lv" HorizontalAlignment="Left" Height="141" Margin="294,232,0,0" VerticalAlignment="Top" Width="289">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Station ID" Width="Auto" DisplayMemberBinding="{Binding Code}"/>
-                    <GridViewColumn Header="Station Name" Width="Auto" DisplayMemberBinding="{Binding Name}"/>
-                    <GridViewColumn Header="Remove Station" Width="Auto" CellTemplate="{StaticResource DeleteStationFromLine}"/>
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <Label x:Name="lineStations_lbl" Content="Line Route: " HorizontalAlignment="Left" Height="31" Margin="294,196,0,0" VerticalAlignment="Top" Width="121"/>
+        <Label x:Name="listStations_lbl" Content="Select First Station:" HorizontalAlignment="Left" Height="31" Margin="294,13,0,0" VerticalAlignment="Top" Width="121"/>
+        
 
     </Grid>
 </Window>

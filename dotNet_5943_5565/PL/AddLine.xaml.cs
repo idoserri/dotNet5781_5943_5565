@@ -20,54 +20,68 @@ namespace PL
     public partial class AddLine : Window
     {
         IBL bl;
-        BO.Line ToUpdate;
-        BO.Station ToAdd;
+        BO.Line toAdd = new BO.Line();
+        BO.Station stationAdded;
+        BO.LineStation firstStation = new BO.LineStation(), lastStation = new BO.LineStation();
+        int count = 0;
         public AddLine(BO.Line _Line, IBL _bl)
         {
             InitializeComponent();
             bl = _bl;
-           
-           areas_cb.ItemsSource = Enum.GetValues(typeof(BO.Areas));          
+            toAdd.ID = bl.GetAllLines().Count() + 1;
+            id_txtb.Text = toAdd.ID.ToString();
+            stations_lv.ItemsSource = bl.GetAllStations();
+            areas_cb.ItemsSource = Enum.GetValues(typeof(BO.Areas));
         }
 
 
 
-       
+
 
         private void AddStationToLine_btn_Click(object sender, RoutedEventArgs e)
         {
-            ToAdd = (sender as Button).DataContext as BO.Station;
-            where_lbl.Visibility = Visibility.Visible;
-            listLineStations_lv.Visibility = Visibility.Visible;
-            listStations_lbl.Visibility = Visibility.Hidden;
-            stations_lv.Visibility = Visibility.Hidden;
-        }
+            stationAdded = (sender as Button).DataContext as BO.Station;
+            if (count == 0)
+            {
+                listStations_lbl.Content = "Select Last Station: ";
+                firstStation = new BO.LineStation
+                {
+                    LineID = toAdd.ID,
+                    Station = stationAdded.Code,
+                    PrevStation = 0,
+                    NextStation = 0,
+                    LineStationIndex = 0
+                };
+                count++;
+            }
+            else
+            {
+                lastStation = new BO.LineStation
+                {
+                    LineID = toAdd.ID,
+                    Station = stationAdded.Code,
+                    PrevStation = firstStation.Station,
+                    NextStation = 0,
+                    LineStationIndex = 1
+                };
+                firstStation.NextStation = lastStation.Station;
+                stations_lv.IsEnabled = false;
+                count++;
+            }
 
-        private void AddStationAfter_btn_Click(object sender, RoutedEventArgs e)
-        {
-            BO.Station addAfter = (sender as Button).DataContext as BO.Station;
-            //add bl function to insert with line stationToAddAfter and toAdd
-            bl.AddStationToLine(ToUpdate, ToAdd, addAfter);
-            stationsOnLine_lv.ItemsSource = bl.GetAllStationsInLine(ToUpdate);
-            listLineStations_lv.ItemsSource = bl.GetAllStationsInLine(ToUpdate);
-            stations_lv.ItemsSource = bl.GetAllStationsNotInLine(ToUpdate);
-            listLineStations_lv.Items.Refresh();
-            stationsOnLine_lv.Items.Refresh();
-            stations_lv.Items.Refresh();
-            where_lbl.Visibility = Visibility.Hidden;
-            listLineStations_lv.Visibility = Visibility.Hidden;
-            listStations_lbl.Visibility = Visibility.Visible;
-            stations_lv.Visibility = Visibility.Visible;
         }
-
         private void add_btn_Click(object sender, RoutedEventArgs e)
         {
-           
-        }
-
-        private void DeleteStationFromLine_btn_Click(object sender, RoutedEventArgs e)
-        {
-
+            if (count != 2)
+                MessageBox.Show("Please select first and last stations.");
+            else
+            {
+                toAdd.Area = (BO.Areas)areas_cb.SelectedValue;
+                toAdd.LastStation = lastStation.Station;
+                toAdd.LineNum = Int32.Parse(lineNum_txtb.Text);
+                bl.AddLine(toAdd, firstStation, lastStation);
+                this.Close();
+            }
         }
     }
 }

@@ -25,8 +25,8 @@ namespace BLAPI
         IEnumerable<Line> GetLinesBy(Predicate<Line> predicate);
         IEnumerable<BO.Station> GetAllStationsNotInLine(BO.Line line);
         IEnumerable<BO.Station> GetAllStationsInLine(BO.Line line);
-        void AddStationToLine(BO.Line line, BO.Station toAdd, BO.Station addAfter);
-        void AddLine(Line line);
+        void AddStationToLine(BO.Line line, int toAdd, int addAfter);
+        void AddLine(Line line, LineStation first, LineStation last);
         void UpdateLine(Line line);
         void DeleteLine(int id);
         void DeleteStationFromLine(Line line,int station);
