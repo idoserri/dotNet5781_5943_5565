@@ -392,6 +392,13 @@ namespace BL
                    where (line.ID == lt.LineID)
                    select LineTripBoDoAdapter(lt);
         }
+        public void AddLineTrip(LineTrip lineTripBO)
+        {
+            
+            DO.LineTrip lineTripDO = new DO.LineTrip();
+            lineTripBO.CopyPropertiesTo(lineTripDO);
+            dl.AddLineTrip(lineTripDO);
+        }
         public void DeleteLineTrip(LineTrip lt)
         {
             try

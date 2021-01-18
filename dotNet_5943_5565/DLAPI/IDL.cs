@@ -63,6 +63,7 @@ namespace DLAPI
         #region LineTrip
         IEnumerable<LineTrip> GetAllLineTrips();
         void DeleteLineTrip(int lineId, TimeSpan start);
+        void AddLineTrip(LineTrip lineTrip);
         #endregion
     }
 }
