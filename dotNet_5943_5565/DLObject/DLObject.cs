@@ -236,5 +236,13 @@ namespace DL
             throw new NotImplementedException();
         }
         #endregion
+
+        #region LineTrip
+        public IEnumerable<LineTrip> GetAllLineTrips()
+        {
+            return from lt in DataSource.listLineTrips
+                   select lt.Clone();
+        }
+        #endregion
     }
 }

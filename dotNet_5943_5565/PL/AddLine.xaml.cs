@@ -33,11 +33,6 @@ namespace PL
             stations_lv.ItemsSource = bl.GetAllStations();
             areas_cb.ItemsSource = Enum.GetValues(typeof(BO.Areas));
         }
-
-
-
-
-
         private void AddStationToLine_btn_Click(object sender, RoutedEventArgs e)
         {
             stationAdded = (sender as Button).DataContext as BO.Station;

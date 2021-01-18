@@ -59,5 +59,9 @@ namespace DLAPI
         void UpdateAdjStations(int station1, int station2, Action<LineStation> update);
         void DeleteAdjStations(int station1, int station2);
         #endregion
+
+        #region LineTrip
+        IEnumerable<LineTrip> GetAllLineTrips();
+        #endregion
     }
 }

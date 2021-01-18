@@ -53,5 +53,9 @@ namespace BLAPI
         #region AdjStations
         void AddAdjStations(BO.AdjStations adj);
         #endregion
+
+        #region LineTrips
+        IEnumerable<LineTrip> GetLineTrips(Line line);
+        #endregion
     }
 }

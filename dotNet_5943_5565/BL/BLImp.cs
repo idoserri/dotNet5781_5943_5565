@@ -378,5 +378,20 @@ namespace BL
             dl.AddAdjStations(adjDO);
         }
         #endregion
+
+        #region LineTrip
+        BO.LineTrip LineTripBoDoAdapter(DO.LineTrip ltDO)
+        {
+            BO.LineTrip ltBO = new BO.LineTrip();
+            ltDO.CopyPropertiesTo(ltBO);
+            return ltBO;
+        }
+        public IEnumerable<LineTrip> GetLineTrips(Line line)
+        {
+            return from lt in dl.GetAllLineTrips()
+                   where (line.ID == lt.LineID)
+                   select LineTripBoDoAdapter(lt);
+        }
+        #endregion
     }
 }

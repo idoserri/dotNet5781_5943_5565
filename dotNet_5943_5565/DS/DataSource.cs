@@ -15,6 +15,7 @@ namespace DS
         public static List<Line> listLines;
         public static List<LineStation> listLineStations;
         public static List<AdjacentStations> listAdjacentStations;
+        public static List<LineTrip> listLineTrips;
         public static Random r = new Random();
         static DataSource()
         {
@@ -1543,7 +1544,6 @@ namespace DS
             
             #endregion
 
-
             #region AdjStations
             listAdjacentStations = new List<AdjacentStations>();
 
@@ -1564,6 +1564,20 @@ namespace DS
                         Time = t
                     });
 
+            }
+            #endregion
+
+            #region LineTrip
+            listLineTrips = new List<LineTrip>();
+            for (int i = 0; i < listLines.Count()-1; i++)
+            {
+                listLineTrips.Add(new LineTrip
+                {
+                    LineID = listLines[i].ID,
+                    Frequency = new TimeSpan(0,15,0),
+                    StartAt = new TimeSpan(7,0,0),
+                    FinishAt = new TimeSpan(22,0,0)
+                });
             }
             #endregion
         }

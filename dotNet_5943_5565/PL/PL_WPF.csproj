@@ -63,6 +63,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="AddLineTrip.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="LineUpdate.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -89,6 +93,9 @@
     </Page>
     <Compile Include="AddLine.xaml.cs">
       <DependentUpon>AddLine.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddLineTrip.xaml.cs">
+      <DependentUpon>AddLineTrip.xaml</DependentUpon>
     </Compile>
     <Compile Include="LineUpdate.xaml.cs">
       <DependentUpon>LineUpdate.xaml</DependentUpon>

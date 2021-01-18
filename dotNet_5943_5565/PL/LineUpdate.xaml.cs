@@ -28,6 +28,7 @@ namespace PL
             bl = _bl;
             toUpdate = _Line;
             areas_cb.ItemsSource = Enum.GetValues(typeof(BO.Areas));
+            LineTrips_lv.ItemsSource = bl.GetLineTrips(toUpdate);
             areas_cb.SelectedValue = toUpdate.Area;
             stations_lv.ItemsSource = bl.GetAllStationsNotInLine(toUpdate);
             id_txtb.Text = toUpdate.ID.ToString();
@@ -60,7 +61,6 @@ namespace PL
         private void AddStationAfter_btn_Click(object sender, RoutedEventArgs e)
         {
             BO.Station addAfter = (sender as Button).DataContext as BO.Station;
-            //add bl function to insert with line stationToAddAfter and toAdd
             bl.AddStationToLine(toUpdate, ToAdd.Code, addAfter.Code);
             stationsOnLine_lv.ItemsSource = bl.GetAllStationsInLine(toUpdate);
             listLineStations_lv.ItemsSource = bl.GetAllStationsInLine(toUpdate);
@@ -92,6 +92,12 @@ namespace PL
             listLineStations_lv.Visibility = Visibility.Hidden;
             listStations_lbl.Visibility = Visibility.Visible;
             stations_lv.Visibility = Visibility.Visible;
+        }
+
+        private void addLineTrip_btn_Click(object sender, RoutedEventArgs e)
+        {
+            AddLineTrip addLT = new AddLineTrip(toUpdate.ID);
+            addLT.ShowDialog();
         }
     }
 }

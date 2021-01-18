@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
-        Title="Update Line" Height="450" Width="600" >
+        Title="Update Line" Height="600" Width="600" >
     <Window.Resources>
         <DataTemplate x:Key="AddStationToLine" DataType="local:Line">
             <Button Name="AddStationToLine_btn" Content="Add" Click="AddStationToLine_btn_Click"></Button>
@@ -18,7 +18,7 @@
         </DataTemplate>
     </Window.Resources>
     <Grid>
-        <Button x:Name="update_btn" Content="Update" HorizontalAlignment="Left" Height="85" Margin="42,315,0,0" VerticalAlignment="Top" Width="245" Click="Update_btn_Click"/>
+        <Button x:Name="update_btn" Content="Update" HorizontalAlignment="Left" Height="85" Margin="170,465,0,0" VerticalAlignment="Top" Width="245" Click="Update_btn_Click"/>
         <Label x:Name="id_lbl" Content="Line ID: " HorizontalAlignment="Left" Height="31" Margin="6,13,0,0" VerticalAlignment="Top" Width="52"/>
         <TextBox x:Name="id_txtb" HorizontalAlignment="Left" Height="31" Margin="102,13,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="144" IsEnabled="False" />
         <Label x:Name="lineNum_lbl" Content="Line Number:  " HorizontalAlignment="Left" Height="31" Margin="6,66,0,0" VerticalAlignment="Top" Width="96"/>
@@ -57,6 +57,17 @@
         <Label x:Name="lineStations_lbl" Content="Line Route: " HorizontalAlignment="Left" Height="31" Margin="294,196,0,0" VerticalAlignment="Top" Width="121"/>
         <Label x:Name="Distance_lbl" Content="Total Distance: " HorizontalAlignment="Left" Height="31" Margin="10,178,0,0" VerticalAlignment="Top" Width="192" RenderTransformOrigin="0.417,1.452"/>
         <Label x:Name="Time_lbl" Content="Total Time: " HorizontalAlignment="Left" Height="31" Margin="10,230,0,0" VerticalAlignment="Top" Width="192" RenderTransformOrigin="0.417,1.452"/>
+        <Label x:Name="LineTrip_lbl" Content="Line Trips:" HorizontalAlignment="Left" Height="31" Margin="10,262,0,0" VerticalAlignment="Top" Width="192" RenderTransformOrigin="0.417,1.452"/>
+        <ListView x:Name="LineTrips_lv" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="192" Margin="10,293,0,0">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Starts At" Width="Auto" DisplayMemberBinding="{Binding StartAt}"/>
+                    <GridViewColumn Header="Finishes At" Width="Auto" DisplayMemberBinding="{Binding FinishAt}"/>
+                    <GridViewColumn Header="Frequency" Width="Auto" DisplayMemberBinding="{Binding Frequency}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button x:Name="addLineTrip_btn" Content="Add" HorizontalAlignment="Left" Height="20" Margin="154,363,0,0" VerticalAlignment="Top" Width="48" Click="addLineTrip_btn_Click"/>
 
     </Grid>
 </Window>
