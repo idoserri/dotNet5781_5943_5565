@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using BLAPI;
 namespace PL
 {
     /// <summary>
@@ -19,6 +19,8 @@ namespace PL
     /// </summary>
     public partial class AddLineTrip : Window
     {
+        IBL bl;
+        BO.LineTrip = new BO.LineTrip();
         public AddLineTrip(int lineID)
         {
             InitializeComponent();
@@ -42,7 +44,19 @@ namespace PL
                 return;
             }
 
-           
+            if (TimeSpan.TryParse(frequency_txt.Text, out freq) == false)
+            {
+                MessageBox.Show("Wrong time format, Try again", "ERROR",
+                    MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.OK);
+                return;
+            }
+
+            
+
+
+
+
+
         }
     }
 }

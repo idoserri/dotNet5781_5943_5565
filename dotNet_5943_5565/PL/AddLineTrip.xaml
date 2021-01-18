@@ -13,13 +13,13 @@
         <TextBox x:Name="start_txtb" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="104" Margin="93,57,0,0"/>
         <Label x:Name="finish_lbl" Content="Finishes At:" HorizontalAlignment="Left" Height="31" Margin="10,85,0,0" VerticalAlignment="Top" Width="83"/>
         <TextBox x:Name="finish_txtb" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="104" Margin="93,93,0,0"/>
-        <ComboBox Name="HMS_cb" Margin="166,130,0.333,58.667">
+        <!--<ComboBox Name="HMS_cb" Margin="166,130,0,58.667" HorizontalAlignment="Left" Width="77">
             <ComboBoxItem Content="Hours"/>
             <ComboBoxItem Content="Minutes" IsSelected="True"/>
             <ComboBoxItem Content="Seconds"/>
-        </ComboBox>
+        </ComboBox>-->
         <Label x:Name="frequency_lbl" Content="Pick Frequency: " HorizontalAlignment="Left" Height="31" Margin="0,130,0,0" VerticalAlignment="Top" Width="92"/>
-        <TextBox x:Name="finish_txtb_Copy" HorizontalAlignment="Left" Height="32" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="51" Margin="102,130,0,0"/>
+        <TextBox x:Name="frequency_txt" HorizontalAlignment="Left" Height="32" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="95" Margin="102,130,0,0"/>
         <Button x:Name="add_btn" Content="Add" HorizontalAlignment="Left" Margin="72,175,0,0" VerticalAlignment="Top" Width="94" Height="36" Click="AddLineTrip_btn"/>
 
     </Grid>
