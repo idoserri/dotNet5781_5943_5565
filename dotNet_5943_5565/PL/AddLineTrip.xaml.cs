@@ -19,7 +19,7 @@ namespace PL
     /// </summary>
     public partial class AddLineTrip : Window
     {
-        IBL bl;
+        IBL bl;                          
         BO.LineTrip = new BO.LineTrip();
         public AddLineTrip(int lineID)
         {
