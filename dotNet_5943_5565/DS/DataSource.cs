@@ -137,7 +137,7 @@ namespace DS
                  Mileage = 0,
                  FuelRemain = 1200,
                  BusStatus = Status.Ready
-             },
+             }, // XML added til here
              new Bus
              {
                  LicenseNum = 5718584,
