@@ -243,6 +243,15 @@ namespace DL
             return from lt in DataSource.listLineTrips
                    select lt.Clone();
         }
+        public void DeleteLineTrip(int lineId, TimeSpan start)
+        {
+            LineTrip toRemove = DataSource.listLineTrips.Find(lt => lt.LineID == lineId && lt.StartAt == start);
+            if (toRemove != null)
+                DataSource.listLineTrips.Remove(toRemove);
+            else //create bad id exception
+                throw new NotImplementedException();
+        }
+
         #endregion
     }
 }

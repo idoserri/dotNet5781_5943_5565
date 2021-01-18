@@ -16,6 +16,9 @@
         <DataTemplate x:Key="DeleteStationFromLine" DataType="local:Line">
             <Button Name="DeleteStationFromLine_btn" Content="Remove" Click="DeleteStationFromLine_btn_Click"/>
         </DataTemplate>
+        <DataTemplate x:Key="DeleteLineTrip" DataType="local:Line">
+            <Button Name="DeleteLineTrip_btn" Content="Delete" Click="DeleteLineTrip_btn_Click"/>
+        </DataTemplate>
     </Window.Resources>
     <Grid>
         <Button x:Name="update_btn" Content="Update" HorizontalAlignment="Left" Height="85" Margin="170,465,0,0" VerticalAlignment="Top" Width="245" Click="Update_btn_Click"/>
@@ -58,16 +61,17 @@
         <Label x:Name="Distance_lbl" Content="Total Distance: " HorizontalAlignment="Left" Height="31" Margin="10,178,0,0" VerticalAlignment="Top" Width="192" RenderTransformOrigin="0.417,1.452"/>
         <Label x:Name="Time_lbl" Content="Total Time: " HorizontalAlignment="Left" Height="31" Margin="10,230,0,0" VerticalAlignment="Top" Width="192" RenderTransformOrigin="0.417,1.452"/>
         <Label x:Name="LineTrip_lbl" Content="Line Trips:" HorizontalAlignment="Left" Height="31" Margin="10,262,0,0" VerticalAlignment="Top" Width="192" RenderTransformOrigin="0.417,1.452"/>
-        <ListView x:Name="LineTrips_lv" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="192" Margin="10,293,0,0">
+        <ListView x:Name="LineTrips_lv" HorizontalAlignment="Left" Height="80" VerticalAlignment="Top" Width="225" Margin="10,293,0,0">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Starts At" Width="Auto" DisplayMemberBinding="{Binding StartAt}"/>
                     <GridViewColumn Header="Finishes At" Width="Auto" DisplayMemberBinding="{Binding FinishAt}"/>
                     <GridViewColumn Header="Frequency" Width="Auto" DisplayMemberBinding="{Binding Frequency}"/>
+                    <GridViewColumn Header="Delete" Width="Auto" CellTemplate="{StaticResource DeleteLineTrip}"/>
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="addLineTrip_btn" Content="Add" HorizontalAlignment="Left" Height="20" Margin="154,363,0,0" VerticalAlignment="Top" Width="48" Click="addLineTrip_btn_Click"/>
+        <Button x:Name="addLineTrip_btn" Content="Add" HorizontalAlignment="Left" Height="20" Margin="154,397,0,0" VerticalAlignment="Top" Width="48" Click="addLineTrip_btn_Click"/>
 
     </Grid>
 </Window>
