@@ -392,6 +392,17 @@ namespace BL
                    where (line.ID == lt.LineID)
                    select LineTripBoDoAdapter(lt);
         }
+        public void DeleteLineTrip(LineTrip lt)
+        {
+            try
+            {
+                dl.DeleteLineTrip(lt.LineID, lt.StartAt);
+            }
+            catch (Exception)//create exception for bad id
+            {
+                throw new NotImplementedException();
+            }
+        }
         #endregion
     }
 }

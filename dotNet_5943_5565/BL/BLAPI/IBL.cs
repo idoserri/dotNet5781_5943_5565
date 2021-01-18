@@ -56,6 +56,7 @@ namespace BLAPI
 
         #region LineTrips
         IEnumerable<LineTrip> GetLineTrips(Line line);
+        void DeleteLineTrip(LineTrip lt);
         #endregion
     }
 }
