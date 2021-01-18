@@ -20,7 +20,7 @@
         </ComboBox>
         <Label x:Name="frequency_lbl" Content="Pick Frequency: " HorizontalAlignment="Left" Height="31" Margin="0,130,0,0" VerticalAlignment="Top" Width="92"/>
         <TextBox x:Name="finish_txtb_Copy" HorizontalAlignment="Left" Height="32" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="51" Margin="102,130,0,0"/>
-
+        <Button x:Name="add_btn" Content="Add" HorizontalAlignment="Left" Margin="72,175,0,0" VerticalAlignment="Top" Width="94" Height="36" Click="AddLineTrip_btn"/>
 
     </Grid>
 </Window>
