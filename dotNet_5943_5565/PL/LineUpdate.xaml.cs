@@ -96,8 +96,10 @@ namespace PL
 
         private void addLineTrip_btn_Click(object sender, RoutedEventArgs e)
         {
-            AddLineTrip addLT = new AddLineTrip(toUpdate.ID);
+            AddLineTrip addLT = new AddLineTrip(toUpdate.ID,bl);
             addLT.ShowDialog();
+            LineTrips_lv.ItemsSource = bl.GetLineTrips(toUpdate);
+            LineTrips_lv.Items.Refresh();
         }
 
         private void DeleteLineTrip_btn_Click(object sender, RoutedEventArgs e)

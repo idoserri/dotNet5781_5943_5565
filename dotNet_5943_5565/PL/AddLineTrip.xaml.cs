@@ -20,10 +20,11 @@ namespace PL
     public partial class AddLineTrip : Window
     {
         IBL bl;
-        BO.LineTrip = new BO.LineTrip();
-        public AddLineTrip(int lineID)
+        BO.LineTrip ToAdd = new BO.LineTrip();
+        public AddLineTrip(int lineID, IBL _bl)
         {
             InitializeComponent();
+            bl = _bl;
             id_txtb.Text = lineID.ToString();
         }
 
@@ -51,11 +52,16 @@ namespace PL
                 return;
             }
 
-            
+            ToAdd = new BO.LineTrip
+            {
+                LineID = Int32.Parse(id_txtb.Text),
+                StartAt = start_At,
+                FinishAt = finish_At,
+                Frequency = freq
+            };
 
-
-
-
+            bl.AddLineTrip(ToAdd);
+            this.Close();
 
         }
     }

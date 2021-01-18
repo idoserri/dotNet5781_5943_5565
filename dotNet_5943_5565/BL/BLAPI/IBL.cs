@@ -27,6 +27,7 @@ namespace BLAPI
         IEnumerable<BO.Station> GetAllStationsInLine(BO.Line line);
         void AddStationToLine(BO.Line line, int toAdd, int addAfter);
         void AddLine(Line line, LineStation first, LineStation last);
+       
         void UpdateLine(Line line);
         void DeleteLine(int id);
         void DeleteStationFromLine(Line line,int station);
@@ -57,6 +58,7 @@ namespace BLAPI
         #region LineTrips
         IEnumerable<LineTrip> GetLineTrips(Line line);
         void DeleteLineTrip(LineTrip lt);
+        void AddLineTrip(LineTrip lineTripBO);
         #endregion
     }
 }

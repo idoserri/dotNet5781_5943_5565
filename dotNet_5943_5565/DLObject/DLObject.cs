@@ -252,6 +252,15 @@ namespace DL
                 throw new NotImplementedException();
         }
 
+        public void AddLineTrip(LineTrip lineTrip)
+        {
+            // if linetrip doesnt exist add it
+            if (DataSource.listLineTrips.FirstOrDefault(b => (lineTrip.StartAt == b.StartAt 
+            && lineTrip.FinishAt == b.FinishAt && lineTrip.Frequency == b.Frequency)) != null)
+                throw new NotImplementedException(); //new exception needed
+            DataSource.listLineTrips.Add(lineTrip);
+        }
+
         #endregion
     }
 }
