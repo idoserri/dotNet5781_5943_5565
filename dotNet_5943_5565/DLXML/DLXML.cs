@@ -20,7 +20,7 @@ namespace DL
 
         #region DS XML Files
         string bussesPath = @"BussesXML.xml";
-        string stationsPath = @"Statio"
+        string stationsPath = @"Stations.xml";
         #endregion
 
         #region Bus
