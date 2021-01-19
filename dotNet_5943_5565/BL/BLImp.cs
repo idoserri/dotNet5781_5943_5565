@@ -120,10 +120,10 @@ namespace BL
         {
             BO.Line lineBO = new BO.Line();
             lineDO.CopyPropertiesTo(lineBO);
-            lineBO.ListOfLineStations = from item in dl.GetAllLineStations()
+            lineBO.ListOfLineStations = from item in GetAllLineStations()
                                         where item.LineID == lineBO.ID
                                         orderby item.LineStationIndex ascending
-                                        select LineStationBoDoAdapter(item);
+                                        select item;
             lineBO.LastStationName = LineNameConverter(lineBO);
             return lineBO;
         }

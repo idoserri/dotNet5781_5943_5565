@@ -1,10 +1,17 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0"?>
 <ArrayOfStation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-	<Station>
-		<Code>1</Code>
-		<Name>Dr. Josheph Burg St.</Name>
-		<Latitude>31.968936</Latitude>
-		<Longitude>34.820043</Longitude>
-		<Area>General</Area>
-	</Station>
+  <Station>
+    <Code>1</Code>
+    <Name>Dr. Josheph Burg St.</Name>
+    <Longitude>34.820043</Longitude>
+    <Latitude>31.968936</Latitude>
+    <Area>North</Area>
+  </Station>
+  <Station>
+    <Code>10</Code>
+    <Name>Rabbi Yaakov Berman St.</Name>
+    <Longitude>34.818922</Longitude>
+    <Latitude>31.90281</Latitude>
+    <Area>North</Area>
+  </Station>
 </ArrayOfStation>
