@@ -1,17 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ArrayOfLineStation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-	<LineStation>
-		<LineID>1</LineID>
-		<Station>1</Station>
-		<LineStationIndex>0</LineStationIndex>
-		<PrevStation>0</PrevStation>
-		<NextStation>10</NextStation>
-	</LineStation>
-	<LineStation>
-		<LineID>1</LineID>
-		<Station>10</Station>
-		<LineStationIndex>1</LineStationIndex>
-		<PrevStation>1</PrevStation>
-		<NextStation>0</NextStation>
-	</LineStation>
+  <LineStation>
+    <LineID>1</LineID>
+    <Station>10</Station>
+    <LineStationIndex>1</LineStationIndex>
+    <PrevStation>0</PrevStation>
+    <NextStation>1</NextStation>
+  </LineStation>
+  <LineStation>
+    <LineID>2</LineID>
+    <LineStationIndex>0</LineStationIndex>
+    <NextStation>10</NextStation>
+    <PrevStation>0</PrevStation>
+    <Station>1</Station>
+  </LineStation>
+  <LineStation>
+    <LineID>2</LineID>
+    <LineStationIndex>1</LineStationIndex>
+    <NextStation>0</NextStation>
+    <PrevStation>1</PrevStation>
+    <Station>10</Station>
+  </LineStation>
+  <LineStation>
+    <LineID>1</LineID>
+    <LineStationIndex>2</LineStationIndex>
+    <NextStation>0</NextStation>
+    <PrevStation>10</PrevStation>
+    <Station>1</Station>
+  </LineStation>
 </ArrayOfLineStation>

@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using System.Xml;
 using DLAPI;
 using DO;
+
 
 namespace DL
 {
@@ -19,13 +21,13 @@ namespace DL
         #endregion
 
         #region DS XML Files
-        string lineStationsPath = @"LineStationsXML.xml";
+        string lineStationsPath = @"LineStationsXML.xml"; //XElement
+        string adjStationsPath = @"AdjStationsXML.xml"; //XElement
+        string lineTripsPath = @"LineTripsXML.xml"; //XElement
 
-        string bussesPath = @"BussesXML.xml";
-        string stationsPath = @"StationsXML.xml";
-        string linesPath = @"LinesXML.xml";
-        string adjStationsPath = @"AdjStationsXML.xml";
-        string lineTripsPath = @"LineTripsXML.xml";
+        string bussesPath = @"BussesXML.xml"; //XMLSerializer
+        string stationsPath = @"StationsXML.xml"; //XMLSerializer
+        string linesPath = @"LinesXML.xml"; //XMLSerializer
         #endregion
 
         #region Line Station
@@ -47,13 +49,13 @@ namespace DL
         {
             XElement lineStationsRootElem = XMLTools.LoadListFromXMLElement(lineStationsPath);
 
-            XElement ls1 = (from ls in lineStationsRootElem.Elements()
+            /*XElement ls1 = (from ls in lineStationsRootElem.Elements()
                              where int.Parse(ls.Element("LineID").Value) == lineStation.LineID &&
                              int.Parse(ls.Element("Station").Value) == lineStation.Station
                              select ls).FirstOrDefault();
 
             if (ls1 != null) //already exists exception
-                throw new NotImplementedException();
+                return;*/
             XElement lsElem = new XElement("LineStation",
                        new XElement("LineID", lineStation.LineID.ToString()),
                        new XElement("LineStationIndex", lineStation.LineStationIndex.ToString()),
@@ -255,44 +257,69 @@ namespace DL
         #region Adjacent Stations
         public void AddAdjStations(AdjacentStations adjacentStations)
         {
-            List<AdjacentStations> listAdjStations = XMLTools.LoadListFromXMLSerializer<AdjacentStations>(adjStationsPath);
-            if (listAdjStations.FirstOrDefault(adj => (adjacentStations.Station1 == adj.Station1) && (adjacentStations.Station2 == adj.Station2)) != null)
-                throw new NotImplementedException(); //new exception needed
-            listAdjStations.Add(adjacentStations);
-            XMLTools.SaveListToXMLSerializer(listAdjStations, adjStationsPath);
+            XElement adjStationsRootElem = XMLTools.LoadListFromXMLElement(adjStationsPath);
+            XElement adj1 = (from adj in adjStationsRootElem.Elements()
+                            where int.Parse(adj.Element("Station1").Value) == adjacentStations.Station1 &&
+                            int.Parse(adj.Element("Station1").Value) == adjacentStations.Station2
+                            select adj).FirstOrDefault();
+            if (adj1 != null) //already exists exception
+                throw new NotImplementedException();
+            XElement adjElem = new XElement("AdjacentStations",
+            new XElement("Station1", adjacentStations.Station1.ToString()),
+            new XElement("Station2", adjacentStations.Station2.ToString()),
+            new XElement("Distance", adjacentStations.Distance.ToString()),
+            new XElement("Time", XmlConvert.ToString(adjacentStations.Time)));
+            adjStationsRootElem.Add(adjElem);
+            XMLTools.SaveListToXMLElement(adjStationsRootElem, adjStationsPath);
         }
         #endregion
 
         #region Line Trip
         public void AddLineTrip(LineTrip lineTrip)
         {
-            List<LineTrip> listLineTrips = XMLTools.LoadListFromXMLSerializer<LineTrip>(lineTripsPath);
-
-            if (listLineTrips
-                .FirstOrDefault(b => (lineTrip.StartAt == b.StartAt && lineTrip.FinishAt == b.FinishAt && lineTrip.Frequency == b.Frequency)) != null)
-                throw new NotImplementedException(); //new exception needed
-            listLineTrips.Add(lineTrip);
-            XMLTools.SaveListToXMLSerializer(listLineTrips, lineTripsPath);
-
+            XElement lineTripRootElem = XMLTools.LoadListFromXMLElement(lineTripsPath);
+            XElement lt1 = (from lt in lineTripRootElem.Elements()
+                             where int.Parse(lt.Element("LineID").Value) == lineTrip.LineID &&
+                             XmlConvert.ToTimeSpan(lt.Element("StartAt").Value) == lineTrip.StartAt
+                             select lt).FirstOrDefault();
+            if (lt1 != null) //already exists exception
+                throw new NotImplementedException();
+            XElement ltElem = new XElement("LineTrip",
+                               new XElement("LineID", lineTrip.LineID.ToString()),
+                               new XElement("StartAt", XmlConvert.ToString(lineTrip.StartAt)),
+                               new XElement("FinishAt", XmlConvert.ToString(lineTrip.FinishAt)),
+                               new XElement("Frequency", XmlConvert.ToString(lineTrip.Frequency)));
+            lineTripRootElem.Add(ltElem);
+            XMLTools.SaveListToXMLElement(lineTripRootElem, lineTripsPath);
         }
         public void DeleteLineTrip(int lineId, TimeSpan start)
         {
-            List<LineTrip> listLineTrips = XMLTools.LoadListFromXMLSerializer<LineTrip>(lineTripsPath);
-
-            LineTrip toRemove = listLineTrips.Find(lt => lt.LineID == lineId && lt.StartAt == start);
-            if (toRemove != null)
-                listLineTrips.Remove(toRemove);
-            else //create bad id exception
+            XElement ltRootElem = XMLTools.LoadListFromXMLElement(lineTripsPath);
+            XElement lt1 = (from lt in ltRootElem.Elements()
+                            where int.Parse(lt.Element("LineID").Value) == lineId &&
+                            XmlConvert.ToTimeSpan(lt.Element("StartAt").Value) == start
+                            select lt).FirstOrDefault();
+            if (lt1 != null)
+            {
+                lt1.Remove();
+                XMLTools.SaveListToXMLElement(ltRootElem, lineTripsPath);
+            }
+            else //bad id exception
                 throw new NotImplementedException();
-            XMLTools.SaveListToXMLSerializer(listLineTrips, lineTripsPath);
 
         }
         public IEnumerable<LineTrip> GetAllLineTrips()
         {
-            List<LineTrip> listLineTrips = XMLTools.LoadListFromXMLSerializer<LineTrip>(lineTripsPath);
+            XElement ltRootElem = XMLTools.LoadListFromXMLElement(lineTripsPath);
 
-            return from lt in listLineTrips
-                   select lt;
+            return (from lt in ltRootElem.Elements()
+                    select new LineTrip
+                    {
+                        LineID = Int32.Parse(lt.Element("LineID").Value),
+                        StartAt = XmlConvert.ToTimeSpan(lt.Element("StartAt").Value),
+                        FinishAt = XmlConvert.ToTimeSpan(lt.Element("FinishAt").Value),
+                        Frequency = XmlConvert.ToTimeSpan(lt.Element("Frequency").Value),
+                    });
         }
         #endregion
 

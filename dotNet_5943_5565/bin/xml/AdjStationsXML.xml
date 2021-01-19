@@ -1,3 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ArrayOfAdjStations xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <AdjacentStations>
+    <Station1>10</Station1>
+    <Station2>1</Station2>
+    <Distance>7359.9849015277</Distance>
+    <Time>PT13M4S</Time>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>1</Station1>
+    <Station2>10</Station2>
+    <Distance>7359.9849015277</Distance>
+    <Time>PT9M21S</Time>
+  </AdjacentStations>
 </ArrayOfAdjStations>
