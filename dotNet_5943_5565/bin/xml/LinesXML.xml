@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfLine xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<Line>
+		<ID>1</ID>
+		<LineNum>1</LineNum>
+		<LastStation>10</LastStation>
+		<FirstStation>1</FirstStation>
+		<Area>Center</Area>
+	</Line>
+</ArrayOfLine>

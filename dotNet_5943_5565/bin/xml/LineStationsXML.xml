@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfLineStation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<LineStation>
+		<LineID>1</LineID>
+		<Station>1</Station>
+		<LineStationIndex>0</LineStationIndex>
+		<PrevStation>0</PrevStation>
+		<NextStation>10</NextStation>
+	</LineStation>
+	<LineStation>
+		<LineID>1</LineID>
+		<Station>10</Station>
+		<LineStationIndex>1</LineStationIndex>
+		<PrevStation>1</PrevStation>
+		<NextStation>0</NextStation>
+	</LineStation>
+</ArrayOfLineStation>
