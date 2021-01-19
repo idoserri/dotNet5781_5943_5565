@@ -15,6 +15,14 @@ namespace BL
     {
         IDL dl = DLFactory.GetDL();
         static Random r = new Random();
+
+        #region singelton
+        static readonly BLImp instance = new BLImp();
+        static BLImp() { }// static ctor to ensure instance init is done just before first usage
+        public BLImp() { } // default => private
+        public static BLImp Instance { get => instance; }// The public Instance property to use
+        #endregion
+
         #region Bus
         BO.Bus BusBoDoAdapter(DO.Bus busDO)
         {

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfStation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<Station>	
+		<Code>1</Code>
+		<Name>Dr. Josheph Burg St.</Name>
+		<Latitude>31.968936</Latitude>
+		<Longitude>34.820043</Longitude>
+		<Area>General</Area>
+	</Station>
+</ArrayOfStation>

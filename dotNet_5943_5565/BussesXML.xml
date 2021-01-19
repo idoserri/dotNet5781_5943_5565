@@ -1,94 +1,94 @@
 ﻿<?xml version="1.0"?>
 <ArrayOfBus xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-	<bus>
+	<Bus>
 		<LicenseNum>7927485</LicenseNum>
-		<FromDate>1.1.2018</FromDate>
+		<FromDate>1995-10-13T00:00:00</FromDate>
 		<Mileage>0</Mileage>
 		<FuelRemain>1200</FuelRemain>
 		<BusStatus>Ready</BusStatus>
-	</bus>
-	<bus>
+	</Bus>
+	<Bus>
 		<LicenseNum>9181898</LicenseNum>
-		<FromDate>1.1.2018</FromDate>
+		<FromDate>1995-10-13T00:00:00</FromDate>
 		<Mileage>0</Mileage>
 		<FuelRemain>1200</FuelRemain>
 		<BusStatus>Ready</BusStatus>
-	</bus>
-	<bus>
+	</Bus>
+	<Bus>
 		<LicenseNum>2872980</LicenseNum>
-		<FromDate>1.1.2018</FromDate>
+		<FromDate>1995-10-13T00:00:00</FromDate>
 		<Mileage>0</Mileage>
 		<FuelRemain>1200</FuelRemain>
 		<BusStatus>Ready</BusStatus>
-	</bus>
-	<bus>
+	</Bus>
+	<Bus>
 		<LicenseNum>1762162</LicenseNum>
-		<FromDate>1.1.2018</FromDate>
+		<FromDate>1995-10-13T00:00:00</FromDate>
 		<Mileage>0</Mileage>
 		<FuelRemain>1200</FuelRemain>
 		<BusStatus>Ready</BusStatus>
-	</bus>
-	<bus>
+	</Bus>
+	<Bus>
 		<LicenseNum>507706</LicenseNum>
-		<FromDate>1.1.2018</FromDate>
+		<FromDate>1995-10-13T00:00:00</FromDate>
 		<Mileage>0</Mileage>
 		<FuelRemain>1200</FuelRemain>
 		<BusStatus>Ready</BusStatus>
-	</bus>
-	<bus>
+	</Bus>
+	<Bus>
 		<LicenseNum>1838948</LicenseNum>
-		<FromDate>1.1.2018</FromDate>
+		<FromDate>1995-10-13T00:00:00</FromDate>
 		<Mileage>0</Mileage>
 		<FuelRemain>1200</FuelRemain>
 		<BusStatus>Ready</BusStatus>
-	</bus>
-	<bus>
+	</Bus>
+	<Bus>
 		<LicenseNum>8498085</LicenseNum>
-		<FromDate>1.1.2018</FromDate>
+		<FromDate>1995-10-13T00:00:00</FromDate>
 		<Mileage>0</Mileage>
 		<FuelRemain>1200</FuelRemain>
 		<BusStatus>Ready</BusStatus>
-	</bus>
-	<bus>
+	</Bus>
+	<Bus>
 		<LicenseNum>7876946</LicenseNum>
-		<FromDate>1.1.2018</FromDate>
+		<FromDate>1995-10-13T00:00:00</FromDate>
 		<Mileage>0</Mileage>
 		<FuelRemain>1200</FuelRemain>
 		<BusStatus>Ready</BusStatus>
-	</bus>
-	<bus>
+	</Bus>
+	<Bus>
 		<LicenseNum>3875072</LicenseNum>
-		<FromDate>1.1.2018</FromDate>
+		<FromDate>1995-10-13T00:00:00</FromDate>
 		<Mileage>0</Mileage>
 		<FuelRemain>1200</FuelRemain>
 		<BusStatus>Ready</BusStatus>
-	</bus>
-	<bus>
+	</Bus>
+	<Bus>
 		<LicenseNum>7977305</LicenseNum>
-		<FromDate>1.1.2018</FromDate>
+		<FromDate>1995-10-13T00:00:00</FromDate>
 		<Mileage>0</Mileage>
 		<FuelRemain>1200</FuelRemain>
 		<BusStatus>Ready</BusStatus>
-	</bus>
-	<bus>
+	</Bus>
+	<Bus>
 		<LicenseNum>9205780</LicenseNum>
-		<FromDate>1.1.2018</FromDate>
+		<FromDate>1995-10-13T00:00:00</FromDate>
 		<Mileage>0</Mileage>
 		<FuelRemain>1200</FuelRemain>
 		<BusStatus>Ready</BusStatus>
-	</bus>
-	<bus>
+	</Bus>
+	<Bus>
 		<LicenseNum>5473504</LicenseNum>
-		<FromDate>1.1.2018</FromDate>
+		<FromDate>1995-10-13T00:00:00</FromDate>
 		<Mileage>0</Mileage>
 		<FuelRemain>1200</FuelRemain>
 		<BusStatus>Ready</BusStatus>
-	</bus>
-	<bus>
+	</Bus>
+	<Bus>
 		<LicenseNum>647133</LicenseNum>
-		<FromDate>1.1.2018</FromDate>
+		<FromDate>1995-10-13T00:00:00</FromDate>
 		<Mileage>0</Mileage>
 		<FuelRemain>1200</FuelRemain>
 		<BusStatus>Ready</BusStatus>
-	</bus>
+	</Bus>
 </ArrayOfBus>

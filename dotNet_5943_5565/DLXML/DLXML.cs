@@ -11,15 +11,75 @@ namespace DL
 {
     sealed class DLXML : IDL
     {
+        #region singelton
+        static readonly DLXML instance = new DLXML();
+        static DLXML() { }// static ctor to ensure instance init is done just before first usage
+        DLXML() { } // default => private
+        public static DLXML Instance { get => instance; }// The public Instance property to use
+        #endregion
+
+        #region DS XML Files
+        string bussesPath = @"BussesXML.xml";
+        string stationsPath = @"Statio"
+        #endregion
+
+        #region Bus
+        public void AddBus(Bus bus)
+        {
+            List<Bus> listBusses = XMLTools.LoadListFromXMLSerializer<Bus>(bussesPath);
+            if (listBusses.FirstOrDefault(b => (bus.LicenseNum == b.LicenseNum)) != null)
+                throw new NotImplementedException(); //new exception needed
+            listBusses.Add(bus);
+            XMLTools.SaveListToXMLSerializer(listBusses, bussesPath);
+        }
+        public void DeleteBus(int license)
+        {
+            List<Bus> listBusses = XMLTools.LoadListFromXMLSerializer<Bus>(bussesPath);
+            DO.Bus bus = listBusses.Find(b => b.LicenseNum == license);
+            if (bus != null)
+                listBusses.Remove(bus);
+            else //create bad license exception
+                throw new NotImplementedException();
+            XMLTools.SaveListToXMLSerializer(listBusses, bussesPath);
+        }
+        public IEnumerable<Bus> GetAllBusses()
+        {
+            List<Bus> listBusses = XMLTools.LoadListFromXMLSerializer<Bus>(bussesPath);
+            return from bus in listBusses
+                   select bus;
+        }
+        public IEnumerable<Bus> GetAllBussesBy(Predicate<Bus> predicate)
+        {
+            throw new NotImplementedException();
+        }
+        public Bus GetBus(int license)
+        {
+            throw new NotImplementedException();
+        }
+        public void UpdateBus(Bus bus)
+        {
+            List<Bus> listBusses = XMLTools.LoadListFromXMLSerializer<Bus>(bussesPath);
+            Bus toRemove = listBusses.Find(b => b.LicenseNum == bus.LicenseNum);
+            if (toRemove != null)
+            {
+                listBusses.Remove(toRemove);
+                listBusses.Add(bus);
+            }
+            else //create exception for not exists
+                throw new NotImplementedException();
+            XMLTools.SaveListToXMLSerializer(listBusses, bussesPath);
+        }
+        public void UpdateBus(int license, Action<Bus> update)
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
         public void AddAdjStations(AdjacentStations adjacentStations)
         {
             throw new NotImplementedException();
         }
 
-        public void AddBus(Bus bus)
-        {
-            throw new NotImplementedException();
-        }
+
 
         public void AddLine(Line line)
         {
@@ -46,10 +106,7 @@ namespace DL
             throw new NotImplementedException();
         }
 
-        public void DeleteBus(int license)
-        {
-            throw new NotImplementedException();
-        }
+
 
         public void DeleteLine(int id)
         {
@@ -86,15 +143,9 @@ namespace DL
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Bus> GetAllBusses()
-        {
-            throw new NotImplementedException();
-        }
 
-        public IEnumerable<Bus> GetAllBussesBy(Predicate<Bus> predicate)
-        {
-            throw new NotImplementedException();
-        }
+
+
 
         public IEnumerable<Line> GetAllLines()
         {
@@ -131,10 +182,7 @@ namespace DL
             throw new NotImplementedException();
         }
 
-        public Bus GetBus(int license)
-        {
-            throw new NotImplementedException();
-        }
+
 
         public Line GetLine(int id)
         {
@@ -160,17 +208,6 @@ namespace DL
         {
             throw new NotImplementedException();
         }
-
-        public void UpdateBus(Bus bus)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateBus(int license, Action<Bus> update)
-        {
-            throw new NotImplementedException();
-        }
-
         public void UpdateLine(Line line)
         {
             throw new NotImplementedException();
