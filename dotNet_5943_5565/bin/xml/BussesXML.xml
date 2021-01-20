@@ -80,15 +80,8 @@
   <Bus>
     <LicenseNum>647133</LicenseNum>
     <FromDate>1995-10-13T00:00:00</FromDate>
-    <Mileage>0</Mileage>
+    <Mileage>11</Mileage>
     <FuelRemain>1200</FuelRemain>
-    <BusStatus>Ready</BusStatus>
-  </Bus>
-  <Bus>
-    <LicenseNum>507706</LicenseNum>
-    <FromDate>2001-09-07T00:00:00</FromDate>
-    <Mileage>200</Mileage>
-    <FuelRemain>1000</FuelRemain>
-    <BusStatus>Fueling</BusStatus>
+    <BusStatus>Driving</BusStatus>
   </Bus>
 </ArrayOfBus>
