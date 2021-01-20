@@ -26,6 +26,7 @@ namespace PL
             InitializeComponent();
             bl = _bl;
             areas_cb.ItemsSource = Enum.GetValues(typeof(BO.Areas));
+            code_txtb.Text = (bl.GetAllStations().Count() + 1).ToString();
         }
 
         private void add_btn_Click(object sender, RoutedEventArgs e)
@@ -40,8 +41,8 @@ namespace PL
                 {
                     Code = Int32.Parse(code_txtb.Text),
                     Name = name_txtb.Text,
-                    Latitude = Int32.Parse(latitude_txtb.Text),
-                    Longitude = Int32.Parse(longitude_txtb.Text),
+                    Latitude = Double.Parse(latitude_txtb.Text),
+                    Longitude = Double.Parse(longitude_txtb.Text),
                     Area = (BO.Areas)(areas_cb.SelectedItem),
                 };
                 bl.AddStation(toAdd);

@@ -9,9 +9,23 @@
   </Line>
   <Line>
     <ID>2</ID>
-    <LineNum>39</LineNum>
-    <Area>North</Area>
+    <LineNum>2</LineNum>
+    <Area>Center</Area>
     <FirstStation>0</FirstStation>
-    <LastStation>10</LastStation>
+    <LastStation>15</LastStation>
+  </Line>
+  <Line>
+    <ID>3</ID>
+    <LineNum>3</LineNum>
+    <Area>General</Area>
+    <FirstStation>0</FirstStation>
+    <LastStation>20</LastStation>
+  </Line>
+  <Line>
+    <ID>4</ID>
+    <LineNum>4</LineNum>
+    <Area>General</Area>
+    <FirstStation>0</FirstStation>
+    <LastStation>25</LastStation>
   </Line>
 </ArrayOfLine>

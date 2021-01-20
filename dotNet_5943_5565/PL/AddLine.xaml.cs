@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Threading;
 using BLAPI;
 namespace PL
 {
@@ -48,6 +49,9 @@ namespace PL
                     LineStationIndex = 0
                 };
                 count++;
+                stations_lv.IsEnabled = false;
+                Thread.Sleep(2000);
+                stations_lv.IsEnabled = true;
             }
             else
             {

@@ -199,13 +199,15 @@ namespace BL
             UpdateLineStation(prevStat);
             if (nextStat != null)
             {
+                nextStat.LineStationIndex++;
                 nextStat.PrevStation = toInsert.Station;
-                UpdateLineStation(nextStat);
+
                 IEnumerable<LineStation> list = from ls in GetAllLineStations()
                                                 where ls.LineID == line.ID && ls.LineStationIndex >= nextStat.LineStationIndex
                                                 select ls;
                 foreach (LineStation ls in list)
                     ls.LineStationIndex++;
+                UpdateLineStation(nextStat);
                 AdjStations adjStations2 = new AdjStations
                 {
                     Station1 = toInsert.Station,

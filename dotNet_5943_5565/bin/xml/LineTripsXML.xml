@@ -6,4 +6,10 @@
     <FinishAt>PT22H</FinishAt>
     <Frequency>P20D</Frequency>
   </LineTrip>
+  <LineTrip>
+    <LineID>3</LineID>
+    <StartAt>PT6H</StartAt>
+    <FinishAt>PT22H</FinishAt>
+    <Frequency>PT20M</Frequency>
+  </LineTrip>
 </ArrayOfLineTrips>

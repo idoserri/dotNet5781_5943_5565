@@ -49,13 +49,13 @@ namespace DL
         {
             XElement lineStationsRootElem = XMLTools.LoadListFromXMLElement(lineStationsPath);
 
-            /*XElement ls1 = (from ls in lineStationsRootElem.Elements()
-                             where int.Parse(ls.Element("LineID").Value) == lineStation.LineID &&
-                             int.Parse(ls.Element("Station").Value) == lineStation.Station
+            XElement ls1 = (from ls in lineStationsRootElem.Elements()
+                             where Int32.Parse(ls.Element("LineID").Value) == lineStation.LineID &&
+                             Int32.Parse(ls.Element("Station").Value) == lineStation.Station
                              select ls).FirstOrDefault();
 
             if (ls1 != null) //already exists exception
-                return;*/
+                return;
             XElement lsElem = new XElement("LineStation",
                        new XElement("LineID", lineStation.LineID.ToString()),
                        new XElement("LineStationIndex", lineStation.LineStationIndex.ToString()),
@@ -86,8 +86,8 @@ namespace DL
         {
             XElement lineStationsRootElem = XMLTools.LoadListFromXMLElement(lineStationsPath);
             XElement ls1 = (from ls in lineStationsRootElem.Elements()
-                            where int.Parse(ls.Element("LineID").Value) == lineStation.LineID &&
-                            int.Parse(ls.Element("Station").Value) == lineStation.Station
+                            where Int32.Parse(ls.Element("LineID").Value) == lineStation.LineID &&
+                            Int32.Parse(ls.Element("Station").Value) == lineStation.Station
                             select ls).FirstOrDefault();
             if (ls1 != null)
             {
