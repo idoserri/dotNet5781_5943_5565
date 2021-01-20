@@ -1,3 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ArrayOfLineTrips xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <LineTrip>
+    <LineID>1</LineID>
+    <StartAt>PT19H</StartAt>
+    <FinishAt>PT22H</FinishAt>
+    <Frequency>P20D</Frequency>
+  </LineTrip>
 </ArrayOfLineTrips>
