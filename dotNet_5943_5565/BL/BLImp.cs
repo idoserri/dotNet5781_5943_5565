@@ -144,7 +144,7 @@ namespace BL
         public IEnumerable<BO.Station> GetAllStationsInLine(BO.Line line)
         {
             BO.Line lineB = GetLine(line.ID);
-            return from ls in lineB.ListOfLineStations.OrderBy(ls => ls.LineStationIndex)
+            return from ls in lineB.ListOfLineStations.OrderBy(ls => ls.LineStationIndex) 
                    select GetAllStations().ToList().Find(s => s.Code == ls.Station);
         }
         public void DeleteStationFromLine(BO.Line line, int toRemove)
@@ -196,14 +196,17 @@ namespace BL
                 NextStation = prevStat.NextStation
             };
             prevStat.NextStation = toInsert.Station;
+          
             UpdateLineStation(prevStat);
             if (nextStat != null)
             {
-                nextStat.LineStationIndex++;
                 nextStat.PrevStation = toInsert.Station;
+               // nextStat.LineStationIndex++;
+                
 
                 IEnumerable<LineStation> list = from ls in GetAllLineStations()
-                                                where ls.LineID == line.ID && ls.LineStationIndex >= nextStat.LineStationIndex
+                                                where ls.LineID == line.ID && 
+                                                ls.LineStationIndex >= nextStat.LineStationIndex
                                                 select ls;
                 foreach (LineStation ls in list)
                     ls.LineStationIndex++;
@@ -217,7 +220,9 @@ namespace BL
                 };
                 AddAdjStations(adjStations2);
             }
+        
             AddLineStation(toInsert);
+  
             AdjStations adjStations1 = new AdjStations
             {
                 Station1 = prevStat.Station,
