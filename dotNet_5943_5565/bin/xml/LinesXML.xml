@@ -28,4 +28,46 @@
     <FirstStation>0</FirstStation>
     <LastStation>25</LastStation>
   </Line>
+  <Line>
+    <ID>5</ID>
+    <LineNum>5</LineNum>
+    <Area>General</Area>
+    <FirstStation>0</FirstStation>
+    <LastStation>30</LastStation>
+  </Line>
+  <Line>
+    <ID>6</ID>
+    <LineNum>6</LineNum>
+    <Area>North</Area>
+    <FirstStation>0</FirstStation>
+    <LastStation>35</LastStation>
+  </Line>
+  <Line>
+    <ID>7</ID>
+    <LineNum>7</LineNum>
+    <Area>Center</Area>
+    <FirstStation>0</FirstStation>
+    <LastStation>40</LastStation>
+  </Line>
+  <Line>
+    <ID>8</ID>
+    <LineNum>8</LineNum>
+    <Area>General</Area>
+    <FirstStation>0</FirstStation>
+    <LastStation>45</LastStation>
+  </Line>
+  <Line>
+    <ID>9</ID>
+    <LineNum>9</LineNum>
+    <Area>General</Area>
+    <FirstStation>0</FirstStation>
+    <LastStation>48</LastStation>
+  </Line>
+  <Line>
+    <ID>10</ID>
+    <LineNum>10</LineNum>
+    <Area>General</Area>
+    <FirstStation>0</FirstStation>
+    <LastStation>50</LastStation>
+  </Line>
 </ArrayOfLine>
