@@ -42,6 +42,14 @@ namespace PL
         private void startSim_btn_Click(object sender, RoutedEventArgs e)
         {
             timer.Start();
+            startSim_btn.IsEnabled = false;
+            apply_btn.IsEnabled = false;
+            applyTime_btn.IsEnabled = false;
+            hours_txtb.IsEnabled = false;
+            minutes_txtb.IsEnabled = false;
+            seconds_txtb.IsEnabled = false;
+            speed_txtb.IsEnabled = false;
+            stopSim_btn.IsEnabled = true;
         }
 
         private void applyTime_btn_Click(object sender, RoutedEventArgs e)
@@ -49,6 +57,9 @@ namespace PL
             DateTime interval = DateTime.Now.AddHours(Double.Parse(hours_txtb.Text))
                 .AddMinutes(Double.Parse(minutes_txtb.Text)).AddSeconds(Double.Parse(seconds_txtb.Text));
             time = interval - DateTime.Now;
+            hours_txtb.Clear();
+            minutes_txtb.Clear();
+            seconds_txtb.Clear();
             time_lbl.Content = time.ToString().Substring(0,8);
         }
 
@@ -56,6 +67,19 @@ namespace PL
         {
             mult = int.Parse(speed_txtb.Text);
             speed_txtb.Clear();
+        }
+
+        private void stopSim_btn_Click(object sender, RoutedEventArgs e)
+        {
+            timer.Stop();
+            startSim_btn.IsEnabled = true;
+            apply_btn.IsEnabled = true;
+            applyTime_btn.IsEnabled = true;
+            hours_txtb.IsEnabled = true;
+            minutes_txtb.IsEnabled = true;
+            seconds_txtb.IsEnabled = true;
+            speed_txtb.IsEnabled = true;
+            stopSim_btn.IsEnabled = false;
         }
     }
 }
