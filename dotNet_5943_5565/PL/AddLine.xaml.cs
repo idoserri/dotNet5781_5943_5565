@@ -50,7 +50,7 @@ namespace PL
                 };
                 count++;
                 stations_lv.IsEnabled = false;
-                Thread.Sleep(2000);
+                Thread.Sleep(1500);
                 stations_lv.IsEnabled = true;
             }
             else

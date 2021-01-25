@@ -1,0 +1,22 @@
+﻿<Window x:Class="PL.Simulation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PL"
+        mc:Ignorable="d"
+        Title="Simulation" Height="500" Width="1000">
+    <Grid>
+        <Label x:Name="time_lbl" FontSize="60"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="40,26,0,0" Height="97" Width="319"/>
+        <TextBox x:Name="speed_txtb" FontSize ="35" HorizontalAlignment="Left" Height="46" Margin="40,258,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="68"/>
+        <Button x:Name="apply_btn" Content="Apply Speed" HorizontalAlignment="Left" Height="46" Margin="127,258,0,0" VerticalAlignment="Top" Width="232" Click="apply_btn_Click"/>
+        <TextBox x:Name="hours_txtb" Text ="hh" FontSize ="20" HorizontalAlignment="Left" Height="31" Margin="173,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="30" RenderTransformOrigin="0.522,0.699"/>
+        <TextBox x:Name="minutes_txtb" Text ="mm" FontSize ="20" HorizontalAlignment="Left" Height="31" Margin="208,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="41" RenderTransformOrigin="0.522,0.699"/>
+        <TextBox x:Name="seconds_txtb" Text ="ss" FontSize ="20" HorizontalAlignment="Left" Height="31" Margin="254,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="26" RenderTransformOrigin="0.522,0.699"/>
+        <Label x:Name="enterTime_lbl" Content="Enter Start Time:" FontSize="15" HorizontalAlignment="Left" Height="29" Margin="42,141,0,0" VerticalAlignment="Top" Width="126"/>
+        <Button x:Name="applyTime_btn" Content="Apply" FontSize="20" HorizontalAlignment="Left" Height="36" Margin="295,134,0,0" VerticalAlignment="Top" Width="64" Click="applyTime_btn_Click"/>
+        <Button x:Name="stopSim_btn" Content="Stop Simulation" FontSize="20" HorizontalAlignment="Left" Height="46" Margin="208,184,0,0" VerticalAlignment="Top" Width="151" IsEnabled="False"/>
+        <Button x:Name="startSim_btn" Content="Start Simulation" FontSize="20" HorizontalAlignment="Left" Height="46" Margin="40,184,0,0" VerticalAlignment="Top" Width="146" Click="startSim_btn_Click"/>
+
+    </Grid>
+</Window>

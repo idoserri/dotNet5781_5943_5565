@@ -34,7 +34,7 @@ namespace PL
 
         private void Open_passenger_window(object sender, RoutedEventArgs e)
         {
-            Passenger ToOpen = new Passenger();
+            Simulation ToOpen = new Simulation(bl);
             ToOpen.ShowDialog();
         }
     }

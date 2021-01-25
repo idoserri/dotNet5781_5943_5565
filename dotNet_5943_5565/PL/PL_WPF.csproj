@@ -71,6 +71,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Simulation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="StationUpdate.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -100,6 +104,9 @@
     <Compile Include="LineUpdate.xaml.cs">
       <DependentUpon>LineUpdate.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Simulation.xaml.cs">
+      <DependentUpon>Simulation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="StationUpdate.xaml.cs">
       <DependentUpon>StationUpdate.xaml</DependentUpon>
     </Compile>
@@ -124,17 +131,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Passenger.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Management.xaml.cs">
       <DependentUpon>Management.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Passenger.xaml.cs">
-      <DependentUpon>Passenger.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
