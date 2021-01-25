@@ -30,6 +30,7 @@ namespace PL
             bl = _bl;
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += timer_Tick;
+            stations_lv.ItemsSource = bl.GetAllStations();
         }
         void timer_Tick(object sender, EventArgs e)
         {
@@ -50,6 +51,8 @@ namespace PL
             seconds_txtb.IsEnabled = false;
             speed_txtb.IsEnabled = false;
             stopSim_btn.IsEnabled = true;
+            stations_lv.IsEnabled = true;
+            select_lbl.IsEnabled = true;
         }
 
         private void applyTime_btn_Click(object sender, RoutedEventArgs e)
@@ -61,6 +64,7 @@ namespace PL
             minutes_txtb.Clear();
             seconds_txtb.Clear();
             time_lbl.Content = time.ToString().Substring(0,8);
+            startSim_btn.IsEnabled = true;
         }
 
         private void apply_btn_Click(object sender, RoutedEventArgs e)
@@ -72,7 +76,6 @@ namespace PL
         private void stopSim_btn_Click(object sender, RoutedEventArgs e)
         {
             timer.Stop();
-            startSim_btn.IsEnabled = true;
             apply_btn.IsEnabled = true;
             applyTime_btn.IsEnabled = true;
             hours_txtb.IsEnabled = true;
@@ -80,6 +83,19 @@ namespace PL
             seconds_txtb.IsEnabled = true;
             speed_txtb.IsEnabled = true;
             stopSim_btn.IsEnabled = false;
+            stations_lv.IsEnabled = false;
+            select_lbl.IsEnabled = false;
+            lines_lv.IsEnabled = false;
+            lines_lbl.Content = "";
+
+        }
+
+        private void stations_lv_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            BO.Station station = stations_lv.SelectedItem as BO.Station;
+            lines_lv.ItemsSource = bl.GetAllLinesInStation(station);
+            lines_lv.IsEnabled = true;
+            lines_lbl.Content = "Incoming Lines For Station\n" + station.Name;
         }
     }
 }
