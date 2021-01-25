@@ -12,4 +12,46 @@
     <FinishAt>PT22H</FinishAt>
     <Frequency>PT20M</Frequency>
   </LineTrip>
+  <LineTrip>
+    <LineID>4</LineID>
+    <StartAt>PT11H</StartAt>
+    <FinishAt>PT22H</FinishAt>
+    <Frequency>PT15M</Frequency>
+  </LineTrip>
+  <LineTrip>
+    <LineID>5</LineID>
+    <StartAt>PT10H</StartAt>
+    <FinishAt>PT23H</FinishAt>
+    <Frequency>PT25M</Frequency>
+  </LineTrip>
+  <LineTrip>
+    <LineID>6</LineID>
+    <StartAt>PT7H</StartAt>
+    <FinishAt>PT0S</FinishAt>
+    <Frequency>PT30M</Frequency>
+  </LineTrip>
+  <LineTrip>
+    <LineID>7</LineID>
+    <StartAt>PT9H</StartAt>
+    <FinishAt>PT21H</FinishAt>
+    <Frequency>PT40M</Frequency>
+  </LineTrip>
+  <LineTrip>
+    <LineID>8</LineID>
+    <StartAt>PT11H</StartAt>
+    <FinishAt>PT21H</FinishAt>
+    <Frequency>PT45M</Frequency>
+  </LineTrip>
+  <LineTrip>
+    <LineID>9</LineID>
+    <StartAt>PT11H</StartAt>
+    <FinishAt>PT20H</FinishAt>
+    <Frequency>PT20M</Frequency>
+  </LineTrip>
+  <LineTrip>
+    <LineID>10</LineID>
+    <StartAt>PT11H</StartAt>
+    <FinishAt>PT20M</FinishAt>
+    <Frequency>PT15M</Frequency>
+  </LineTrip>
 </ArrayOfLineTrips>
