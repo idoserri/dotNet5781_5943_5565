@@ -50,13 +50,6 @@
     <BusStatus>Ready</BusStatus>
   </Bus>
   <Bus>
-    <LicenseNum>5473504</LicenseNum>
-    <FromDate>1969-06-01T00:00:00</FromDate>
-    <Mileage>12327</Mileage>
-    <FuelRemain>3</FuelRemain>
-    <BusStatus>Ready</BusStatus>
-  </Bus>
-  <Bus>
     <LicenseNum>7876946</LicenseNum>
     <FromDate>2016-05-01T00:00:00</FromDate>
     <Mileage>25454</Mileage>

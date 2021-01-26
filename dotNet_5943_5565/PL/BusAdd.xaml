@@ -7,17 +7,24 @@
         mc:Ignorable="d"
         Title="Add Bus" Height="450" Width="450">
     <Grid>
-        <DatePicker x:Name="fromDate_dp" HorizontalAlignment="Left" Height="31" Margin="191,245,0,0" VerticalAlignment="Top" Width="139"/>
-        <Button x:Name="add_btn" Content="Add" HorizontalAlignment="Left" Height="85" Margin="70,326,0,0" VerticalAlignment="Top" Width="245" Click="add_btn_Click"/>
-        <Label x:Name="liscenceNum_lbl" Content="Bus: " HorizontalAlignment="Left" Height="31" Margin="88,10,0,0" VerticalAlignment="Top" Width="34"/>
+        <DatePicker x:Name="fromDate_dp" HorizontalAlignment="Left" Height="31" Margin="191,245,0,0" VerticalAlignment="Top" Width="139" Background="#FFA2F9FF" Foreground="Black" FontWeight="Bold" SelectedDate="2000-10-10"/>
+        <Button x:Name="add_btn" Content="Add" HorizontalAlignment="Left" Height="85" Margin="70,326,0,0" VerticalAlignment="Top" Width="245" Click="add_btn_Click" Foreground="Black" Background="Red" FontWeight="Bold" FontSize="30"/>
+        <Label x:Name="liscenceNum_lbl"  Content="Bus: " HorizontalAlignment="Left" Height="31" Margin="88,10,0,0" VerticalAlignment="Top" Width="34" Background="#FFB6B6B6" FontWeight="Bold"/>
         <TextBox x:Name="licenseNum_txtb" HorizontalAlignment="Left" Height="31" Margin="122,10,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="256" />
-        <Label x:Name="mileage_lbl" Content="Mileage: " HorizontalAlignment="Left" Height="31" Margin="88,63,0,0" VerticalAlignment="Top" Width="57"/>
+        <Label x:Name="mileage_lbl" Content="Mileage: " Background="#FFB6B6B6" FontWeight="Bold" HorizontalAlignment="Left" Height="31" Margin="88,63,0,0" VerticalAlignment="Top" Width="57"/>
         <TextBox x:Name="mileage_txtb" HorizontalAlignment="Left" Height="31" Margin="150,63,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="228" />
-        <Label x:Name="fuelRemain_lbl" Content="Fuel Remaining: " HorizontalAlignment="Left" Height="31" Margin="88,110,0,0" VerticalAlignment="Top" Width="93"/>
+        <Label x:Name="fuelRemain_lbl" Content="Fuel Remaining: " Background="#FFB6B6B6" FontWeight="Bold" HorizontalAlignment="Left" Height="31" Margin="88,110,0,0" VerticalAlignment="Top" Width="98"/>
         <TextBox x:Name="fuelRemain_txtb" HorizontalAlignment="Left" Height="31" Margin="186,110,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="192" />
-        <Label x:Name="Status_lbl" Content="Status: " HorizontalAlignment="Left" Height="31" Margin="88,164,0,0" VerticalAlignment="Top" Width="44"/>
-        <ComboBox x:Name="Status_cb" HorizontalAlignment="Left" Height="31" Margin="132,164,0,0" VerticalAlignment="Top" Width="140" DisplayMemberPath="{Binding BusStatus}"/>
-        <Label x:Name="fromDate_lbl" Content="Date Registered: " HorizontalAlignment="Left" Height="31" Margin="88,244,0,0" VerticalAlignment="Top" Width="98"/>
+        <Label x:Name="Status_lbl" Content="Status: " Background="#FFB6B6B6" FontWeight="Bold" HorizontalAlignment="Left" Height="31" Margin="88,164,0,0" VerticalAlignment="Top" Width="44"/>
+        <ComboBox x:Name="Status_cb" HorizontalAlignment="Left" Height="31" Margin="132,164,0,0" VerticalAlignment="Top" Width="140" DisplayMemberPath="{Binding BusStatus}" SelectedIndex="0" Foreground="Black" FontWeight="Bold" BorderBrush="#FF9BD1D7" OpacityMask="#FF8FFFCF">
+            <ComboBox.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                    <GradientStop Color="#FFFF4D4D" Offset="1"/>
+                </LinearGradientBrush>
+            </ComboBox.Background>
+        </ComboBox>
+        <Label x:Name="fromDate_lbl" Background="#FFB6B6B6" FontWeight="Bold" Content="Date Registered: " HorizontalAlignment="Left" Height="31" Margin="88,244,0,0" VerticalAlignment="Top" Width="103"/>
 
     </Grid>
 </Window>

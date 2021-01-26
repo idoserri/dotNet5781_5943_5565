@@ -29,16 +29,41 @@ namespace PL
 
         private void add_btn_Click(object sender, RoutedEventArgs e)
         {
-            BO.Bus toAdd = new BO.Bus
+
+            if (licenseNum_txtb.Text.Length < 1 || Int32.Parse(licenseNum_txtb.Text) > 99999999)
+                MessageBox.Show("Wrong License Number \ntry again! ", "ERROR"
+                    , MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.OK);
+            else
+            if (fuelRemain_txtb.Text.Length < 1 || Int32.Parse(fuelRemain_txtb.Text) < 0)
+                MessageBox.Show("Wrong Fuel Remaining \ntry again! ", "ERROR"
+                    , MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.OK);
+            else
+            if (mileage_txtb.Text.Length < 1 || Int32.Parse(mileage_txtb.Text) < 0)
+                MessageBox.Show("Wrong Mileage \ntry again! ", "ERROR"
+                    , MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.OK);
+            else
             {
-                LicenseNum = Int32.Parse(licenseNum_txtb.Text),
-                FromDate = fromDate_dp.DisplayDate,
-                Mileage = Double.Parse(mileage_txtb.Text),
-                BusStatus = (BO.Status)Status_cb.SelectedItem,
-                FuelRemain = Double.Parse(fuelRemain_txtb.Text)
-            };
-            bl.AddBus(toAdd);
-            this.Close();
+                BO.Bus toAdd = new BO.Bus
+                {
+                    LicenseNum = Int32.Parse(licenseNum_txtb.Text),
+                    FromDate = fromDate_dp.DisplayDate,
+                    Mileage = Double.Parse(mileage_txtb.Text),
+                    BusStatus = (BO.Status)Status_cb.SelectedItem,
+                    FuelRemain = Double.Parse(fuelRemain_txtb.Text)
+                };
+                try
+                {
+                    bl.AddBus(toAdd);
+                    this.Close();
+                }
+                catch (NotImplementedException ex)
+                {
+                    
+                        MessageBox.Show("License Number already exists", "ERROR"
+                            , MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.OK);
+
+                }
+            }
         }
     }
 }

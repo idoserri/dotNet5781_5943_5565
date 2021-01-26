@@ -97,10 +97,10 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="70"/>
             <RowDefinition Height="480"/>
-        </Grid.RowDefinitions> 
-        <StackPanel Orientation="Horizontal"   >
-            
-            <TextBlock TextWrapping="Wrap" Text="  add bus:" VerticalAlignment="Center" Height="23" Width="101" FontSize="20" FontWeight="Bold" />
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal"  Background="#FF7DC2FF" >
+
+            <TextBlock TextWrapping="Wrap" Text="  add bus:" VerticalAlignment="Center" Height="30" Width="101" FontSize="20" FontWeight="Bold" Margin="0,20" />
             <Button x:Name="addBusButton" Click="addBusButton_Click"   FontFamily="Segoe UI Black" FontWeight="Bold"  BorderBrush="{x:Null}"   HorizontalAlignment="Center"  Width="auto"   >
                 <Button.Background>
                     <ImageBrush ImageSource="add2.png" Stretch="Uniform"/>
@@ -112,8 +112,12 @@
                 </Image>
             </Button>
 
-            
-            <Button x:Name="Busses_btn" Content="Busses" Width="90" Click="Busses_btn_Click" FontSize="20"/>
+
+            <Button x:Name="Busses_btn" Content="Busses" Width="90" Click="Busses_btn_Click" FontSize="20" Background="#FFEE55FF" FontWeight="Bold">
+                <Button.Effect>
+                    <DropShadowEffect/>
+                </Button.Effect>
+            </Button>
             <TextBlock  TextWrapping="Wrap" Text="  add station: " Height="30" Width="130" FontSize="20" FontWeight="Bold" Margin="0,20" />
             <Button x:Name="addStationButton" Click="addStationButton_Click"   FontFamily="Segoe UI Black" FontWeight="Bold"  BorderBrush="{x:Null}"  HorizontalAlignment="Center"  Width="auto"   >
                 <Button.Background>
@@ -125,7 +129,11 @@
                     </Image.OpacityMask>
                 </Image>
             </Button>
-            <Button x:Name="Stations_btn" Content="Stations"  Width="100" Click="Stations_btn_Click" FontSize="20"/>
+            <Button x:Name="Stations_btn" Content="Stations"  Width="100" Click="Stations_btn_Click" FontSize="20" Background="#FFEF67FF" FontWeight="Bold">
+                <Button.Effect>
+                    <DropShadowEffect/>
+                </Button.Effect>
+            </Button>
             <TextBlock  TextWrapping="Wrap" Text="  add Line:  " Height="30" Width="110" FontSize="20" FontWeight="Bold" Margin="0,20" />
             <Button x:Name="addLineButton" Click="addLineButton_Click"   FontFamily="Segoe UI Black" FontWeight="Bold"  BorderBrush="{x:Null}"  HorizontalAlignment="Center"  Width="auto"   >
                 <Button.Background>
@@ -137,9 +145,13 @@
                     </Image.OpacityMask>
                 </Image>
             </Button>
-            <Button x:Name="Lines_btn" Content="Lines"   Width="90"  Click="Lines_btn_Click" FontSize="20"/>
+            <Button x:Name="Lines_btn" Content="Lines"   Width="100"  Click="Lines_btn_Click" FontSize="20" Background="#FFEF67FF" FontWeight="Bold">
+                <Button.Effect>
+                    <DropShadowEffect/>
+                </Button.Effect>
+            </Button>
         </StackPanel>
-        <ListView x:Name="Lines_lv" Grid.Row="1" HorizontalAlignment="Center" Height="400"  VerticalAlignment="Bottom" Width="800" Visibility="Hidden">
+        <ListView x:Name="Lines_lv"  Grid.Row="1" HorizontalAlignment="Center" Height="470"  VerticalAlignment="Bottom" Width="800" Background="Aqua" Visibility="Hidden" FontWeight="Bold" >
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Line number" Width="100" DisplayMemberBinding="{Binding LineNum}" />
@@ -151,7 +163,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <ListView x:Name="Busses_lv" Grid.Row="1" HorizontalAlignment="Center" Height="400"  VerticalAlignment="Bottom" Width="800" Visibility="Hidden">
+        <ListView x:Name="Busses_lv" Background="Aqua" Grid.Row="1" HorizontalAlignment="Center" Height="470"  VerticalAlignment="Bottom" Width="800" Visibility="Hidden" FontWeight="Bold">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="License Number" Width="100" DisplayMemberBinding="{Binding LicenseNumName}" />
@@ -165,7 +177,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <ListView x:Name="Stations_lv" Grid.Row="1" HorizontalAlignment="Center" Height="400"  VerticalAlignment="Bottom" Width="800" Visibility="Hidden">
+        <ListView x:Name="Stations_lv" Background="Aqua" Grid.Row="1" HorizontalAlignment="Center" Height="470"  VerticalAlignment="Bottom" Width="800" Visibility="Hidden" FontWeight="Bold">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Code" Width="100" DisplayMemberBinding="{Binding Code}" />

@@ -36,13 +36,6 @@
     <LastStation>50</LastStation>
   </Line>
   <Line>
-    <ID>7</ID>
-    <LineNum>7</LineNum>
-    <Area>Center</Area>
-    <FirstStation>0</FirstStation>
-    <LastStation>40</LastStation>
-  </Line>
-  <Line>
     <ID>2</ID>
     <LineNum>2</LineNum>
     <Area>Center</Area>

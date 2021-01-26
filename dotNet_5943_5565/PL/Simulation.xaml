@@ -12,16 +12,16 @@
         </DataTemplate>
     </Window.Resources>
     <Grid>
-        <Label x:Name="time_lbl" FontSize="60"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="40,26,0,0" Height="97" Width="319" FontFamily="Copperplate Gothic Bold"/>
-        <TextBox x:Name="speed_txtb" FontSize ="35" HorizontalAlignment="Left" Height="46" Margin="40,258,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="68"/>
-        <Button x:Name="apply_btn" Content="Apply Speed" FontSize="20" HorizontalAlignment="Left" Height="46" Margin="127,258,0,0" VerticalAlignment="Top" Width="232" Click="apply_btn_Click"/>
-        <TextBox x:Name="hours_txtb" Text ="hh" FontSize ="20" HorizontalAlignment="Left" Height="31" Margin="173,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="30" RenderTransformOrigin="0.522,0.699"/>
-        <TextBox x:Name="minutes_txtb" Text ="mm" FontSize ="20" HorizontalAlignment="Left" Height="31" Margin="208,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="41" RenderTransformOrigin="0.522,0.699"/>
-        <TextBox x:Name="seconds_txtb" Text ="ss" FontSize ="20" HorizontalAlignment="Left" Height="31" Margin="254,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="36" RenderTransformOrigin="0.522,0.699"/>
-        <Label x:Name="enterTime_lbl" Content="Enter Start Time:" FontSize="15" HorizontalAlignment="Left" Height="29" Margin="42,141,0,0" VerticalAlignment="Top" Width="126"/>
-        <Button x:Name="applyTime_btn" Content="Apply" FontSize="20" HorizontalAlignment="Left" Height="36" Margin="295,134,0,0" VerticalAlignment="Top" Width="64" Click="applyTime_btn_Click"/>
-        <Button x:Name="stopSim_btn" Content="Stop Simulation" FontSize="20" HorizontalAlignment="Left" Height="46" Margin="208,184,0,0" VerticalAlignment="Top" Width="151" IsEnabled="False" Click="stopSim_btn_Click"/>
-        <Button x:Name="startSim_btn" Content="Start Simulation" FontSize="20" HorizontalAlignment="Left" Height="46" Margin="40,184,0,0" VerticalAlignment="Top" Width="146" Click="startSim_btn_Click" IsEnabled="False"/>
+        <Label x:Name="time_lbl" Content="00:00:00" FontSize="63"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="40,26,0,0" Height="97" Width="319" Background="#FF141D2C" FontWeight="Bold" FontFamily="Copperplate Gothic Bold" Foreground="#FF00FF53"/>
+        <TextBox x:Name="speed_txtb" Text="1" FontSize ="35" HorizontalAlignment="Left" Height="46" Margin="40,258,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="68" Background="#FFC7C7C7" FontWeight="Bold"/>
+        <Button x:Name="apply_btn" Content="Apply Speed" FontSize="25" Background="Red" Foreground="Black" FontWeight="Bold" HorizontalAlignment="Left" Height="46" Margin="127,258,0,0" VerticalAlignment="Top" Width="232" Click="apply_btn_Click"/>
+        <TextBox x:Name="hours_txtb" Text ="hh" Background="#FFB6B6B6" FontWeight="Bold" FontSize ="20" HorizontalAlignment="Left" Height="31" Margin="173,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="35" RenderTransformOrigin="0.522,0.699"/>
+        <TextBox x:Name="minutes_txtb" Text ="mm" Background="#FFB6B6B6" FontWeight="Bold" FontSize ="20" HorizontalAlignment="Left" Height="31" Margin="208,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="46" RenderTransformOrigin="0.522,0.699"/>
+        <TextBox x:Name="seconds_txtb" Text ="ss" FontSize ="20" Background="#FFB6B6B6" FontWeight="Bold" HorizontalAlignment="Left" Height="31" Margin="254,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="27" RenderTransformOrigin="0.522,0.699"/>
+        <Label x:Name="enterTime_lbl" Content="Enter Start Time:" Background="#FFB7FFA6" FontWeight="Bold" FontSize="15" HorizontalAlignment="Left" Height="29" Margin="42,141,0,0" VerticalAlignment="Top" Width="126"/>
+        <Button x:Name="applyTime_btn" Content="Apply" FontSize="20" HorizontalAlignment="Left" Height="36" Margin="286,134,0,0" VerticalAlignment="Top" Width="73" Click="applyTime_btn_Click" Background="Red" FontWeight="Bold"/>
+        <Button x:Name="stopSim_btn" Content="Stop Simulation" FontSize="20" HorizontalAlignment="Left" Height="46" Margin="203,184,0,0" VerticalAlignment="Top" Width="156" IsEnabled="False" Click="stopSim_btn_Click" Background="Red" FontWeight="Bold"/>
+        <Button x:Name="startSim_btn" Content="Start Simulation" FontSize="20" HorizontalAlignment="Left" Height="46" Margin="40,184,0,0" VerticalAlignment="Top" Width="163" Click="startSim_btn_Click" IsEnabled="False" Background="#FF22FF00" FontWeight="Bold"/>
         <ListView x:Name="stations_lv" Background="Orange" HorizontalAlignment="Left" Height="384" Margin="376,66,0,0" VerticalAlignment="Top" Width="220" FontFamily="Franklin Gothic Demi Cond" IsEnabled="False" SelectionChanged="stations_lv_SelectionChanged">
             <ListView.View>
                 <GridView>
