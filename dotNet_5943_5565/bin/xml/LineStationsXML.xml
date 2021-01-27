@@ -784,4 +784,18 @@
     <PrevStation>11</PrevStation>
     <Station>4</Station>
   </LineStation>
+  <LineStation>
+    <LineID>10</LineID>
+    <LineStationIndex>0</LineStationIndex>
+    <NextStation>49</NextStation>
+    <PrevStation>0</PrevStation>
+    <Station>1</Station>
+  </LineStation>
+  <LineStation>
+    <LineID>10</LineID>
+    <LineStationIndex>1</LineStationIndex>
+    <NextStation>0</NextStation>
+    <PrevStation>1</PrevStation>
+    <Station>6</Station>
+  </LineStation>
 </ArrayOfLineStation>

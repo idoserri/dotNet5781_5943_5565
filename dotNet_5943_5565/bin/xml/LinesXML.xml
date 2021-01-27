@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <ArrayOfLine xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Line>
-    <ID>1</ID>
-    <LineNum>1</LineNum>
-    <Area>Center</Area>
+    <ID>5</ID>
+    <LineNum>5</LineNum>
+    <Area>General</Area>
     <FirstStation>0</FirstStation>
-    <LastStation>10</LastStation>
+    <LastStation>30</LastStation>
   </Line>
   <Line>
     <ID>4</ID>
@@ -15,25 +15,18 @@
     <LastStation>25</LastStation>
   </Line>
   <Line>
+    <ID>6</ID>
+    <LineNum>6</LineNum>
+    <Area>North</Area>
+    <FirstStation>0</FirstStation>
+    <LastStation>35</LastStation>
+  </Line>
+  <Line>
     <ID>9</ID>
     <LineNum>9</LineNum>
     <Area>General</Area>
     <FirstStation>0</FirstStation>
     <LastStation>48</LastStation>
-  </Line>
-  <Line>
-    <ID>10</ID>
-    <LineNum>10</LineNum>
-    <Area>General</Area>
-    <FirstStation>0</FirstStation>
-    <LastStation>50</LastStation>
-  </Line>
-  <Line>
-    <ID>2</ID>
-    <LineNum>2</LineNum>
-    <Area>Center</Area>
-    <FirstStation>0</FirstStation>
-    <LastStation>15</LastStation>
   </Line>
   <Line>
     <ID>8</ID>
@@ -43,18 +36,11 @@
     <LastStation>45</LastStation>
   </Line>
   <Line>
-    <ID>5</ID>
-    <LineNum>5</LineNum>
+    <ID>10</ID>
+    <LineNum>10</LineNum>
     <Area>General</Area>
     <FirstStation>0</FirstStation>
-    <LastStation>30</LastStation>
-  </Line>
-  <Line>
-    <ID>6</ID>
-    <LineNum>6</LineNum>
-    <Area>North</Area>
-    <FirstStation>0</FirstStation>
-    <LastStation>35</LastStation>
+    <LastStation>50</LastStation>
   </Line>
   <Line>
     <ID>3</ID>
@@ -62,5 +48,19 @@
     <Area>General</Area>
     <FirstStation>0</FirstStation>
     <LastStation>20</LastStation>
+  </Line>
+  <Line>
+    <ID>2</ID>
+    <LineNum>2</LineNum>
+    <Area>Center</Area>
+    <FirstStation>0</FirstStation>
+    <LastStation>15</LastStation>
+  </Line>
+  <Line>
+    <ID>1</ID>
+    <LineNum>1</LineNum>
+    <Area>Center</Area>
+    <FirstStation>0</FirstStation>
+    <LastStation>10</LastStation>
   </Line>
 </ArrayOfLine>

@@ -40,6 +40,7 @@ namespace PL
             time_lbl.Content = time.ToString().Substring(0, 8);
             if (stations_lv.SelectedValue != null)
                 bl.UpdateTimeToArrive(stations_lv.SelectedValue as BO.Station, time);
+            lines_lv.Items.Refresh();
         }
 
         private void startSim_btn_Click(object sender, RoutedEventArgs e)

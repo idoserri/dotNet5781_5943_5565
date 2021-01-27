@@ -1296,4 +1296,16 @@
     <Distance>31973.6531547108</Distance>
     <Time>PT42M2S</Time>
   </AdjacentStations>
+  <AdjacentStations>
+    <Station1>1</Station1>
+    <Station2>49</Station2>
+    <Distance>25466.7389497473</Distance>
+    <Time>PT31M56S</Time>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>1</Station1>
+    <Station2>6</Station2>
+    <Distance>2080.5052600799</Distance>
+    <Time>PT2M58S</Time>
+  </AdjacentStations>
 </ArrayOfAdjStations>

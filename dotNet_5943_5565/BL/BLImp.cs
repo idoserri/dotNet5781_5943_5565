@@ -116,16 +116,6 @@ namespace BL
                 total += time;
             return total.ToString().Substring(0, 8);
         }
-        TimeSpan CalcTotalTime(BO.Line line)
-        {
-            IEnumerable<TimeSpan> list = from dis in line.ListOfLineStations
-                                         where dis.NextStation != 0
-                                         select CalcTime(GetStation(dis.Station), GetStation(dis.NextStation));
-            TimeSpan total = new TimeSpan(0, 0, 0);
-            foreach (TimeSpan time in list)
-                total += time;
-            return total;
-        }
         BO.Line LineBoDoAdapter(DO.Line lineDO)
         {
             BO.Line lineBO = new BO.Line();
@@ -135,13 +125,16 @@ namespace BL
                                         orderby item.LineStationIndex ascending
                                         select item;
             lineBO.LastStationName = LineNameConverter(lineBO);
+
             return lineBO;
         }
         public void UpdateTimeToArrive(Station station, TimeSpan time)
         {
-            foreach(Line line in station.ListOfLines)
+            foreach (Line line in station.ListOfLines)
+                line.TimeToArrive++;
+            /*foreach(Line line in station.ListOfLines)
             {
-                //TimeSpan totalLineTime = CalcTotalTime(line);
+                string toReturn = "yes";
                 LineStation lsCurr = GetLineStation(line.ID, station.Code);
                 var listLS = from ls in line.ListOfLineStations
                              where ls.LineStationIndex < lsCurr.LineStationIndex
@@ -156,15 +149,19 @@ namespace BL
                 {
                     if(time>= lt.StartAt && time<= lt.FinishAt)
                     {
-                        if(total >= lt.Frequency)
+                        int minutes = (int)(time.TotalMinutes - lt.StartAt.TotalMinutes + total.TotalMinutes);
+                        while(minutes < 1000)
                         {
-                            
+                            toReturn += minutes.ToString() + ",";
+                            minutes += (int)lt.Frequency.TotalMinutes;
                         }
                     }
                         
                 }
+                line.TimeToArrive = toReturn;
+                UpdateLine(line);
+            }*/
 
-            }
         }
         string LineNameConverter(BO.Line line)
         {
@@ -369,6 +366,11 @@ namespace BL
             station.CopyPropertiesTo(stationDO);
             dl.UpdateStation(stationDO);
         }
+        public IEnumerable<BO.Line> GetAllLinesInStation(BO.Station InStation)
+        {
+            return from line in InStation.ListOfLines
+                   select line;
+        }
         #endregion
 
         #region LineStation
@@ -378,11 +380,7 @@ namespace BL
             lineStationDO.CopyPropertiesTo(lineStationBO);
             return lineStationBO;
         }
-        public IEnumerable<BO.Line> GetAllLinesInStation(BO.Station InStation)
-        {
-            return from line in InStation.ListOfLines
-                   select line;
-        }
+
         public IEnumerable<LineStation> GetAllLineStations()
         {
             return from ls in dl.GetAllLineStations()
