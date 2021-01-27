@@ -17,7 +17,7 @@
         <Button x:Name="apply_btn" Content="Apply Speed" FontSize="25" Background="Red" Foreground="Black" FontWeight="Bold" HorizontalAlignment="Left" Height="46" Margin="127,258,0,0" VerticalAlignment="Top" Width="232" Click="apply_btn_Click"/>
         <TextBox x:Name="hours_txtb" Text ="hh" Background="#FFB6B6B6" FontWeight="Bold" FontSize ="20" HorizontalAlignment="Left" Height="31" Margin="173,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="35" RenderTransformOrigin="0.522,0.699"/>
         <TextBox x:Name="minutes_txtb" Text ="mm" Background="#FFB6B6B6" FontWeight="Bold" FontSize ="20" HorizontalAlignment="Left" Height="31" Margin="208,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="46" RenderTransformOrigin="0.522,0.699"/>
-        <TextBox x:Name="seconds_txtb" Text ="ss" FontSize ="20" Background="#FFB6B6B6" FontWeight="Bold" HorizontalAlignment="Left" Height="31" Margin="254,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="27" RenderTransformOrigin="0.522,0.699"/>
+        <TextBox x:Name="seconds_txtb" Text ="ss" FontSize ="20" Background="#FFB6B6B6" FontWeight="Bold" HorizontalAlignment="Left" Height="31" Margin="254,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="32" RenderTransformOrigin="0.522,0.699"/>
         <Label x:Name="enterTime_lbl" Content="Enter Start Time:" Background="#FFB7FFA6" FontWeight="Bold" FontSize="15" HorizontalAlignment="Left" Height="29" Margin="42,141,0,0" VerticalAlignment="Top" Width="126"/>
         <Button x:Name="applyTime_btn" Content="Apply" FontSize="20" HorizontalAlignment="Left" Height="36" Margin="286,134,0,0" VerticalAlignment="Top" Width="73" Click="applyTime_btn_Click" Background="Red" FontWeight="Bold"/>
         <Button x:Name="stopSim_btn" Content="Stop Simulation" FontSize="20" HorizontalAlignment="Left" Height="46" Margin="203,184,0,0" VerticalAlignment="Top" Width="156" IsEnabled="False" Click="stopSim_btn_Click" Background="Red" FontWeight="Bold"/>
@@ -33,9 +33,15 @@
         <ListView x:Name="lines_lv" Background="LightYellow" HorizontalAlignment="Left" Height="384" Margin="616,66,0,0" VerticalAlignment="Top" Width="367" IsEnabled="False" FontFamily="Franklin Gothic Demi Cond" FontSize="16">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Line Number" Width="Auto" DisplayMemberBinding="{Binding LineNum}"/>
+                    <GridViewColumn Header="Line Number" Width="Auto" DisplayMemberBinding="{Binding LineNum}"></GridViewColumn>
                     <GridViewColumn Header="Line Name" Width="Auto" DisplayMemberBinding="{Binding LastStationName}"/>
-                    <GridViewColumn Header="Arrives In" Width="Auto" CellTemplate="{DynamicResource Arrival}"></GridViewColumn>
+                    <GridViewColumn Header="Arrives In" Width="Auto">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding TimeToArrive}" Foreground="Green"></TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>

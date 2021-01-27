@@ -23,7 +23,7 @@ namespace PL
         IBL bl;
         TimeSpan time;
         DispatcherTimer timer = new DispatcherTimer();
-        int mult = 0;
+        int mult = 1;
         public Simulation(IBL _bl)
         {
             InitializeComponent();
@@ -38,6 +38,8 @@ namespace PL
     .AddMinutes(time.Minutes).AddSeconds(time.Seconds + mult);
             time = interval - DateTime.Now;
             time_lbl.Content = time.ToString().Substring(0, 8);
+            if (stations_lv.SelectedValue != null)
+                bl.UpdateTimeToArrive(stations_lv.SelectedValue as BO.Station, time);
         }
 
         private void startSim_btn_Click(object sender, RoutedEventArgs e)

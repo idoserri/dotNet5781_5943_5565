@@ -101,6 +101,22 @@ namespace DL
             else //throw bad id exception
                 throw new NotImplementedException();
         }
+        public LineStation GetLineStation(int lineID, int station)
+        {
+            XElement lineStationsRootElem = XMLTools.LoadListFromXMLElement(lineStationsPath);
+            XElement ls1 = (from ls in lineStationsRootElem.Elements()
+                            where int.Parse(ls.Element("LineID").Value) == lineID &&
+                            int.Parse(ls.Element("Station").Value) == station
+                            select ls).FirstOrDefault();
+            return new LineStation
+            {
+                LineID = Int32.Parse(ls1.Element("LineID").Value),
+                LineStationIndex = Int32.Parse(ls1.Element("LineStationIndex").Value),
+                Station = Int32.Parse(ls1.Element("Station").Value),
+                PrevStation = Int32.Parse(ls1.Element("PrevStation").Value),
+                NextStation = Int32.Parse(ls1.Element("NextStation").Value),
+            };
+        }
         #endregion
 
         #region Bus
@@ -272,6 +288,21 @@ namespace DL
             adjStationsRootElem.Add(adjElem);
             XMLTools.SaveListToXMLElement(adjStationsRootElem, adjStationsPath);
         }
+        public AdjacentStations GetAdjacentStations(int station1, int station2)
+        {
+            XElement adjStationsRootElem = XMLTools.LoadListFromXMLElement(adjStationsPath);
+            XElement adj = (from ad in adjStationsRootElem.Elements()
+                            where int.Parse(ad.Element("Station1").Value) == station1 &&
+                            int.Parse(ad.Element("Station2").Value) == station2
+                            select ad).FirstOrDefault();
+            return new AdjacentStations
+            {
+                Station1 = Int32.Parse(adj.Element("Station1").Value),
+                Station2 = Int32.Parse(adj.Element("Station2").Value),
+                Distance = Double.Parse(adj.Element("Distance").Value),
+                Time = XmlConvert.ToTimeSpan((adj.Element("Time").Value))
+            };
+        }
         #endregion
 
         #region Line Trip
@@ -344,10 +375,7 @@ namespace DL
 
 
 
-        public AdjacentStations GetAdjacentStations(int station1, int station2)
-        {
-            throw new NotImplementedException();
-        }
+
 
         public IEnumerable<AdjacentStations> GetAllAdjacentStations()
         {
@@ -385,10 +413,7 @@ namespace DL
 
 
 
-        public LineStation GetLineStation(int lineID, int station)
-        {
-            throw new NotImplementedException();
-        }
+
 
 
 

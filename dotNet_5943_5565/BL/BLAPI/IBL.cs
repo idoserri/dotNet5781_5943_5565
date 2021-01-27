@@ -27,7 +27,7 @@ namespace BLAPI
         IEnumerable<BO.Station> GetAllStationsInLine(BO.Line line);
         void AddStationToLine(BO.Line line, int toAdd, int addAfter);
         void AddLine(Line line, LineStation first, LineStation last);
-       
+        void UpdateTimeToArrive(Station station, TimeSpan time);
         void UpdateLine(Line line);
         void DeleteLine(int id);
         void DeleteStationFromLine(Line line,int station);
