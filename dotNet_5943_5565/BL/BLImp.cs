@@ -104,17 +104,27 @@ namespace BL
         {
             return (from dis in line.ListOfLineStations
                     where dis.NextStation != 0
-                    select CalcDistance(GetStation(dis.Station), GetStation(dis.NextStation))).Sum()/1000;
+                    select CalcDistance(GetStation(dis.Station), GetStation(dis.NextStation))).Sum() / 1000;
         }
         public string CalcTotalLineTime(BO.Line line)
         {
             IEnumerable<TimeSpan> list = from dis in line.ListOfLineStations
                                          where dis.NextStation != 0
                                          select CalcTime(GetStation(dis.Station), GetStation(dis.NextStation));
-            TimeSpan total = new TimeSpan(0,0,0);
+            TimeSpan total = new TimeSpan(0, 0, 0);
             foreach (TimeSpan time in list)
                 total += time;
             return total.ToString().Substring(0, 8);
+        }
+        TimeSpan CalcTotalTime(BO.Line line)
+        {
+            IEnumerable<TimeSpan> list = from dis in line.ListOfLineStations
+                                         where dis.NextStation != 0
+                                         select CalcTime(GetStation(dis.Station), GetStation(dis.NextStation));
+            TimeSpan total = new TimeSpan(0, 0, 0);
+            foreach (TimeSpan time in list)
+                total += time;
+            return total;
         }
         BO.Line LineBoDoAdapter(DO.Line lineDO)
         {
@@ -126,6 +136,35 @@ namespace BL
                                         select item;
             lineBO.LastStationName = LineNameConverter(lineBO);
             return lineBO;
+        }
+        public void UpdateTimeToArrive(Station station, TimeSpan time)
+        {
+            foreach(Line line in station.ListOfLines)
+            {
+                //TimeSpan totalLineTime = CalcTotalTime(line);
+                LineStation lsCurr = GetLineStation(line.ID, station.Code);
+                var listLS = from ls in line.ListOfLineStations
+                             where ls.LineStationIndex < lsCurr.LineStationIndex
+                             select ls;
+                IEnumerable<TimeSpan> list = from dis in listLS
+                                             where dis.NextStation != 0
+                                             select CalcTime(GetStation(dis.Station), GetStation(dis.NextStation));
+                TimeSpan total = new TimeSpan(0, 0, 0);
+                foreach (TimeSpan time1 in list)
+                    total += time1;
+                foreach(LineTrip lt in GetLineTrips(line))
+                {
+                    if(time>= lt.StartAt && time<= lt.FinishAt)
+                    {
+                        if(total >= lt.Frequency)
+                        {
+                            
+                        }
+                    }
+                        
+                }
+
+            }
         }
         string LineNameConverter(BO.Line line)
         {
@@ -144,7 +183,7 @@ namespace BL
         public IEnumerable<BO.Station> GetAllStationsInLine(BO.Line line)
         {
             BO.Line lineB = GetLine(line.ID);
-            return from ls in lineB.ListOfLineStations.OrderBy(ls => ls.LineStationIndex) 
+            return from ls in lineB.ListOfLineStations.OrderBy(ls => ls.LineStationIndex)
                    select GetAllStations().ToList().Find(s => s.Code == ls.Station);
         }
         public void DeleteStationFromLine(BO.Line line, int toRemove)
@@ -190,22 +229,22 @@ namespace BL
             LineStation toInsert = new LineStation
             {
                 LineID = line.ID,
-                LineStationIndex = prevStat.LineStationIndex+1,
+                LineStationIndex = prevStat.LineStationIndex + 1,
                 Station = toAdd,
                 PrevStation = prevStat.Station,
                 NextStation = prevStat.NextStation
             };
             prevStat.NextStation = toInsert.Station;
-          
+
             UpdateLineStation(prevStat);
             if (nextStat != null)
             {
                 nextStat.PrevStation = toInsert.Station;
-               // nextStat.LineStationIndex++;
-                
+                // nextStat.LineStationIndex++;
+
 
                 IEnumerable<LineStation> list = from ls in GetAllLineStations()
-                                                where ls.LineID == line.ID && 
+                                                where ls.LineID == line.ID &&
                                                 ls.LineStationIndex >= nextStat.LineStationIndex
                                                 select ls;
                 foreach (LineStation ls in list)
@@ -220,9 +259,9 @@ namespace BL
                 };
                 AddAdjStations(adjStations2);
             }
-        
+
             AddLineStation(toInsert);
-  
+
             AdjStations adjStations1 = new AdjStations
             {
                 Station1 = prevStat.Station,
@@ -254,7 +293,7 @@ namespace BL
             {
                 dl.DeleteLine(id);
             }
-            catch(Exception)//create exception for bad id
+            catch (Exception)//create exception for bad id
             {
                 throw new NotImplementedException();
             }
@@ -315,7 +354,7 @@ namespace BL
             return from item in dl.GetAllStations()
                    select StationBoDoAdapter(item);
         }
-        
+
         public Station GetStation(int code)
         {
             return StationBoDoAdapter(dl.GetStation(code));
@@ -365,11 +404,15 @@ namespace BL
             DO.LineStation lsDO = new DO.LineStation();
             ls.CopyPropertiesTo(lsDO);
             dl.AddLineStation(lsDO);
-            
+
         }
         public void DeleteLineStation(int lineID, int station)
         {
             dl.DeleteLineStation(lineID, station);
+        }
+        public LineStation GetLineStation(int lineID, int station)
+        {
+            return LineStationBoDoAdapter(dl.GetLineStation(lineID, station));
         }
         #endregion
 
@@ -409,7 +452,7 @@ namespace BL
         }
         public void AddLineTrip(LineTrip lineTripBO)
         {
-            
+
             DO.LineTrip lineTripDO = new DO.LineTrip();
             lineTripBO.CopyPropertiesTo(lineTripDO);
             dl.AddLineTrip(lineTripDO);
