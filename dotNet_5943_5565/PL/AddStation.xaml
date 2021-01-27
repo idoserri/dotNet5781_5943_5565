@@ -7,20 +7,24 @@
         mc:Ignorable="d"
         Title="Add Station" Height="400" Width="450" >
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="63*"/>
+            <ColumnDefinition Width="380*"/>
+        </Grid.ColumnDefinitions>
 
-        <Button x:Name="add_btn" Content="Add" HorizontalAlignment="Left" Height="85" Margin="71,253,0,0" VerticalAlignment="Top" Width="245" Click="add_btn_Click"/>
-        <Label x:Name="code_lbl" Content="Station: " HorizontalAlignment="Left" Height="31" Margin="10,10,0,0" VerticalAlignment="Top" Width="47"/>
-        <TextBox x:Name="code_txtb" HorizontalAlignment="Left" Height="31" Margin="70,10,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="256" IsEnabled="False" />
-        <Label x:Name="name_lbl" Content="Name " HorizontalAlignment="Left" Height="31" Margin="10,63,0,0" VerticalAlignment="Top" Width="57"/>
-        <TextBox x:Name="name_txtb" HorizontalAlignment="Left" Height="31" Margin="70,63,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="228" />
-        <Label x:Name="latitude_lbl" Content="Latitude " HorizontalAlignment="Left" Height="31" Margin="10,115,0,0" VerticalAlignment="Top" Width="71"/>
-        <TextBox x:Name="latitude_txtb" HorizontalAlignment="Left" Height="31" Margin="81,115,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="192" />
-        <Label x:Name="longitude_lbl" Content="Longitude " Height="31" Margin="10,151,367.333,188.667" RenderTransformOrigin="0.541,0.522"/>
-        <TextBox x:Name="longitude_txtb" Height="31" Margin="81,151,170.333,188.667" TextWrapping="Wrap"  Width="192" />
-        <Label x:Name="areas_lbl" Content="Area: " HorizontalAlignment="Left" Height="31" Margin="10,209,0,0" VerticalAlignment="Top" Width="44"/>
-        <ComboBox x:Name="areas_cb" HorizontalAlignment="Left" Height="31" Margin="70,209,0,0" VerticalAlignment="Top" Width="140" DisplayMemberPath="{Binding Areas}"/>
-       
-       
+        <Button x:Name="add_btn" Content="Add" HorizontalAlignment="Left" Height="85" Margin="7.667,253,0,0" VerticalAlignment="Top" Width="245" Click="add_btn_Click" Background="Red" FontWeight="Bold" FontSize="50" Grid.Column="1"/>
+        <Label x:Name="code_lbl" Content="Station: " Background="#FFB6B6B6" FontWeight="Bold" HorizontalAlignment="Left" Height="31" Margin="10,10,0,0" VerticalAlignment="Top" Width="55" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="code_txtb" HorizontalAlignment="Left" Height="31" Margin="6.667,10,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="116" IsEnabled="False" Grid.Column="1" FontSize="14" />
+        <Label x:Name="name_lbl" Content="Name " Background="#FFB6B6B6" FontWeight="Bold" HorizontalAlignment="Left" Height="31" Margin="10,63,0,0" VerticalAlignment="Top" Width="57" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="name_txtb" HorizontalAlignment="Left" Height="31" Margin="6.667,63,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="228" Grid.Column="1" />
+        <Label x:Name="latitude_lbl" Content="Latitude " Background="#FFB6B6B6" FontWeight="Bold" HorizontalAlignment="Left" Height="31" Margin="10,115,0,0" VerticalAlignment="Top" Width="71" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="latitude_txtb" HorizontalAlignment="Left" Height="31" Margin="17.667,115,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="192" Grid.Column="1" />
+        <Label x:Name="longitude_lbl" Content="Longitude " Background="#FFB6B6B6" FontWeight="Bold" Height="31" Margin="10,151,362.333,188.667" RenderTransformOrigin="0.541,0.522" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="longitude_txtb" Height="31" Margin="17.667,151,170.333,188.667" TextWrapping="Wrap"  Width="192" Grid.Column="1" />
+        <Label x:Name="areas_lbl" Content="Area: " Background="#FFB6B6B6" FontWeight="Bold" HorizontalAlignment="Left" Height="31" Margin="10,209,0,0" VerticalAlignment="Top" Width="55" Grid.ColumnSpan="2"/>
+        <ComboBox x:Name="areas_cb" HorizontalAlignment="Left" Height="31" Margin="6.667,209,0,0" VerticalAlignment="Top" Width="140" DisplayMemberPath="{Binding Areas}" FontWeight="Bold" Grid.Column="1" SelectedIndex="0"/>
+
+
 
     </Grid>
 </Window>

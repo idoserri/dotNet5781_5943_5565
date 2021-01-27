@@ -40,6 +40,8 @@ namespace PL
             if (count == 0)
             {
                 listStations_lbl.Content = "Select Last Station: ";
+                listStations_lbl.Background = Brushes.Red;
+                (sender as Button).IsEnabled = false;
                 firstStation = new BO.LineStation
                 {
                     LineID = toAdd.ID,
@@ -50,7 +52,7 @@ namespace PL
                 };
                 count++;
                 stations_lv.IsEnabled = false;
-                Thread.Sleep(1500);
+                Thread.Sleep(1000);
                 stations_lv.IsEnabled = true;
             }
             else
@@ -73,6 +75,9 @@ namespace PL
         {
             if (count != 2)
                 MessageBox.Show("Please select first and last stations.");
+            else if (lineNum_txtb.Text.Length < 1 || Int32.Parse(lineNum_txtb.Text) < 0)
+                MessageBox.Show("Wrong Line Number \ntry again! ", "ERROR"
+                    , MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.OK);
             else
             {
                 toAdd.Area = (BO.Areas)areas_cb.SelectedValue;

@@ -8,13 +8,6 @@
     <LastStation>10</LastStation>
   </Line>
   <Line>
-    <ID>3</ID>
-    <LineNum>3</LineNum>
-    <Area>General</Area>
-    <FirstStation>0</FirstStation>
-    <LastStation>20</LastStation>
-  </Line>
-  <Line>
     <ID>4</ID>
     <LineNum>4</LineNum>
     <Area>General</Area>
@@ -62,5 +55,12 @@
     <Area>North</Area>
     <FirstStation>0</FirstStation>
     <LastStation>35</LastStation>
+  </Line>
+  <Line>
+    <ID>3</ID>
+    <LineNum>3</LineNum>
+    <Area>General</Area>
+    <FirstStation>0</FirstStation>
+    <LastStation>20</LastStation>
   </Line>
 </ArrayOfLine>

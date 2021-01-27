@@ -43,10 +43,16 @@ namespace PL
 
         private void Update_btn_Click(object sender, RoutedEventArgs e)
         {
-            toUpdate.Area = (BO.Areas)areas_cb.SelectedItem;
-            toUpdate.LineNum = Int32.Parse(lineNum_txtb.Text);
-            bl.UpdateLine(toUpdate);
-            this.Close();
+            if (lineNum_txtb.Text.Length < 1 || Int32.Parse(lineNum_txtb.Text) < 0)
+                MessageBox.Show("Wrong Line Number \ntry again! ", "ERROR"
+                    , MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.OK);
+            else
+            {
+                toUpdate.Area = (BO.Areas)areas_cb.SelectedItem;
+                toUpdate.LineNum = Int32.Parse(lineNum_txtb.Text);
+                bl.UpdateLine(toUpdate);
+                this.Close();
+            }
         }
 
         private void AddStationToLine_btn_Click(object sender, RoutedEventArgs e)

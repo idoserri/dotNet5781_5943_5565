@@ -8,19 +8,19 @@
         Title="Update Station" Height="450" Width="450" >
     <Grid>
 
-        <Button x:Name="update_btn" Content="Update" HorizontalAlignment="Left" Height="85" Margin="70,326,0,0" VerticalAlignment="Top" Width="245" Click="Update_btn_Click"/>
-        <Label x:Name="code_lbl" Content="Station: " HorizontalAlignment="Left" Height="31" Margin="70,10,0,0" VerticalAlignment="Top" Width="47"/>
-        <TextBox x:Name="code_txtb" HorizontalAlignment="Left" Height="31" Margin="122,10,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="256" IsEnabled="False" />
-        <Label x:Name="name_lbl" Content="Name " HorizontalAlignment="Left" Height="31" Margin="70,46,0,0" VerticalAlignment="Top" Width="57"/>
-        <TextBox x:Name="name_txtb" HorizontalAlignment="Left" Height="31" Margin="122,46,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="228" />
-        <Label x:Name="latitude_lbl" Content="Latitude " HorizontalAlignment="Left" Height="31" Margin="10,82,0,0" VerticalAlignment="Top" Width="62"/>
-        <TextBox x:Name="latitude_txtb" HorizontalAlignment="Left" Height="31" Margin="70,82,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="192" />
-        <Label x:Name="longitude_lbl" Content="Longitude " Height="31" Margin="10,118,363.333,271.667" RenderTransformOrigin="0.541,0.522"/>
-        <TextBox x:Name="longitude_txtb"  Height="31" HorizontalAlignment="Left" Margin="70,118,181.333,271.667" TextWrapping="Wrap"  Width="192" />
-        <Label x:Name="areas_lbl" Content="Area: " HorizontalAlignment="Left" Height="31" Margin="306,82,0,0" VerticalAlignment="Top" Width="44"/>
-        <ComboBox x:Name="areas_cb" HorizontalAlignment="Left" Height="31" Margin="285,118,0,0" VerticalAlignment="Top" Width="140" DisplayMemberPath="{Binding Areas}" RenderTransformOrigin="0.508,0.796"/>
-        <Label x:Name="lines_lbl" Content="Lines going through" HorizontalAlignment="Left" Height="31" Margin="10,224,0,0" VerticalAlignment="Top" Width="116"/>
-        <ListView x:Name="LinesIn_lv" HorizontalAlignment="Center" Height="152" Margin="126,169,0.333,0" VerticalAlignment="Top" Width="317">
+        <Button x:Name="update_btn" Content="Update" HorizontalAlignment="Left" Height="85" Margin="70,326,0,0" VerticalAlignment="Top" Width="245" Click="Update_btn_Click" Background="Red" FontWeight="Bold" FontSize="50"/>
+        <Label x:Name="code_lbl" Content="Station: " Background="#FFB6B6B6" FontWeight="Bold" HorizontalAlignment="Left" Height="31" Margin="70,10,0,0" VerticalAlignment="Top" Width="52"/>
+        <TextBox x:Name="code_txtb" HorizontalAlignment="Left" Height="31" Margin="122,10,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="193" IsEnabled="False" />
+        <Label x:Name="name_lbl" Content="Name " Background="#FFB6B6B6" FontWeight="Bold" HorizontalAlignment="Left" Height="31" Margin="70,46,0,0" VerticalAlignment="Top" Width="57"/>
+        <TextBox x:Name="name_txtb" HorizontalAlignment="Left" Height="31" Margin="127,46,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="233" />
+        <Label x:Name="latitude_lbl" Content="Latitude " Background="#FFB6B6B6" FontWeight="Bold" HorizontalAlignment="Left" Height="31" Margin="10,82,0,0" VerticalAlignment="Top" Width="70"/>
+        <TextBox x:Name="latitude_txtb" HorizontalAlignment="Left" Height="31" Margin="80,82,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="192" />
+        <Label x:Name="longitude_lbl" Content="Longitude " Background="#FFB6B6B6" FontWeight="Bold" Height="31" Margin="10,118,355.333,271.667" RenderTransformOrigin="0.541,0.522"/>
+        <TextBox x:Name="longitude_txtb"  Height="31" HorizontalAlignment="Left" Margin="88,118,0,271.667" TextWrapping="Wrap"  Width="184" />
+        <Label x:Name="areas_lbl" Content="Area: " Background="#FFB6B6B6" FontWeight="Bold" HorizontalAlignment="Left" Height="31" Margin="306,87,0,0" VerticalAlignment="Top" Width="44"/>
+        <ComboBox x:Name="areas_cb" HorizontalAlignment="Left" Height="31" Margin="285,118,0,0" VerticalAlignment="Top" Width="140" DisplayMemberPath="{Binding Areas}" RenderTransformOrigin="0.508,0.796" FontWeight="Bold" FontSize="15"/>
+        <Label x:Name="lines_lbl" Content="Lines going through" Background="#FFB6B6B6" FontWeight="Bold"  HorizontalAlignment="Left" Height="31" Margin="1,169,0,0" VerticalAlignment="Top" Width="125"/>
+        <ListView x:Name="LinesIn_lv" HorizontalAlignment="Center" Height="152" Margin="126,169,0.333,0" VerticalAlignment="Top" Width="317" FontWeight="Bold">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Line Number" Width="90" DisplayMemberBinding="{Binding LineNum}"/>

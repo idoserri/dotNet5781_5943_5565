@@ -43,16 +43,27 @@ namespace PL
         private void Update_btn_Click(object sender, RoutedEventArgs e)
         {
 
+            if (name_txtb.Text.Length < 1)
+                MessageBox.Show("Wrong Name of station \ntry again!", "ERROR",
+                    MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.OK);
 
-            ToUpdate.Code = Int32.Parse(code_txtb.Text);
-            ToUpdate.Name = name_txtb.Text;
-            ToUpdate.Area = (BO.Areas)areas_cb.SelectedItem;
-            ToUpdate.Latitude = Double.Parse(latitude_txtb.Text);
-            ToUpdate.Longitude = Double.Parse(longitude_txtb.Text);
-            //ToUpdate.ListOfLines = lines_lbl.DataContext as List;
-            bl.UpdateStation(ToUpdate);
-            this.Close();
+            else if (latitude_txtb.Text.Length < 1 || longitude_txtb.Text.Length < 1 ||
+                Double.Parse(latitude_txtb.Text) < 31 || Double.Parse(latitude_txtb.Text) > 33.3
+                || Double.Parse(longitude_txtb.Text) < 34.3 || Double.Parse(longitude_txtb.Text) > 35.5)
+                MessageBox.Show("Wrong Cordinates of stations (check if it's out of bounds) \ntry again!", "ERROR",
+                   MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.OK);
+            else
+            {
+                ToUpdate.Code = Int32.Parse(code_txtb.Text);
+                ToUpdate.Name = name_txtb.Text;
+                ToUpdate.Area = (BO.Areas)areas_cb.SelectedItem;
+                ToUpdate.Latitude = Double.Parse(latitude_txtb.Text);
+                ToUpdate.Longitude = Double.Parse(longitude_txtb.Text);
+                //ToUpdate.ListOfLines = lines_lbl.DataContext as List;
+                bl.UpdateStation(ToUpdate);
+                this.Close();
 
+            }
         }
     }
 }

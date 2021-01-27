@@ -31,10 +31,16 @@ namespace PL
 
         private void add_btn_Click(object sender, RoutedEventArgs e)
         {
-            if (code_txtb.Text.Length == 0 || name_txtb.Text.Length == 0 ||
-                latitude_txtb.Text.Length == 0 || longitude_txtb.Text.Length == 0)
-                MessageBox.Show("You have to fill ALL fields with the correct data!!!", "ERROR",
+            if (name_txtb.Text.Length < 1)
+                MessageBox.Show("Wrong Name of station \ntry again!", "ERROR",
                     MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.OK);
+
+            else if (latitude_txtb.Text.Length < 1 || longitude_txtb.Text.Length < 1 ||
+                Double.Parse(latitude_txtb.Text) < 31 || Double.Parse(latitude_txtb.Text) > 33.3
+                || Double.Parse(longitude_txtb.Text) < 34.3 || Double.Parse(longitude_txtb.Text) > 35.5)
+                MessageBox.Show("Wrong Cordinates of stations (check if it's out of bounds) \ntry again!", "ERROR",
+                   MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.OK);
+
             else
             {
                 BO.Station toAdd = new BO.Station

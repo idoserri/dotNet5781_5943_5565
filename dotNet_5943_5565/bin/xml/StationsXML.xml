@@ -127,13 +127,6 @@
     <Area>Center</Area>
   </Station>
   <Station>
-    <Code>19</Code>
-    <Name>Adam/Bojack Faceman</Name>
-    <Longitude>34.864843</Longitude>
-    <Latitude>32.256581</Latitude>
-    <Area>South</Area>
-  </Station>
-  <Station>
     <Code>20</Code>
     <Name>Darth Diabetus/The Wide ave.</Name>
     <Longitude>34.85165</Longitude>
@@ -348,6 +341,13 @@
     <Name>Tscharnichovsky/Levov</Name>
     <Longitude>34.906032</Longitude>
     <Latitude>32.189203</Latitude>
+    <Area>South</Area>
+  </Station>
+  <Station>
+    <Code>19</Code>
+    <Name>Adam/Bojack Faceman</Name>
+    <Longitude>34.864843</Longitude>
+    <Latitude>32.256581</Latitude>
     <Area>South</Area>
   </Station>
 </ArrayOfStation>

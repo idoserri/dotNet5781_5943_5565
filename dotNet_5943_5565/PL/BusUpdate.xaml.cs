@@ -36,13 +36,25 @@ namespace PL
 
         private void update_btn_Click(object sender, RoutedEventArgs e)
         {
-            toUpdate.FromDate = fromDate_dp.DisplayDate;
-            toUpdate.FuelRemain = Double.Parse(fuelRemain_txtb.Text);
-            toUpdate.LicenseNum = Int32.Parse(licenseNum_txtb.Text);
-            toUpdate.BusStatus = (BO.Status)Status_cb.SelectedItem;
-            toUpdate.Mileage = Double.Parse(mileage_txtb.Text);
-            bl.UpdateBus(toUpdate);
-            this.Close();
+            if (fuelRemain_txtb.Text.Length < 1 || Int32.Parse(fuelRemain_txtb.Text) < 0)
+                MessageBox.Show("Wrong Fuel Remain \ntry again! ", "ERROR"
+                    , MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.OK);
+            else if (licenseNum_txtb.Text.Length < 1 || Int32.Parse(licenseNum_txtb.Text) < 0 || Int32.Parse(licenseNum_txtb.Text) < 99999999)
+                MessageBox.Show("Wrong License Number \ntry again! ", "ERROR"
+                    , MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.OK);
+            else if (mileage_txtb.Text.Length < 1 || Int32.Parse(mileage_txtb.Text) < 0 )
+                MessageBox.Show("Wrong Mileage \ntry again! ", "ERROR"
+                    , MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.OK);
+            else
+            {
+                toUpdate.FromDate = fromDate_dp.DisplayDate;
+                toUpdate.FuelRemain = Double.Parse(fuelRemain_txtb.Text);
+                toUpdate.LicenseNum = Int32.Parse(licenseNum_txtb.Text);
+                toUpdate.BusStatus = (BO.Status)Status_cb.SelectedItem;
+                toUpdate.Mileage = Double.Parse(mileage_txtb.Text);
+                bl.UpdateBus(toUpdate);
+                this.Close();
+            }
         }
     }
 }
