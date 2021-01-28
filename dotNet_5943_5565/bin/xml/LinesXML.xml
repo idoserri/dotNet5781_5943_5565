@@ -1,18 +1,20 @@
 <?xml version="1.0"?>
 <ArrayOfLine xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Line>
-    <ID>5</ID>
-    <LineNum>5</LineNum>
-    <Area>General</Area>
-    <FirstStation>0</FirstStation>
-    <LastStation>30</LastStation>
-  </Line>
-  <Line>
     <ID>4</ID>
     <LineNum>4</LineNum>
     <Area>General</Area>
     <FirstStation>0</FirstStation>
     <LastStation>25</LastStation>
+    <TimeToArrive />
+  </Line>
+  <Line>
+    <ID>5</ID>
+    <LineNum>5</LineNum>
+    <Area>General</Area>
+    <FirstStation>0</FirstStation>
+    <LastStation>30</LastStation>
+    <TimeToArrive>613,638,663,688,713,738,763,788,813,838,863,888,913,938,963,988,</TimeToArrive>
   </Line>
   <Line>
     <ID>6</ID>
@@ -20,6 +22,7 @@
     <Area>North</Area>
     <FirstStation>0</FirstStation>
     <LastStation>35</LastStation>
+    <TimeToArrive />
   </Line>
   <Line>
     <ID>9</ID>
@@ -27,6 +30,7 @@
     <Area>General</Area>
     <FirstStation>0</FirstStation>
     <LastStation>48</LastStation>
+    <TimeToArrive />
   </Line>
   <Line>
     <ID>8</ID>
@@ -34,6 +38,7 @@
     <Area>General</Area>
     <FirstStation>0</FirstStation>
     <LastStation>45</LastStation>
+    <TimeToArrive>545,590,635,680,725,770,815,860,905,950,995,</TimeToArrive>
   </Line>
   <Line>
     <ID>10</ID>
@@ -41,20 +46,7 @@
     <Area>General</Area>
     <FirstStation>0</FirstStation>
     <LastStation>50</LastStation>
-  </Line>
-  <Line>
-    <ID>3</ID>
-    <LineNum>3</LineNum>
-    <Area>General</Area>
-    <FirstStation>0</FirstStation>
-    <LastStation>20</LastStation>
-  </Line>
-  <Line>
-    <ID>2</ID>
-    <LineNum>2</LineNum>
-    <Area>Center</Area>
-    <FirstStation>0</FirstStation>
-    <LastStation>15</LastStation>
+    <TimeToArrive />
   </Line>
   <Line>
     <ID>1</ID>
@@ -62,5 +54,22 @@
     <Area>Center</Area>
     <FirstStation>0</FirstStation>
     <LastStation>10</LastStation>
+    <TimeToArrive>105,</TimeToArrive>
+  </Line>
+  <Line>
+    <ID>3</ID>
+    <LineNum>3</LineNum>
+    <Area>General</Area>
+    <FirstStation>0</FirstStation>
+    <LastStation>20</LastStation>
+    <TimeToArrive>999,</TimeToArrive>
+  </Line>
+  <Line>
+    <ID>2</ID>
+    <LineNum>2</LineNum>
+    <Area>Center</Area>
+    <FirstStation>0</FirstStation>
+    <LastStation>15</LastStation>
+    <TimeToArrive />
   </Line>
 </ArrayOfLine>

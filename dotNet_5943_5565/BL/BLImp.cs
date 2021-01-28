@@ -125,16 +125,13 @@ namespace BL
                                         orderby item.LineStationIndex ascending
                                         select item;
             lineBO.LastStationName = LineNameConverter(lineBO);
-
             return lineBO;
         }
         public void UpdateTimeToArrive(Station station, TimeSpan time)
         {
-            foreach (Line line in station.ListOfLines)
-                line.TimeToArrive++;
-            /*foreach(Line line in station.ListOfLines)
+            foreach(Line line in station.ListOfLines)
             {
-                string toReturn = "yes";
+                string toReturn = "";
                 LineStation lsCurr = GetLineStation(line.ID, station.Code);
                 var listLS = from ls in line.ListOfLineStations
                              where ls.LineStationIndex < lsCurr.LineStationIndex
@@ -160,7 +157,7 @@ namespace BL
                 }
                 line.TimeToArrive = toReturn;
                 UpdateLine(line);
-            }*/
+            }
 
         }
         string LineNameConverter(BO.Line line)
