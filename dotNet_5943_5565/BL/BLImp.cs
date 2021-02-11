@@ -127,8 +127,9 @@ namespace BL
             lineBO.LastStationName = LineNameConverter(lineBO);
             return lineBO;
         }
-        public void UpdateTimeToArrive(Station station, TimeSpan time)
+        public void UpdateTimeToArrive(Station station, TimeSpan time) //updat
         {
+            int ususuus = 0;
             foreach(Line line in station.ListOfLines)
             {
                 string toReturn = "";
