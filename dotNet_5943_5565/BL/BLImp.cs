@@ -127,10 +127,10 @@ namespace BL
             lineBO.LastStationName = LineNameConverter(lineBO);
             return lineBO;
         }
-        public void UpdateTimeToArrive(Station station, TimeSpan time)
+        public void UpdateTimeToArrive(Station station, TimeSpan time) //updat
         {
-            /*hefef*/
-            /*foreach(Line line in station.ListOfLines)
+            int ususuus = 0;
+            foreach(Line line in station.ListOfLines)
             {
                 string toReturn = "";
                 LineStation lsCurr = GetLineStation(line.ID, station.Code);
@@ -150,7 +150,7 @@ namespace BL
                         int minutes = (int)(time.TotalMinutes - lt.StartAt.TotalMinutes + total.TotalMinutes);
                         while(minutes < 1000)
                         {
-                            toReturn += minutes.ToString() + ", ";
+                            toReturn += minutes.ToString() + ",";
                             minutes += (int)lt.Frequency.TotalMinutes;
                         }
                     }
@@ -158,8 +158,7 @@ namespace BL
                 }
                 line.TimeToArrive = toReturn;
                 UpdateLine(line);
-            
-            }*/
+            }
 
         }
         string LineNameConverter(BO.Line line)
