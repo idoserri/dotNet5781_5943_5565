@@ -19,5 +19,7 @@ namespace BO
         public Areas Area { get; set; }
 
         public IEnumerable<Line> ListOfLines { get; set; }
+
+        public IEnumerable<LineTiming> LineTimings { get; set; }
     }
 }

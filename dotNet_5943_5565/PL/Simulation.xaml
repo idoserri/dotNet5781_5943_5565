@@ -30,11 +30,11 @@
             </ListView.View>
         </ListView>
         <Label x:Name="select_lbl" Content="Select Station:" FontSize="25" HorizontalAlignment="Left" Height="51" Margin="376,10,0,0" VerticalAlignment="Top" Width="262" FontFamily="Rockwell Extra Bold" IsEnabled="False"/>
-        <ListView x:Name="lines_lv" Background="LightYellow" HorizontalAlignment="Left" Height="384" Margin="616,66,0,0" VerticalAlignment="Top" Width="367" IsEnabled="False" FontFamily="Franklin Gothic Demi Cond" FontSize="16">
+        <ListView x:Name="lineTiming_lv" Background="LightYellow" HorizontalAlignment="Left" Height="384" Margin="616,66,0,0" VerticalAlignment="Top" Width="367" IsEnabled="False" FontFamily="Franklin Gothic Demi Cond" FontSize="16">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Line Number" Width="Auto" DisplayMemberBinding="{Binding LineNum}"></GridViewColumn>
-                    <GridViewColumn Header="Line Name" Width="Auto" DisplayMemberBinding="{Binding LastStationName}"/>
+                    <GridViewColumn Header="Line Name" Width="Auto" DisplayMemberBinding="{Binding LastStation}"/>
                     <GridViewColumn Header="Arrives In" Width="Auto">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>

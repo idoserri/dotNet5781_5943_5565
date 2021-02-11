@@ -19,6 +19,5 @@ namespace DO
 
         public int LastStation { get; set; }
 
-        public string TimeToArrive { get; set; }
     }
 }

@@ -40,7 +40,7 @@ namespace PL
             time_lbl.Content = time.ToString().Substring(0, 8);
             if (stations_lv.SelectedValue != null)
                 bl.UpdateTimeToArrive(stations_lv.SelectedValue as BO.Station, time);
-            lines_lv.Items.Refresh();
+            lineTiming_lv.Items.Refresh();
         }
 
         private void startSim_btn_Click(object sender, RoutedEventArgs e)
@@ -88,7 +88,7 @@ namespace PL
             stopSim_btn.IsEnabled = false;
             stations_lv.IsEnabled = false;
             select_lbl.IsEnabled = false;
-            lines_lv.IsEnabled = false;
+            lineTiming_lv.IsEnabled = false;
             lines_lbl.Content = "";
 
         }
@@ -96,8 +96,8 @@ namespace PL
         private void stations_lv_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             BO.Station station = stations_lv.SelectedItem as BO.Station;
-            lines_lv.ItemsSource = bl.GetAllLinesInStation(station);
-            lines_lv.IsEnabled = true;
+            lineTiming_lv.ItemsSource = bl.GetAllLinesInStation(station);
+            lineTiming_lv.IsEnabled = true;
             lines_lbl.Content = "Incoming Lines For Station\n" + station.Name;
         }
     }
