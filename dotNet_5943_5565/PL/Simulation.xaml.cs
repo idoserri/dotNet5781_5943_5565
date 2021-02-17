@@ -18,6 +18,7 @@ namespace PL
     /// <summary>
     /// Interaction logic for Simulation.xaml
     /// </summary>
+    /// 
     public partial class Simulation : Window
     {
         IBL bl;
@@ -36,6 +37,7 @@ namespace PL
         {
             DateTime interval = DateTime.Now.AddHours(time.Hours)
     .AddMinutes(time.Minutes).AddSeconds(time.Seconds + mult);
+
             time = interval - DateTime.Now;
             time_lbl.Content = time.ToString().Substring(0, 8);
             if (stations_lv.SelectedValue != null)
@@ -45,6 +47,9 @@ namespace PL
 
         private void startSim_btn_Click(object sender, RoutedEventArgs e)
         {
+            // TimeSpan t = new TimeSpan(int.Parse(hours_txtb.Text), int.Parse(minutes_txtb.Text), int.Parse(seconds_txtb.Text));
+            //  bl.StartSimulation(t,int.Parse(speed_txtb.Text), applyChanges);
+
             timer.Start();
             startSim_btn.IsEnabled = false;
             apply_btn.IsEnabled = false;
@@ -57,27 +62,52 @@ namespace PL
             stations_lv.IsEnabled = true;
             select_lbl.IsEnabled = true;
         }
+        //  private void applyChanges(TimeSpan time) { }
 
         private void applyTime_btn_Click(object sender, RoutedEventArgs e)
         {
-            DateTime interval = DateTime.Now.AddHours(Double.Parse(hours_txtb.Text))
-                .AddMinutes(Double.Parse(minutes_txtb.Text)).AddSeconds(Double.Parse(seconds_txtb.Text));
-            time = interval - DateTime.Now;
-            hours_txtb.Clear();
-            minutes_txtb.Clear();
-            seconds_txtb.Clear();
-            time_lbl.Content = time.ToString().Substring(0,8);
-            startSim_btn.IsEnabled = true;
+            if (hours_txtb.Text.Length < 1 || minutes_txtb.Text.Length < 1 || seconds_txtb.Text.Length < 1 )
+                MessageBox.Show("Wrong Time input, please fill all fields (hours, minutes, seconds) \ntry again! ", "ERROR"
+                    , MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.OK);
+            else
+            {
+                DateTime interval = new DateTime();
+                try
+                {
+                     interval = DateTime.Now.AddHours(Double.Parse(hours_txtb.Text))
+                   .AddMinutes(Double.Parse(minutes_txtb.Text)).AddSeconds(Double.Parse(seconds_txtb.Text));
+                }
+               catch(Exception)
+                {
+                    MessageBox.Show("Wrong Time input, please fill all fields (hours, minutes, seconds) \ntry again! ", "ERROR"
+                    , MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.OK);
+                    return; 
+                }
+                time = interval - DateTime.Now;
+                hours_txtb.Clear();
+                minutes_txtb.Clear();
+                seconds_txtb.Clear();
+                time_lbl.Content = time.ToString().Substring(0, 8);
+                startSim_btn.IsEnabled = true;
+            }
         }
 
         private void apply_btn_Click(object sender, RoutedEventArgs e)
         {
-            mult = int.Parse(speed_txtb.Text);
-            speed_txtb.Clear();
+            if (speed_txtb.Text.Length < 1 || int.Parse(speed_txtb.Text) < 0)
+                MessageBox.Show("Wrong speed input, \ntry again! ", "ERROR"
+                    , MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.OK);
+            else
+            {
+                mult = int.Parse(speed_txtb.Text);
+                speed_txtb.Clear();
+            }
         }
 
         private void stopSim_btn_Click(object sender, RoutedEventArgs e)
         {
+           // bl.StopSimulator();
+
             timer.Stop();
             apply_btn.IsEnabled = true;
             applyTime_btn.IsEnabled = true;

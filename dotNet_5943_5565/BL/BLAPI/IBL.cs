@@ -22,6 +22,7 @@ namespace BLAPI
         Line GetLine(int id);
         IEnumerable<Line> GetAllLines();
         IEnumerable<Line> GetAllLinesInStation(BO.Station line);
+      
         IEnumerable<Line> GetLinesBy(Predicate<Line> predicate);
         IEnumerable<BO.Station> GetAllStationsNotInLine(BO.Line line);
         IEnumerable<BO.Station> GetAllStationsInLine(BO.Line line);
@@ -59,6 +60,11 @@ namespace BLAPI
         IEnumerable<LineTrip> GetLineTrips(Line line);
         void DeleteLineTrip(LineTrip lt);
         void AddLineTrip(LineTrip lineTripBO);
+        #endregion
+
+        #region simulation
+        void StartSimulation(TimeSpan StartTime, int rate, Action<TimeSpan> func);
+        void StopSimulator();
         #endregion
     }
 }

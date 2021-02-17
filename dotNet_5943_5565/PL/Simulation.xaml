@@ -34,7 +34,7 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Line Number" Width="Auto" DisplayMemberBinding="{Binding LineNum}"></GridViewColumn>
-                    <GridViewColumn Header="Line Name" Width="Auto" DisplayMemberBinding="{Binding LastStation}"/>
+                    <GridViewColumn Header="Line Name" Width="Auto" DisplayMemberBinding="{Binding LastStationName}"/>
                     <GridViewColumn Header="Arrives In" Width="Auto">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>

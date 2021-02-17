@@ -7,12 +7,16 @@ using System.Threading.Tasks;
 using BLAPI;
 using BO;
 using DLAPI;
-
+using System.Diagnostics;
+using System.Threading;
 
 namespace BL
 {
+
     class BLImp : IBL
     {
+        internal volatile bool Cancel;
+
         IDL dl = DLFactory.GetDL();
         static Random r = new Random();
 
@@ -127,10 +131,10 @@ namespace BL
             lineBO.LastStationName = LineNameConverter(lineBO);
             return lineBO;
         }
-        public void UpdateTimeToArrive(Station station, TimeSpan time) //updat
+        public void UpdateTimeToArrive(Station station, TimeSpan time)
         {
-            int ususuus = 0;
-            foreach(Line line in station.ListOfLines)
+
+            foreach (Line line in station.ListOfLines)
             {
                 string toReturn = "";
                 LineStation lsCurr = GetLineStation(line.ID, station.Code);
@@ -143,20 +147,21 @@ namespace BL
                 TimeSpan total = new TimeSpan(0, 0, 0);
                 foreach (TimeSpan time1 in list)
                     total += time1;
-                foreach(LineTrip lt in GetLineTrips(line))
+                foreach (LineTrip lt in GetLineTrips(line))
                 {
-                    if(time>= lt.StartAt && time<= lt.FinishAt)
+                    if (time >= lt.StartAt && time <= lt.FinishAt)
                     {
                         int minutes = (int)(time.TotalMinutes - lt.StartAt.TotalMinutes + total.TotalMinutes);
-                        while(minutes < 1000)
+                        while (minutes < 1000)
                         {
                             toReturn += minutes.ToString() + ",";
                             minutes += (int)lt.Frequency.TotalMinutes;
                         }
                     }
-                        
+
                 }
-                line.TimeToArrive = toReturn;
+               
+                 line.TimeToArrive = toReturn;
                 UpdateLine(line);
             }
 
@@ -369,6 +374,8 @@ namespace BL
             return from line in InStation.ListOfLines
                    select line;
         }
+        
+
         #endregion
 
         #region LineStation
@@ -463,6 +470,33 @@ namespace BL
             {
                 throw new NotImplementedException();
             }
+        }
+        #endregion
+
+        #region simulation
+        public void StartSimulation(TimeSpan StartTime, int rate, Action<TimeSpan> func)
+        {
+            Clock.Instance.Rate = rate;
+            Clock.Instance.ClockObserver += func;
+            Cancel = false;
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Restart();
+            Thread tripsLauncher = new Thread(TravelLauncher.Instance.StartLaunch);
+            tripsLauncher.Start();
+
+            while (!Cancel)
+            {
+                TimeSpan t = StartTime + new TimeSpan(rate * stopwatch.ElapsedTicks);
+                Clock.Instance.Time = new TimeSpan(t.Hours, t.Minutes, t.Seconds);
+                Thread.Sleep(100);
+            }
+           
+
+        }
+
+        public void StopSimulator()
+        {
+            Cancel = true;
         }
         #endregion
     }

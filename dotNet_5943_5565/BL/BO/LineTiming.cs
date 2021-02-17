@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BO
 {
-    class LineTiming
+   public class LineTiming
     {
         public int LineID { get; set; }
 

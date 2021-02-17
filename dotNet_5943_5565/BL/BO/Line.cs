@@ -19,5 +19,7 @@ namespace BO
         public string LastStationName { get; set; }
 
         public IEnumerable<LineStation> ListOfLineStations { get; set; }
+        public string TimeToArrive { get; set; }
+
     }
 }
