@@ -39,7 +39,7 @@ namespace PL
             if (fuelRemain_txtb.Text.Length < 1 || Int32.Parse(fuelRemain_txtb.Text) < 0)
                 MessageBox.Show("Wrong Fuel Remain \ntry again! ", "ERROR"
                     , MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.OK);
-            else if (licenseNum_txtb.Text.Length < 1 || Int32.Parse(licenseNum_txtb.Text) < 0 || Int32.Parse(licenseNum_txtb.Text) < 99999999)
+            else if (licenseNum_txtb.Text.Length < 1 || Int32.Parse(licenseNum_txtb.Text) < 0 || Int32.Parse(licenseNum_txtb.Text) > 99999999)
                 MessageBox.Show("Wrong License Number \ntry again! ", "ERROR"
                     , MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.OK);
             else if (mileage_txtb.Text.Length < 1 || Int32.Parse(mileage_txtb.Text) < 0 )
